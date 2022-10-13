@@ -17,11 +17,25 @@
         DataContext="{StaticResource LoginVM}"
         x:Name="LoginWindow"
         Title="wLogin"
-        Height="400"
-        Width="400"
+        Height="500"
+        Width="800"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid>
-        <materialDesign:Card>
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" Background="#00c590" Padding="20">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center" >
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Image/leaves_icon_white.jpg" Width="50" Height="50"></Image>
+                    <TextBlock VerticalAlignment="Center" FontSize="18" Foreground="White" FontWeight="Bold">Pig Farm</TextBlock>
+                </StackPanel>
+                <TextBlock FontSize="13" Foreground="White">Chào mừng đến với phần mềm quản lý trang trại nuôi heo</TextBlock>
+        
+            </StackPanel>
+        </materialDesign:Card>
+        <materialDesign:Card Grid.Column="1">
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition  Height="100"></RowDefinition>
@@ -43,43 +57,34 @@
                         <RowDefinition Height="80"></RowDefinition>
                         <RowDefinition Height="80"></RowDefinition>
                     </Grid.RowDefinitions>
-
                     <Grid Grid.Row="0">
-                        <StackPanel  Orientation="Horizontal"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="User"
-                                                     VerticalAlignment="Center"
-                                                     Height="40"
-                                                     Width="40" />
-                            <TextBox Name="Tb_Username"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center"
-                                     Width="200"
-                                     FontSize="20"
-                                     Text="{Binding Username}"
-                                     materialDesign:HintAssist.Hint="| Tài khoản"
-                                     Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="AccountCircle" 
+                                                 Width="35" 
+                                                 Height="35"
+                                                 VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <TextBox    Name="Tb_Username" Width="200"
+                                        Margin="5,0,0,0"
+                                        Text="{Binding Username}"
+                                        materialDesign:HintAssist.Hint="Tài khoản"
+                                        Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                        VerticalAlignment="Center" />
                         </StackPanel>
-                    </Grid>
 
-                    <Grid Grid.Row="1">
-                        <StackPanel  Orientation="Horizontal"
-                                     HorizontalAlignment="Center"
-                                     VerticalAlignment="Center">
-                            <materialDesign:PackIcon Kind="Password"
-                                                     HorizontalAlignment="Center"
-                                                     VerticalAlignment="Center"
-                                                     Height="40"
-                                                     Width="40" />
-                            <PasswordBox x:Name="PasswordBox"
-                                         HorizontalAlignment="Center"
-                                         VerticalAlignment="Center"
-                                         Width="200"
-                                         FontSize="20"
-                                         materialDesign:HintAssist.Hint="Mật khẩu"
-                                         materialDesign:TextFieldAssist.HasClearButton="True"
-                                         materialDesign:HintAssist.HelperText="At least 8 characters">
+                    </Grid>
+                    <Grid Grid.Row ="1">
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
+                            <materialDesign:PackIcon Kind="Lock" 
+                                                 Width="35" 
+                                                 Height="35"
+                                                 VerticalAlignment="Center"></materialDesign:PackIcon>
+                            <PasswordBox    x:Name="PasswordBox" Width="200" Height="35"
+                                            Margin="5,0,0,0"
+                                            Style="{StaticResource MaterialDesignFloatingHintRevealPasswordBox}"
+                                            IsEnabled="{Binding ElementName=RevealPasswordFloatingEnabled, Path=IsChecked}"
+                                            materialDesign:PasswordBoxAssist.Password="{Binding Password2, Mode=TwoWay}"
+                                            materialDesign:HintAssist.Hint="Mật khẩu"
+                                            materialDesign:TextFieldAssist.HasClearButton="True" >
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="PasswordChanged">
                                         <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
@@ -103,14 +108,25 @@
                                     CommandParameter="{Binding ElementName=LoginWindow}"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="40"
-                                    Background="#38E968"
+                                    BorderBrush="White"
+                                    Content="Đăng nhập"
                                     FontSize="20"
                                     materialDesign:ButtonAssist.CornerRadius="10"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                <TextBlock Text="Đăng nhập" />
+                                <Button.Background>
+                                    <LinearGradientBrush>
+                                        <LinearGradientBrush.GradientStops>
+                                            <GradientStop Offset="0.0" 
+                                                    Color="#00de1e" />
+                                            <GradientStop Offset="1.0" 
+                                                    Color="#04d4db" />
+                                        </LinearGradientBrush.GradientStops>
+                                    </LinearGradientBrush>
+                                </Button.Background>
                             </Button>
                         </Grid>
                     </Grid>
+                    
 
                 </Grid>
 

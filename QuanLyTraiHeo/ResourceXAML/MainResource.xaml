@@ -5,4 +5,5 @@
                     >
     <viewModel:MainWindowVM x:Key="MainWindowVM"></viewModel:MainWindowVM>
     <viewModel:LoginVM x:Key="LoginVM"></viewModel:LoginVM>
+    <viewModel:TrangChuVM x:Key="TrangChuVM"></viewModel:TrangChuVM>
 </ResourceDictionary>

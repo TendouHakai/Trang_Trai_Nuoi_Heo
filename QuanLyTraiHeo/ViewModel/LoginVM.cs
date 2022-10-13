@@ -28,6 +28,8 @@ namespace QuanLyTraiHeo.ViewModel
         public LoginVM()
         {
             IsLogin = false;
+            _username = QuanLyTraiHeo.Properties.Settings.Default.Username;
+            _password = QuanLyTraiHeo.Properties.Settings.Default.Password;
             LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword(); }, p => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, p => { Password = p.Password; });
         }
