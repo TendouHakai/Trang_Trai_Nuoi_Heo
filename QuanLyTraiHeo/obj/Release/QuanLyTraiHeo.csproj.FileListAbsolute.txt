@@ -124,3 +124,23 @@ C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\Q
 C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.exe
 C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.g.cs
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.g.cs
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.baml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.baml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.dll
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.dll
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.pdb
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.xml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.pdb
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.xml
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.dll
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.dll
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.pdb
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.xml
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.pdb
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.xml
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.g.cs
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.g.cs
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.baml
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.baml

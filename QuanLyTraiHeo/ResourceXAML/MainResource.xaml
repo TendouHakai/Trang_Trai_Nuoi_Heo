@@ -1,9 +1,13 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:local="clr-namespace:QuanLyTraiHeo"
-                    xmlns:viewModel="clr-namespace:QuanLyTraiHeo.ViewModel"
-                    >
+                    xmlns:viewModel="clr-namespace:QuanLyTraiHeo.ViewModel">
     <viewModel:MainWindowVM x:Key="MainWindowVM"></viewModel:MainWindowVM>
     <viewModel:LoginVM x:Key="LoginVM"></viewModel:LoginVM>
     <viewModel:TrangChuVM x:Key="TrangChuVM"></viewModel:TrangChuVM>
+    <viewModel:CapNhatTaiKhoanVM x:Key="CapNhatTaiKhoanVM"></viewModel:CapNhatTaiKhoanVM>
+    <viewModel:BaoCaoTinhTrangHeoVM x:Key="BaoCaoTinhTrangHeoVM"></viewModel:BaoCaoTinhTrangHeoVM>
+    <viewModel:BaoCaoSuaChuaVM x:Key="BaoCaoSuaChuaVM"></viewModel:BaoCaoSuaChuaVM>
+    <viewModel:BaoCaoThuChiVM x:Key="BaoCaoThuChiVM"></viewModel:BaoCaoThuChiVM>
+    <viewModel:BaoCaoTonKhoVM x:Key="BaoCaoTonKhoVM"></viewModel:BaoCaoTonKhoVM>
 </ResourceDictionary>

@@ -5,9 +5,8 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyTraiHeo"
         mc:Ignorable="d"
-        DataContext="{StaticResource TrangChuVM}"
         Title="TraCuuPhieuThuChiWindow" Height="450" Width="800">
     <Grid>
-        <TextBlock Text="{Binding Tieude}">Tra cứu phiếu thu chi</TextBlock>
+        <TextBlock>Tra cứu phiếu thu chi</TextBlock>
     </Grid>
 </Window>

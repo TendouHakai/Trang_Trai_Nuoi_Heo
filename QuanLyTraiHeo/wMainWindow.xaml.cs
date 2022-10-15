@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTraiHeo.View.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -162,6 +163,18 @@ namespace QuanLyTraiHeo
         private void ToggleButton_Unchecked(object sender, RoutedEventArgs e)
         {
             exp_test.IsExpanded = false;
+        }
+
+        private void btn_CapNhatMatKhau_Click(object sender, RoutedEventArgs e)
+        {
+            CapNhatTaiKhoanWindow wc = new CapNhatTaiKhoanWindow();
+            wc.ShowDialog();
+        }
+
+        private void btn_DoiMatKhau_Click(object sender, RoutedEventArgs e)
+        {
+            DoiMatKhau wc = new DoiMatKhau();
+            wc.ShowDialog();
         }
     }
 }

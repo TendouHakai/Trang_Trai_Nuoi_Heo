@@ -295,10 +295,10 @@
                                                 StaysOpen="True" 
                                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <StackPanel Width="150">
-                                            <Button>
+                                            <Button Name="btn_CapNhatMatKhau" Click="btn_CapNhatMatKhau_Click">
                                                 Cập nhật thông tin
                                             </Button>
-                                            <Button>
+                                            <Button Name="btn_DoiMatKhau" Click="btn_DoiMatKhau_Click">
                                                 Đổi mật khẩu
                                             </Button>
                                         </StackPanel>
