@@ -74,7 +74,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
-                                
+
                                 <TreeViewItem Name="Tree_menu_detail_CaThe"
                                         Header="Quản lý thông tin cá thể" >
                                     <i:Interaction.Triggers>
@@ -191,7 +191,7 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
-                                
+
                                 <TreeViewItem Name="Tree_menu_detail_TraCuu"  
                                         Header="Tra cứu phiếu thu chi">
                                     <i:Interaction.Triggers>
@@ -228,7 +228,7 @@
             </Expander>
         </Grid>
         <StackPanel Grid.Column="0" Width="50" HorizontalAlignment="Center" Background="#3ab19b">
-            <Image Source="/Image/leaves_icon_white.jpg" Height="60"></Image>
+            <Image Source="/Image/leaves_icon_white.jpg" Height="60"/>
             <ListBox Margin="7,7,7,7" Name="lB_Menu" HorizontalAlignment="Center"
                     SelectedIndex="-1">
 
@@ -388,7 +388,7 @@
                         Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                         ToolTip="TendouHakai"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                    <Image Source="/Image/avatar.jpg"></Image>
+                                    <Image Source="/Image/avatar.jpg"/>
                                 </Button>
                                 <TextBlock
                             VerticalAlignment="Center"
@@ -421,9 +421,7 @@
                         materialDesign:RippleAssist.IsCentered="True">
                                 <ToggleButton x:Name="tgl_menu"
                                             Style="{StaticResource MaterialDesignHamburgerToggleButton}"
-                                            ToolTip="Mở Menu" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked">
-
-                                </ToggleButton>
+                                            ToolTip="Mở Menu" Checked="ToggleButton_Checked" Unchecked="ToggleButton_Unchecked"/>
                                 <TextBlock
                             VerticalAlignment="Center"
                             Margin="16 0 0 0"
@@ -432,9 +430,7 @@
                             </StackPanel>
                         </DockPanel>
                     </materialDesign:ColorZone>
-                    <Grid x:Name="grb_TabWindow" DockPanel.Dock="Bottom">
-
-                    </Grid>
+                    <Grid x:Name="grb_TabWindow" DockPanel.Dock="Bottom"/>
                 </DockPanel>
             </materialDesign:DrawerHost>
         </Grid>

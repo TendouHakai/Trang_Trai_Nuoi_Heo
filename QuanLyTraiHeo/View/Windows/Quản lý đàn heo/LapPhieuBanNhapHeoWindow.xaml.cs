@@ -22,6 +22,8 @@ namespace QuanLyTraiHeo
         public LapPhieuBanNhapHeoWindow()
         {
             InitializeComponent();
+            Listview.Items.Add("abc");
+            Listview.Items.Add("cde");
         }
     }
 }

@@ -14,8 +14,6 @@ namespace QuanLyTraiHeo.ViewModel
         public TrangChuVM()
         {
             Tieude = "Nhật ký 2";
-            MessageBox.Show("trang chu");
-            
         }
     }
 }

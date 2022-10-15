@@ -71,6 +71,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml.cs">
+      <DependentUpon>ThemSuaTTHeo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ViewModel\TrangChuVM.cs" />
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.xaml.cs">
       <DependentUpon>ThietLapCayMucTieuWindow.xaml</DependentUpon>
@@ -126,6 +129,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
