@@ -15,15 +15,13 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo
 {
     /// <summary>
-    /// Interaction logic for LapPhieuBanNhapHeoWindow.xaml
+    /// Interaction logic for ThemSuaTTHeo.xaml
     /// </summary>
-    public partial class LapPhieuBanNhapHeoWindow : Window
+    public partial class ThemSuaTTHeo : Window
     {
-        public LapPhieuBanNhapHeoWindow()
+        public ThemSuaTTHeo()
         {
             InitializeComponent();
-            Listview.Items.Add("abc");
-            Listview.Items.Add("cde");
         }
     }
 }
