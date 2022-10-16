@@ -79,13 +79,14 @@
                             <PasswordBox x:Name="PasswordBox" Margin="0,5,0,0" Height="35" Padding="7"
                                         Style="{StaticResource MaterialDesignOutlinedRevealPasswordBox}"
                                         materialDesign:PasswordBoxAssist.Password="{Binding Password2, Mode=TwoWay}"
-                                        materialDesign:TextFieldAssist.HasClearButton="True" />
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="PasswordChanged">
-                                    <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
+                                        materialDesign:TextFieldAssist.HasClearButton="True">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="PasswordChanged">
+                                        <i:InvokeCommandAction Command="{Binding PasswordChangedCommand}"
                                                                CommandParameter="{Binding ElementName=PasswordBox}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </PasswordBox>
                         </StackPanel>
                         
                     </Grid>
