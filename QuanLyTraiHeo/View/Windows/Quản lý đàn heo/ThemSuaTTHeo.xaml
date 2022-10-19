@@ -3,10 +3,64 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo"
+        xmlns:local="clr-namespace:QuanLyTraiHeo" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ThemSuaTTHeo" Height="450" Width="300" WindowStartupLocation="CenterScreen">
+        Title="ThemSuaTTHeo" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Grid>
-        <Label>xử lí thêm, sửa , xem chi tiết thông tin :)</Label>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="450"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+                <ColumnDefinition Width="200"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <WrapPanel Grid.Column="0" HorizontalAlignment="Center">
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Giới tính" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <DatePicker Width="100" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã loại heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã giống heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã heo mẹ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã heo cha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Mã chuồng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Tình trạng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                <TextBox Margin="5 5 15 5" materialDesign:HintAssist.Hint="Nguồn gốc" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+            </WrapPanel>
+            <Border Grid.Column="1" Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center">
+                <Button Background="#3ab19b" Content="Thêm" Width="100" Height="30"></Button>
+            </Border>
+            <Border Grid.Column="2" Margin="10 10 80 10" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center">
+                <Button Background="#3ab19b" Content="Sửa" Width="100" Height="30"></Button>
+            </Border>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Stretch">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding Maheo}"></GridViewColumn>
+                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding Gioitinh}"></GridViewColumn>
+                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding Ngaysinh}"></GridViewColumn>
+                                <GridViewColumn Header="Mã loại heo" DisplayMemberBinding="{Binding Maloaiheo}"></GridViewColumn>
+                                <GridViewColumn Header="Mã giống heo" DisplayMemberBinding="{Binding Magiongheo}"></GridViewColumn>
+                                <GridViewColumn Header="Mã heo mẹ" DisplayMemberBinding="{Binding Maheome}"></GridViewColumn>
+                                <GridViewColumn Header="Mã heo cha" DisplayMemberBinding="{Binding Maheocha}"></GridViewColumn>
+                                <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding Machuong}"></GridViewColumn>
+                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding Tinhtrang}"></GridViewColumn>
+                                <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding Nguongoc}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
     </Grid>
 </Window>

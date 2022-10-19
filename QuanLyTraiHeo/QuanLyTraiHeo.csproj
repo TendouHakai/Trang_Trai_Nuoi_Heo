@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -82,6 +82,27 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="View\Windows\Quản lý chức vụ\Quanlychucvu.xaml.cs">
+      <DependentUpon>Quanlychucvu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml.cs">
+      <DependentUpon>ThemChucVu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý giống heo\Quanlygiongheo.xaml.cs">
+      <DependentUpon>Quanlygiongheo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý giống heo\Themgiongheo.xaml.cs">
+      <DependentUpon>Themgiongheo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý loại heo\Quanlyloaiheo.xaml.cs">
+      <DependentUpon>Quanlyloaiheo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý loại heo\Themloaiheo.xaml.cs">
+      <DependentUpon>Themloaiheo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý nhân viên\ThemNV.xaml.cs">
+      <DependentUpon>ThemNV.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml.cs">
       <DependentUpon>ThemSuaTTHeo.xaml</DependentUpon>
     </Compile>
@@ -151,7 +172,35 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\DoiMatKhau.xaml">
-    <SubType>Designer</SubType>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chức vụ\Quanlychucvu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý giống heo\Quanlygiongheo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý giống heo\Themgiongheo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý loại heo\Quanlyloaiheo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý loại heo\Themloaiheo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý nhân viên\ThemNV.xaml">
+      <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
@@ -242,7 +291,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
