@@ -94,7 +94,7 @@
 
                         </materialDesign:Card>
                         <StackPanel>
-                            <Expander
+                            <Expander IsExpanded="True"
                                 HorizontalAlignment="Stretch"
                                 Header="Ngày 16/10/2022">
                                 <StackPanel
@@ -156,7 +156,7 @@
 
                                 </StackPanel>
                             </Expander>
-                            <Expander 
+                            <Expander IsExpanded="True"
                                 HorizontalAlignment="Stretch"
                                 Header="Ngày 17/10/2022">
                                 <StackPanel
@@ -168,7 +168,7 @@
 
                                 </StackPanel>
                             </Expander>
-                            <Expander
+                            <Expander IsExpanded="True"
                                 HorizontalAlignment="Stretch"
                                 Header="Ngày 18/10/2022">
                                 <StackPanel

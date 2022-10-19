@@ -93,6 +93,9 @@
     <Compile Include="View\Windows\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\TaoThongBaoWindow.xaml.cs">
+      <DependentUpon>TaoThongBaoWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.xaml.cs">
       <DependentUpon>ThietLapCayMucTieuWindow.xaml</DependentUpon>
     </Compile>
@@ -156,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\TaoThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

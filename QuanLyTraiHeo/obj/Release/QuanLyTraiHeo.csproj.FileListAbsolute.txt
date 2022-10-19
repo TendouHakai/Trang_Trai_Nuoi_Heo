@@ -223,3 +223,5 @@ C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi 
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.exe
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\TaoThongBaoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\TaoThongBaoWindow.baml
