@@ -111,7 +111,7 @@ namespace QuanLyTraiHeo.ViewModel
                 currentWindow = "Quản lý thông tin chuồng nuôi";
             });
             OpenLapPhieuSuaChuaWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
-                LapLichWindow wc = new LapLichWindow();
+                LapPhieuSuaChuaWindow wc = new LapPhieuSuaChuaWindow();
                 wc.Close();
                 Object content = wc.Content;
                 wc.Content = null;

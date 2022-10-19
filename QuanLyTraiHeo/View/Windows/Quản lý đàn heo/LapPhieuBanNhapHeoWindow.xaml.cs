@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
 
 namespace QuanLyTraiHeo
 {
@@ -24,6 +25,13 @@ namespace QuanLyTraiHeo
             InitializeComponent();
             Listview.Items.Add("abc");
             Listview.Items.Add("cde");
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            PhieuNhapBanHeo PhieuNhapBanHeo = new PhieuNhapBanHeo();
+            PhieuNhapBanHeo.ShowDialog();
+
         }
     }
 }

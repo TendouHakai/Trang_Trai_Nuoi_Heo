@@ -3,10 +3,23 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:WpfApp_MVVM.View.Windows"
         mc:Ignorable="d"
-        Title="LapPhieuBanNhapHeoWindow" Height="450" Width="800">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource PhieuBanHeoVM}"
+        x:Name="PhieuNhapBanHeo"
+        Title="wLogin"
+        Height="500"
+        Width="800"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -18,43 +31,134 @@
                 <ColumnDefinition></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                <Grid >
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
-                    <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Search" Height="30" Margin="0,10,20,11" />
-                </Grid>
-            </Border>
-            <DatePicker Grid.Column="1" materialDesign:HintAssist.Hint="Chọn ngày lập phiếu" HorizontalAlignment="Center" Padding="50 5">
-            </DatePicker>
-            <Button Grid.Column="2"  Width="200" Background="#3ab19b" HorizontalAlignment="Left">Thêm phiếu xuất heo</Button>
+            <DatePicker Grid.Column="0"
+                        HorizontalAlignment="Right"
+                        Width="150"
+                        Margin="20,0"
+                        materialDesign:HintAssist.Hint="Từ ngày"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+            <DatePicker Grid.Column="1"
+                        Width="150"
+                        HorizontalAlignment="Left"
+                        Margin="20,0"
+                        materialDesign:HintAssist.Hint="Đến ngày"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+            <Button Command="{Binding taoPhieuCommand}"
+                    Grid.Column="2"  Width="200" Background="#3ab19b" HorizontalAlignment="Right" Margin="20,0"
+                    Click="Button_Click">Tạo phiếu</Button>
         </Grid>
-        <ListView Name="Listview" HorizontalAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" Grid.Row="1">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Số phiếu"/>
-                    <GridViewColumn Header="Ngày bán"/>
-                    <GridViewColumn Header="Ngày sinh"/>
-                    <GridViewColumn Header="Mã nhân viên"/>
-                    <GridViewColumn Header="Mã khách hàng"/>
-                    <GridViewColumn Header="Trạng thái"/>
-                    <GridViewColumn Header="Tổng tiền"/>
-                    <GridViewColumn Header="Thao tác" Width="120">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Menu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
-                                </Menu>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
-        <Label HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="9" Height="30" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"></ColumnDefinition>
+                <ColumnDefinition Width="4*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <StackPanel>
+                    <materialDesign:Card Margin="10,0">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
+                            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Nhân viên" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,5,5" />
+                        </Grid>
+                    </materialDesign:Card>
+                    <materialDesign:Card Margin="10">
+                        <Grid >
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30"></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
+                            <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="Khách hàng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" Margin="0,0,5,5"  />
+                        </Grid>
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="10,0">
+                        <StackPanel>
+                            <TextBlock FontWeight="Bold" Margin="5">Trạng thái</TextBlock>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="aaaa"  Grid.Column="1" />
+                            </Grid>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="aaaa"  Grid.Column="1" />
+                            </Grid>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="4*" />
+                                </Grid.ColumnDefinitions>
+                                <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                <TextBlock Text="aaaa"  Grid.Column="1" />
+                            </Grid>
+
+                        </StackPanel>
+                    </materialDesign:Card>
+                </StackPanel>
+            </Grid>
+            <Grid Grid.Column="1">
+                <StackPanel>
+                    <materialDesign:Card >
+                        <Expander IsExpanded="True" Header="Danh sách phiếu nhập heo" FontWeight="Bold" Background="White">
+                            <ListView AllowDrop="True" Name="Listview" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Số phiếu"/>
+                                        <GridViewColumn Header="Ngày lập"/>
+                                        <GridViewColumn Header="Nhân viên"/>
+                                        <GridViewColumn Header="Khách hàng"/>
+                                        <GridViewColumn Header="Trạng thái"/>
+                                        <GridViewColumn Header="Tổng tiền"/>
+                                        <!--<GridViewColumn Header="Thao tác" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Menu>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
+                                    </Menu>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>-->
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Expander>
+
+                    </materialDesign:Card>
+
+                    <materialDesign:Card Margin="0,20">
+                        <Expander IsExpanded="False" Header="Danh sách phiếu xuất heo" FontWeight="Bold" Background="White">
+                            <ListView>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Số phiếu"/>
+                                        <GridViewColumn Header="Ngày lập"/>
+                                        <GridViewColumn Header="Nhân viên"/>
+                                        <GridViewColumn Header="Khách hàng"/>
+                                        <GridViewColumn Header="Trạng thái"/>
+                                        <GridViewColumn Header="Tổng tiền"/>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </Expander>
+                    </materialDesign:Card>
+                </StackPanel>
+            </Grid>
+        </Grid>
     </Grid>
 </Window>
