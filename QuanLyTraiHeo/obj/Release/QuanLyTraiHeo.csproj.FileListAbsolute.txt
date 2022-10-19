@@ -237,3 +237,7 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý giống heo\Themgiongheo.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý loại heo\Quanlyloaiheo.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý loại heo\Themloaiheo.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quanlydoitac.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quanlydoitac.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\Themchuong.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\Themchuong.baml

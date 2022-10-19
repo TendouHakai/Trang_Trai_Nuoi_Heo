@@ -82,6 +82,12 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="View\Windows\Quanlydoitac.xaml.cs">
+      <DependentUpon>Quanlydoitac.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\Themchuong.xaml.cs">
+      <DependentUpon>Themchuong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý chức vụ\Quanlychucvu.xaml.cs">
       <DependentUpon>Quanlychucvu.xaml</DependentUpon>
     </Compile>
@@ -172,6 +178,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\DoiMatKhau.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quanlydoitac.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\Themchuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

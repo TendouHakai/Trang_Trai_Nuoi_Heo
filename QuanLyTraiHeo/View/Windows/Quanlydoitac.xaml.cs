@@ -1,5 +1,4 @@
-﻿using QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,22 +12,16 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo
+namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for QuanLyThongTinChuong.xaml
+    /// Interaction logic for Quanlydoitac.xaml
     /// </summary>
-    public partial class QuanLyThongTinChuong : Window
+    public partial class Quanlydoitac : Window
     {
-        public QuanLyThongTinChuong()
+        public Quanlydoitac()
         {
             InitializeComponent();
-        }
-
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            Themchuong themchuong = new Themchuong();
-            themchuong.ShowDialog();
         }
     }
 }

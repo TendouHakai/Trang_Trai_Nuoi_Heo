@@ -8,5 +8,6 @@
         Title="QuanLyThongTinChuong" Height="450" Width="800">
     <Grid>
         <TextBlock>Quản lý thông tin chuồng</TextBlock>
+        <Button Content="Thêm chuồng" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_ThemClick"></Button>
     </Grid>
 </Window>
