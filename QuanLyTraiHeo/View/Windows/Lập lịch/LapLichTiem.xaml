@@ -1,0 +1,92 @@
+﻿<Window x:Class="QuanLyTraiHeo.LapLichTiem"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraiHeo"
+        mc:Ignorable="d"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        Title="Lập lịch tiêm heo"
+        DataContext="{StaticResource LapLichTiemVM}"
+        Height="450"
+        Width="800">
+    <Grid DataContext="{StaticResource LapLichTiemVM}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="auto"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0"
+              Height="55">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0">
+                <StackPanel Orientation="Horizontal">
+                    <materialDesign:PackIcon Width="40"
+                                             HorizontalAlignment="Left"
+                                             VerticalAlignment="Center"
+                                             Kind="Search" />
+                    <Button Style="{StaticResource MaterialDesignFlatLightButton}"
+                            ToolTip="Nhấn để chọn danh sách heo sẽ được lên lịch"
+                            Content="Chọn danh sách heo"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="1">
+                <StackPanel Orientation="Horizontal">
+                    <ComboBox HorizontalAlignment="Left"
+                              VerticalAlignment="Center"
+                              Width="auto"
+                              materialDesign:HintAssist.Hint="Loại thuốc"></ComboBox>
+                    <DatePicker Width="auto"
+                                Margin="50,0,0,10"
+                                materialDesign:HintAssist.Hint="Chọn ngày"
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                </StackPanel>
+            </Grid>
+
+            <Grid Grid.Column="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Width="auto"
+                            ToolTip="Nhấn lưu danh sánh này"
+                            Background="#3ab19b">Thêm lịch</Button>
+                    <Button Width="auto"
+                            Margin="10"
+                            Background="#3ab19b">Sửa</Button>
+                    <Button Width="auto"
+                            Background="#3ab19b">Xóa</Button>
+                </StackPanel>
+            </Grid>
+
+        </Grid>
+        
+        <DataGrid Grid.Row="1" x:Name="DG_DSHeo"
+                  ItemsSource="{Binding DanhSachHeoLapLich}"
+                  CanUserAddRows="False"
+                  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="STT"
+                                    IsReadOnly="True"
+                                    Binding="{Binding STT}"
+                                    Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Mã heo"
+                                    IsReadOnly="True"
+                                    Binding="{Binding MaHeo}"
+                                    Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Loại heo"
+                                    IsReadOnly="True"
+                                    Binding="{Binding LoaiHeo}"
+                                    Width="*"></DataGridTextColumn>
+                <DataGridTextColumn Header="Số liều"
+                                    IsReadOnly="False"
+                                    Binding="{Binding SoLieu}"
+                                    Width="*"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</Window>

@@ -94,10 +94,10 @@
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
                                 <TreeViewItem Name="Tree_menu_detail_LapLich"
-                                        Header="Lập lịch" >
+                                        Header="Lập lịch tiêm" >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Selected">
-                                            <i:InvokeCommandAction Command="{Binding OpenLapLichWindow}"
+                                            <i:InvokeCommandAction Command="{Binding OpenLapLichTiemWindow}"
                                                         CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
