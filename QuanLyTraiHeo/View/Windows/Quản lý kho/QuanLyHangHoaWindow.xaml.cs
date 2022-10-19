@@ -22,6 +22,13 @@ namespace QuanLyTraiHeo
         public QuanLyHangHoaWindow()
         {
             InitializeComponent();
+            list_HangHoa.Items.Add("Hàng hoá0");
+        }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            ThongTinHangHoa f = new ThongTinHangHoa();
+            f.ShowDialog();
         }
     }
 }
