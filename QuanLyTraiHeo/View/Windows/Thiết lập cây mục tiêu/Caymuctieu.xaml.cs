@@ -23,5 +23,24 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         {
             InitializeComponent();
         }
+
+        private void zoom_in_Click(object sender, RoutedEventArgs e)
+        {
+            UpdateViewBox(50);
+        }
+
+        private void UpdateViewBox(int newValue)
+        {
+            if ((Zoomviewbox.Width >= 0) && Zoomviewbox.Height >= 0)
+            {
+                Zoomviewbox.Width += newValue;
+                Zoomviewbox.Height += newValue;
+            }
+        }
+
+        private void _1_MouseDown(object sender, MouseButtonEventArgs e)
+        {
+            MessageBox.Show("Doanh số không đạt chỉ tiêu dự kiến, không đủ tiền chi trả cho nhân viên và chi phí vận hành", "Chi tiết", MessageBoxButton.OK, MessageBoxImage.Warning);
+        }
     }
 }

@@ -45,15 +45,8 @@
 
             <Button Grid.Column="3"  Width="200" Background="#3ab19b" HorizontalAlignment="Left" Content="Bộ Lọc" Margin="29.667,12,0,11"/>
         </Grid>
-        <Grid x:Name="showmake" Margin="10,1,10.333,10" Grid.Row="1" RenderTransformOrigin="0.5,0.5" Background="#FFF8F6F6" ScrollViewer.CanContentScroll="True">
-            <Grid.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Grid.RenderTransform>
-        </Grid>
+        <ScrollViewer Margin="0,0,0.333,-0.333" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
+            <Grid x:Name="showmake" RenderTransformOrigin="0.5,0.5" Background="#FFF8F6F6" ScrollViewer.CanContentScroll="True" Margin="10,0,10,10"/>
+        </ScrollViewer>
     </Grid>
 </Window>

@@ -20,12 +20,14 @@ namespace QuanLyTraiHeo
     /// </summary>
     public partial class ThietLapCayMucTieuWindow : Window
     {
+        Caymuctieu cmt = new Caymuctieu();
+        Object obj;
+        static int check = 0;
         public ThietLapCayMucTieuWindow()
         {
             InitializeComponent();
-            Caymuctieu cmt = new Caymuctieu();
             cmt.Close();
-            Object obj = cmt.Content;
+            obj = cmt.Content;
             cmt.Content = null;
             showmake.Children.Clear();
             showmake.Children.Add(obj as UIElement);
