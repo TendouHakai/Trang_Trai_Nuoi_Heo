@@ -85,11 +85,17 @@
     <Compile Include="View\Windows\Quanlydoitac.xaml.cs">
       <DependentUpon>Quanlydoitac.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý chuồng nuôi\Themchuong.xaml.cs">
-      <DependentUpon>Themchuong.xaml</DependentUpon>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\SuaChuong.xaml.cs">
+      <DependentUpon>SuaChuong.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\ThemChuong.xaml.cs">
+      <DependentUpon>ThemChuong.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý chức vụ\Quanlychucvu.xaml.cs">
       <DependentUpon>Quanlychucvu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml.cs">
+      <DependentUpon>SuaChucVu.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml.cs">
       <DependentUpon>ThemChucVu.xaml</DependentUpon>
@@ -97,20 +103,29 @@
     <Compile Include="View\Windows\Quản lý giống heo\Quanlygiongheo.xaml.cs">
       <DependentUpon>Quanlygiongheo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý giống heo\Themgiongheo.xaml.cs">
-      <DependentUpon>Themgiongheo.xaml</DependentUpon>
+    <Compile Include="View\Windows\Quản lý giống heo\SuaGiongHeo.xaml.cs">
+      <DependentUpon>SuaGiongHeo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý giống heo\ThemGiongHeo.xaml.cs">
+      <DependentUpon>ThemGiongHeo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý loại heo\Quanlyloaiheo.xaml.cs">
       <DependentUpon>Quanlyloaiheo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý loại heo\Themloaiheo.xaml.cs">
-      <DependentUpon>Themloaiheo.xaml</DependentUpon>
+    <Compile Include="View\Windows\Quản lý loại heo\SuaLoaiHeo.xaml.cs">
+      <DependentUpon>SuaLoaiHeo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý nhân viên\ThemNV.xaml.cs">
-      <DependentUpon>ThemNV.xaml</DependentUpon>
+    <Compile Include="View\Windows\Quản lý loại heo\ThemLoaiHeo.xaml.cs">
+      <DependentUpon>ThemLoaiHeo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml.cs">
-      <DependentUpon>ThemSuaTTHeo.xaml</DependentUpon>
+    <Compile Include="View\Windows\Quản lý nhân viên\SuaNhanVien.xaml.cs">
+      <DependentUpon>SuaNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý nhân viên\ThemNhanVien.xaml.cs">
+      <DependentUpon>ThemNhanVien.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\SuaTTHeo.xaml.cs">
+      <DependentUpon>SuaTTHeo.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\TrangChuVM.cs" />
     <Compile Include="View\Windows\CapNhatTaiKhoanWindow.xaml.cs">
@@ -118,6 +133,9 @@
     </Compile>
     <Compile Include="View\Windows\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\ThemTTHeo.xaml.cs">
+      <DependentUpon>ThemTTHeo.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.xaml.cs">
       <DependentUpon>ThietLapCayMucTieuWindow.xaml</DependentUpon>
@@ -185,11 +203,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý chuồng nuôi\Themchuong.xaml">
+    <Page Include="View\Windows\Quản lý chuồng nuôi\SuaChuong.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\ThemChuong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý chức vụ\Quanlychucvu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -201,7 +227,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý giống heo\Themgiongheo.xaml">
+    <Page Include="View\Windows\Quản lý giống heo\SuaGiongHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý giống heo\ThemGiongHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -209,15 +239,27 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý loại heo\Themloaiheo.xaml">
+    <Page Include="View\Windows\Quản lý loại heo\SuaLoaiHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý nhân viên\ThemNV.xaml">
+    <Page Include="View\Windows\Quản lý loại heo\ThemLoaiHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý đàn heo\ThemSuaTTHeo.xaml">
+    <Page Include="View\Windows\Quản lý nhân viên\SuaNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý nhân viên\ThemNhanVien.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\SuaTTHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\ThemTTHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

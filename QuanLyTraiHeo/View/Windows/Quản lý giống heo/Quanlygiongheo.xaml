@@ -8,5 +8,6 @@
         Title="Quanlygiongheo" Height="450" Width="800">
     <Grid>
         <Button Content="Thêm giống heo" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_ThemClick"></Button>
+        <Button Content="Sửa giống heo" Margin="20 20 300 20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_SuaClick"></Button>
     </Grid>
 </Window>

@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
 {
     /// <summary>
-    /// Interaction logic for Themgiongheo.xaml
+    /// Interaction logic for ThemGiongHeo.xaml
     /// </summary>
-    public partial class Themgiongheo : Window
+    public partial class ThemGiongHeo : Window
     {
-        public Themgiongheo()
+        public ThemGiongHeo()
         {
             InitializeComponent();
         }

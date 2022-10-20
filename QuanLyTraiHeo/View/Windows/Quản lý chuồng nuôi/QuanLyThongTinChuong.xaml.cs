@@ -30,5 +30,10 @@ namespace QuanLyTraiHeo
             Themchuong themchuong = new Themchuong();
             themchuong.ShowDialog();
         }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaChuong suaChuong = new SuaChuong();
+            suaChuong.ShowDialog();
+        }
     }
 }

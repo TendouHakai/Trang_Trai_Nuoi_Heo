@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -31,11 +32,15 @@ namespace QuanLyTraiHeo
         {
             MessageBox.Show("KKK");
         }
-
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            ThemSuaTTHeo themSuaTTHeo = new ThemSuaTTHeo();
-            themSuaTTHeo.ShowDialog();
+            ThemTTHeo themTTHeo = new ThemTTHeo();
+            themTTHeo.ShowDialog();
+        }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaTTHeo suaTTHeo = new SuaTTHeo();
+            suaTTHeo.ShowDialog();
         }
     }
 }

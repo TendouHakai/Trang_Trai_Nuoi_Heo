@@ -8,6 +8,7 @@
         Title="QuanLyThongTinNhanVienWindow" Height="450" Width="800">
     <Grid>
         <TextBlock>Quản lý thông tin nhân viên</TextBlock>
-        <Button Content="Thêm nhân viên" Margin="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_ThemClick"></Button>
+        <Button Content="Thêm nhân viên" Margin="25 25 400 25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_ThemClick"></Button>
+        <Button Content="Sửa nhân viên" Margin="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_SuaClick"></Button>
     </Grid>
 </Window>

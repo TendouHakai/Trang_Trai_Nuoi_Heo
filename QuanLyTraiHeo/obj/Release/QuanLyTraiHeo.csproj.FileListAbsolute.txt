@@ -170,7 +170,6 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.SuggestedBindingRedirects.cache
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.g.cs
-C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.g.cs
@@ -196,7 +195,6 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\App.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.baml
-C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.baml
@@ -223,8 +221,6 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.exe
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
-C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThemNV.g.cs
-C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThemNV.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chức vụ\Quanlychucvu.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chức vụ\ThemChucVu.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chức vụ\Quanlychucvu.baml
@@ -241,3 +237,19 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quanlydoitac.baml
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\Themchuong.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\Themchuong.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\SuaChuong.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\SuaChuong.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chức vụ\SuaChucVu.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\SuaTTHeo.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemTTHeo.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chức vụ\SuaChucVu.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\SuaTTHeo.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemTTHeo.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý giống heo\SuaGiongHeo.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý loại heo\SuaLoaiHeo.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý giống heo\SuaGiongHeo.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý loại heo\SuaLoaiHeo.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\SuaNhanVien.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThemNhanVien.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\SuaNhanVien.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThemNhanVien.baml

@@ -26,8 +26,13 @@ namespace QuanLyTraiHeo
         }
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            ThemNV themNV = new ThemNV();
-            themNV.ShowDialog();
+            ThemNhanVien themNhanVien = new ThemNhanVien();
+            themNhanVien.ShowDialog();
+        }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaNhanVien suaNhanVien = new SuaNhanVien();
+            suaNhanVien.ShowDialog();
         }
     }
 }

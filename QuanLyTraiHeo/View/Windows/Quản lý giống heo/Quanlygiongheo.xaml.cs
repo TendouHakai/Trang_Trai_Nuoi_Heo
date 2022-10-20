@@ -26,8 +26,14 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
         }
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            Themgiongheo themgiongheo = new Themgiongheo();
-            themgiongheo.ShowDialog();
+            ThemGiongHeo themGiongHeo = new ThemGiongHeo();
+            themGiongHeo.ShowDialog();
+        }
+
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaGiongHeo suaGiongHeo = new SuaGiongHeo();
+            suaGiongHeo.ShowDialog();
         }
     }
 }

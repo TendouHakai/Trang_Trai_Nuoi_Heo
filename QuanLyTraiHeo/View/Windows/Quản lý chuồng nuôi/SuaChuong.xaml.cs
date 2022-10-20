@@ -12,14 +12,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên
+namespace QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi
 {
     /// <summary>
-    /// Interaction logic for ThemNV.xaml
+    /// Interaction logic for SuaChuong.xaml
     /// </summary>
-    public partial class ThemNV : Window
+    public partial class SuaChuong : Window
     {
-        public ThemNV()
+        public SuaChuong()
         {
             InitializeComponent();
         }

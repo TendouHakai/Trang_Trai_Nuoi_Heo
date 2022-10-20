@@ -56,7 +56,7 @@
                             <DataTemplate>
                                 <Menu>
                                     <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48"></MenuItem>
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" Click="btn_SuaClick"></MenuItem>
                                     <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
                                 </Menu>
                             </DataTemplate>

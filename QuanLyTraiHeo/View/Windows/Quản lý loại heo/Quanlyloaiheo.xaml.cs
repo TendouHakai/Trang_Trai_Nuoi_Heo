@@ -26,8 +26,13 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
         }
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            Themloaiheo themloaiheo = new Themloaiheo();
-            themloaiheo.ShowDialog();
+            ThemLoaiHeo themLoaiHeo = new ThemLoaiHeo();
+            themLoaiHeo.ShowDialog();
+        }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaLoaiHeo suaLoaiHeo = new SuaLoaiHeo();
+            suaLoaiHeo.ShowDialog();
         }
     }
 }
