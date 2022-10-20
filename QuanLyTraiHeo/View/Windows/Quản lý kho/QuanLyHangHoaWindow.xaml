@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="QuanLyHangHoaWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="25 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition ></RowDefinition>
@@ -15,11 +15,28 @@
         <Grid Grid.Row="0" Height="55" >
             <Grid.ColumnDefinitions>
 
-                <ColumnDefinition Width="200"></ColumnDefinition>
                 <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Button Grid.Column="2"  Width="150" Background="#3ab19b" HorizontalAlignment="Right">Thêm hàng</Button>
+
+            <Border Margin="15 0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="30" ></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
+                    <TextBox Grid.Column="1"
+  materialDesign:HintAssist.Hint="Search" Height="30" Margin="0,10,20,11" />
+                </Grid>
+            </Border>
+            <materialDesign:Card Grid.Column="2">
+                <Grid>
+            <Button Margin="15 0" Grid.Column="2"  Width="150" Background="#3ab19b" HorizontalAlignment="Right">Thêm hàng mới</Button>
+
+                </Grid>
+            </materialDesign:Card>
         </Grid>
         <Grid Grid.Row="1">
             <Grid.ColumnDefinitions>
@@ -34,18 +51,8 @@
                     <RowDefinition Height="60"></RowDefinition>
                     <RowDefinition Height="60"></RowDefinition>
                 </Grid.RowDefinitions>
-                <Border Grid.Row="0" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="30" ></ColumnDefinition>
-                            <ColumnDefinition></ColumnDefinition>
-                        </Grid.ColumnDefinitions>
-                        <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
-                        <TextBox Grid.Column="1"
-  materialDesign:HintAssist.Hint="Search" Height="30" Margin="0,10,20,11" />
-                    </Grid>
-                </Border>
-                <StackPanel Grid.Row="1">
+
+                <materialDesign:Card Grid.Row="0" Margin="0 5">
                     <Grid>
                         <Label Content="Đơn giá" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" />
                     <TextBox HorizontalAlignment="Left" Margin="60,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="80" MaxLength="10"/>
@@ -53,8 +60,8 @@
                     <TextBox  HorizontalAlignment="Left" Margin="200,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"  MaxLength="10"/>
 
                     </Grid>
-                </StackPanel>
-                <StackPanel Grid.Row="2">
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1" Margin="0 5">
                     <Grid>
                         <Label Content="Tồn kho" HorizontalAlignment="Left" Margin="5,0,0,0" VerticalAlignment="Center" />
                         <TextBox HorizontalAlignment="Left" Margin="60,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
@@ -62,8 +69,8 @@
                         <TextBox  HorizontalAlignment="Left" Margin="200,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="80"/>
 
                     </Grid>
-                </StackPanel>
-                <StackPanel Grid.Row="3">
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="2" Margin="0 5">
                     <Grid>
                         <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Tình trạng" VerticalAlignment="Center" >
                 </ComboBox>
@@ -71,11 +78,11 @@
 
                 </ComboBox
                           ></Grid>
-                </StackPanel>
+                </materialDesign:Card>
                 
             </Grid>
             <Border Grid.Column="1" HorizontalAlignment="Left">
-                <ListView  Name="list_HangHoa" >
+                <ListView Margin="25 0" Name="list_HangHoa" >
                     <ListView.View>
                         <GridView>
                             <GridViewColumn Header="Mã hàng hoá"/>
