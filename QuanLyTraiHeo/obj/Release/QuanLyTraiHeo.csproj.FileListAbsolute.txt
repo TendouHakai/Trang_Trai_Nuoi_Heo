@@ -229,3 +229,9 @@ C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\Vi
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\LapLichPhoiGiong.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\UC\UCLichTiemHeo.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\UC\UCLichTiemHeo.baml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\UC\UCLichTiemHeo.g.cs
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Lập lịch\LapLichTiem.g.cs
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\UC\UCLichTiemHeo.baml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Lập lịch\LapLichTiem.baml
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\LichPhoiGiongWindow.g.cs
+C:\Users\Tran Thanh\Desktop\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\LichPhoiGiongWindow.baml

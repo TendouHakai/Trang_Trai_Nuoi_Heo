@@ -15,11 +15,11 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for LapLichPhoiGiong.xaml
+    /// Interaction logic for LichPhoiGiongWindow.xaml
     /// </summary>
-    public partial class LapLichPhoiGiong : Window
+    public partial class LichPhoiGiongWindow : Window
     {
-        public LapLichPhoiGiong()
+        public LichPhoiGiongWindow()
         {
             InitializeComponent();
         }

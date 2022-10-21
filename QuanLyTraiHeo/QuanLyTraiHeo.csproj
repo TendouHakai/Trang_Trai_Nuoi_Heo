@@ -86,11 +86,8 @@
     <Compile Include="View\UC\UCLichTiemHeo.xaml.cs">
       <DependentUpon>UCLichTiemHeo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\LapLichPhoiGiong.xaml.cs">
-      <DependentUpon>LapLichPhoiGiong.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Lập lịch\LapLichPhoiGiong.xaml.cs">
-      <DependentUpon>LapLichPhoiGiong.xaml</DependentUpon>
+    <Compile Include="View\Windows\LichPhoiGiongWindow.xaml.cs">
+      <DependentUpon>LichPhoiGiongWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Lập lịch\LapLichTiem.xaml.cs">
       <DependentUpon>LapLichTiem.xaml</DependentUpon>
@@ -171,11 +168,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\LapLichPhoiGiong.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Lập lịch\LapLichPhoiGiong.xaml">
+    <Page Include="View\Windows\LichPhoiGiongWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
