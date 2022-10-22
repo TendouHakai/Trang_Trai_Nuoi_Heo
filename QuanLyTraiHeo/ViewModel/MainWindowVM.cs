@@ -25,7 +25,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenTrangChuWindow { get; set; }
         public ICommand OpenQuanLyThongTinCaTheWindow { get; set; }
         public ICommand OpenLapPhieuBanNhapHeoWIndow { get; set; }
-        public ICommand OpenLapLichWindow { get; set; } 
+        public ICommand OpenLapLichTiemWindow { get; set; } 
         public ICommand OpenQuanLyThongTinChuongWindow { get; set; }
         public ICommand OpenLapPhieuSuaChuaWindow { get; set; }
         public ICommand OpenQuanLyHangHoaTrongKhoWindow { get; set; }
@@ -92,8 +92,8 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Add(content as UIElement);
                 currentWindow = "Lập phiếu bán/nhập heo";
             });
-            OpenLapLichWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
-                LapLichWindow wc = new LapLichWindow();
+            OpenLapLichTiemWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
+                LapLichTiem wc = new LapLichTiem();
                 wc.Close();
                 Object content = wc.Content;
                 wc.Content = null;
