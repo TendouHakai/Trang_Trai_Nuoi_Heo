@@ -58,7 +58,7 @@
                 <materialDesign:Card Grid.Row="0" Margin="0 5">
                     <Grid>
                         <Label VerticalAlignment="Center">Ngày sinh:</Label>
-                        <DatePicker Margin="75 0 0 0" HorizontalAlignment="Left" Width="80"> </DatePicker>
+                        <DatePicker Margin="75 0 0 0" HorizontalAlignment="Left" Width="80"></DatePicker>
                         <Label VerticalAlignment="Center" HorizontalAlignment="Left" Margin="160 0 0 0">Đến</Label>
                         <DatePicker HorizontalAlignment="Left" Margin="190 0 0 0" Width="80"></DatePicker>
                     </Grid>
@@ -84,42 +84,51 @@
 
                         <ComboBox Height="30" Margin="15" Width="100" materialDesign:HintAssist.Hint="Nguôn gốc" HorizontalAlignment="Right"/>
                     </Grid>
-                    
+
                 </materialDesign:Card>
             </Grid>
 
             <ListView Margin="25 0" Grid.Column="1" Name="Listview" HorizontalAlignment="Left">
-            
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="Mã heo"/>
-                    <GridViewColumn Header="Giới tính"/>
-                    <GridViewColumn Header="Ngày sinh"/>
-                    <GridViewColumn Header="Mã loại heo"/>
-                    <GridViewColumn Header="Mã giống heo"/>
-                    <GridViewColumn Header="Mã heo mẹ"/>
-                    <GridViewColumn Header="Mã heo cha"/>
-                    <GridViewColumn Header="Mã chuồng"/>
-                    <GridViewColumn Header="Tình trạng"/>
-                    <GridViewColumn Header="Nguồn gốc"/>
-                </GridView>
-            </ListView.View>
-            <ListView.ContextMenu>
-                <ContextMenu>
-                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click">
+
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Mã heo"/>
+                        <GridViewColumn Header="Giới tính"/>
+                        <GridViewColumn Header="Ngày sinh"/>
+                        <GridViewColumn Header="Mã loại heo"/>
+                        <GridViewColumn Header="Mã giống heo"/>
+                        <GridViewColumn Header="Mã heo mẹ"/>
+                        <GridViewColumn Header="Mã heo cha"/>
+                        <GridViewColumn Header="Mã chuồng"/>
+                        <GridViewColumn Header="Tình trạng"/>
+                        <GridViewColumn Header="Nguồn gốc"/>
+                        <GridViewColumn Header="Thao tác" Width="160">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Menu>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" Click="btn_SuaClick"></MenuItem>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
+                                    </Menu>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                </ListView.View>
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click">
                             <MenuItem.Header>Show</MenuItem.Header>
-                            </MenuItem>
-                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
+                        </MenuItem>
+                        <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
                             <MenuItem.Header>Edit</MenuItem.Header>
                         </MenuItem>
-                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
-                        <MenuItem.Header>Delete</MenuItem.Header>
-                    </MenuItem>
-                </ContextMenu>
+                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                            <MenuItem.Header>Delete</MenuItem.Header>
+                        </MenuItem>
+                    </ContextMenu>
                 </ListView.ContextMenu>
-        </ListView>
-
+            </ListView>
         </Grid>
-        
     </Grid>
 </Window>

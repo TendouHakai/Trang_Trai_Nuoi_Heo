@@ -1,0 +1,59 @@
+﻿<Window x:Class="QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi.Themchuong"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:domain1="clr-namespace:QuanLyTraiHeo.View.Windows"
+        mc:Ignorable="d"
+        Title="Themchuong" Height="650" Width="1050"
+        ResizeMode="NoResize"
+        WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
+                <GradientStop Color="#3ab19b" Offset="0.05"/>
+                <GradientStop Color="#2d708c" Offset="0.25"/>
+            </LinearGradientBrush>
+        </Grid.Background>    
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+            <ColumnDefinition Width="2.5*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid Grid.Column="0">
+            <Image Source="/Image/bachground.jpg" Stretch="UniformToFill" Opacity="0.2"></Image>
+            <StackPanel Margin="5" VerticalAlignment="Center">
+                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã chuồng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Mã loại chuồng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Tình trạng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Sức chứa tối đa" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 15" materialDesign:HintAssist.Hint="Số heo hiện có" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
+                    <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
+                        <Button Background="#3ab19b" Content="Thêm" Width="150" Height="40" VerticalAlignment="Bottom"></Button>
+                    </Border>
+                </materialDesign:Card>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Column="1">
+            <materialDesign:Card Margin="5">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <ListView ItemsSource="{Binding List}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" HorizontalAlignment="Stretch">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding Machuong}"></GridViewColumn>
+                                <GridViewColumn Header="Mã loại chuồng" DisplayMemberBinding="{Binding Maloaichuong}"></GridViewColumn>
+                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding Tinhtrang}"></GridViewColumn>
+                                <GridViewColumn Header="Sức chứa tối đa" DisplayMemberBinding="{Binding Succhuatoida}"></GridViewColumn>
+                                <GridViewColumn Header="Số heo hiện có" DisplayMemberBinding="{Binding Soheohienco}"></GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </ScrollViewer>
+            </materialDesign:Card>
+        </Grid>
+    </Grid>
+</Window>

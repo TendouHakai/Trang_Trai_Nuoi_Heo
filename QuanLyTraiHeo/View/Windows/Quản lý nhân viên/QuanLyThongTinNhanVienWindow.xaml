@@ -34,6 +34,8 @@
                 <Grid>
  <Button Margin="15 0" Width="150" Background="#3ab19b" HorizontalAlignment="Left">Thêm nhân viên</Button>
             <Button Margin="15 0" Width="180" Background="#3ab19b" HorizontalAlignment="Right">QL loại nhân viên</Button>
+                    <Button Content="Thêm nhân viên" Margin="25 25 400 25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_ThemClick"></Button>
+                    <Button Content="Sửa nhân viên" Margin="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_SuaClick"></Button>
 
                 </Grid>
             </materialDesign:Card>
@@ -52,12 +54,12 @@
 
                 <materialDesign:Card Grid.Column="0">
                     <Grid >
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="60"></RowDefinition>
-                        <RowDefinition Height="60"></RowDefinition>
-                        <RowDefinition Height="60"></RowDefinition>
-                        <RowDefinition Height="60"></RowDefinition>
-                    </Grid.RowDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                        </Grid.RowDefinitions>
 
                         <materialDesign:Card Grid.Row="0" Margin="0 5">
                             <Grid>
@@ -68,20 +70,20 @@
                             </Grid>
                         </materialDesign:Card>
                         <materialDesign:Card Grid.Row="1" Margin="0 5">
-                        <Grid>
-                            <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chức vụ" VerticalAlignment="Center" >
-                            </ComboBox>
-                        </Grid>
-                    </materialDesign:Card>
-                </Grid>
+                            <Grid>
+                                <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chức vụ" VerticalAlignment="Center" >
+                                </ComboBox>
+                            </Grid>
+                        </materialDesign:Card>
+                    </Grid>
                 </materialDesign:Card>
-                
+
             </Grid>
             <Border Grid.Column="1" HorizontalAlignment="Left">
                 <ListView Margin="25 0" Name="list_HangHoa" >
                     <ListView.View>
                         <GridView>
-                         
+
                             <GridViewColumn Header="Mã nhân viên"/>
                             <GridViewColumn Header="Họ tên"/>
                             <GridViewColumn Header="Mã chức vụ"/>
@@ -111,6 +113,5 @@
                 </ListView>
             </Border>
         </Grid>
-       
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,6 +29,16 @@ namespace QuanLyTraiHeo
         {
             ThongTinNhanVien f = new ThongTinNhanVien();
             f.ShowDialog();
+        }
+        private void btn_ThemClick(object sender, RoutedEventArgs e)
+        {
+            ThemNhanVien themNhanVien = new ThemNhanVien();
+            themNhanVien.ShowDialog();
+        }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaNhanVien suaNhanVien = new SuaNhanVien();
+            suaNhanVien.ShowDialog();
         }
     }
 }

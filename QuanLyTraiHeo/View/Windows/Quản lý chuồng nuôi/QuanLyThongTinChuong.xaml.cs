@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -29,6 +30,17 @@ namespace QuanLyTraiHeo
         {
             ThongTinChuong f = new ThongTinChuong();
             f.ShowDialog();
+        }
+
+        private void btn_ThemClick(object sender, RoutedEventArgs e)
+        {
+            Themchuong themchuong = new Themchuong();
+            themchuong.ShowDialog();
+        }
+        private void btn_SuaClick(object sender, RoutedEventArgs e)
+        {
+            SuaChuong suaChuong = new SuaChuong();
+            suaChuong.ShowDialog();
         }
     }
 }

@@ -1,3 +1,59 @@
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.AssemblyReference.cache
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.SuggestedBindingRedirects.cache
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\ThongTinHangHoa.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThongTinNhanVien.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\UCLichTiemHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\LichPhoiGiongWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LapLichTiem.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quanlydoitac.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\SuaChuong.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThemChuong.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\Quanlychucvu.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\SuaChucVu.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\ThemChucVu.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\Quanlygiongheo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\SuaGiongHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\ThemGiongHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\Quanlyloaiheo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\SuaLoaiHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\ThemLoaiHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\SuaNhanVien.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThemNhanVien.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\SuaTTHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemTTHeo.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\TaoThongBaoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\Caymuctieu.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoSuaChuaWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoThuChiWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTinhTrangDanHeoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\LapLichWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\LapPhieuKhoWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\LapPhieuSuaChuaWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\QuanLyHangHoaWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Trang chủ\TrangChuWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\wMainWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\wLogin.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\App.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_MarkupCompile.cache
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_MarkupCompile.lref
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\QuanLyThongTinChuong.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\QuanLyTraiHeo.exe.config
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\QuanLyTraiHeo.exe
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\QuanLyTraiHeo.pdb
@@ -16,47 +72,6 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\MaterialDesignThemes.Wpf.xml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Microsoft.Expression.Interactions.xml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\System.Windows.Interactivity.xml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.AssemblyReference.cache
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.SuggestedBindingRedirects.cache
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.baml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\ThongTinHangHoa.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThongTinNhanVien.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\UCLichTiemHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\LichPhoiGiongWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LapLichTiem.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\TaoThongBaoWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\Caymuctieu.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoSuaChuaWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoThuChiWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý báo cáo\BaoCaoTinhTrangDanHeoWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\LapLichWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\LapPhieuKhoWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\LapPhieuSuaChuaWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\QuanLyHangHoaWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\QuanLyThongTinChuong.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Trang chủ\TrangChuWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\wMainWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\wLogin.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\App.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\GeneratedInternalTypeHelper.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_MarkupCompile.cache
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_MarkupCompile.lref
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\App.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\ThongTinHangHoa.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThongTinNhanVien.baml
@@ -71,7 +86,22 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\LichPhoiGiongWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LapLichTiem.baml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quanlydoitac.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\SuaChuong.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThemChuong.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\Quanlychucvu.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\SuaChucVu.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chức vụ\ThemChucVu.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\Quanlygiongheo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\SuaGiongHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý giống heo\ThemGiongHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\Quanlyloaiheo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\SuaLoaiHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý loại heo\ThemLoaiHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\SuaNhanVien.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThemNhanVien.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\SuaTTHeo.baml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemTTHeo.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\TaoThongBaoWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\Caymuctieu.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.baml
