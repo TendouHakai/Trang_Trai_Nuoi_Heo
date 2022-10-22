@@ -1,4 +1,5 @@
 ﻿using System;
+using QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,17 @@ namespace QuanLyTraiHeo
     /// </summary>
     public partial class ThietLapCayMucTieuWindow : Window
     {
+        Caymuctieu cmt = new Caymuctieu();
+        Object obj;
+        static int check = 0;
         public ThietLapCayMucTieuWindow()
         {
             InitializeComponent();
+            cmt.Close();
+            obj = cmt.Content;
+            cmt.Content = null;
+            showmake.Children.Clear();
+            showmake.Children.Add(obj as UIElement);
         }
     }
 }
