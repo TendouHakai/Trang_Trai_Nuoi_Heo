@@ -15,7 +15,6 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource CapNhatTaiKhoanVM}"
-        ResizeMode="NoResize"
         Title="Đổi mật khẩu"
         Height="768"
         Width="1024"
@@ -121,7 +120,7 @@
                             </Grid>
                             <Grid Grid.Column="1" Name="grb_hoten" Margin="20,0,30,0">
                                 <StackPanel Grid.Column="1" 
-                                            Width="{Binding ElementName=grb_hoten, Path=ActualWidth}" 
+                                            
                                             HorizontalAlignment="Center" VerticalAlignment="Center">
                                     <TextBlock Margin="0,15,0,0" FontSize="15" FontWeight="Bold">Tên</TextBlock>
                                     <TextBox Margin="0,5,0,0"

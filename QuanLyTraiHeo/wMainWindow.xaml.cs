@@ -176,5 +176,11 @@ namespace QuanLyTraiHeo
             DoiMatKhau wc = new DoiMatKhau();
             wc.ShowDialog();
         }
+
+        private void btn_TaoThongBao_Click(object sender, RoutedEventArgs e)
+        {
+            TaoThongBaoWindow wc = new TaoThongBaoWindow();
+            wc.ShowDialog();
+        }
     }
 }

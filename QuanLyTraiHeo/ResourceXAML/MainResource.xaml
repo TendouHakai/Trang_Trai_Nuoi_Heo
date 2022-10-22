@@ -11,4 +11,5 @@
     <viewModel:BaoCaoThuChiVM x:Key="BaoCaoThuChiVM"></viewModel:BaoCaoThuChiVM>
     <viewModel:BaoCaoTonKhoVM x:Key="BaoCaoTonKhoVM"></viewModel:BaoCaoTonKhoVM>
     <viewModel:PhieuBanHeoVM x:Key="PhieuBanHeoVM"></viewModel:PhieuBanHeoVM>
+    <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
 </ResourceDictionary>
