@@ -22,6 +22,13 @@ namespace QuanLyTraiHeo
         public QuanLyThongTinChuong()
         {
             InitializeComponent();
+            Listview.Items.Add("acd");
+        }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            ThongTinChuong f = new ThongTinChuong();
+            f.ShowDialog();
         }
     }
 }

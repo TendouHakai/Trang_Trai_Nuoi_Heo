@@ -4,10 +4,10 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-        xmlns:local="clr-namespace:QuanLyTraiHeo"
+        xmlns:local="clr-namespace:QuanLyTraiHeo" xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel"
         mc:Ignorable="d"
         Title="QuanLyThongTinCaTheWindow" Height="450" Width="800">
-    <Grid>
+    <Grid Margin="25 0">
         
         <Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
@@ -16,29 +16,80 @@
         <Grid Grid.Row="0" Height="55" >
             <Grid.ColumnDefinitions>
                
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="400"></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <Border BorderBrush="Black" BorderThickness="1" CornerRadius="5">
+
+            <Border Margin="15 0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30"></ColumnDefinition>
+                        <ColumnDefinition Width="30" ></ColumnDefinition>
                         <ColumnDefinition></ColumnDefinition>
                     </Grid.ColumnDefinitions>
-                <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
-                <TextBox Grid.Column="1"
+                    <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
+                    <TextBox Grid.Column="1"
   materialDesign:HintAssist.Hint="Search" Height="30" Margin="0,10,20,11" />
-                </Grid>
-                </Border>
 
-            <ComboBox Grid.Column="1" Height="30"  Width="100" Margin="10 0 0 0" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Tình trạng"  ></ComboBox>
-            <ComboBox Grid.Column="1" Height="30"  Width="100" Margin="100 0 0 0" materialDesign:HintAssist.Hint="Nguồn gốc"  ></ComboBox>
-            <Button Grid.Column="2"  Width="100" Background="#3ab19b" HorizontalAlignment="Left" Click="btn_ThemClick">Thêm heo</Button>
-            <Button Grid.Column="2" Margin="100 0 0 0" Width="150" Background="#3ab19b" >QL loại heo</Button>
+
+                </Grid>
+            </Border>
+
+            <materialDesign:Card Grid.Column="2">
+                <Grid>
+                    <Button Margin="15 0" Width="100" Background="#3ab19b" HorizontalAlignment="Left">Thêm heo</Button>
+           <Button  Margin="15 0" Width="150" Background="#3ab19b" HorizontalAlignment="Right">QL loại heo</Button>
+</Grid></materialDesign:Card>
             
         </Grid>
-        <ListView Grid.Row="1" Name="Listview" HorizontalAlignment="Left">
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="300"></ColumnDefinition>
+                <ColumnDefinition Width="2*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                    <RowDefinition Height="60"></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Margin="0 5">
+                    <Grid>
+                        <Label VerticalAlignment="Center">Ngày sinh:</Label>
+                        <DatePicker Margin="75 0 0 0" HorizontalAlignment="Left" Width="80"> </DatePicker>
+                        <Label VerticalAlignment="Center" HorizontalAlignment="Left" Margin="160 0 0 0">Đến</Label>
+                        <DatePicker HorizontalAlignment="Left" Margin="190 0 0 0" Width="80"></DatePicker>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="1" Margin="0 5">
+                    <Grid >
+                        <Label  VerticalAlignment="Center" >Trọng lượng:</Label>
+                        <TextBox Margin="75 0 0 0" HorizontalAlignment="Left" VerticalAlignment="Center"  Width="90"></TextBox>
+                        <Label HorizontalAlignment="Left" Margin="160 0 0 0" VerticalAlignment="Center" >Đến</Label>
+                        <TextBox HorizontalAlignment="Left" Margin="190 0 0 0" VerticalAlignment="Center"  Width="90"></TextBox>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="2" Margin="0 5">
+                    <Grid>
+                        <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Loại heo" VerticalAlignment="Center" />
+
+                        <ComboBox Height="30" Margin="15" Width="100" materialDesign:HintAssist.Hint="Giống heo" HorizontalAlignment="Right"/>
+                    </Grid>
+                </materialDesign:Card>
+                <materialDesign:Card Grid.Row="3" Margin="0 5">
+                    <Grid>
+                        <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Tình trạng" VerticalAlignment="Center" />
+
+                        <ComboBox Height="30" Margin="15" Width="100" materialDesign:HintAssist.Hint="Nguôn gốc" HorizontalAlignment="Right"/>
+                    </Grid>
+                    
+                </materialDesign:Card>
+            </Grid>
+
+            <ListView Margin="25 0" Grid.Column="1" Name="Listview" HorizontalAlignment="Left">
+            
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="Mã heo"/>
@@ -51,20 +102,24 @@
                     <GridViewColumn Header="Mã chuồng"/>
                     <GridViewColumn Header="Tình trạng"/>
                     <GridViewColumn Header="Nguồn gốc"/>
-                    <GridViewColumn Header="Thao tác" Width="160">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Menu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48"></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
-                                </Menu>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
                 </GridView>
             </ListView.View>
+            <ListView.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click">
+                            <MenuItem.Header>Show</MenuItem.Header>
+                            </MenuItem>
+                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
+                            <MenuItem.Header>Edit</MenuItem.Header>
+                        </MenuItem>
+                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                        <MenuItem.Header>Delete</MenuItem.Header>
+                    </MenuItem>
+                </ContextMenu>
+                </ListView.ContextMenu>
         </ListView>
 
+        </Grid>
+        
     </Grid>
 </Window>

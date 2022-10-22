@@ -23,5 +23,11 @@ namespace QuanLyTraiHeo
         {
             InitializeComponent();
         }
+
+        private void Show_Click(object sender, RoutedEventArgs e)
+        {
+            ThongTinNhanVien f = new ThongTinNhanVien();
+            f.ShowDialog();
+        }
     }
 }

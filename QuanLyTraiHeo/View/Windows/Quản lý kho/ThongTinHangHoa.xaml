@@ -1,0 +1,33 @@
+﻿<Window x:Class="QuanLyTraiHeo.ThongTinHangHoa"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:QuanLyTraiHeo"
+        mc:Ignorable="d"
+        Title="ThongTinHangHoa" Height="450" Width="800">
+    <Grid Margin="25 10" >
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left"> Mã hàng hoá</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="0"> HH001</TextBlock>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left">Tên hàng hoá</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="1"> Cám tăng trọng</TextBlock>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Left">Đơn giá</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="2"> 900000</TextBlock>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Left">Số lượng tồn kho</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" HorizontalAlignment="Left" Grid.Row="3"> 102</TextBlock>
+        <TextBlock Grid.Row="4" HorizontalAlignment="Left">Tình trạng</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="4">????</TextBlock>
+        <TextBlock Grid.Row="5" HorizontalAlignment="Left">Loại hàng hoá</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="5">Thức ăn</TextBlock>
+        <Button Grid.Row="10" Width="100" Background="#3ab19b" HorizontalAlignment="Center" Click="btn_Thoat_Click">Thoát</Button>
+    </Grid>
+</Window>

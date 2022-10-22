@@ -27,15 +27,11 @@ namespace QuanLyTraiHeo
             Listview.Items.Add("cde");
         }
 
-        private void Edit_Selected(object sender, RoutedEventArgs e)
+        private void Show_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("KKK");
-        }
-
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            ThemSuaTTHeo themSuaTTHeo = new ThemSuaTTHeo();
-            themSuaTTHeo.ShowDialog();
+            ThongTinHeo t = new ThongTinHeo();
+            t.ShowDialog();
         }
     }
-}
+    }
+

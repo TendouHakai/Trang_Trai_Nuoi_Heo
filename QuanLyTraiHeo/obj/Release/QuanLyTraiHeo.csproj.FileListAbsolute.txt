@@ -148,6 +148,7 @@ C:\Users\Tran Thanh\Desktop\new code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Relea
 C:\Users\Tran Thanh\Desktop\new code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\Tran Thanh\Desktop\new code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.exe
 C:\Users\Tran Thanh\Desktop\new code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
+<<<<<<< HEAD
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.exe.config
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.exe
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.pdb
@@ -225,3 +226,88 @@ C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi 
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\TaoThongBaoWindow.g.cs
 C:\Users\Tran Thanh\Desktop\dự án phần mềm quản lý trang trại nuôi heo\code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\TaoThongBaoWindow.baml
+=======
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.exe.config
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.exe
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\QuanLyTraiHeo.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\MaterialDesignColors.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\MaterialDesignThemes.Wpf.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\Microsoft.Expression.Interactions.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\System.Windows.Interactivity.dll
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.xml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\LiveCharts.Wpf.xml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\MaterialDesignColors.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\MaterialDesignThemes.Wpf.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\MaterialDesignThemes.Wpf.xml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\Microsoft.Expression.Interactions.xml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Release\System.Windows.Interactivity.xml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.AssemblyReference.cache
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoSuaChuaWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoThuChiWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTinhTrangDanHeoWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapLichWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\LapPhieuKhoWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\LapPhieuSuaChuaWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\QuanLyHangHoaWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\QuanLyThongTinChuong.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Trang chủ\TrangChuWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\wMainWindow.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\wLogin.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\App.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\GeneratedInternalTypeHelper.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo_MarkupCompile.cache
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo_MarkupCompile.lref
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\App.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\CapNhatTaiKhoanWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\DoiMatKhau.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThemSuaTTHeo.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Thiết lập cây mục tiêu\ThietLapCayMucTieuWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTonKhoWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapPhieuBanNhapHeoWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoSuaChuaWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoThuChiWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý báo cáo\BaoCaoTinhTrangDanHeoWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\LapLichWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\LapPhieuKhoWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\LapPhieuSuaChuaWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\QuanLyHangHoaWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\QuanLyThongTinChuong.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Trang chủ\TrangChuWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\wMainWindow.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\ResourceXAML\MainResource.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\wLogin.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.g.resources
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.Properties.Resources.resources
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.GenerateResource.cache
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.csproj.CopyComplete
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.exe
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\QuanLyTraiHeo.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThongTinHeo.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý đàn heo\ThongTinHeo.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThongTinNhanVien.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\ThongTinHangHoa.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý kho\ThongTinHangHoa.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý nhân viên\ThongTinNhanVien.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Release\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.baml
+>>>>>>> Tu_XemThongTin
