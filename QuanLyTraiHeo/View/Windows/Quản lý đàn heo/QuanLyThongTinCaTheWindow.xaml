@@ -6,10 +6,256 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:QuanLyTraiHeo" xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel"
         mc:Ignorable="d"
-        Title="QuanLyThongTinCaTheWindow" Height="450" Width="800">
-    <Grid Margin="25 0">
-        
-        <Grid.RowDefinitions>
+        Height="768"
+        Width="1024"
+        Title="QuanLyThongTinCaTheWindow">
+    <Grid Margin="20,0,20,0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition  Width="300"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+
+        <materialDesign:Card Grid.Column="0" Margin="0,0,10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="83"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <materialDesign:Card Grid.Row="0" Height="75" Margin="0,5,0,0">
+                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0">Tìm kiếm thông tin đàn heo</TextBlock>
+                </materialDesign:Card>
+                <ScrollViewer Grid.Row="1" VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+                    <StackPanel Orientation="Vertical">
+                        <Expander IsExpanded="True" Header="Ngày sinh" FontWeight="Bold">
+                            <StackPanel Orientation="Vertical" Margin="0,0,0,0">
+                                <DatePicker Grid.Column="0" Margin="20,0,0,0" FontWeight="Normal"
+                        HorizontalAlignment="Left"
+                        Width="250"
+                        materialDesign:HintAssist.Hint="Từ ngày"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                                <DatePicker Grid.Column="1" Margin="20,0,0,0" FontWeight="Normal"
+                        Width="250"
+                        HorizontalAlignment="Left"
+                        materialDesign:HintAssist.Hint="Đến ngày"
+                        materialDesign:TextFieldAssist.HasClearButton="True"
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+
+                            </StackPanel>
+                        </Expander>
+                        <Expander IsExpanded="True" Header="Trọng lượng" FontWeight="Bold" Background="White">
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                                             materialDesign:HintAssist.Hint="Trọng lượng tối thiểu"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                             FontWeight="Normal"/>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                                             materialDesign:HintAssist.Hint="Trọng lượng tối đa"
+                                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                             FontWeight="Normal"/>
+                                </StackPanel>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander IsExpanded="True" Header="Loại heo" FontWeight="Bold" Background="White">
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="heo đực"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Đã nái"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="heo con"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="heo thịt"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander IsExpanded="True" Header="Giống heo" FontWeight="Bold" Background="White">
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Móng cái"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Ỉ"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Xề"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander IsExpanded="True" Header="Tình trạng" FontWeight="Bold" Background="White">
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <ComboBox Margin="10,0,0,0" Height="30" HorizontalAlignment="Left" VerticalContentAlignment="Bottom"
+                          materialDesign:HintAssist.Hint="Tình trạng"
+                          Width="200" FontWeight="Normal">
+                                    <ComboBoxItem>Tốt</ComboBoxItem>
+                                    <ComboBoxItem>Đang bệnh</ComboBoxItem>
+                                    <ComboBoxItem>Đã bị loại thải</ComboBoxItem>
+                                    <ComboBoxItem>Đã bán</ComboBoxItem>
+                                </ComboBox>
+                            </StackPanel>
+                        </Expander>
+
+                        <Expander IsExpanded="True" Header="Nguồn gốc" FontWeight="Bold" Background="White">
+                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Heo nhà"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                                <Grid Margin="0,0,0,10">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="1*"/>
+                                        <ColumnDefinition Width="4*" />
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                                    <TextBlock Text="Nhập ngoài"  Grid.Column="1" FontWeight="Normal"/>
+                                </Grid>
+                            </StackPanel>
+                        </Expander>
+
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+        </materialDesign:Card>
+
+        <Grid Grid.Column="1">
+            <materialDesign:Card>
+                <StackPanel Orientation="Vertical">
+                    <materialDesign:Card>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,5,0,5">Danh sách các cá thể heo</TextBlock>
+
+                            <Grid Grid.Row="1">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"></ColumnDefinition>
+                                    <ColumnDefinition></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
+                                <Grid Grid.Column="0" Margin="10,0,10,0">
+                                    <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,10,20,11" />
+                                </Grid>
+                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                    <Button
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    Height="30"
+                                    Width="200"
+                                    BorderBrush="White"
+                                    Content="Thêm cá thể heo mới"
+                                    FontSize="16"
+                                    Background="#00de1e"
+                                    materialDesign:ButtonAssist.CornerRadius="5"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_ThemClick">
+
+                                    </Button>
+                                </StackPanel>
+
+                            </Grid>
+
+                        </Grid>
+
+                    </materialDesign:Card>
+                    <ListView Margin="25 0" Name="Listview" HorizontalAlignment="Left">
+
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã heo"/>
+                                <GridViewColumn Header="Giới tính"/>
+                                <GridViewColumn Header="Ngày sinh"/>
+                                <GridViewColumn Header="Mã loại heo"/>
+                                <GridViewColumn Header="Mã giống heo"/>
+                                <GridViewColumn Header="Mã heo mẹ"/>
+                                <GridViewColumn Header="Mã heo cha"/>
+                                <GridViewColumn Header="Mã chuồng"/>
+                                <GridViewColumn Header="Tình trạng"/>
+                                <GridViewColumn Header="Nguồn gốc"/>
+                                <GridViewColumn Header="Thao tác" Width="160">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Menu>
+                                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
+                                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" Click="btn_SuaClick"></MenuItem>
+                                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
+                                            </Menu>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click">
+                                    <MenuItem.Header>Show</MenuItem.Header>
+                                </MenuItem>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
+                                    <MenuItem.Header>Edit</MenuItem.Header>
+                                </MenuItem>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                                    <MenuItem.Header>Delete</MenuItem.Header>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                    </ListView>
+
+                </StackPanel>
+
+            </materialDesign:Card>
+        </Grid>
+
+
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="auto"></RowDefinition>
         </Grid.RowDefinitions>
@@ -129,6 +375,6 @@
                     </ContextMenu>
                 </ListView.ContextMenu>
             </ListView>
-        </Grid>
+        </Grid>-->
     </Grid>
 </Window>

@@ -112,7 +112,7 @@
     <Compile Include="View\UC\UCLichTiemHeo.xaml.cs">
       <DependentUpon>UCLichTiemHeo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\LichPhoiGiongWindow.xaml.cs">
+    <Compile Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml.cs">
       <DependentUpon>LichPhoiGiongWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Lập lịch\LapLichTiem.xaml.cs">
@@ -221,9 +221,6 @@
     <Compile Include="View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.xaml.cs">
       <DependentUpon>QuanLyThongTinNhanVienWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.xaml.cs">
-      <DependentUpon>TraCuuPhieuThuChiWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\Trang chủ\TrangChuWindow.xaml.cs">
       <DependentUpon>TrangChuWindow.xaml</DependentUpon>
     </Compile>
@@ -277,7 +274,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\LichPhoiGiongWindow.xaml">
+    <Page Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -410,10 +407,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý nhân viên\QuanLyThongTinNhanVienWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

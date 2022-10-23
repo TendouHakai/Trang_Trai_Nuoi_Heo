@@ -14,6 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
+        Icon="/Image/leaves_icon.png"
         ResizeMode="NoResize"
         Title="Tạo thông báo mới"
         Height="500"
@@ -30,11 +31,12 @@
                 <RowDefinition Height="30"></RowDefinition>
                 <RowDefinition></RowDefinition>
                 <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <TextBlock Grid.Row="0" FontSize="15" FontWeight="Bold">Tạo thông báo mới</TextBlock>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center">Đến: </TextBlock>
-                <ComboBox Margin="28,0,0,0" Width="650"
+                <ComboBox Margin="28,0,0,0" Width="600"
                             materialDesign:HintAssist.Hint="Nhập bộ phận">
                     <ComboBoxItem
                             Content="Tất cả" />
@@ -49,8 +51,26 @@
                 </ComboBox>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
+                <TextBlock VerticalAlignment="Center">Cụ thể:</TextBlock>
+                <TextBox Height="25" Margin="15,0,0,0" Width="600"
+                        materialDesign:HintAssist.Hint="Nhập danh sách người nhận">
+                </TextBox>
+                <Button Margin="20,0,0,0"
+                    Style="{StaticResource MaterialDesignRaisedButton}"
+                    Height="30"
+                    Width="100"
+                    BorderBrush="White"
+                    Content="Chọn"
+                    FontSize="16"
+                    Background="#00de1e"
+                    materialDesign:ButtonAssist.CornerRadius="5"
+                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Row="3" Orientation="Horizontal">
                 <TextBlock VerticalAlignment="Center">Tiêu đề:</TextBlock>
-                <TextBox Height="25" Margin="10,0,0,0" Width="650"
+                <TextBox Height="25" Margin="10,0,0,0" Width="600"
                         materialDesign:HintAssist.Hint="Nhập tiêu đề">
                 </TextBox>
             </StackPanel>

@@ -64,6 +64,8 @@ namespace QuanLyTraiHeo
         {
             CollapsedMenuDtail();
             Tree_menu_detail_CaThe.Visibility = Visibility.Visible;
+            Tree_menu_detail_Loaiheo.Visibility = Visibility.Visible;
+            Tree_menu_detail_Giongheo.Visibility = Visibility.Visible;
             Tree_menu_detail_PhieuHeo.Visibility = Visibility.Visible;  
             Tree_menu_detail_LapLich.Visibility = Visibility.Visible;
             exp_test.IsExpanded = true;
@@ -115,17 +117,7 @@ namespace QuanLyTraiHeo
         {
             CollapsedMenuDtail();
             Tree_menu_detail_NhanVien.Visibility = Visibility.Visible;
-            exp_test.IsExpanded = true;
-            tgl_menu.IsChecked = true;
-            formatMenu();
-            var bc = new BrushConverter();
-            (sender as ListBoxItem).Foreground = Brushes.White;
-            (sender as ListBoxItem).Background = (Brush)bc.ConvertFrom("#41c4ac");
-        }
-        private void MenuPhieuThuChi_Selected(object sender, RoutedEventArgs e)
-        {
-            CollapsedMenuDtail();
-            Tree_menu_detail_TraCuu.Visibility = Visibility.Visible;
+            Tree_menu_detail_ChucVu.Visibility = Visibility.Visible;
             exp_test.IsExpanded = true;
             tgl_menu.IsChecked = true;
             formatMenu();

@@ -15,7 +15,8 @@
         WindowStartupLocation="CenterScreen"
         WindowState="Maximized"
         mc:Ignorable="d"
-        Title="MainWindow"
+        Icon="/Image/leaves_icon.png"
+        Title="Phần mềm quản lý trang trại PigFarm"
         Height="768"
         Width="1024"
         Name="MainWindow"
@@ -29,7 +30,7 @@
     </i:Interaction.Triggers>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="50"></ColumnDefinition>
+            <ColumnDefinition Width="70"></ColumnDefinition>
             <ColumnDefinition Width="auto"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
@@ -75,12 +76,29 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
-
                                 <TreeViewItem Name="Tree_menu_detail_CaThe"
                                         Header="Quản lý thông tin cá thể" >
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Selected">
                                             <i:InvokeCommandAction Command="{Binding OpenQuanLyThongTinCaTheWindow}"
+                                                        CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TreeViewItem>
+                                <TreeViewItem Name="Tree_menu_detail_Loaiheo"
+                                    Header="Quản lý loại heo">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Selected">
+                                            <i:InvokeCommandAction Command="{Binding OpenQuanLyLoaiHeo}"
+                                                        CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TreeViewItem>
+                                <TreeViewItem Name="Tree_menu_detail_Giongheo"
+                                    Header="Quản lý giống heo">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Selected">
+                                            <i:InvokeCommandAction Command="{Binding OpenQuanLyGiongHeo}"
                                                         CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
@@ -95,15 +113,27 @@
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
                                 <TreeViewItem Name="Tree_menu_detail_LapLich"
-                                        Header="Lập lịch tiêm" >
-                                    <i:Interaction.Triggers>
-                                        <i:EventTrigger EventName="Selected">
-                                            <i:InvokeCommandAction Command="{Binding OpenLapLichTiemWindow}"
+                                        Header="Lập lịch" >
+                                    <TreeViewItem Name="Tree_menu_detail_Laplichtiem"
+                                                  Header="Lập lịch tiêm">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Selected">
+                                                <i:InvokeCommandAction Command="{Binding OpenLapLichTiemWindow}"
                                                         CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
-                                        </i:EventTrigger>
-                                    </i:Interaction.Triggers>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TreeViewItem>
+                                    <TreeViewItem Name="Tree_menu_detail_Laplichphoigiong"
+                                                  Header="Lập lịch phối giống">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="Selected">
+                                                <i:InvokeCommandAction Command="{Binding OpenLaplichPhoiGiongWindow}"
+                                                        CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TreeViewItem>
                                 </TreeViewItem>
-
+                                
 
                                 <TreeViewItem Name="Tree_menu_detail_Chuong"
                                         Header="Quản lý thông tin chuồng">
@@ -182,7 +212,6 @@
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
 
-
                                 <TreeViewItem Name="Tree_menu_detail_NhanVien"
                                         Header="Quản lý thông tin nhân viên">
                                     <i:Interaction.Triggers>
@@ -193,15 +222,16 @@
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
 
-                                <TreeViewItem Name="Tree_menu_detail_TraCuu"  
-                                        Header="Tra cứu phiếu thu chi">
+                                <TreeViewItem Name="Tree_menu_detail_ChucVu"
+                                        Header="Quản lý chức vụ">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Selected">
-                                            <i:InvokeCommandAction Command="{Binding OpenTraCuuPhieuThuChiWindow}"
-                                                           CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
+                                            <i:InvokeCommandAction Command="{Binding OpenQuanLyChucVu}"
+                                                        CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
+
                                 <TreeViewItem Name="Tree_menu_detail_NhatKy"
                                         Header="Quản lý nhật ký">
                                     <i:Interaction.Triggers>
@@ -228,29 +258,27 @@
                 </StackPanel>
             </Expander>
         </Grid>
-        <StackPanel Grid.Column="0" Width="50" HorizontalAlignment="Center" Background="#3ab19b">
+        <StackPanel Grid.Column="0" Width="70" HorizontalAlignment="Center" Background="#3ab19b">
             <Image Source="/Image/leaves_icon_white.jpg" Height="60"/>
             <ListBox Margin="7,7,7,7" Name="lB_Menu" HorizontalAlignment="Center"
                     SelectedIndex="-1">
 
                 <ListBoxItem Name="Menu_Manhinhchinh"
-                        Content="{materialDesign:PackIcon Kind=Home}" Foreground="White" Background="#41c4ac" ToolTip="Màn hình chính" Selected="MenuHome_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=Home,Size=25}" Foreground="White" Background="#41c4ac" ToolTip="Màn hình chính" Selected="MenuHome_Selected"/>
                 <ListBoxItem Name="Menu_DanHeo"
-                        Content="{materialDesign:PackIcon Kind=PiggyBank}" Foreground="LightGray" ToolTip="Quản lý đàn heo" Selected="MenuDanHeo_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=PiggyBank,Size=25}" Foreground="LightGray" ToolTip="Quản lý đàn heo" Selected="MenuDanHeo_Selected"/>
                 <ListBoxItem Name="Menu_ChuongNuoi"
-                        Content="{materialDesign:PackIcon Kind=Fence}" Foreground="LightGray" ToolTip="Quản lý chuồng nuôi" Selected="MenuChuongNuoi_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=Fence,Size=25}" Foreground="LightGray" ToolTip="Quản lý chuồng nuôi" Selected="MenuChuongNuoi_Selected"/>
                 <ListBoxItem Name="Menu_Kho"
-                        Content="{materialDesign:PackIcon Kind=Warehouse}" Foreground="LightGray" ToolTip="Quản lý kho" Selected="MenuKho_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=Warehouse,Size=25}" Foreground="LightGray" ToolTip="Quản lý kho" Selected="MenuKho_Selected"/>
                 <ListBoxItem Name="Menu_BaoCao"
-                        Content="{materialDesign:PackIcon Kind=Finance}" Foreground="LightGray" ToolTip="Quản lý báo cáo" Selected="MenuBaoCao_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=Finance,Size=25}" Foreground="LightGray" ToolTip="Quản lý báo cáo" Selected="MenuBaoCao_Selected"/>
                 <ListBoxItem Name="Menu_NhanVien"
-                        Content="{materialDesign:PackIcon Kind=AccountTie}" Foreground="LightGray" ToolTip="Quản lý nhân viên" Selected="MenuNhanVien_Selected"/>
-                <ListBoxItem Name="Menu_TraCuu"
-                        Content="{materialDesign:PackIcon Kind=ReceiptTextCheck}" Foreground="LightGray" ToolTip="Tra cứu phiếu thu chi" Selected="MenuPhieuThuChi_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=AccountTie,Size=25}" Foreground="LightGray" ToolTip="Quản lý nhân viên" Selected="MenuNhanVien_Selected"/>
                 <ListBoxItem Name="Menu_NhatKy"
-                        Content="{materialDesign:PackIcon Kind=Notebook}" Foreground="LightGray" ToolTip="Quản lý nhật lý" Selected="MenuNhatKy_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=Notebook,Size=25}" Foreground="LightGray" ToolTip="Quản lý nhật lý" Selected="MenuNhatKy_Selected"/>
                 <ListBoxItem Name="Menu_CayMucTieu"
-                        Content="{materialDesign:PackIcon Kind=BullseyeArrow}" Foreground="LightGray" ToolTip="Thiết lập cây mục tiêu" Selected="MenuCayMucTieu_Selected"/>
+                        Content="{materialDesign:PackIcon Kind=BullseyeArrow,Size=25}" Foreground="LightGray" ToolTip="Thiết lập cây mục tiêu" Selected="MenuCayMucTieu_Selected"/>
 
             </ListBox>
 

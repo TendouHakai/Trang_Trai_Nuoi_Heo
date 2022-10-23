@@ -40,6 +40,7 @@ namespace QuanLyTraiHeo
             SuaTTHeo suaTTHeo = new SuaTTHeo();
             suaTTHeo.ShowDialog();
         }
+
     }
 }
 

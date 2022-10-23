@@ -16,7 +16,8 @@
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource LoginVM}"
         x:Name="LoginWindow"
-        Title="wLogin"
+        Icon="/Image/leaves_icon.png"
+        Title="Đăng nhập"
         Height="500"
         Width="800"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">

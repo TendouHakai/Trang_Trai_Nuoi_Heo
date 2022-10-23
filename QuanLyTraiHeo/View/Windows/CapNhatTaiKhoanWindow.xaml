@@ -15,6 +15,7 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource CapNhatTaiKhoanVM}"
+        Icon="/Image/leaves_icon.png"
         Title="Đổi mật khẩu"
         Height="768"
         Width="1024"
