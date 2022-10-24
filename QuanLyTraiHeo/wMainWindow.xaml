@@ -356,8 +356,9 @@
                                         <TextBlock Foreground="Green">Online</TextBlock>
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Vertical">
-                                        <TextBlock FontWeight="Bold" FontSize="16">Trần Trung Thành</TextBlock>
-                                        <TextBlock FontStyle="Italic">Chủ trang trại</TextBlock>
+                                        <TextBlock FontWeight="Bold"
+                                                   FontSize="16" Text="{Binding NhanVien.HoTen}"></TextBlock>
+                                        <TextBlock FontStyle="Italic" Text="{Binding NhanVien.CHUCVU.TenChucVu}"></TextBlock>
                                     </StackPanel>
                                 </Grid>
 
@@ -366,15 +367,18 @@
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="GenderMaleFemale"/>
-                                        <TextBlock Margin="10,0,0,0">Nam</TextBlock>
+                                        <TextBlock Margin="10,0,0,0"
+                                                   Text="{Binding NhanVien.GioiTinh}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                         <materialDesign:PackIcon Kind="CakeVariantOutline"/>
-                                        <TextBlock  Margin="10,0,0,0">13/11/2002</TextBlock>
+                                        <TextBlock  Margin="10,0,0,0"
+                                                    Text="{Binding NhanVien.NgaySinh}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                         <materialDesign:PackIcon Kind="BriefcaseOutline"/>
-                                        <TextBlock  Margin="10,0,0,0">25/09/2022</TextBlock>
+                                        <TextBlock  Margin="10,0,0,0"
+                                                    Text="{Binding NhanVien.NgayVaoLam}"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
 
@@ -383,15 +387,17 @@
                                 <StackPanel Orientation="Vertical">
                                     <StackPanel Orientation="Horizontal">
                                         <materialDesign:PackIcon Kind="PhoneMessage"/>
-                                        <TextBlock Margin="10,0,0,0">0123456789</TextBlock>
+                                        <TextBlock Margin="10,0,0,0" Text="{Binding NhanVien.SDT}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                         <materialDesign:PackIcon Kind="Email"/>
-                                        <TextBlock  Margin="10,0,0,0">Thanhpro1312@gmail.com</TextBlock>
+                                        <TextBlock  Margin="10,0,0,0"
+                                                    Text="{Binding NhanVien.email}"></TextBlock>
                                     </StackPanel>
                                     <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                                         <materialDesign:PackIcon Kind="MapMarker"/>
-                                        <TextBlock  Margin="10,0,0,0">Ktx A, DHQG, Thành phố Thủ Đức</TextBlock>
+                                        <TextBlock  Margin="10,0,0,0"
+                                                    Text="{Binding NhanVien.DiaChi}"></TextBlock>
                                     </StackPanel>
                                 </StackPanel>
 

@@ -371,3 +371,36 @@ FOREIGN KEY (SoPhieu) REFERENCES PHIEUHANGHOA(SoPhieu)
 
 ALTER TABLE CT_PHIEUKIEMKHO ADD CONSTRAINT FK_CT_PKK_MHH
 FOREIGN KEY (MaHangHoa) REFERENCES HANGHOA(MaHangHoa)
+
+INSERT INTO PERMISION 
+	(ID_Permision,
+	Name_Permision,
+	Permision_Descript)
+VALUES 
+	('20221024000001', 
+	'ChuTrangTrai', 
+	'Admin'); 
+
+INSERT INTO CHUCVU 
+	(MaChucVu,
+	TenChucVu,
+	LuongCoBan,
+	ID_Permision)
+VALUES 
+	('20221024000001', 
+	 'ChuTrangTrai', 
+	 0,
+	 '20221024000001'); 
+
+INSERT INTO NHANVIEN 
+	(MaNhanVien,
+	HoTen,
+	MaChucVu,
+	_Username,
+	_PassWord)
+VALUES 
+	('20221024000001', 
+	 'HongTruongVinh', 
+	 '20221024000001',
+	 'Admin',
+	 'e3afed0047b08059d0fada10f400c1e5'); 

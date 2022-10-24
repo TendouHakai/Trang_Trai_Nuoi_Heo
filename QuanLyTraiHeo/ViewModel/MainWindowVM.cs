@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows;
 using QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ;
 using QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo;
@@ -22,9 +23,18 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class MainWindowVM: BaseViewModel
     {
+        #region Attributes
         public bool IsLoaded = false;
         private string _currentWindow = "";
+        NHANVIEN nhanVien;
+        #endregion
+
+        #region Property
         public string currentWindow { get => _currentWindow; set { _currentWindow = value; OnPropertyChanged(); } }
+        public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
+
+        #endregion
+
         #region CommandOpenWindow
         public ICommand OpenTrangChuWindow { get; set; }
         public ICommand OpenQuanLyThongTinCaTheWindow { get; set; }
@@ -46,7 +56,12 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenQuanLyNhatKyWindow { get; set; }
         public ICommand OpenThietLapCayMucTieuWindow { get; set; }
         #endregion
+
+        #region Event Command
         public ICommand LoadedWindowCommand { get; set; }
+        
+        #endregion]
+
         public MainWindowVM()   
         {
             currentWindow = "Trang chủ";
@@ -64,6 +79,9 @@ namespace QuanLyTraiHeo.ViewModel
                 if (loginWD.IsLogin)
                 {
                     p.Show();
+
+                    NhanVien = loginWD.NhanVien;
+
                 }
                 else
                 {

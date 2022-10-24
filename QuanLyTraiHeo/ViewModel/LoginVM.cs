@@ -1,6 +1,8 @@
-﻿using System;
+﻿using QuanLyTraiHeo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -12,24 +14,32 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class LoginVM: BaseViewModel
     {
-        public bool IsLogin { get; set; }
 
         #region command
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
         #endregion
 
+        #region attributes
         string _username;
         string _password;
+        NHANVIEN nhanVien;
+        #endregion
 
+        #region Proparty
+        public bool IsLogin { get; set; }
         public string Username { get { return _username; } set { _username = value; OnPropertyChanged(); } }
         public string Password { get { return _password; } set { _password = value; OnPropertyChanged(); } }
+
+        public NHANVIEN NhanVien { get => nhanVien; set => nhanVien = value; }
+        #endregion
 
         public LoginVM()
         {
             IsLogin = false;
             _username = QuanLyTraiHeo.Properties.Settings.Default.Username;
             _password = QuanLyTraiHeo.Properties.Settings.Default.Password;
+
             LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword(); }, p => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, p => { Password = p.Password; });
         }
@@ -38,9 +48,15 @@ namespace QuanLyTraiHeo.ViewModel
         {
             if (p == null) return;
 
-            /*
-             Xử lý đăng nhập với database ở đây
-             */
+            string _pass = MD5Hash(Password);
+
+            nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
+
+            if(nhanVien == null)
+            {
+                MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
+                return;
+            }
 
             #region xử lý nhớ mật khẩu
             if ((p as wLogin).Cb_RememberAccount.IsChecked == true)
@@ -67,7 +83,24 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 return false;
             }
+
             return true;
+        }
+
+        public static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+
+            return hash.ToString();
         }
     }
 }
