@@ -324,10 +324,14 @@
                                                 StaysOpen="True" 
                                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <StackPanel Width="150">
-                                            <Button Name="btn_CapNhatMatKhau" Click="btn_CapNhatMatKhau_Click">
+                                            <Button Name="btn_CapNhatTaiKhoan"
+                                                    Command="{Binding OpenCapNhatTaiKhoan}"
+                                                    CommandParameter="{Binding ElementName=MainWindow}">
                                                 Cập nhật thông tin
                                             </Button>
-                                            <Button Name="btn_DoiMatKhau" Click="btn_DoiMatKhau_Click">
+                                            <Button Name="btn_DoiMatKhau"
+                                                    Command="{Binding OpenDoiMatKhau}"
+                                                    CommandParameter="{Binding ElementName=MainWindow}">
                                                 Đổi mật khẩu
                                             </Button>
                                         </StackPanel>
@@ -357,7 +361,7 @@
                                     </StackPanel>
                                     <StackPanel Grid.Row="1" Orientation="Vertical">
                                         <TextBlock FontWeight="Bold"
-                                                   FontSize="16" Text="{Binding NhanVien.HoTen}"></TextBlock>
+                                                   FontSize="16" Text="{Binding NhanVien.HoTen, Mode=OneWay}"></TextBlock>
                                         <TextBlock FontStyle="Italic" Text="{Binding NhanVien.CHUCVU.TenChucVu}"></TextBlock>
                                     </StackPanel>
                                 </Grid>
@@ -450,14 +454,14 @@
                                 <Rectangle Margin="8,0,8,0" HorizontalAlignment="Stretch" Fill="White" Width="2"/>
                                 <Button
                                     Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                                    ToolTip="TendouHakai"
+                                    ToolTip="{Binding NhanVien.HoTen}"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                     <Image Source="/Image/avatar.jpg"/>
                                 </Button>
                                 <TextBlock
                             VerticalAlignment="Center"
                             Margin="8 0 8 0"
-                            Text="TendouHakai" />
+                            Text="{Binding NhanVien.HoTen}" />
                                 <ToggleButton
                                 Style="{StaticResource MaterialDesignActionToggleButton}"
                                 ToolTip="Xem tài khoản"

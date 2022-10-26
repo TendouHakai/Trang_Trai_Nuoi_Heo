@@ -14,13 +14,14 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource CapNhatTaiKhoanVM}"
         Icon="/Image/leaves_icon.png"
         Title="Đổi mật khẩu"
         Height="768"
         Width="1024"
+        x:Name="CapNhatTaiKhoan"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid>
+    
+    <Grid x:Name="BigestGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition></RowDefinition>
@@ -77,14 +78,14 @@
                                 <StackPanel Grid.Column="0"
                                         Width="{Binding ElementName=grb_hotenlot, Path=ActualWidth}"
                                         HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="0,15,0,0" FontSize="15" FontWeight="Bold">Họ và Tên lót</TextBlock>
-                                    <TextBox Margin="0,5,0,0"
+                                    <TextBlock Margin="0,15,0,0" FontSize="15" FontWeight="Bold" Text="">Họ và Tên</TextBlock>
+                                    <TextBox x:Name="Name"  Margin="0,5,-250,0"
                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                         VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="Ho"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="HoTen" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule ValidatesOnTargetUpdated="True"  />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
@@ -92,11 +93,11 @@
                                     <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Giới tính</TextBlock>
                                     <ComboBox Width="180" HorizontalAlignment="Left"
                                             Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                            ItemsSource="{Binding ShortStringList}"
+                                            ItemsSource="{Binding LstGender}"
                                             materialDesign:TextFieldAssist.HasClearButton="True">
                                         <ComboBox.SelectedItem>
                                             <Binding
-                                                Path="SelectedValidationOutlined"
+                                                Path="GioiTinh"
                                                 Mode="TwoWay"
                                                 UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
@@ -110,7 +111,7 @@
                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                         VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="HovaTenlot"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="SDT"  UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
                                                     <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
                                                 </Binding.ValidationRules>
@@ -119,22 +120,10 @@
                                     </TextBox>
                                 </StackPanel>
                             </Grid>
-                            <Grid Grid.Column="1" Name="grb_hoten" Margin="20,0,30,0">
-                                <StackPanel Grid.Column="1" 
-                                            
-                                            HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="0,15,0,0" FontSize="15" FontWeight="Bold">Tên</TextBlock>
-                                    <TextBox Margin="0,5,0,0"
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
-                                        <TextBox.Text>
-                                            <Binding Path="HovaTenlot"  UpdateSourceTrigger="PropertyChanged">
-                                                <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
-                                                </Binding.ValidationRules>
-                                            </Binding>
-                                        </TextBox.Text>
-                                    </TextBox>
+                            <Grid Grid.Column="1" Name="grb_hoten" Margin="20,86,30,0">
+                                <StackPanel Grid.Column="1"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
                                     <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Ngày sinh</TextBlock>
                                     <DatePicker HorizontalAlignment="Left"
                                             Width="180"
@@ -142,8 +131,7 @@
                                             materialDesign:HintAssist.HelperText="Helper text"
                                             Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
                                         <DatePicker.SelectedDate>
-                                            <Binding
-                                                    Path="FutureValidatingDate"
+                                            <Binding Path="NgaySinh"
                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
                                                     <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
@@ -156,7 +144,7 @@
                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                         VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="HovaTenlot"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="Email"  UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
                                                     <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
                                                 </Binding.ValidationRules>
@@ -177,7 +165,7 @@
                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                         VerticalAlignment="Top">
                                     <TextBox.Text>
-                                        <Binding Path="HovaTenlot"  UpdateSourceTrigger="PropertyChanged">
+                                        <Binding Path="DiaChi"  UpdateSourceTrigger="PropertyChanged">
                                             <Binding.ValidationRules>
                                                 <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
                                             </Binding.ValidationRules>
@@ -202,8 +190,7 @@
                                             materialDesign:HintAssist.HelperText="Helper text"
                                             Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
                                         <DatePicker.SelectedDate>
-                                            <Binding
-                                                    Path="FutureValidatingDate"
+                                            <Binding Path="NgayVaoLam"
                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
                                                     <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
@@ -222,7 +209,7 @@
                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                         VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="HovaTenlot"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="HeSoLuong"  UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
                                                     <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
                                                 </Binding.ValidationRules>
@@ -235,7 +222,7 @@
                             
                         </Grid>
                         <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,30,20">
-                            <Button Name="btn_CapNhat"
+                            <Button Name="btn_Update"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="40"
                                     Width="150"
@@ -245,7 +232,12 @@
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="Click">
+                                        <i:InvokeCommandAction Command="{Binding UpdateCommand}"
+                                                               CommandParameter="{Binding ElementName=BigestGrid}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
                             </Button>
                             
                             <Button Name="btn_Huybo"
@@ -259,7 +251,9 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_Huybo_Click">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding CloseCommand}"
+                                    CommandParameter="{Binding ElementName=CapNhatTaiKhoan}">
                                 
                             </Button>
                         </StackPanel>

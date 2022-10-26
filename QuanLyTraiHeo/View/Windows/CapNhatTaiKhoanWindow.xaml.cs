@@ -26,18 +26,8 @@ namespace QuanLyTraiHeo.View.Windows
         {
             InitializeComponent();
         }
-
-        private void btn_Huybo_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBoxResult dlr = MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo);
-            if (dlr == MessageBoxResult.Yes)
-            {
-                this.Close();
-                return;
-            }
-            return;
-        }
     }
+
     public class NotEmptyValidationRule : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
