@@ -144,6 +144,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\NguoiGui.cs" />
     <Compile Include="Model\NHANVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -168,6 +169,7 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
@@ -175,6 +177,10 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Tạo thông báo\ChonNguoiGui.xaml.cs">
+      <DependentUpon>ChonNguoiGui.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>
@@ -258,7 +264,7 @@
     <Compile Include="View\Windows\DoiMatKhau.xaml.cs">
       <DependentUpon>DoiMatKhau.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\TaoThongBaoWindow.xaml.cs">
+    <Compile Include="View\Windows\Tạo thông báo\TaoThongBaoWindow.xaml.cs">
       <DependentUpon>TaoThongBaoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\Caymuctieu.xaml.cs">
@@ -318,6 +324,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Tạo thông báo\ChonNguoiGui.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -430,7 +440,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\TaoThongBaoWindow.xaml">
+    <Page Include="View\Windows\Tạo thông báo\TaoThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

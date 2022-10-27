@@ -13,4 +13,6 @@
     <viewModel:PhieuBanHeoVM x:Key="PhieuBanHeoVM"></viewModel:PhieuBanHeoVM>
     <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
     <viewModel:LapLichTiemVM x:Key="LapLichTiemVM"></viewModel:LapLichTiemVM>
+    <viewModel:TaoThongBaoVM x:Key="TaoThongBaoVM"></viewModel:TaoThongBaoVM>
+    <viewModel:ChonNguoiGuiVM x:Key="ChonNguoiGuiVM"></viewModel:ChonNguoiGuiVM>
 </ResourceDictionary>

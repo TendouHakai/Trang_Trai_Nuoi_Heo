@@ -130,7 +130,6 @@
                     <ListView Margin="25 0" Name="list_HangHoa" >
                         <ListView.View>
                             <GridView>
-
                                 <GridViewColumn Header="Mã nhân viên"/>
                                 <GridViewColumn Header="Họ tên"/>
                                 <GridViewColumn Header="Mã chức vụ"/>
