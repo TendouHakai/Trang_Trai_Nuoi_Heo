@@ -11,7 +11,8 @@ namespace QuanLyTraiHeo.Model
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.Threading.Tasks;
+
     public partial class LOAIHEO
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -26,5 +27,7 @@ namespace QuanLyTraiHeo.Model
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HEO> HEOs { get; set; }
+
+        
     }
 }

@@ -31,16 +31,16 @@
                 <materialDesign:Card Height="64" Margin="0,5,0,0">
                     <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0">Thông tin loại heo</TextBlock>
                 </materialDesign:Card>
-                <TextBox Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
+                <TextBox x:Name="Pigcode_textbox" Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
                             materialDesign:HintAssist.Hint="Nhập mã loại heo"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center" />
-                <TextBox Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
+                <TextBox x:Name="Pigname_textbox" Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
                             materialDesign:HintAssist.Hint="Nhập tên loại heo"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center" />
                 <TextBlock Margin="10,20,0,5" FontWeight="Bold" >Mô tả</TextBlock>
-                <TextBox Grid.Row="1" Margin="10,0,10,0"
+                <TextBox x:Name="Mota_textbox" Grid.Row="1" Margin="10,0,10,0"
                 Style="{StaticResource MaterialDesignOutlinedTextBox}"
                 VerticalAlignment="Top"
                 Height="270"
@@ -60,7 +60,7 @@
                         FontSize="16"
                         Background="#00de1e"
                         materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_ThemClick">
 
                 </Button>
                 <Button Margin="20,10,20,0"
@@ -72,7 +72,7 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         Foreground="#00de1e"
                         Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_SuaClick">
 
                 </Button>
             </StackPanel>
@@ -95,9 +95,9 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <materialDesign:PackIcon Kind="Search" Margin="10 5 0 0 "/>
-                                <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,0,20,0" />
+                                <TextBox x:Name="Find_textbox" materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,0,20,0" />
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
+                                    <Button x:Name="Find_button"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
                                     Width="120"
@@ -106,7 +106,7 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Find_button_Click">
 
                                     </Button>
                                 </StackPanel>
@@ -116,22 +116,54 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView
-                        ItemsSource="{Binding lstTinhTrangHeo}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Maloaiheo}"
-                                        Header="Mã loại heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Tenloaiheo}"
-                                        Header="Tên loại heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Mota}"
-                                        Header="Mô tả" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <!--<DataGrid 
+                        ItemsSource="{Binding Items2}"
+                        CanUserAddRows="False"
+                        SelectionUnit="Cell"
+                        SelectionMode="Extended" ClipboardCopyMode="IncludeHeader" HeadersVisibility="None" />
+-->
+                    <DataGrid x:Name="Datagrid_loaiheo"
+                        ItemsSource="{Binding Items1}"
+                        CanUserAddRows="False"
+                        HeadersVisibility="All" Cursor="Pen">
+                        <DataGrid.ItemBindingGroup>
+                            <BindingGroup/>
+                        </DataGrid.ItemBindingGroup>
+                        <!--DataGrid.Columns>
+                            <DataGridTextColumn x:Name="col1"
+                                Binding="{Binding Code}"
+                                Header="Mã loại heo"                                
+                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
+                            <materialDesign:DataGridTextColumn
+                                
+                                Header="Tên loại heo"
+                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
+                                <materialDesign:DataGridTextColumn.Binding>
+                                    <Binding
+                                        Path="Name">
+                                        <Binding.ValidationRules>
+                                            <local:NotEmptyValidationRule xmlns:domain="clr-namespace:QuanLyTraiHeo.View.Windows" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </materialDesign:DataGridTextColumn.Binding>
+                            </materialDesign:DataGridTextColumn>
+                            <DataGridTextColumn
+                                Header="Mô tả"
+                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}">
+                                <DataGridTextColumn.Binding>
+                                    <Binding
+                                        Path="Description">
+                                        <Binding.ValidationRules>
+                                            <domain:NotEmptyValidationRule xmlns:domain="clr-namespace:QuanLyTraiHeo.View.Windows" />
+                                        </Binding.ValidationRules>
+                                    </Binding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns-->
+                    </DataGrid>
                 </StackPanel>
 
             </materialDesign:Card>

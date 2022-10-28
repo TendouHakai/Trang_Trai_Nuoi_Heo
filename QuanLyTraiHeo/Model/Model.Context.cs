@@ -12,7 +12,8 @@ namespace QuanLyTraiHeo.Model
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-    
+    using System.Threading.Tasks;
+
     public partial class TRANGTRAINUOIHEOEntities : DbContext
     {
         public TRANGTRAINUOIHEOEntities()
@@ -24,7 +25,8 @@ namespace QuanLyTraiHeo.Model
         {
             throw new UnintentionalCodeFirstException();
         }
-    
+
+        
         public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
         public virtual DbSet<CHUONGTRAI> CHUONGTRAIs { get; set; }
         public virtual DbSet<CT_PHIEUHANGHOA> CT_PHIEUHANGHOA { get; set; }
@@ -38,7 +40,7 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<LICHPHOIGIONG> LICHPHOIGIONGs { get; set; }
         public virtual DbSet<LICHTIEMHEO> LICHTIEMHEOs { get; set; }
         public virtual DbSet<LOAICHUONG> LOAICHUONGs { get; set; }
-        public virtual DbSet<LOAIHEO> LOAIHEOs { get; set; }
+        public DbSet<LOAIHEO> LOAIHEOs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PERMISION> PERMISIONs { get; set; }
         public virtual DbSet<PERMISION_DETAIL> PERMISION_DETAIL { get; set; }
