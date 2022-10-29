@@ -8,7 +8,7 @@
         Title="Quản lý thông tin nhân viên " 
         Height="768"
         Width="1024">
-    <Grid Margin="20,0,20,0">
+    <Grid Margin="20,0,20,0" DataContext="{StaticResource NhanVienVM}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -117,7 +117,7 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    Command="{Binding ThemNhanVienCommand}" >
 
                                     </Button>
                                 </StackPanel>
@@ -127,21 +127,22 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView Margin="25 0" Name="list_HangHoa" >
+                    <ListView Margin="25 0" ItemsSource="{Binding listNhanvien}">
                         <ListView.View>
                             <GridView>
 
-                                <GridViewColumn Header="Mã nhân viên"/>
-                                <GridViewColumn Header="Họ tên"/>
-                                <GridViewColumn Header="Mã chức vụ"/>
-                                <GridViewColumn Header="Giới tính"/>
-                                <GridViewColumn Header="Ngày sinh"/>
-                                <GridViewColumn Header="Địa chỉ"/>
-                                <GridViewColumn Header="Email"/>
-                                <GridViewColumn Header="Số điện thoại"/>
-                                <GridViewColumn Header="Ngày vào làm"/>
-                                <GridViewColumn Header="Hệ số lương"/>
-                                <GridViewColumn Header="Username"/>
+                                <GridViewColumn Header="Mã nhân viên"
+                                                DisplayMemberBinding="{Binding MaNhanVien}"/>
+                                <GridViewColumn Header="Họ tên"
+                                                DisplayMemberBinding="{Binding HoTen}"/>
+                                <GridViewColumn Header="Chức vụ"
+                                                DisplayMemberBinding="{Binding CHUCVU.TenChucVu}"/>
+                                <GridViewColumn Header="Số điện thoại"
+                                                DisplayMemberBinding="{Binding SDT}"/>
+                                <GridViewColumn Header="Hệ số lương"
+                                                  DisplayMemberBinding="{Binding HeSoLuong}"/>
+                                <GridViewColumn Header="Username"
+                                                DisplayMemberBinding="{Binding C_Username}"/>
                             </GridView>
                         </ListView.View>
                         <ListView.ContextMenu>

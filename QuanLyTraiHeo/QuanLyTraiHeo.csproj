@@ -168,6 +168,7 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Quản lý nhân viên\NhanVienVM.cs" />
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
