@@ -24,10 +24,5 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ
         {
             InitializeComponent();
         }
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            ThemChucVu themChucVu = new ThemChucVu();
-            themChucVu.ShowDialog();
-        }
     }
 }

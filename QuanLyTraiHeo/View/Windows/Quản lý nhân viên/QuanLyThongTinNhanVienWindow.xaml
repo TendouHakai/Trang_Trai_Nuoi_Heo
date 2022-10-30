@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="Quản lý thông tin nhân viên " 
         Height="768"
-        Width="1024">
+        Width="1024"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
     <Grid Margin="20,0,20,0" DataContext="{StaticResource NhanVienVM}" >
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="300"></ColumnDefinition>
@@ -104,7 +105,18 @@
                                 <Grid Grid.Column="0" Margin="10,0,10,0">
 
                                     <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,10,20,11" />
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm"
+                                             Height="30"
+                                             Margin="30,10,20,11"
+                                             Text="{Binding textTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding TextTimKiemChangeCommand}"
+                                                                       CommandParameter="{Binding ElementName=ListNhanVien}"/>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+
+                                    </TextBox>
 
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
@@ -127,10 +139,11 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView Margin="25 0" ItemsSource="{Binding listNhanvien}">
-                        <ListView.View>
+                    <ListView Margin="5" Name="ListNhanVien"
+                              ItemsSource="{Binding listNhanvien, Mode=TwoWay}"
+                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}" >
+                        <ListView.View >
                             <GridView>
-
                                 <GridViewColumn Header="Mã nhân viên"
                                                 DisplayMemberBinding="{Binding MaNhanVien}"/>
                                 <GridViewColumn Header="Họ tên"
@@ -147,17 +160,15 @@
                         </ListView.View>
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click" >
-                                    <MenuItem.Header>Show</MenuItem.Header>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Command="{Binding EditCommand }" >
+                                    <MenuItem.Header>Xem và chỉnh sửa</MenuItem.Header>
                                 </MenuItem>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
-                                    <MenuItem.Header>Edit</MenuItem.Header>
-                                </MenuItem>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
-                                    <MenuItem.Header>Delete</MenuItem.Header>
-                                </MenuItem>
+                                <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                                    <MenuItem.Header>Xóa</MenuItem.Header>
+                                </MenuItem>-->
                             </ContextMenu>
                         </ListView.ContextMenu>
+                      
                     </ListView>
 
                 </StackPanel>
@@ -166,112 +177,4 @@
         </Grid>
     </Grid>
 
-    <!--<Grid Margin="25 0">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition ></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Height="55" >
-            <Grid.ColumnDefinitions>
-
-                <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition Width="400"></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-            <Border Margin="15 0" Grid.Column="1" BorderBrush="Black" BorderThickness="1" CornerRadius="5">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="30" ></ColumnDefinition>
-                        <ColumnDefinition></ColumnDefinition>
-                    </Grid.ColumnDefinitions>
-                    <materialDesign:PackIcon Grid.Column="0" Kind="Search" Margin="7 15 0 0 "/>
-                    <TextBox Grid.Column="1"
- 			 materialDesign:HintAssist.Hint="Search" Height="30" Margin="0,10,20,11" />
-                </Grid>
-            </Border>
-
-            <materialDesign:Card Grid.Column="2">
-                <Grid>
- <Button Margin="15 0" Width="150" Background="#3ab19b" HorizontalAlignment="Left">Thêm nhân viên</Button>
-            <Button Margin="15 0" Width="180" Background="#3ab19b" HorizontalAlignment="Right">QL loại nhân viên</Button>
-                    <Button Content="Thêm nhân viên" Margin="25 25 400 25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_ThemClick"></Button>
-                    <Button Content="Sửa nhân viên" Margin="25" HorizontalAlignment="Right" VerticalAlignment="Top" Click="btn_SuaClick"></Button>
-
-                </Grid>
-            </materialDesign:Card>
-           
-        </Grid>
-        <Grid Grid.Row="1">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="300"></ColumnDefinition>
-                <ColumnDefinition Width="2*"/>
-            </Grid.ColumnDefinitions>
-            <Grid Grid.Column="0">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="300"></ColumnDefinition>
-                    <ColumnDefinition Width="2*"/>
-                </Grid.ColumnDefinitions>
-
-                <materialDesign:Card Grid.Column="0">
-                    <Grid >
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="60"></RowDefinition>
-                            <RowDefinition Height="60"></RowDefinition>
-                            <RowDefinition Height="60"></RowDefinition>
-                            <RowDefinition Height="60"></RowDefinition>
-                        </Grid.RowDefinitions>
-
-                        <materialDesign:Card Grid.Row="0" Margin="0 5">
-                            <Grid>
-                                <Label HorizontalAlignment="Left" Margin="15 20 0 0">Ngày vào làm:</Label>
-                                <DatePicker Margin="95 20 0 0" HorizontalAlignment="Left" Width="80"></DatePicker>
-                                <Label HorizontalAlignment="Left" Margin="180 20 0 0">Đến</Label>
-                                <DatePicker HorizontalAlignment="Left" Margin="210 20 0 0" Width="80"></DatePicker>
-                            </Grid>
-                        </materialDesign:Card>
-                        <materialDesign:Card Grid.Row="1" Margin="0 5">
-                            <Grid>
-                                <ComboBox  Height="30" Margin="15" Width="100" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="Chức vụ" VerticalAlignment="Center" >
-                                </ComboBox>
-                            </Grid>
-                        </materialDesign:Card>
-                    </Grid>
-                </materialDesign:Card>
-
-            </Grid>
-            <Border Grid.Column="1" HorizontalAlignment="Left">
-                <ListView Margin="25 0" Name="list_HangHoa" >
-                    <ListView.View>
-                        <GridView>
-
-                            <GridViewColumn Header="Mã nhân viên"/>
-                            <GridViewColumn Header="Họ tên"/>
-                            <GridViewColumn Header="Mã chức vụ"/>
-                            <GridViewColumn Header="Giới tính"/>
-                            <GridViewColumn Header="Ngày sinh"/>
-                            <GridViewColumn Header="Địa chỉ"/>
-                            <GridViewColumn Header="Email"/>
-                            <GridViewColumn Header="Số điện thoại"/>
-                            <GridViewColumn Header="Ngày vào làm"/>
-                            <GridViewColumn Header="Hệ số lương"/>
-                            <GridViewColumn Header="Username"/>
-                        </GridView>
-                    </ListView.View>
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click" >
-                                <MenuItem.Header>Show</MenuItem.Header>
-                            </MenuItem>
-                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
-                                <MenuItem.Header>Edit</MenuItem.Header>
-                            </MenuItem>
-                            <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
-                                <MenuItem.Header>Delete</MenuItem.Header>
-                            </MenuItem>
-                        </ContextMenu>
-                    </ListView.ContextMenu>
-                </ListView>
-            </Border>
-        </Grid>
-    </Grid>-->
 </Window>

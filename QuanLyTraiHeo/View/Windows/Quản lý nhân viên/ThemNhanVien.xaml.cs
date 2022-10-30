@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using QuanLyTraiHeo.ViewModel;
 
 namespace QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên
 {

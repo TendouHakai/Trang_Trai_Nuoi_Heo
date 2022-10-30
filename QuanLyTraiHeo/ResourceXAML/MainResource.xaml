@@ -14,4 +14,6 @@
     <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
     <viewModel:LapLichTiemVM x:Key="LapLichTiemVM"></viewModel:LapLichTiemVM>
     <viewModel:NhanVienVM x:Key="NhanVienVM"></viewModel:NhanVienVM>
+    <viewModel:ThemNhanVienVM x:Key="ThemNhanVienVM"></viewModel:ThemNhanVienVM>
+    <viewModel:ChucVuVM x:Key="ChucVuVM"></viewModel:ChucVuVM>
 </ResourceDictionary>

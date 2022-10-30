@@ -168,6 +168,8 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Quản lý chức vụ\PermissionUCVM.cs" />
+    <Compile Include="ViewModel\Quản lý chức vụ\ChucVuVM.cs" />
     <Compile Include="ViewModel\Quản lý nhân viên\NhanVienVM.cs" />
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
@@ -176,11 +178,13 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Quản lý nhân viên\ThemNhanVienVM.cs" />
+    <Compile Include="ViewModel\Quản lý nhân viên\SuaNhanVienVM.cs" />
+    <Compile Include="View\QuyenHan.xaml.cs">
+      <DependentUpon>QuyenHan.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml.cs">
-      <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý chuồng nuôi\ThongTinChuong.xaml.cs">
       <DependentUpon>ThongTinChuong.xaml</DependentUpon>
@@ -319,11 +323,11 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml">
+    <Page Include="View\QuyenHan.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml">
+    <Page Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
