@@ -64,7 +64,6 @@
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
@@ -171,16 +170,11 @@
     </Compile>
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
-    <Compile Include="ViewModel\QuanLyThongTinChuongVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTonKhoVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
-    <Compile Include="ViewModel\ShowChuongVM.cs" />
-    <Compile Include="ViewModel\SuaChuongVM.cs" />
-    <Compile Include="ViewModel\ThemChuongVM.cs" />
-    <Compile Include="ViewModel\ThongTinChuongVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>

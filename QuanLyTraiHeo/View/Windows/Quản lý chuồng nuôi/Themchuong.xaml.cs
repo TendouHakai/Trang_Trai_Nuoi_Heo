@@ -12,8 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo.View.Windows 
-{ 
+namespace QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi
+{
     /// <summary>
     /// Interaction logic for Themchuong.xaml
     /// </summary>
