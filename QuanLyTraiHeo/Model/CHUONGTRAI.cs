@@ -9,9 +9,14 @@
 
 namespace QuanLyTraiHeo.Model
 {
+    using Microsoft.Expression.Interactivity.Core;
+    using QuanLyTraiHeo.View.Windows;
+    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
-    
+    using System.Windows;
+    using System.Windows.Input;
+
     public partial class CHUONGTRAI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
