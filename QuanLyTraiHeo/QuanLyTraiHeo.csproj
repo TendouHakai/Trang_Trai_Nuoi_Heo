@@ -189,6 +189,9 @@
     </Compile>
     <Compile Include="ViewModel\Quản lý nhân viên\ThemNhanVienVM.cs" />
     <Compile Include="ViewModel\Quản lý nhân viên\SuaNhanVienVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\QuanLyThongTinCaTheVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\SuaTTHeoVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\ThemTTHeoVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>

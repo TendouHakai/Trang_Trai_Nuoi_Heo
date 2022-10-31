@@ -20,4 +20,7 @@
     <viewModel:ThemNhanVienVM x:Key="ThemNhanVienVM"></viewModel:ThemNhanVienVM>
     <viewModel:ChucVuVM x:Key="ChucVuVM"></viewModel:ChucVuVM>
     <viewModel:SuaChucVuVM x:Key="SuaChucVuVM"></viewModel:SuaChucVuVM>
+    <viewModel:QuanLyThongTinCaTheVM x:Key="QuanLyThongTinCaTheVM"></viewModel:QuanLyThongTinCaTheVM>
+    <viewModel:SuaTTHeoVM x:Key="SuaTTHeoVM"></viewModel:SuaTTHeoVM>
+    <viewModel:ThemTTHeoVM x:Key="ThemTTHeoVM"></viewModel:ThemTTHeoVM>
 </ResourceDictionary>
