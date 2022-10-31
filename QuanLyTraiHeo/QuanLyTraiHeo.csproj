@@ -175,6 +175,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\QuanLyThongTinCaTheVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\SuaTTHeoVM.cs" />
+    <Compile Include="ViewModel\Quản lý đàn heo\ThemTTHeoVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>

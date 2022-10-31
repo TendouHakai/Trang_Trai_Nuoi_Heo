@@ -13,32 +13,13 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo
+namespace QuanLyTraiHeo.View.Windows
 {
     public partial class QuanLyThongTinCaTheWindow : Window
     {
         public QuanLyThongTinCaTheWindow()
         {
             InitializeComponent();
-
-            Listview.Items.Add("abc");
-            Listview.Items.Add("cde");
-        }
-
-        private void Show_Click(object sender, RoutedEventArgs e)
-        {
-            ThongTinHeo t = new ThongTinHeo();
-            t.ShowDialog();
-        }
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            ThemTTHeo themTTHeo = new ThemTTHeo();
-            themTTHeo.ShowDialog();
-        }
-        private void btn_SuaClick(object sender, RoutedEventArgs e)
-        {
-            SuaTTHeo suaTTHeo = new SuaTTHeo();
-            suaTTHeo.ShowDialog();
         }
 
     }
