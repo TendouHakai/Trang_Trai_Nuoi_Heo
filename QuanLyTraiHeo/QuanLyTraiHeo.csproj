@@ -89,6 +89,7 @@
     <Compile Include="Model\CHUCVU.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChucVuModel.cs" />
     <Compile Include="Model\CHUONGTRAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -154,6 +155,7 @@
     <Compile Include="Model\PERMISION_DETAIL.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\PermissionModel.cs" />
     <Compile Include="Model\PHIEUHANGHOA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -171,6 +173,9 @@
     </Compile>
     <Compile Include="ViewModel\DoiMatKhauVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
+    <Compile Include="ViewModel\Quản lý chức vụ\ChucVuVM.cs" />
+    <Compile Include="ViewModel\Quản lý chức vụ\SuaChucVuVM.cs" />
+    <Compile Include="ViewModel\Quản lý nhân viên\NhanVienVM.cs" />
     <Compile Include="ViewModel\Phieu\PhieuBanHeoVM.cs" />
     <Compile Include="ViewModel\QuanLyNhatKyVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoThuChiVM.cs" />
@@ -182,11 +187,10 @@
     <Compile Include="View\Windows\Tạo thông báo\ChonNguoiGui.xaml.cs">
       <DependentUpon>ChonNguoiGui.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Quản lý nhân viên\ThemNhanVienVM.cs" />
+    <Compile Include="ViewModel\Quản lý nhân viên\SuaNhanVienVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml.cs">
-      <DependentUpon>ThongTinNhanVien.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý chuồng nuôi\ThongTinChuong.xaml.cs">
       <DependentUpon>ThongTinChuong.xaml</DependentUpon>
@@ -330,10 +334,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý nhân viên\ThongTinNhanVien.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

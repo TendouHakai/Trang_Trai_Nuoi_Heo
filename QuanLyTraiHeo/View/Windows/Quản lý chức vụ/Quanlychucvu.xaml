@@ -20,129 +20,213 @@
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid Margin="20,0,20,0">
+    <Grid Margin="20,0,20,0"
+          DataContext="{StaticResource ChucVuVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
         </Grid.ColumnDefinitions>
+        <materialDesign:Card Grid.Column="0" >
+                <Grid>
+                    <ScrollViewer 
+                                  VerticalScrollBarVisibility="Auto"
+                                  HorizontalScrollBarVisibility="Auto">
+                    <StackPanel>
+                        <Expander IsExpanded="True"
+                                  Header="Thêm chức vụ mới"
+                                  FontWeight="Bold"
+                                  Background="White">
+                            <StackPanel>
+                                <TextBox Margin="10"
+                                         materialDesign:HintAssist.Hint="Tên chức vụ"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding newChucVu.TenChucVu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <TextBox Margin="10"
+                                         materialDesign:HintAssist.Hint="Lương cơ bản"
+                                         Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                         VerticalAlignment="Center"
+                                         Text="{Binding newChucVu.LuongCoBan ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                <ComboBox Margin="10"
+                                          materialDesign:HintAssist.Hint="Quyyền"
+                                          Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                          ItemsSource="{Binding listPermission, Mode=TwoWay}"
+                                          DisplayMemberPath="Name_Permision"
+                                          SelectedIndex="0"
+                                          SelectedItem="{Binding selectedPermission, Mode=OneWayToSource}">
+                                </ComboBox>
 
-        <materialDesign:Card Grid.Column="0" Margin="0,0,10,0">
-            <StackPanel Orientation="Vertical">
-                <materialDesign:Card Height="64" Margin="0,5,0,0">
-                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0">Thông tin chức vụ</TextBlock>
-                </materialDesign:Card>
-                <TextBox Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
-                            materialDesign:HintAssist.Hint="Nhập mã chức vụ"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            VerticalAlignment="Center" />
-                <TextBox Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
-                            materialDesign:HintAssist.Hint="Nhập tên chức vụ"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            VerticalAlignment="Center" />
-                <TextBox Margin="10,0,0,0" Width="250" HorizontalAlignment="Left"
-                            materialDesign:HintAssist.Hint="Nhập lương cơ bản"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            VerticalAlignment="Center" />
-                <TextBlock Margin="10,20,0,5" FontWeight="Bold" >Mô tả</TextBlock>
-                <TextBox Grid.Row="1" Margin="10,0,10,0"
-                Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                VerticalAlignment="Top"
-                Height="270"
-                AcceptsReturn="True"
-                TextWrapping="Wrap"
-                VerticalScrollBarVisibility="Auto"
-                materialDesign:HintAssist.Hint="Nhập nội dung mô tả công việc"
-                IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+                                <TextBox Grid.Row="1"
+                                         Margin="10,0,10,0"
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         VerticalAlignment="Top"
+                                         Height="150"
+                                         AcceptsReturn="True"
+                                         TextWrapping="Wrap"
+                                         VerticalScrollBarVisibility="Auto"
+                                         materialDesign:HintAssist.Hint="Mô tả công việc"
+                                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+
+                                <Button Margin="20,20,20,0"
+                                        Command="{Binding themCommand}"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        Height="30"
+                                        BorderBrush="White"
+                                        Content="Thêm"
+                                        FontSize="16"
+                                        Background="#00de1e"
+                                        materialDesign:ButtonAssist.CornerRadius="5"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+
+                                </Button>
+                            </StackPanel>
+                        </Expander>
+                        <Expander IsExpanded="True"
+                                  Header="Chỉnh sửa phân quyền"
+                                  FontWeight="Bold"
+                                  Background="White">
+                            <StackPanel>
+                                <ComboBox Margin="10"
+                                          materialDesign:HintAssist.Hint="Quyyền"
+                                          IsEditable="True"
+                                          ItemsSource="{Binding listPermission, Mode=OneWay}"
+                                          DisplayMemberPath="Name_Permision"
+                                          Text ="{Binding PermissionName, Mode=OneWayToSource}"
+                                          SelectedItem="{Binding ModifyPermission, Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <i:InvokeCommandAction Command="{Binding permissionSelectionchanged}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+
+                                </ComboBox>
+
+                                <ListView ItemsSource="{Binding permissionModels}"
+                                          Margin="10">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="">
+                                                <GridViewColumn.CellTemplate>
+                                                    <DataTemplate>
+                                                        <CheckBox IsChecked="{Binding isSelected, Mode=TwoWay}" />
+                                                    </DataTemplate>
+                                                </GridViewColumn.CellTemplate>
+                                            </GridViewColumn>
+                                            <GridViewColumn Header="Hành động"
+                                                            DisplayMemberBinding="{Binding ActionDetail, Mode=TwoWay}" />
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+
+                                <Button Margin="20,20,20,0"
+                                        Style="{StaticResource MaterialDesignRaisedButton}"
+                                        Command="{Binding ChinhSuaPermissionCommand}"
+                                        Height="30"
+                                        BorderBrush="White"
+                                        Content="Chỉnh sửa"
+                                        FontSize="16"
+                                        Background="#00de1e"
+                                        materialDesign:ButtonAssist.CornerRadius="5" >
+                                </Button>
+                            </StackPanel>
+                        </Expander>
+
+                    </StackPanel>
+
+                </ScrollViewer>
+
+                </Grid>
 
 
-
-                <Button Margin="20,20,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Thêm"
-                        FontSize="16"
-                        Background="#00de1e"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                </Button>
-                <Button Margin="20,10,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Sửa"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Foreground="#00de1e"
-                        Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                </Button>
-            </StackPanel>
         </materialDesign:Card>
 
         <Grid Grid.Column="1">
-            <materialDesign:Card>
-                <StackPanel Orientation="Vertical">
-                    <materialDesign:Card>
-                        <Grid>
-                            <Grid.RowDefinitions>
-                                <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
-                            </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,5,0,5">Danh sách chức vụ</TextBlock>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+            <materialDesign:Card Grid.Row="0">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0"
+                               FontWeight="Bold"
+                               FontSize="16"
+                               VerticalAlignment="Center"
+                               Margin="10,5,0,5">Danh sách chức vụ</TextBlock>
 
-                            <Grid Grid.Row="1" Margin="0,0,0,10">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="2*"></ColumnDefinition>
-                                    <ColumnDefinition></ColumnDefinition>
-                                </Grid.ColumnDefinitions>
-                                <materialDesign:PackIcon Kind="Search" Margin="10 5 0 0 "/>
-                                <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,0,20,0" />
+                    <Grid Grid.Row="1"
+                          Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:PackIcon Kind="Search"
+                                                 Margin="9,0,0,0"
+                                                 RenderTransformOrigin="0.459,0.796"
+                                                 VerticalAlignment="Center" />
+                        <TextBox materialDesign:HintAssist.Hint="Tìm kiếm"
+                                 Height="30"
+                                 Margin="33,5,17,5"
+                                 Text="{Binding textTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="TextChanged">
+                                    <i:InvokeCommandAction Command="{Binding TextTimKiemChangeCommand}"
+                                                           CommandParameter="{Binding ElementName=ListChucVu}" />
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
 
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Height="30"
-                                    Width="120"
-                                    BorderBrush="White"
-                                    Content="Tìm"
-                                    FontSize="16"
-                                    Background="#00de1e"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        </TextBox>
 
-                                    </Button>
-                                </StackPanel>
+                        <StackPanel Grid.Column="1"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,0,10,0" />
 
-                            </Grid>
+                    </Grid>
 
-                        </Grid>
-
-                    </materialDesign:Card>
-                    <ListView
-                        ItemsSource="{Binding lstTinhTrangHeo}">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding NgayTiem}"
-                                        Header="Mã chức vụ" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding IDHeo}"
-                                        Header="Tên chức vụ" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Loaiheo}"
-                                        Header="Lương cơ bản" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Loaiheo}"
-                                        Header="Mô tả công việc" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
-                </StackPanel>
+                </Grid>
 
             </materialDesign:Card>
+            <ScrollViewer Grid.Row="1"
+                          VerticalScrollBarVisibility="Auto"
+                          HorizontalScrollBarVisibility="Auto"
+                          Margin="10,10">
+                <ListView x:Name="ListChucVu"
+                          ItemsSource="{Binding listChucVu}"
+                          SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource}"
+                          SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
+                    <ListView.View>
+                        <GridView>
+                            <GridViewColumn DisplayMemberBinding="{Binding MaChucVu}"
+                                            Header="Mã chức vụ" />
+                            <GridViewColumn DisplayMemberBinding="{Binding TenChucVu}"
+                                            Header="Tên chức vụ" />
+                            <GridViewColumn DisplayMemberBinding="{Binding LuongCoBan}"
+                                            Header="Lương cơ bản" />
+                            <GridViewColumn DisplayMemberBinding="{Binding }"
+                                            Header="Mô tả công việc" />
+                        </GridView>
+                        
+                    </ListView.View>
+
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
+                                      Command="{Binding EditCommand}">
+                                <MenuItem.Header>Xem và chỉnh sửa</MenuItem.Header>
+                            </MenuItem>
+                            <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                                    <MenuItem.Header>Xóa</MenuItem.Header>
+                                </MenuItem>-->
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+
+                </ListView>
+            </ScrollViewer>
+
         </Grid>
 
     </Grid>

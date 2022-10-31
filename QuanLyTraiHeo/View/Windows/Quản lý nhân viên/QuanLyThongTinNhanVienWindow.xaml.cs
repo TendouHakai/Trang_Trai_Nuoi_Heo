@@ -24,21 +24,5 @@ namespace QuanLyTraiHeo
         {
             InitializeComponent();
         }
-
-        private void Show_Click(object sender, RoutedEventArgs e)
-        {
-            ThongTinNhanVien f = new ThongTinNhanVien();
-            f.ShowDialog();
-        }
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            ThemNhanVien themNhanVien = new ThemNhanVien();
-            themNhanVien.ShowDialog();
-        }
-        private void btn_SuaClick(object sender, RoutedEventArgs e)
-        {
-            SuaNhanVien suaNhanVien = new SuaNhanVien();
-            suaNhanVien.ShowDialog();
-        }
     }
 }
