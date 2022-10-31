@@ -23,24 +23,6 @@ namespace QuanLyTraiHeo
         public QuanLyThongTinChuong()
         {
             InitializeComponent();
-            Listview.Items.Add("acd");
-        }
-
-        private void Show_Click(object sender, RoutedEventArgs e)
-        {
-            ThongTinChuong f = new ThongTinChuong();
-            f.ShowDialog();
-        }
-
-        private void btn_ThemClick(object sender, RoutedEventArgs e)
-        {
-            Themchuong themchuong = new Themchuong();
-            themchuong.ShowDialog();
-        }
-        private void btn_SuaClick(object sender, RoutedEventArgs e)
-        {
-            SuaChuong suaChuong = new SuaChuong();
-            suaChuong.ShowDialog();
         }
     }
 }

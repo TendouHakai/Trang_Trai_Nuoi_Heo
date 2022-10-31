@@ -175,6 +175,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\QuanLyThongTinChuongVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\SuaChuongVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\ThemChuongVM.cs" />
     <Compile Include="View\Windows\Quản lý kho\ThongTinHangHoa.xaml.cs">
       <DependentUpon>ThongTinHangHoa.xaml</DependentUpon>
     </Compile>
@@ -199,7 +202,7 @@
     <Compile Include="View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.xaml.cs">
       <DependentUpon>PhieuNhapBanHeo.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ViewModel\Quản lý lập lịch\LapLichTiemVM.cs" />
+    <Compile Include="ViewModel\Phieu\Quản lý lập lịch\LapLichTiemVM.cs" />
     <Compile Include="View\Windows\Lập lịch\LichPhoiGiongWindow.xaml.cs">
       <DependentUpon>LichPhoiGiongWindow.xaml</DependentUpon>
     </Compile>
