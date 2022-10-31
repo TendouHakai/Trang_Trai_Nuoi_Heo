@@ -23,16 +23,5 @@ namespace QuanLyTraiHeo.View.Windows
         {
             InitializeComponent();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            MessageBox.Show("Mật khẩu đã được đổi thành công");
-            this.Close();
-        }
-
-        private void TextBlock_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            this.Close();
-        }
     }
 }

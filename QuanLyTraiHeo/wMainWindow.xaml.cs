@@ -157,18 +157,6 @@ namespace QuanLyTraiHeo
             exp_test.IsExpanded = false;
         }
 
-        private void btn_CapNhatMatKhau_Click(object sender, RoutedEventArgs e)
-        {
-            CapNhatTaiKhoanWindow wc = new CapNhatTaiKhoanWindow();
-            wc.ShowDialog();
-        }
-
-        private void btn_DoiMatKhau_Click(object sender, RoutedEventArgs e)
-        {
-            DoiMatKhau wc = new DoiMatKhau();
-            wc.ShowDialog();
-        }
-
         private void btn_TaoThongBao_Click(object sender, RoutedEventArgs e)
         {
             TaoThongBaoWindow wc = new TaoThongBaoWindow();

@@ -4,14 +4,12 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThongTinNhanVien.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\UCLichTiemHeo.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\LichPhoiGiongWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LapLichTiem.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quanlydoitac.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\SuaChuong.g.cs
@@ -42,7 +40,6 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\QuanLyHangHoaWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.g.cs
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Trang chủ\TrangChuWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\wMainWindow.g.cs
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\wLogin.g.cs
@@ -77,14 +74,12 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhân viên\ThongTinNhanVien.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.baml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\UCLichTiemHeo.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\PhieuNhapBanHeo.baml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\LichPhoiGiongWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LapLichTiem.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quanlydoitac.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\SuaChuong.baml
@@ -117,7 +112,6 @@ C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Deb
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý nhật ký\QuanLyNhatKyWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\QuanLyThongTinCaTheWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\QuanLyThongTinChuong.baml
-C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Tra cứu phiếu thu chi\TraCuuPhieuThuChiWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Trang chủ\TrangChuWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\wMainWindow.baml
 C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\ResourceXAML\MainResource.baml
@@ -390,3 +384,10 @@ C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Enti
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.xml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.SqlServer.xml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_Content.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.dll
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.xml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LichPhoiGiongWindow.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo_Content.g.cs
+C:\Users\Tran Thanh\Desktop\merge code\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Lập lịch\LichPhoiGiongWindow.baml

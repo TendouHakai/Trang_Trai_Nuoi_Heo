@@ -26,7 +26,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region Attributes
         public bool IsLoaded = false;
         private string _currentWindow = "";
-        NHANVIEN nhanVien;
+        NHANVIEN nhanVien; 
         #endregion
 
         #region Property
@@ -55,6 +55,9 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenQuanLyChucVu { get; set; }
         public ICommand OpenQuanLyNhatKyWindow { get; set; }
         public ICommand OpenThietLapCayMucTieuWindow { get; set; }
+
+        public ICommand OpenCapNhatTaiKhoan { get; set; }
+        public ICommand OpenDoiMatKhau { get; set; }
         #endregion
 
         #region Event Command
@@ -81,7 +84,6 @@ namespace QuanLyTraiHeo.ViewModel
                     p.Show();
 
                     NhanVien = loginWD.NhanVien;
-
                 }
                 else
                 {
@@ -89,7 +91,18 @@ namespace QuanLyTraiHeo.ViewModel
                 }
 
             });
-            #region CodeCommandOpenWindow
+
+            CodeCommandOpenWindow();
+        }
+
+        #region Method
+        public void UpdateNhanVien()
+        {
+            OnPropertyChanged("NhanVien");
+        }
+
+        void CodeCommandOpenWindow()
+        {
             OpenTrangChuWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 TrangChuWindow wc = new TrangChuWindow();
                 wc.Close();
@@ -261,9 +274,23 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Add(content as UIElement);
                 currentWindow = "Thiết lập cây mục tiêu";
             });
-            #endregion
 
+            OpenCapNhatTaiKhoan = new RelayCommand<Window>((p) => { return true; }, p => {
+                CapNhatTaiKhoanWindow wc = new CapNhatTaiKhoanWindow();
+                CapNhatTaiKhoanVM capNhatTaiKhoanVM = new CapNhatTaiKhoanVM(this);
+                wc.DataContext = capNhatTaiKhoanVM;
+                wc.ShowDialog();
+
+            });
+
+            OpenDoiMatKhau = new RelayCommand<Window>((p) => { return true; }, p => {
+                DoiMatKhau wc = new DoiMatKhau();
+                DoiMatKhauVM capNhatTaiKhoanVM = new DoiMatKhauVM(this);
+                wc.DataContext = capNhatTaiKhoanVM;
+                wc.ShowDialog();
+
+            });
         }
-        
+        #endregion
     }
 }
