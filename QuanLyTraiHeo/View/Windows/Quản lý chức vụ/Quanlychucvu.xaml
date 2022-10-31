@@ -41,19 +41,19 @@
                                          materialDesign:HintAssist.Hint="Tên chức vụ"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          VerticalAlignment="Center"
-                                         Text="{Binding newChucVu.TenChucVu, Mode=TwoWay}" />
+                                         Text="{Binding newChucVu.TenChucVu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBox Margin="10"
                                          materialDesign:HintAssist.Hint="Lương cơ bản"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          VerticalAlignment="Center"
-                                         Text="{Binding newChucVu.LuongCoBan}" />
+                                         Text="{Binding newChucVu.LuongCoBan ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <ComboBox Margin="10"
                                           materialDesign:HintAssist.Hint="Quyyền"
                                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                          ItemsSource="{Binding listPermission, Mode=OneWay}"
+                                          ItemsSource="{Binding listPermission, Mode=TwoWay}"
                                           DisplayMemberPath="Name_Permision"
                                           SelectedIndex="0"
-                                          SelectedItem="{Binding selectedPermission, Mode=TwoWay}">
+                                          SelectedItem="{Binding selectedPermission, Mode=OneWayToSource}">
                                 </ComboBox>
 
                                 <TextBox Grid.Row="1"
@@ -76,19 +76,6 @@
                                         FontSize="16"
                                         Background="#00de1e"
                                         materialDesign:ButtonAssist.CornerRadius="5"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                                </Button>
-                                <Button Margin="20,10,20,0"
-                                        Command="{Binding suaCommand}"
-                                        Style="{StaticResource MaterialDesignRaisedButton}"
-                                        Height="30"
-                                        BorderBrush="White"
-                                        Content="Sửa"
-                                        FontSize="16"
-                                        materialDesign:ButtonAssist.CornerRadius="5"
-                                        Foreground="#00de1e"
-                                        Background="#dcf7e0"
                                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
 
                                 </Button>
@@ -209,7 +196,8 @@
                           Margin="10,10">
                 <ListView x:Name="ListChucVu"
                           ItemsSource="{Binding listChucVu}"
-                          SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource, UpdateSourceTrigger=PropertyChanged}">
+                          SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource}"
+                          SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
                     <ListView.View>
                         <GridView>
                             <GridViewColumn DisplayMemberBinding="{Binding MaChucVu}"
@@ -221,7 +209,21 @@
                             <GridViewColumn DisplayMemberBinding="{Binding }"
                                             Header="Mô tả công việc" />
                         </GridView>
+                        
                     </ListView.View>
+
+                    <ListView.ContextMenu>
+                        <ContextMenu>
+                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
+                                      Command="{Binding EditCommand}">
+                                <MenuItem.Header>Xem và chỉnh sửa</MenuItem.Header>
+                            </MenuItem>
+                            <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                                    <MenuItem.Header>Xóa</MenuItem.Header>
+                                </MenuItem>-->
+                        </ContextMenu>
+                    </ListView.ContextMenu>
+
                 </ListView>
             </ScrollViewer>
 
