@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuanLyTraiHeo.Model;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,15 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
     /// </summary>
     public partial class SuaLoaiHeo : Window
     {
+
         public SuaLoaiHeo()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

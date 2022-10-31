@@ -19,14 +19,14 @@
         <StackPanel VerticalAlignment="Center" Margin="5">
             <materialDesign:Card Margin="5" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center">
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã loại heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Tên loại heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mô tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="Textcode" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã loại heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="Textname" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Tên loại heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textmota" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mô tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
                 <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <Button Background="#3ab19b" Content="Xác nhận" Width="150" Height="40" VerticalAlignment="Bottom"></Button>
+                    <Button Background="#3ab19b" Content="Xác nhận" Width="150" Height="40" VerticalAlignment="Bottom" Click="Button_Click"></Button>
                 </Border>
             </materialDesign:Card>
         </StackPanel>
