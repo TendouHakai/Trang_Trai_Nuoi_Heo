@@ -17,34 +17,100 @@ namespace QuanLyTraiHeo.ViewModel
     {
         public ObservableCollection<CHUCVU> listChucVu { get; set; }
         public ObservableCollection<PERMISION> listPermission { get; set; }
+        public ObservableCollection<PermissionModel> permissionModels { get; set; }
         public PERMISION selectedPermission { get; set; }
+        public PERMISION ModifyPermission { get; set; }
         public CHUCVU selectedChucVu { get; set; }
         public CHUCVU newChucVu { get; set; }
         public string textTimKiem { get; set; }
+        public string PermissionName { get; set; }
         public ICommand themCommand { get; set; }
         public ICommand suaCommand { get; set; }
         public ICommand TextTimKiemChangeCommand { get; set; }
-
+        public ICommand ChinhSuaPermissionCommand { get; set; }
+        public ICommand permissionSelectionchanged { get; set; }
 
         public ChucVuVM()
         {
 
             textTimKiem = "";
+
+
             listChucVu = new ObservableCollection<CHUCVU>();
             listPermission = new ObservableCollection<PERMISION>();
             selectedChucVu = new CHUCVU();
             newChucVu = new CHUCVU();
             selectedPermission = new PERMISION();
-
+            ModifyPermission = new PERMISION();
             themCommand = new RelayCommand<Grid>((p) => { return true; }, p => { ThemChucVu(); });
             suaCommand = new RelayCommand<Grid>((p) => { return true; }, p => { suaChucVu(); });
+
+            ChinhSuaPermissionCommand = new RelayCommand<Button>((p) => { return true; }, p => { ChinhSuaPermission(); });
+            permissionSelectionchanged = new RelayCommand<Button>((p) => { return true; }, p => { PermissionSelectionChanged(); });
+
+
             TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => {
                 LoadListChucVu();
             });
             LoadListPermission();
             LoadListChucVu();
+            permissionModels = new ObservableCollection<PermissionModel>();
+            permissionModels.Add(new PermissionModel(false,"QuanLyNhanVien",1));
+            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo",2));
+            permissionModels.Add(new PermissionModel(false, "QuanLyKho",3));
+            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh",4));
+            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu",5));
+            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy",6));
+
         }
 
+        private void ChinhSuaPermission()
+        {
+            if (PermissionName == String.Empty)
+            {
+                MessageBox.Show("Vui lòng điền tên chức vụ!");
+                return;
+                    }
+                    if(ModifyPermission == null)
+            {
+
+                ModifyPermission = new PERMISION();
+                ModifyPermission.ID_Permision = "Per"+ listPermission.Count.ToString();
+                ModifyPermission.Name_Permision = PermissionName;
+                DataProvider.Ins.DB.PERMISIONs.Add(ModifyPermission);
+            }
+            else if(ModifyPermission.Name_Permision != PermissionName)
+            {
+
+                ModifyPermission = new PERMISION();
+                ModifyPermission.ID_Permision = "Per" + listPermission.Count.ToString();
+                ModifyPermission.Name_Permision = PermissionName;
+                DataProvider.Ins.DB.PERMISIONs.Add(ModifyPermission);
+
+            }
+
+            DataProvider.Ins.DB.SaveChanges();
+
+
+            DataProvider.Ins.DB.PERMISION_DETAIL.RemoveRange(DataProvider.Ins.DB.PERMISION_DETAIL.Where(x => x.ID_Permision == ModifyPermission.ID_Permision));
+            DataProvider.Ins.DB.SaveChanges();
+
+
+            foreach (var item in permissionModels)
+                if(item.isSelected)
+                {
+                    PERMISION_DETAIL pERMISION_DETAIL = new PERMISION_DETAIL();
+                    pERMISION_DETAIL.ID_PermisionDetail = ("PD" + ModifyPermission.ID_Permision + item.number.ToString()).ToString().Replace(" ","");
+                    pERMISION_DETAIL.ActionDetail = item.ActionDetail;
+                    pERMISION_DETAIL.ID_Permision = ModifyPermission.ID_Permision;
+                    MessageBox.Show(pERMISION_DETAIL.ID_PermisionDetail);
+                    DataProvider.Ins.DB.PERMISION_DETAIL.Add(pERMISION_DETAIL);
+                }
+
+            DataProvider.Ins.DB.SaveChanges();
+            LoadListPermission();
+
+        }
         private void LoadListChucVu()
         {
             listChucVu.Clear();
@@ -54,7 +120,25 @@ namespace QuanLyTraiHeo.ViewModel
                 listChucVu.Add(items);
           
         }
+        private void PermissionSelectionChanged()
+        {
+            if (ModifyPermission == null)
+                return;
+permissionModels.Clear();
+            permissionModels.Add(new PermissionModel(false, "QuanLyNhanVien", 1));
+            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo", 2));
+            permissionModels.Add(new PermissionModel(false, "QuanLyKho", 3));
+            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh", 4));
+            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu", 5));
+            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy", 6));
 
+            foreach (var item in ModifyPermission.PERMISION_DETAIL)
+                foreach (var item2 in permissionModels)
+                    if (item.ActionDetail == item2.ActionDetail)
+                    {
+                        item2.isSelected = true;
+                    }
+        }
         private void ThemChucVu()
         {
             //if (selectedChucVu == null)
@@ -94,7 +178,7 @@ namespace QuanLyTraiHeo.ViewModel
         }
         private void suaChucVu ()
         {
-
+            
         }
     }
 }

@@ -18,21 +18,25 @@ namespace QuanLyTraiHeo.ViewModel
     public class NhanVienVM:BaseViewModel
     {
         public ObservableCollection<NHANVIEN> listNhanvien { get; set; }
+
+        public ObservableCollection<ChucVuModel> listChucVu { get; set; }
         public int listviewSelectedIndex { get; set; }
         public string textTimKiem { get; set; }
         public ICommand ThemNhanVienCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand TextTimKiemChangeCommand { get; set; }
-
         public NhanVienVM()
         {
             textTimKiem = "";
             listNhanvien = new ObservableCollection<NHANVIEN>();
+            listChucVu = new ObservableCollection<ChucVuModel>();
             listviewSelectedIndex = 0;
             ThemNhanVienCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemNhanVien(p); });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
             TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { TextTimKiemChanged(p); });
             LoadListNhanVien();
+            LoadListChucVu();
+            
         }
         public void ThemNhanVien(Window p)
         {
@@ -51,9 +55,31 @@ namespace QuanLyTraiHeo.ViewModel
 
             var listnhanvien = DataProvider.Ins.DB.NHANVIENs.Where(s => s.HoTen.Contains(textTimKiem)).ToList();
             foreach (var items in listnhanvien)
+            {
+                int flag = 0;
+                foreach(var items2 in listChucVu)
+                {
+                    if (items2.isSelected == false)
+                        if (items.CHUCVU.TenChucVu == items2.TenChucVu)
+                        {
+                            flag = 1;
+                            break;
+                        }
+                }
+                if(flag == 0)
                 listNhanvien.Add(items);
+            }
         }
 
+        void LoadListChucVu()
+        {
+            listChucVu.Clear();
+
+            var listchucvu = DataProvider.Ins.DB.CHUCVUs.ToList();
+            foreach (var items in listchucvu)
+                listChucVu.Add(new ChucVuModel(true, items.TenChucVu));
+
+        }
         public void Edit(Window p)
         {
             if(listviewSelectedIndex <0)
