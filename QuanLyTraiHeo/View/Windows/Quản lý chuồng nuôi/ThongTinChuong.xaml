@@ -7,28 +7,28 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="Thông tin chuồng" Height="450" Width="800">
-        
-        <Grid Margin="25 10" >
-            <Grid.RowDefinitions>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
-                <RowDefinition></RowDefinition>
+
+    <Grid Margin="25 10" >
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-            <TextBlock Grid.Row="0" HorizontalAlignment="Left"> Mã chuồng heo</TextBlock>
-            <TextBlock Margin=" 99 0 0 0" Grid.Row="0"> CH001</TextBlock>
-            <TextBlock Grid.Row="1" HorizontalAlignment="Left">Mã loại chuồng</TextBlock>
-            <TextBlock Margin=" 99 0 0 0" Grid.Row="1"> LC001</TextBlock>
-            <TextBlock Grid.Row="1" Margin=" 199 0 0 0"  HorizontalAlignment="Left">Tên loại chuồng</TextBlock>
-            <TextBlock Margin=" 299 0 0 0" HorizontalAlignment="Left" Grid.Row="1"> Vip</TextBlock>
-            <TextBlock Grid.Row="2" HorizontalAlignment="Left">Tình Trạng</TextBlock>
-            <TextBlock Margin=" 99 0 0 0" Grid.Row="2"> Còn trống</TextBlock>
-            <TextBlock Grid.Row="3" HorizontalAlignment="Left">Sức chứa tôi đa</TextBlock>
-        <TextBlock Margin=" 99 0 0 0" HorizontalAlignment="Left" Grid.Row="3"> 24</TextBlock>
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left"> Mã chuồng heo</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="0" Text="{Binding MaChuong}"></TextBlock>
+        <TextBlock Grid.Row="1" HorizontalAlignment="Left">Mã loại chuồng</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="1" Text="{Binding MaLoaiChuong}"></TextBlock>
+        <TextBlock Grid.Row="1" Margin=" 199 0 0 0"  HorizontalAlignment="Left">Tên loại chuồng</TextBlock>
+        <TextBlock Margin=" 299 0 0 0" HorizontalAlignment="Left" Grid.Row="1" Text="{Binding LOAICHUONG.TenLoai}"></TextBlock>
+        <TextBlock Grid.Row="2" HorizontalAlignment="Left">Tình Trạng</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="2" Text="{Binding TinhTrang}"></TextBlock>
+        <TextBlock Grid.Row="3" HorizontalAlignment="Left">Sức chứa tôi đa</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" HorizontalAlignment="Left" Grid.Row="3" Text="{Binding SucChuaToiDa}"></TextBlock>
         <TextBlock Grid.Row="4" HorizontalAlignment="Left">Số lượng heo</TextBlock>
-        <TextBlock Margin=" 99 0 0 0" Grid.Row="4"> 12</TextBlock>
+        <TextBlock Margin=" 99 0 0 0" Grid.Row="4" Text="{Binding SoLuongHeo}"></TextBlock>
         <Button Grid.Row="10" Width="100" Background="#3ab19b" HorizontalAlignment="Center" Click="btn_Thoat_Click">Thoát</Button>
     </Grid>
 </Window>
