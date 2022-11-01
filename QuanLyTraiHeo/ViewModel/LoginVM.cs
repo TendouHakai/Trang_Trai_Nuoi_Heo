@@ -18,6 +18,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region command
         public ICommand LoginCommand { get; set; }
         public ICommand PasswordChangedCommand { get; set; }
+        public ICommand EnterEvent { get; set; }
         #endregion
 
         #region attributes
@@ -40,8 +41,9 @@ namespace QuanLyTraiHeo.ViewModel
             _username = QuanLyTraiHeo.Properties.Settings.Default.Username;
             _password = QuanLyTraiHeo.Properties.Settings.Default.Password;
 
-            LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword(); }, p => { Login(p); });
+            LoginCommand = new RelayCommand<Window>((p) => { return CheckEmtyUserNameAndPassword();}, p => { Login(p); });
             PasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, p => { Password = p.Password; });
+            
         }
 
         void Login(Window p)

@@ -53,8 +53,8 @@
                         </DataTemplate>
                     </ListBox.ItemTemplate>
                 </ListBox>-->
-                <TextBox Height="25" Margin="15,0,0,0" Width="600" 
-                        materialDesign:HintAssist.Hint="nhập danh sách người nhận" IsEnabled="False"
+                <TextBox Height="25" Margin="15,0,0,0" Width="600"
+                        materialDesign:HintAssist.Hint="nhập danh sách người nhận" IsReadOnly="True"
                          Text="{Binding txtNGUOIGUI}">
                 </TextBox>
                 <Button Margin="20,0,0,0"

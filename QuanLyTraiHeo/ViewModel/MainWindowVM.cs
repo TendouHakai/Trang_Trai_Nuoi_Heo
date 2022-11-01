@@ -6,6 +6,7 @@ using QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo;
 using QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
@@ -26,13 +27,16 @@ namespace QuanLyTraiHeo.ViewModel
         #region Attributes
         public bool IsLoaded = false;
         private string _currentWindow = "";
-        NHANVIEN nhanVien; 
+        NHANVIEN nhanVien;
+        private ObservableCollection<ThongBao> _listTHONGBAO;
+        private ThongBao _selectedItem;
         #endregion
 
         #region Property
         public string currentWindow { get => _currentWindow; set { _currentWindow = value; OnPropertyChanged(); } }
         public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
-
+        public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
+        public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
         #endregion
 
         #region CommandOpenWindow
@@ -62,12 +66,13 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Event Command
         public ICommand LoadedWindowCommand { get; set; }
-        
+        public ICommand OpenCTThongBao { get; set; }
         #endregion]
 
         public MainWindowVM()   
         {
             currentWindow = "Trang chủ";
+            
             LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => {
                 IsLoaded = true;
                 p.Hide();
@@ -84,6 +89,7 @@ namespace QuanLyTraiHeo.ViewModel
                     p.Show();
 
                     NhanVien = loginWD.NhanVien;
+                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_UserName == NhanVien.C_Username));
                 }
                 else
                 {
@@ -93,6 +99,15 @@ namespace QuanLyTraiHeo.ViewModel
             });
 
             CodeCommandOpenWindow();
+            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
+                if(selectedItem != null)
+                {
+                    ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
+                    ChiTietThongBaoVM vm = new ChiTietThongBaoVM(this);
+                    wc.DataContext = vm;
+                    wc.ShowDialog();
+                }
+            });
         }
 
         #region Method

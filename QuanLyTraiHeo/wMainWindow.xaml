@@ -418,13 +418,40 @@
                                         Badge="2" BadgeBackground="Red" BadgeForeground="White">
                                     <materialDesign:PopupBox Foreground="White"
                                                 StaysOpen="True" 
-                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                                                >
+                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <materialDesign:PopupBox.ToggleContent>
                                             <materialDesign:PackIcon Kind="BellRing" Foreground="White" Width="20" Height="20">
                                             </materialDesign:PackIcon>
                                         </materialDesign:PopupBox.ToggleContent>
-                                        <StackPanel Width="450">
+                                        <ListBox Width="450" Padding="0" ItemsSource="{Binding listTHONGBAO}" SelectedItem="{Binding selectedItem, Mode=TwoWay}">
+                                            
+                                            <ListBox.ItemTemplate>
+                                                <DataTemplate>
+                                                    <StackPanel Orientation="Vertical">
+                                                        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding TieuDe}"></TextBlock>
+                                                        <TextBlock FontStyle="Italic" FontSize="10" Text="{Binding ThoiGian}"></TextBlock>
+                                                        <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" Text="{Binding NoiDung}"></TextBlock>
+                                                    </StackPanel>
+                                                    <!--<DataTemplate.Triggers>
+                                                        <EventTrigger RoutedEvent="Selected">
+                                                            <i:Interaction.Triggers>
+                                                                <i:EventTrigger EventName="Selected">
+                                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
+                                                                </i:EventTrigger>
+                                                            </i:Interaction.Triggers>
+                                                        </EventTrigger>
+                                                    </DataTemplate.Triggers>-->
+                                                        
+                                                </DataTemplate>
+                                            </ListBox.ItemTemplate>
+                                            
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectionChanged">
+                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </ListBox>
+                                        <!--<StackPanel Width="450">
                                             <Button>
                                                 <StackPanel Orientation="Vertical">
                                                     <TextBlock FontWeight="Bold" TextWrapping="Wrap">Nhận lương cuối tháng</TextBlock>
@@ -440,7 +467,7 @@
                                                 </StackPanel>
                                             </Button>
 
-                                        </StackPanel>
+                                        </StackPanel>-->
                                     </materialDesign:PopupBox>
                                 </materialDesign:Badged>
                                 <Button

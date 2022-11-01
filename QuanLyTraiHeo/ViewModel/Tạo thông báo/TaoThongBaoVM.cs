@@ -42,6 +42,8 @@ namespace QuanLyTraiHeo.ViewModel
         public TaoThongBaoVM()
         {
             txtNGUOIGUI = "";
+            Tieude = "";
+            Noidung = "";
             ListNGUOIGUI = new ObservableCollection<NHANVIEN>();
             #region tạo list CHUCVU
             listCHUCVU = new ObservableCollection<CHUCVU>(DataProvider.Ins.DB.CHUCVUs);
