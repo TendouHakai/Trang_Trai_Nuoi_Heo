@@ -27,41 +27,90 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             InitializeComponent();
 
 
-            load();
+            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+            {
+                Basegiongheo = _context.GIONGHEOs.ToList();
+            }
+            Datagrid_giongheo.ItemsSource = Basegiongheo;
         }
+
+        /// <summary>
+        /// Button event
+        /// </summary>
         private void btn_ThemClick(object sender, RoutedEventArgs e)
         {
-            var t = new GIONGHEO
+            if (text1.Text == "")
             {
-                MaGiongHeo = text1.Text,
-                TenGiongHeo = text2.Text,
-                MoTa = text3.Text
-            };
-            Add_ustomer(t);
-            Datagrid_giongheo.ItemsSource = null;
-            load();
+                MessageBox.Show("Chưa nhập mã loại heo.", "", MessageBoxButton.OK);
+                return;
+            }
+            if (text2.Text == "" || text3.Text == "")
+            {
+                MessageBox.Show("Chưa nhập đầy đủ thông tin.", "", MessageBoxButton.OK);
+                return;
+            }
+            if (text1.Text != "")
+            {
+                if (Isexist(text1.Text) == false)
+                {
+                    var t = new GIONGHEO
+                    {
+                        MaGiongHeo = text1.Text,
+                        TenGiongHeo = text2.Text,
+                        MoTa = text3.Text
+                    };
+                    Add_ustomer(t);
+                }
+                else
+                {
+                    MessageBox.Show("Đã tồn tại mã loại heo trên", "", MessageBoxButton.OK);
+                }
+            }
         }
 
         private void btn_SuaClick(object sender, RoutedEventArgs e)
         {
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+            if (text1.Text == "")
             {
-                updating(text1.Text, text2.Text, text3.Text);
+                MessageBox.Show("Chưa nhập mã loại heo.", "", MessageBoxButton.OK);
+                return;
+            }
+            if (text2.Text == "" || text3.Text == "")
+            {
+                MessageBox.Show("Chưa nhập đầy đủ thông tin.", "", MessageBoxButton.OK);
+                return;
+            }
+            if (text1.Text != "")
+            {
+                using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+                {
+                    updating(text1.Text, text2.Text, text3.Text);
+                }
             }
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            //using (TRANGTRAINUOIHEOEntities context = new TRANGTRAINUOIHEOEntities())
+            {
+                Timkiem(Find_textbox.Text);
+            }
+        }
+
+        /// <summary>
+        /// methods
+        /// </summary>
         void updating(string a, string b, string c)
         {
             using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
             {
-                var t = _context.GIONGHEOs.FirstOrDefault(LOAIHEO => LOAIHEO.MaGiongHeo.Contains(a));
+                var t = _context.GIONGHEOs.FirstOrDefault(GIONGHEO => GIONGHEO.MaGiongHeo.Contains(a));
                 if (t != null)
                 {
                     t.TenGiongHeo = b;
                     t.MoTa = c;
                     _context.SaveChanges();
-                    Datagrid_giongheo.ItemsSource = null;
-                    load();
+                    reloadWithcontext(_context);
                 }
                 else
                 {
@@ -72,25 +121,61 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
 
         public void Add_ustomer(GIONGHEO giongheo)
         {
-            using (var context = new TRANGTRAINUOIHEOEntities())
+            try
             {
-                context.Entry(giongheo).State = System.Data.Entity.EntityState.Added;
-                context.SaveChanges();
+                using (var context = new TRANGTRAINUOIHEOEntities())
+                {
+                    context.Entry(giongheo).State = System.Data.Entity.EntityState.Added;
+                    context.SaveChanges();
+                    reloadWithcontext(context);
+                }
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Lỗi nhập xuất", "", MessageBoxButton.OK);
             }
         }
 
-        public void load()
+        private void Timkiem(string a)
         {
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+            var t = DataProvider.Ins.DB.GIONGHEOs.Where(s => s.MaGiongHeo.Contains(a)).ToList();
+            if (t != null)
             {
-                Basegiongheo = _context.GIONGHEOs.ToList();
+                Basegiongheo.Clear();
+                foreach (var items in t)
+                    Basegiongheo.Add(items);
+                reloadWithDataprovider();
             }
+            else
+            {
+                MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
+            }
+
+        }
+
+        private bool Isexist(string check)
+        {
+            var BaseGiongHeotemp = DataProvider.Ins.DB.GIONGHEOs.Where(s => s.MaGiongHeo.Contains(check)).ToList();
+            if (BaseGiongHeotemp != null)
+            {
+                return false;
+            }
+            return true;
+        }
+
+        public void reloadWithcontext(TRANGTRAINUOIHEOEntities _context)
+        {
+
+            Datagrid_giongheo.ItemsSource = null;
+            Basegiongheo = _context.GIONGHEOs.ToList();
             Datagrid_giongheo.ItemsSource = Basegiongheo;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void reloadWithDataprovider()
         {
-
+            Datagrid_giongheo.ItemsSource = null;
+            Datagrid_giongheo.ItemsSource = Basegiongheo;
         }
     }
 }

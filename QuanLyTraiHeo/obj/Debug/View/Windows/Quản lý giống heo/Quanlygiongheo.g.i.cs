@@ -70,6 +70,22 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo {
         #line hidden
         
         
+        #line 98 "..\..\..\..\..\View\Windows\Quản lý giống heo\Quanlygiongheo.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.TextBox Find_textbox;
+        
+        #line default
+        #line hidden
+        
+        
+        #line 101 "..\..\..\..\..\View\Windows\Quản lý giống heo\Quanlygiongheo.xaml"
+        [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
+        internal System.Windows.Controls.Button Find_button;
+        
+        #line default
+        #line hidden
+        
+        
         #line 120 "..\..\..\..\..\View\Windows\Quản lý giống heo\Quanlygiongheo.xaml"
         [System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1823:AvoidUnusedPrivateFields")]
         internal System.Windows.Controls.DataGrid Datagrid_giongheo;
@@ -134,14 +150,18 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo {
             #line hidden
             return;
             case 6:
+            this.Find_textbox = ((System.Windows.Controls.TextBox)(target));
+            return;
+            case 7:
+            this.Find_button = ((System.Windows.Controls.Button)(target));
             
             #line 110 "..\..\..\..\..\View\Windows\Quản lý giống heo\Quanlygiongheo.xaml"
-            ((System.Windows.Controls.Button)(target)).Click += new System.Windows.RoutedEventHandler(this.Button_Click);
+            this.Find_button.Click += new System.Windows.RoutedEventHandler(this.Button_Click);
             
             #line default
             #line hidden
             return;
-            case 7:
+            case 8:
             this.Datagrid_giongheo = ((System.Windows.Controls.DataGrid)(target));
             return;
             }
