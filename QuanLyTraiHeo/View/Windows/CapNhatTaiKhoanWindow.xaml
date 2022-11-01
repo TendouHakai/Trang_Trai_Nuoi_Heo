@@ -15,45 +15,62 @@
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
         Icon="/Image/leaves_icon.png"
-        Title="Đổi mật khẩu"
+        Title="Cập nhật thông tin cá nhân"
         Height="768"
         Width="1024"
         x:Name="CapNhatTaiKhoan"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    
+
     <Grid x:Name="BigestGrid">
         <Grid.RowDefinitions>
             <RowDefinition Height="200"></RowDefinition>
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Background="#2d708c" Grid.Row="0">
-            <Image Source="/Image/backgroundProfile.jpeg" Stretch="UniformToFill" StretchDirection="Both" Opacity="0.25"></Image>
+        <Grid Background="#2d708c"
+              Grid.Row="0">
+            <Image Source="/Image/backgroundProfile.jpeg"
+                   Stretch="UniformToFill"
+                   StretchDirection="Both"
+                   Opacity="0.25"></Image>
         </Grid>
-        <Grid Grid.Row="1" Background="#f3f3f9">
+        <Grid Grid.Row="1"
+              Background="#f3f3f9">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="320"></ColumnDefinition>
                 <ColumnDefinition></ColumnDefinition>
             </Grid.ColumnDefinitions>
-            <StackPanel Grid.Column="0" Orientation="Vertical" Margin="20,-40,0,0">
+            <StackPanel Grid.Column="0"
+                        Orientation="Vertical"
+                        Margin="20,-40,0,0">
                 <materialDesign:Card>
-                    <StackPanel Orientation="Vertical" HorizontalAlignment="Center">
-                        <Button Width="130" Height="130" Margin="0,15,0,0"
-                                    Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                                    ToolTip="Ảnh đại diện"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                    <StackPanel Orientation="Vertical"
+                                HorizontalAlignment="Center">
+                        <Button Width="130"
+                                Height="130"
+                                Margin="0,15,0,0"
+                                Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
+                                ToolTip="Ảnh đại diện"
+                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                             <Image Source="/Image/avatar.jpg"></Image>
                         </Button>
-                        <Button     Margin="70,-50,0,0" Background="White" Width="40" Height="40"
+                        <Button     Margin="70,-50,0,0"
+                                    Background="White"
+                                    Width="40"
+                                    Height="40"
                                     Style="{StaticResource MaterialDesignIconForegroundButton}"
                                     ToolTip="MaterialDesignIconForegroundButton"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <materialDesign:PackIcon
-                                    Kind="Camera" />
+                            <materialDesign:PackIcon Kind="Camera" />
                         </Button>
-                        <TextBlock FontSize="20" FontWeight="Bold">Tendou Hakai</TextBlock>
-                        <TextBlock FontSize="15" FontStyle="Italic" HorizontalAlignment="Center">Chủ trang trại</TextBlock>
+                        <TextBlock FontSize="20"
+                                   FontWeight="Bold"
+                                   Text="{Binding HoTenGoc}"></TextBlock>
+                        <TextBlock FontSize="15"
+                                   FontStyle="Italic"
+                                   HorizontalAlignment="Center"
+                                   Text="{Binding TenChucVu}"></TextBlock>
                         <TextBlock Height="30"></TextBlock>
-                    </StackPanel>   
+                    </StackPanel>
                 </materialDesign:Card>
             </StackPanel>
             <StackPanel Grid.Column="1">
@@ -66,111 +83,182 @@
                             <RowDefinition></RowDefinition>
                             <RowDefinition></RowDefinition>
                         </Grid.RowDefinitions>
-                        <Grid Grid.Row="0" Margin="15,10,0,0">
-                            <TextBlock FontStyle="Italic" FontWeight="Bold" FontSize="16">Hồ sơ thông tin chi tiết</TextBlock>
+                        <Grid Grid.Row="0"
+                              Margin="15,10,0,0">
+                            <TextBlock FontStyle="Italic"
+                                       FontWeight="Bold"
+                                       FontSize="16">Hồ sơ thông tin chi tiết</TextBlock>
                         </Grid>
                         <Grid Grid.Row="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Name="grb_hotenlot" Margin="30,0,0,0">
+                            <Grid Grid.Column="0"
+                                  Name="grb_hotenlot"
+                                  Margin="30,0,0,0">
                                 <StackPanel Grid.Column="0"
-                                        Width="{Binding ElementName=grb_hotenlot, Path=ActualWidth}"
-                                        HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="0,15,0,0" FontSize="15" FontWeight="Bold" Text="">Họ và Tên</TextBlock>
-                                    <TextBox x:Name="Name"  Margin="0,5,-250,0"
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
+                                            Width="{Binding ElementName=grb_hotenlot, Path=ActualWidth}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Margin="0,15,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold"
+                                               Text="">Họ và Tên</TextBlock>
+                                    <TextBox x:Name="tb_Name"
+                                             Margin="0,5,-250,0"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="HoTen" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="HoTen"
+                                                     Mode="TwoWay"
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding HoTenChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=tb_Name}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Giới tính</TextBlock>
-                                    <ComboBox Width="180" HorizontalAlignment="Left"
-                                            Style="{StaticResource MaterialDesignOutlinedComboBox}"
-                                            ItemsSource="{Binding LstGender}"
-                                            materialDesign:TextFieldAssist.HasClearButton="True">
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Giới tính</TextBlock>
+                                    <ComboBox Width="180"
+                                              HorizontalAlignment="Left"
+                                              Name="cbb_GioiTinh"
+                                              Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                                              ItemsSource="{Binding LstGender}"
+                                              materialDesign:TextFieldAssist.HasClearButton="True">
                                         <ComboBox.SelectedItem>
-                                            <Binding
-                                                Path="GioiTinh"
-                                                Mode="TwoWay"
-                                                UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="GioiTinh"
+                                                     Mode="TwoWay"
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </ComboBox.SelectedItem>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding GioiTinhChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=cbb_GioiTinh}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </ComboBox>
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Số điện thoại</TextBlock>
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Số điện thoại</TextBlock>
                                     <TextBox Margin="0,5,0,0"
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
+                                             Name="tb_SDT"
+                                             PreviewTextInput="tb_SDT_PreviewTextInput"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="SDT"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="SDT"
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding SDTChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=tb_SDT}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                 </StackPanel>
                             </Grid>
-                            <Grid Grid.Column="1" Name="grb_hoten" Margin="20,86,30,0">
+                            <Grid Grid.Column="1"
+                                  Name="grb_hoten"
+                                  Margin="20,86,30,0">
                                 <StackPanel Grid.Column="1"
                                             HorizontalAlignment="Center"
                                             VerticalAlignment="Center">
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Ngày sinh</TextBlock>
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Ngày sinh</TextBlock>
                                     <DatePicker HorizontalAlignment="Left"
-                                            Width="180"
-                                            materialDesign:HintAssist.Hint="Pick Date"
-                                            materialDesign:HintAssist.HelperText="Helper text"
-                                            Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                                                Width="180"
+                                                Name="dp_NgaySinh"
+                                                materialDesign:HintAssist.Hint="Pick Date"
+                                                materialDesign:HintAssist.HelperText="Helper text"
+                                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                         <DatePicker.SelectedDate>
                                             <Binding Path="NgaySinh"
-                                                    UpdateSourceTrigger="PropertyChanged">
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </DatePicker.SelectedDate>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedDateChanged">
+                                                <i:InvokeCommandAction Command="{Binding NgaySinhChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=dp_NgaySinh}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </DatePicker>
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Email</TextBlock>
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Email</TextBlock>
                                     <TextBox Margin="0,5,0,0"
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
+                                             Name="tb_Email"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="Email"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="Email"
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding EmailChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=tb_Email}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                 </StackPanel>
 
                             </Grid>
-                            
+
                         </Grid>
-                        <Grid Grid.Row="2" Name="grb_diachi" Margin="30,0,30,0">
-                            <StackPanel Grid.Row="2" 
-                                        Width="{Binding ElementName=grb_diachi, Path=ActualWidth}" 
+                        <Grid Grid.Row="2"
+                              Name="grb_diachi"
+                              Margin="30,0,30,0">
+                            <StackPanel Grid.Row="2"
+                                        Width="{Binding ElementName=grb_diachi, Path=ActualWidth}"
                                         HorizontalAlignment="Left">
-                                <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Địa chỉ</TextBlock>
-                                <TextBox Margin="0,5,0,0" 
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
+                                <TextBlock Margin="0,20,0,0"
+                                           FontSize="15"
+                                           FontWeight="Bold">Địa chỉ</TextBlock>
+                                <TextBox x:Name="tb_DiaChi"
+                                         Margin="0,5,0,0"
+                                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                         VerticalAlignment="Top">
                                     <TextBox.Text>
-                                        <Binding Path="DiaChi"  UpdateSourceTrigger="PropertyChanged">
+                                        <Binding Path="DiaChi"
+                                                 UpdateSourceTrigger="PropertyChanged">
                                             <Binding.ValidationRules>
-                                                <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                             </Binding.ValidationRules>
                                         </Binding>
                                     </TextBox.Text>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding DiaChiChangedCommand}"
+                                                                   CommandParameter="{Binding ElementName=tb_DiaChi}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                             </StackPanel>
 
@@ -180,48 +268,77 @@
                                 <ColumnDefinition></ColumnDefinition>
                                 <ColumnDefinition></ColumnDefinition>
                             </Grid.ColumnDefinitions>
-                            <Grid Grid.Column="0" Name="grb_Ngayvaolam" Margin="30,0,0,0">
-                                <StackPanel Width="{Binding ElementName=grb_Ngayvaolam, Path=ActualWidth}" 
-                                            HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Ngày vào làm</TextBlock>
+                            <Grid Grid.Column="0"
+                                  Name="grb_Ngayvaolam"
+                                  Margin="30,0,0,0">
+                                <StackPanel Width="{Binding ElementName=grb_Ngayvaolam, Path=ActualWidth}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Ngày vào làm</TextBlock>
                                     <DatePicker HorizontalAlignment="Left"
-                                            Width="180"
-                                            materialDesign:HintAssist.Hint="Pick Date"
-                                            materialDesign:HintAssist.HelperText="Helper text"
-                                            Style="{StaticResource MaterialDesignOutlinedDatePicker}" >
+                                                Width="180"
+                                                Name="dp_NgayVaoLam"
+                                                materialDesign:HintAssist.Hint="Pick Date"
+                                                materialDesign:HintAssist.HelperText="Helper text"
+                                                Style="{StaticResource MaterialDesignOutlinedDatePicker}">
                                         <DatePicker.SelectedDate>
                                             <Binding Path="NgayVaoLam"
-                                                    UpdateSourceTrigger="PropertyChanged">
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </DatePicker.SelectedDate>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectedDateChanged">
+                                                <i:InvokeCommandAction Command="{Binding NgayVaoLamChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=dp_NgayVaoLam}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </DatePicker>
                                 </StackPanel>
 
                             </Grid>
-                            <Grid Grid.Column="1" Name="grb_Hesoluong" Margin="20,0,30,0">
-                                <StackPanel Width="{Binding ElementName=grb_Hesoluong, Path=ActualWidth}" 
-                                            HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <TextBlock Margin="0,20,0,0" FontSize="15" FontWeight="Bold">Hệ số lương</TextBlock>
-                                    <TextBox Margin="0,5,0,0" 
-                                        Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                        VerticalAlignment="Top">
+                            <Grid Grid.Column="1"
+                                  Name="grb_Hesoluong"
+                                  Margin="20,0,30,0">
+                                <StackPanel Width="{Binding ElementName=grb_Hesoluong, Path=ActualWidth}"
+                                            HorizontalAlignment="Center"
+                                            VerticalAlignment="Center">
+                                    <TextBlock Margin="0,20,0,0"
+                                               FontSize="15"
+                                               FontWeight="Bold">Hệ số lương</TextBlock>
+                                    <TextBox Margin="0,5,0,0"
+                                             Name="tb_HeSoLuong"
+                                             PreviewTextInput="tb_HeSoLuong_PreviewTextInput"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top">
                                         <TextBox.Text>
-                                            <Binding Path="HeSoLuong"  UpdateSourceTrigger="PropertyChanged">
+                                            <Binding Path="HeSoLuong"
+                                                     UpdateSourceTrigger="PropertyChanged">
                                                 <Binding.ValidationRules>
-                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True"  />
+                                                    <local:NotEmptyValidationRule    ValidatesOnTargetUpdated="True" />
                                                 </Binding.ValidationRules>
                                             </Binding>
                                         </TextBox.Text>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding HeSoLuongChangedCommand}"
+                                                                       CommandParameter="{Binding ElementName=tb_HeSoLuong}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                 </StackPanel>
 
                             </Grid>
-                            
+
                         </Grid>
-                        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,20,30,20">
+                        <StackPanel Grid.Row="4"
+                                    Orientation="Horizontal"
+                                    HorizontalAlignment="Right"
+                                    Margin="0,20,30,20">
                             <Button Name="btn_Update"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="40"
@@ -230,16 +347,13 @@
                                     Content="Cập nhật"
                                     FontSize="16"
                                     Background="#00de1e"
+                                    Command="{Binding UpdateCommand}"
+                                    CommandParameter="{Binding ElementName=btn_Update}"
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                <i:Interaction.Triggers>
-                                    <i:EventTrigger EventName="Click">
-                                        <i:InvokeCommandAction Command="{Binding UpdateCommand}"
-                                                               CommandParameter="{Binding ElementName=BigestGrid}"></i:InvokeCommandAction>
-                                    </i:EventTrigger>
-                                </i:Interaction.Triggers>
+
                             </Button>
-                            
+
                             <Button Name="btn_Huybo"
                                     Margin="20,0,0,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
@@ -254,7 +368,7 @@
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                                     Command="{Binding CloseCommand}"
                                     CommandParameter="{Binding ElementName=CapNhatTaiKhoan}">
-                                
+
                             </Button>
                         </StackPanel>
                     </Grid>

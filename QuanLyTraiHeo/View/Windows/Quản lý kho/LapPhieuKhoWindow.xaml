@@ -121,7 +121,7 @@
                     </materialDesign:Card>
                     <materialDesign:Card >
                         <Expander IsExpanded="True" Header="Danh sách phiếu nhập kho" FontWeight="Bold" Background="White">
-                            <ListView AllowDrop="True"
+                            <ListView AllowDrop="True" ItemsSource="{Binding }"
                                       Name="Listview"
                                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                       ScrollViewer.VerticalScrollBarVisibility="Auto">

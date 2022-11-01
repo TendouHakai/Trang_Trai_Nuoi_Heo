@@ -24,6 +24,7 @@ namespace QuanLyTraiHeo.Model
         public string TenChucVu { get; set; }
         public Nullable<int> LuongCoBan { get; set; }
         public string ID_Permision { get; set; }
+        public string MoTa { get; set; }
     
         public virtual PERMISION PERMISION { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

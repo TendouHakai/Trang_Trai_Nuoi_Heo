@@ -13,7 +13,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using MessageBox = System.Windows.MessageBox;
+using System.Text.RegularExpressions;
 
 namespace QuanLyTraiHeo.View.Windows
 {
@@ -26,6 +26,31 @@ namespace QuanLyTraiHeo.View.Windows
         {
             InitializeComponent();
         }
+
+        #region Chỉ cho TextBox SDT và Hệ số lương nhập kí tự số
+        private void tb_HeSoLuong_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (tb_HeSoLuong.Text.Length > 7) e.Handled = true;
+
+            // Here e.Text is string so we need to convert it into char
+            char ch = e.Text[0];
+
+            if ((Char.IsDigit(ch) || ch == '.'))
+            {
+                //Here TextBox1.Text is name of your TextBox
+                if (ch == '.' && tb_HeSoLuong.Text.Contains('.'))
+                    e.Handled = true;
+            }
+            else
+                e.Handled = true;
+        }
+
+        private void tb_SDT_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
+        }
+        #endregion
     }
 
     public class NotEmptyValidationRule : ValidationRule

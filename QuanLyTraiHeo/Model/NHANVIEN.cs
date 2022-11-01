@@ -21,10 +21,15 @@ namespace QuanLyTraiHeo.Model
             this.PHIEUHANGHOAs = new HashSet<PHIEUHANGHOA>();
             this.PHIEUKIEMKHOes = new HashSet<PHIEUKIEMKHO>();
             this.PHIEUSUACHUAs = new HashSet<PHIEUSUACHUA>();
+            this.ThongBaos = new HashSet<ThongBao>();
+            this.ThongBaos1 = new HashSet<ThongBao>();
         }
     
         public string MaNhanVien { get; set; }
         public string HoTen { get; set; }
+        public string ImageLink { get; set; }
+        public string ImageName { get; set; }
+        public byte[] MyImage { get; set; }
         public string MaChucVu { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
@@ -32,7 +37,7 @@ namespace QuanLyTraiHeo.Model
         public string email { get; set; }
         public string SDT { get; set; }
         public Nullable<System.DateTime> NgayVaoLam { get; set; }
-        public Nullable<int> HeSoLuong { get; set; }
+        public Nullable<double> HeSoLuong { get; set; }
         public string C_Username { get; set; }
         public string C_PassWord { get; set; }
     
@@ -45,5 +50,9 @@ namespace QuanLyTraiHeo.Model
         public virtual ICollection<PHIEUKIEMKHO> PHIEUKIEMKHOes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUSUACHUA> PHIEUSUACHUAs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongBao> ThongBaos { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ThongBao> ThongBaos1 { get; set; }
     }
 }

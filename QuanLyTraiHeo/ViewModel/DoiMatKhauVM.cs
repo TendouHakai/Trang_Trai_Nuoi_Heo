@@ -47,7 +47,7 @@ namespace QuanLyTraiHeo.ViewModel
             string oldPassword = MainWindowVM.NhanVien.C_PassWord;
             newPassWordMD5 = LoginVM.MD5Hash(newPassword);
 
-            if (string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(reNewPassword) || newPassword != reNewPassword || newPassWordMD5 == oldPassword)
+            if (string.IsNullOrWhiteSpace(newPassword) || string.IsNullOrWhiteSpace(reNewPassword) || newPassword != reNewPassword || newPassWordMD5 == oldPassword)
             {
                 return false;
             }

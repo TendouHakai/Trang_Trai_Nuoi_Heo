@@ -28,6 +28,7 @@ namespace QuanLyTraiHeo.Model
         public string MaGiongHeo { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
+        public Nullable<int> TrongLuong { get; set; }
         public string MaChuong { get; set; }
         public string MaHeoCha { get; set; }
         public string MaHeoMe { get; set; }

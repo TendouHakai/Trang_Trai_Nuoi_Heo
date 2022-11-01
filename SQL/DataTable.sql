@@ -12,13 +12,14 @@ CREATE TABLE HEO
 	MaHeo char(16),
 	MaLoaiHeo char(16),
 	MaGiongHeo char(16),
-	GioiTinh varchar(6),
+	GioiTinh nvarchar(6),
 	NgaySinh smalldatetime,
+	TrongLuong int,
 	MaChuong char(16),
 	MaHeoCha char(16),
 	MaHeoMe char(16),
-	NguonGoc varchar(50),
-	TinhTrang varchar(50),
+	NguonGoc nvarchar(255),
+	TinhTrang nvarchar(512),
 	CONSTRAINT PK_HEO PRIMARY KEY (MaHeo)
 )
 
@@ -26,8 +27,8 @@ GO
 CREATE TABLE LOAIHEO
 (
 	MaLoaiHeo char(16),
-	TenLoaiHeo varchar(50),
-	MoTa text,
+	TenLoaiHeo nvarchar(255),
+	MoTa ntext,
 	CONSTRAINT PK_LH PRIMARY KEY (MaLoaiHeo)
 )
 
@@ -35,8 +36,8 @@ GO
 CREATE TABLE GIONGHEO
 (
 	MaGiongHeo char(16),
-	TenGiongHeo varchar(50),
-	MoTa text,
+	TenGiongHeo nvarchar(255),
+	MoTa ntext,
 	CONSTRAINT PK_GH PRIMARY KEY (MaGiongHeo)
 )
 
@@ -45,7 +46,7 @@ CREATE TABLE CHUONGTRAI
 (
 	MaChuong char(16),
 	MaLoaiChuong char(16),
-	TinhTrang varchar(50),
+	TinhTrang nvarchar(512),
 	SuaChuaToiDa int,
 	SoLuongHeo int,
 	CONSTRAINT PK_CT PRIMARY KEY (MaChuong)
@@ -55,8 +56,8 @@ GO
 CREATE TABLE LOAICHUONG
 (
 	MaLoaiChuong char(16),
-	TenLoai varchar(50),
-	MoTa text,
+	TenLoai nvarchar(255),
+	MoTa ntext,
 	CONSTRAINT PK_LCT PRIMARY KEY (MaLoaiChuong)
 )
 
@@ -70,7 +71,7 @@ CREATE TABLE LICHTIEMHEO
 	MaThuoc char(16),
 	NgayTiem smalldatetime ,
 	LieuLuong int,
-	TrangThai Varchar(16),
+	TrangThai nvarchar(64),
 	CONSTRAINT PK_LTH PRIMARY KEY (MaLichTiem)
 )
 
@@ -80,7 +81,7 @@ CREATE TABLE LICHPHOIGIONG
 	MaLichPhoi char(16),
 	MaHeoDuc char(16),
 	MaHeoCai char(16),
-	Trangthai varchar(50),
+	Trangthai nvarchar(64),
 
 	NgayDuKienDe smalldatetime ,
 	NgayDeThucTe smalldatetime ,
@@ -89,7 +90,7 @@ CREATE TABLE LICHPHOIGIONG
 	SoConChet int,
 	NgayCaiSua smalldatetime,
 
-	SoConChon smalldatetime,
+	SoConChon int,
 	CONSTRAINT PK_LPG PRIMARY KEY (MaLichPhoi)
 )
 
@@ -97,11 +98,11 @@ Go
 create table HANGHOA 
 (
 	MaHangHoa char(16),
-	TenHangHoa varchar(50),
+	TenHangHoa nvarchar(255),
 	DonGia int,
 	SoLuongTonKho int,
-	TinhTrang varchar(50),
-	LoaiHangHoa varchar(50),
+	TinhTrang nvarchar(512),
+	LoaiHangHoa nvarchar(64),
 
 	CONSTRAINT PK_HH PRIMARY KEY (MaHangHoa)
 )
@@ -111,17 +112,20 @@ Go
 create table NHANVIEN 
 (
 	MaNhanVien char(16),
-	HoTen varchar(50),
+	HoTen nvarchar(255),
+	ImageLink char(255),
+	ImageName nvarchar(100),
+	MyImage varbinary(max),
 	MaChucVu char(16),
-	GioiTinh varchar(16),
+	GioiTinh nvarchar(16),
 	NgaySinh smalldatetime,
-	DiaChi text,
-	email text,
-	SDT varchar(15),
+	DiaChi nvarchar(1024),
+	email nvarchar(1024),
+	SDT char(16),
 	NgayVaoLam smalldatetime,
-	HeSoLuong int,
-	_Username char(50),
-	_PassWord char(50),
+	HeSoLuong float,
+	_Username char(64),
+	_PassWord char(64),
 
 	CONSTRAINT PK_NV PRIMARY KEY (MaNhanVien)
 )
@@ -130,10 +134,11 @@ go
 Create table ThongBao
 (
 	MaThongBao char(16),
-	_UserName char(50),
-	TieuDe text,
-	NoiDung Text,
-	ThoiGian time,
+	_MaNguoiNhan char(16),
+	_MaNguoiGui char(16),
+	TieuDe ntext,
+	NoiDung ntext,
+	ThoiGian smalldatetime,
 	CONSTRAINT PK_TB PRIMARY KEY (MaThongBao)
 )
 
@@ -141,9 +146,10 @@ go
 create table CHUCVU
 (
 	MaChucVu char(16),
-	TenChucVu varchar(50),
+	TenChucVu nvarchar(255),
 	LuongCoBan int,
 	ID_Permision char(16),
+	MoTa ntext,
 
 	CONSTRAINT PK_CV PRIMARY KEY (MaChucVu)
 )
@@ -153,8 +159,8 @@ go
 create table PERMISION
 (
 	ID_Permision char(16),
-	Name_Permision varchar(50),
-	Permision_Descript text,
+	Name_Permision nvarchar(255),
+	Permision_Descript nvarchar(2048),
 
 	constraint PK_Permision PRIMARY KEY (ID_Permision)
 )
@@ -164,8 +170,8 @@ go
 create table PERMISION_DETAIL
 (
 	ID_PermisionDetail char(16),
-	ActionDetail varchar(50),
-	PermisionDetail_Descript text,
+	ActionDetail nvarchar(255),
+	PermisionDetail_Descript nvarchar(2048),
 	ID_Permision char(16),
 	constraint PK_PermisionDetail PRIMARY KEY (ID_PermisionDetail)
 )
@@ -175,11 +181,11 @@ Go
 Create table DOITAC
 (
 	MaDoiTac char(16),
-	LoaiDoiTac varchar(50),
-	TenDoiTac Varchar(200),
-	DiaChi text,
+	LoaiDoiTac nvarchar(64),
+	TenDoiTac nVarchar(255),
+	DiaChi nvarchar(1024),
 	SDT char(15),
-	Email text,
+	Email nvarchar(2048),
 
 	constraint PK_DT PRIMARY KEY (MaDoiTac)
 )
@@ -190,8 +196,8 @@ Create table PHIEUSUACHUA
 	SoPhieu char(16),
 	NgaySuaChua smalldatetime,
 	MaNhanVien char(16),
-	GhiChu text,
-	TrangThai varchar(50),
+	GhiChu ntext,
+	TrangThai nvarchar(64),
 	TongTien int,	
 	constraint PK_PSC PRIMARY KEY (SoPhieu)
 )
@@ -201,7 +207,7 @@ create table CT_PHIEUSUACHUA
 (
 	SoPhieu char(16),
 	MaChuong char(16),
-	MoTaChiTiet text,
+	MoTa ntext,
 	constraint PK_CT_PSC PRIMARY KEY (SoPhieu, MaChuong)
 )
 
@@ -212,8 +218,8 @@ Create table PHIEUHEO
 	NgayLap smalldatetime,
 	MaNhanVien char(16),
 	MaDoiTac char(16),
-	TrangThai varchar(50),
-	LoaiPhieu varchar(50),
+	TrangThai nvarchar(64),
+	LoaiPhieu nvarchar(64),
 	TongTien int,
 
 	constraint PK_PH primary key (SoPhieu)
@@ -236,8 +242,8 @@ Create table PHIEUKIEMKHO
 	SoPhieu char(16),
 	NgayLap smalldatetime,
 	MaNhanVien char(16),
-	GhiChu text,
-	KetQua Text,
+	GhiChu ntext,
+	KetQua nvarchar(255),
 
 	constraint PK_PKK primary key (SoPhieu)
 )
@@ -259,8 +265,8 @@ Create table	PHIEUHANGHOA
 	NgayLap smalldatetime,
 	MaNhanVien char(16),
 	MaDoiTac char(16),
-	TrangThai varchar(50),
-	LoaiPhieu varchar(50),
+	TrangThai nvarchar(64),
+	LoaiPhieu nvarchar(64),
 	TongTien int,
 
 	constraint PK_PHH primary key (SoPhieu)
@@ -279,9 +285,16 @@ Create table CT_PHIEUHANGHOA
 GO 
 CREATE TABLE THAMSO
 (
+	id INT IDENTITY primary key,
 	TrongLuongToiThieu int
 )
 
+go 
+create table ListActionDetail
+(
+	id INT IDENTITY primary key,
+	ActionDetail nvarchar(64)
+)
 
 GO
 --table Heo--
@@ -314,9 +327,12 @@ FOREIGN KEY (MaHeoCai) REFERENCES HEO(MaHeo)
 ALTER TABLE NHANVIEN ADD CONSTRAINT FK_NV_MCV
 FOREIGN KEY (MaChucVu) REFERENCES CHUCVU(MaChucVu)
 
---table ThongBao--
---ALTER TABLE ThongBao ADD CONSTRAINT FK_TB_UN
---FOREIGN KEY (_UserName) REFERENCES NHANVIEN(_Username)
+--table THONGBAO--
+ALTER TABLE THONGBAO ADD CONSTRAINT FK_TB_NN
+FOREIGN KEY (_MaNguoiNhan) REFERENCES NHANVIEN(MaNhanVien)
+
+ALTER TABLE THONGBAO ADD CONSTRAINT FK_TB_NG
+FOREIGN KEY (_MaNguoiGui) REFERENCES NHANVIEN(MaNhanVien)
 
 --table CHUCVU--
 ALTER TABLE CHUCVU ADD CONSTRAINT FK_CV_P
@@ -372,6 +388,17 @@ FOREIGN KEY (SoPhieu) REFERENCES PHIEUHANGHOA(SoPhieu)
 ALTER TABLE CT_PHIEUKIEMKHO ADD CONSTRAINT FK_CT_PKK_MHH
 FOREIGN KEY (MaHangHoa) REFERENCES HANGHOA(MaHangHoa)
 
+go
+
+
+INSERT INTO ListActionDetail VALUES (N'Quản lý nhân viên');
+INSERT INTO ListActionDetail VALUES (N'Quản lý đàn heo ');
+INSERT INTO ListActionDetail VALUES (N'Quản lý kho ');
+INSERT INTO ListActionDetail VALUES (N'Quản lý tài chính');
+INSERT INTO ListActionDetail VALUES (N'Quản lý cây mục tiêu');
+INSERT INTO ListActionDetail VALUES (N'Quản lý nhật ký');
+
+
 INSERT INTO PERMISION 
 	(ID_Permision,
 	Name_Permision,
@@ -379,7 +406,7 @@ INSERT INTO PERMISION
 VALUES 
 	('20221024000001', 
 	'ChuTrangTrai', 
-	'Admin'); 
+	'Admin');
 
 INSERT INTO CHUCVU 
 	(MaChucVu,

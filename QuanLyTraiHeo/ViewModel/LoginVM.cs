@@ -79,7 +79,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         bool CheckEmtyUserNameAndPassword()
         {
-            if (string.IsNullOrEmpty(_username) || string.IsNullOrEmpty(_password))
+            if (string.IsNullOrWhiteSpace(_username) || string.IsNullOrWhiteSpace(_password))
             {
                 return false;
             }
