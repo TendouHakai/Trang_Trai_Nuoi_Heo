@@ -5,9 +5,10 @@
       <PropertyRef Name="MaChucVu" />
     </Key>
     <Property Name="MaChucVu" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="TenChucVu" Type="varchar" MaxLength="50" />
+    <Property Name="TenChucVu" Type="nvarchar" MaxLength="255" />
     <Property Name="LuongCoBan" Type="int" />
     <Property Name="ID_Permision" Type="char" MaxLength="16" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
   <EntityType Name="CHUONGTRAI">
     <Key>
@@ -15,7 +16,7 @@
     </Key>
     <Property Name="MaChuong" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="MaLoaiChuong" Type="char" MaxLength="16" />
-    <Property Name="TinhTrang" Type="varchar" MaxLength="50" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="512" />
     <Property Name="SuaChuaToiDa" Type="int" />
     <Property Name="SoLuongHeo" Type="int" />
   </EntityType>
@@ -56,37 +57,37 @@
     </Key>
     <Property Name="SoPhieu" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="MaChuong" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="MoTaChiTiet" Type="text" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
   <EntityType Name="DOITAC">
     <Key>
       <PropertyRef Name="MaDoiTac" />
     </Key>
     <Property Name="MaDoiTac" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="LoaiDoiTac" Type="varchar" MaxLength="50" />
-    <Property Name="TenDoiTac" Type="varchar" MaxLength="200" />
-    <Property Name="DiaChi" Type="text" />
+    <Property Name="LoaiDoiTac" Type="nvarchar" MaxLength="64" />
+    <Property Name="TenDoiTac" Type="nvarchar" MaxLength="255" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="1024" />
     <Property Name="SDT" Type="char" MaxLength="15" />
-    <Property Name="Email" Type="text" />
+    <Property Name="Email" Type="nvarchar" MaxLength="2048" />
   </EntityType>
   <EntityType Name="GIONGHEO">
     <Key>
       <PropertyRef Name="MaGiongHeo" />
     </Key>
     <Property Name="MaGiongHeo" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="TenGiongHeo" Type="varchar" MaxLength="50" />
-    <Property Name="MoTa" Type="text" />
+    <Property Name="TenGiongHeo" Type="nvarchar" MaxLength="255" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
   <EntityType Name="HANGHOA">
     <Key>
       <PropertyRef Name="MaHangHoa" />
     </Key>
     <Property Name="MaHangHoa" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="TenHangHoa" Type="varchar" MaxLength="50" />
+    <Property Name="TenHangHoa" Type="nvarchar" MaxLength="255" />
     <Property Name="DonGia" Type="int" />
     <Property Name="SoLuongTonKho" Type="int" />
-    <Property Name="TinhTrang" Type="varchar" MaxLength="50" />
-    <Property Name="LoaiHangHoa" Type="varchar" MaxLength="50" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="512" />
+    <Property Name="LoaiHangHoa" Type="nvarchar" MaxLength="64" />
   </EntityType>
   <EntityType Name="HEO">
     <Key>
@@ -95,13 +96,14 @@
     <Property Name="MaHeo" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="MaLoaiHeo" Type="char" MaxLength="16" />
     <Property Name="MaGiongHeo" Type="char" MaxLength="16" />
-    <Property Name="GioiTinh" Type="varchar" MaxLength="6" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="6" />
     <Property Name="NgaySinh" Type="smalldatetime" />
+    <Property Name="TrongLuong" Type="int" />
     <Property Name="MaChuong" Type="char" MaxLength="16" />
     <Property Name="MaHeoCha" Type="char" MaxLength="16" />
     <Property Name="MaHeoMe" Type="char" MaxLength="16" />
-    <Property Name="NguonGoc" Type="varchar" MaxLength="50" />
-    <Property Name="TinhTrang" Type="varchar" MaxLength="50" />
+    <Property Name="NguonGoc" Type="nvarchar" MaxLength="255" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="512" />
   </EntityType>
   <EntityType Name="LICHPHOIGIONG">
     <Key>
@@ -110,13 +112,13 @@
     <Property Name="MaLichPhoi" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="MaHeoDuc" Type="char" MaxLength="16" />
     <Property Name="MaHeoCai" Type="char" MaxLength="16" />
-    <Property Name="Trangthai" Type="varchar" MaxLength="50" />
+    <Property Name="Trangthai" Type="nvarchar" MaxLength="64" />
     <Property Name="NgayDuKienDe" Type="smalldatetime" />
     <Property Name="NgayDeThucTe" Type="smalldatetime" />
     <Property Name="SoCon" Type="int" />
     <Property Name="SoConChet" Type="int" />
     <Property Name="NgayCaiSua" Type="smalldatetime" />
-    <Property Name="SoConChon" Type="smalldatetime" />
+    <Property Name="SoConChon" Type="int" />
   </EntityType>
   <EntityType Name="LICHTIEMHEO">
     <Key>
@@ -127,56 +129,66 @@
     <Property Name="MaThuoc" Type="char" MaxLength="16" />
     <Property Name="NgayTiem" Type="smalldatetime" />
     <Property Name="LieuLuong" Type="int" />
-    <Property Name="TrangThai" Type="varchar" MaxLength="16" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
+  </EntityType>
+  <EntityType Name="ListActionDetail">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ActionDetail" Type="nvarchar" MaxLength="64" />
   </EntityType>
   <EntityType Name="LOAICHUONG">
     <Key>
       <PropertyRef Name="MaLoaiChuong" />
     </Key>
     <Property Name="MaLoaiChuong" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="TenLoai" Type="varchar" MaxLength="50" />
-    <Property Name="MoTa" Type="text" />
+    <Property Name="TenLoai" Type="nvarchar" MaxLength="255" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
   <EntityType Name="LOAIHEO">
     <Key>
       <PropertyRef Name="MaLoaiHeo" />
     </Key>
     <Property Name="MaLoaiHeo" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="TenLoaiHeo" Type="varchar" MaxLength="50" />
-    <Property Name="MoTa" Type="text" />
+    <Property Name="TenLoaiHeo" Type="nvarchar" MaxLength="255" />
+    <Property Name="MoTa" Type="ntext" />
   </EntityType>
   <EntityType Name="NHANVIEN">
     <Key>
       <PropertyRef Name="MaNhanVien" />
     </Key>
     <Property Name="MaNhanVien" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="HoTen" Type="varchar" MaxLength="50" />
+    <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
+    <Property Name="ImageLink" Type="char" MaxLength="255" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MyImage" Type="varbinary(max)" />
     <Property Name="MaChucVu" Type="char" MaxLength="16" />
-    <Property Name="GioiTinh" Type="varchar" MaxLength="16" />
+    <Property Name="GioiTinh" Type="nvarchar" MaxLength="16" />
     <Property Name="NgaySinh" Type="smalldatetime" />
-    <Property Name="DiaChi" Type="text" />
-    <Property Name="email" Type="text" />
-    <Property Name="SDT" Type="varchar" MaxLength="15" />
+    <Property Name="DiaChi" Type="nvarchar" MaxLength="1024" />
+    <Property Name="email" Type="nvarchar" MaxLength="1024" />
+    <Property Name="SDT" Type="char" MaxLength="16" />
     <Property Name="NgayVaoLam" Type="smalldatetime" />
-    <Property Name="HeSoLuong" Type="int" />
-    <Property Name="_Username" Type="char" MaxLength="50" />
-    <Property Name="_PassWord" Type="char" MaxLength="50" />
+    <Property Name="HeSoLuong" Type="float" />
+    <Property Name="_Username" Type="char" MaxLength="64" />
+    <Property Name="_PassWord" Type="char" MaxLength="64" />
   </EntityType>
   <EntityType Name="PERMISION">
     <Key>
       <PropertyRef Name="ID_Permision" />
     </Key>
     <Property Name="ID_Permision" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="Name_Permision" Type="varchar" MaxLength="50" />
-    <Property Name="Permision_Descript" Type="text" />
+    <Property Name="Name_Permision" Type="nvarchar" MaxLength="255" />
+    <Property Name="Permision_Descript" Type="nvarchar" MaxLength="2048" />
   </EntityType>
   <EntityType Name="PERMISION_DETAIL">
     <Key>
       <PropertyRef Name="ID_PermisionDetail" />
     </Key>
     <Property Name="ID_PermisionDetail" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="ActionDetail" Type="varchar" MaxLength="50" />
-    <Property Name="PermisionDetail_Descript" Type="text" />
+    <Property Name="ActionDetail" Type="nvarchar" MaxLength="255" />
+    <Property Name="PermisionDetail_Descript" Type="nvarchar" MaxLength="2048" />
     <Property Name="ID_Permision" Type="char" MaxLength="16" />
   </EntityType>
   <EntityType Name="PHIEUHANGHOA">
@@ -187,8 +199,8 @@
     <Property Name="NgayLap" Type="smalldatetime" />
     <Property Name="MaNhanVien" Type="char" MaxLength="16" />
     <Property Name="MaDoiTac" Type="char" MaxLength="16" />
-    <Property Name="TrangThai" Type="varchar" MaxLength="50" />
-    <Property Name="LoaiPhieu" Type="varchar" MaxLength="50" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
+    <Property Name="LoaiPhieu" Type="nvarchar" MaxLength="64" />
     <Property Name="TongTien" Type="int" />
   </EntityType>
   <EntityType Name="PHIEUHEO">
@@ -199,8 +211,8 @@
     <Property Name="NgayLap" Type="smalldatetime" />
     <Property Name="MaNhanVien" Type="char" MaxLength="16" />
     <Property Name="MaDoiTac" Type="char" MaxLength="16" />
-    <Property Name="TrangThai" Type="varchar" MaxLength="50" />
-    <Property Name="LoaiPhieu" Type="varchar" MaxLength="50" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
+    <Property Name="LoaiPhieu" Type="nvarchar" MaxLength="64" />
     <Property Name="TongTien" Type="int" />
   </EntityType>
   <EntityType Name="PHIEUKIEMKHO">
@@ -210,8 +222,8 @@
     <Property Name="SoPhieu" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="NgayLap" Type="smalldatetime" />
     <Property Name="MaNhanVien" Type="char" MaxLength="16" />
-    <Property Name="GhiChu" Type="text" />
-    <Property Name="KetQua" Type="text" />
+    <Property Name="GhiChu" Type="ntext" />
+    <Property Name="KetQua" Type="nvarchar" MaxLength="255" />
   </EntityType>
   <EntityType Name="PHIEUSUACHUA">
     <Key>
@@ -220,24 +232,27 @@
     <Property Name="SoPhieu" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="NgaySuaChua" Type="smalldatetime" />
     <Property Name="MaNhanVien" Type="char" MaxLength="16" />
-    <Property Name="GhiChu" Type="text" />
-    <Property Name="TrangThai" Type="varchar" MaxLength="50" />
+    <Property Name="GhiChu" Type="ntext" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
     <Property Name="TongTien" Type="int" />
   </EntityType>
-  <!--Errors Found During Generation:
-warning 6013: The table/view 'TRANGTRAINUOIHEO.dbo.THAMSO' does not have a primary key defined and no valid primary key could be inferred. This table/view has been excluded. To use the entity, you will need to review your schema, add the correct keys, and uncomment it.
-        <EntityType Name="THAMSO">
-          <Property Name="TrongLuongToiThieu" Type="int" />
-        </EntityType>-->
+  <EntityType Name="THAMSO">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TrongLuongToiThieu" Type="int" />
+  </EntityType>
   <EntityType Name="ThongBao">
     <Key>
       <PropertyRef Name="MaThongBao" />
     </Key>
     <Property Name="MaThongBao" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="_UserName" Type="char" MaxLength="50" />
-    <Property Name="TieuDe" Type="text" />
-    <Property Name="NoiDung" Type="text" />
-    <Property Name="ThoiGian" Type="time" Precision="7" />
+    <Property Name="_MaNguoiNhan" Type="char" MaxLength="16" />
+    <Property Name="_MaNguoiGui" Type="char" MaxLength="16" />
+    <Property Name="TieuDe" Type="ntext" />
+    <Property Name="NoiDung" Type="ntext" />
+    <Property Name="ThoiGian" Type="smalldatetime" />
   </EntityType>
   <Association Name="FK_CT_MC">
     <End Role="LOAICHUONG" Type="Self.LOAICHUONG" Multiplicity="0..1" />
@@ -527,6 +542,30 @@ warning 6013: The table/view 'TRANGTRAINUOIHEO.dbo.THAMSO' does not have a prima
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TB_NG">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="ThongBao" Type="Self.ThongBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="ThongBao">
+        <PropertyRef Name="_MaNguoiGui" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TB_NN">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="ThongBao" Type="Self.ThongBao" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="ThongBao">
+        <PropertyRef Name="_MaNguoiNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="TRANGTRAINUOIHEOModelStoreContainer">
     <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUONGTRAI" EntityType="Self.CHUONGTRAI" Schema="dbo" store:Type="Tables" />
@@ -540,6 +579,7 @@ warning 6013: The table/view 'TRANGTRAINUOIHEO.dbo.THAMSO' does not have a prima
     <EntitySet Name="HEO" EntityType="Self.HEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHPHOIGIONG" EntityType="Self.LICHPHOIGIONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHTIEMHEO" EntityType="Self.LICHTIEMHEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ListActionDetail" EntityType="Self.ListActionDetail" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAICHUONG" EntityType="Self.LOAICHUONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LOAIHEO" EntityType="Self.LOAIHEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NHANVIEN" EntityType="Self.NHANVIEN" Schema="dbo" store:Type="Tables" />
@@ -549,6 +589,7 @@ warning 6013: The table/view 'TRANGTRAINUOIHEO.dbo.THAMSO' does not have a prima
     <EntitySet Name="PHIEUHEO" EntityType="Self.PHIEUHEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUKIEMKHO" EntityType="Self.PHIEUKIEMKHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUSUACHUA" EntityType="Self.PHIEUSUACHUA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CT_MC" Association="Self.FK_CT_MC">
       <End Role="LOAICHUONG" EntitySet="LOAICHUONG" />
@@ -645,6 +686,14 @@ warning 6013: The table/view 'TRANGTRAINUOIHEO.dbo.THAMSO' does not have a prima
     <AssociationSet Name="FK_PSC_MNV" Association="Self.FK_PSC_MNV">
       <End Role="NHANVIEN" EntitySet="NHANVIEN" />
       <End Role="PHIEUSUACHUA" EntitySet="PHIEUSUACHUA" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_NG" Association="Self.FK_TB_NG">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="ThongBao" EntitySet="ThongBao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TB_NN" Association="Self.FK_TB_NN">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="ThongBao" EntitySet="ThongBao" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

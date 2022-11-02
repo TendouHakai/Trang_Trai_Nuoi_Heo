@@ -16,6 +16,7 @@
     <viewModel:DoiMatKhauVM x:Key="DoiMatKhauVM"></viewModel:DoiMatKhauVM>
     <viewModel:TaoThongBaoVM x:Key="TaoThongBaoVM"></viewModel:TaoThongBaoVM>
     <viewModel:ChonNguoiGuiVM x:Key="ChonNguoiGuiVM"></viewModel:ChonNguoiGuiVM>
+    <viewModel:ChiTietThongBaoVM x:Key="ChiTietThongBaoVM"></viewModel:ChiTietThongBaoVM>
     <viewModel:NhanVienVM x:Key="NhanVienVM"></viewModel:NhanVienVM>
     <viewModel:ThemNhanVienVM x:Key="ThemNhanVienVM"></viewModel:ThemNhanVienVM>
     <viewModel:ChucVuVM x:Key="ChucVuVM"></viewModel:ChucVuVM>

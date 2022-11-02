@@ -19,7 +19,7 @@ namespace QuanLyTraiHeo.ViewModel
         string hoTen;
         string diaChi;
         string email;
-        int? heSoLuong;
+        double? heSoLuong;
         string gioiTinh;
         DateTime? ngayVaoLam;
         DateTime? ngaySinh;
@@ -36,7 +36,7 @@ namespace QuanLyTraiHeo.ViewModel
         public string HoTen { get => hoTen; set { hoTen = value; OnPropertyChanged(); } }
         public string DiaChi { get => diaChi; set { diaChi = value; OnPropertyChanged(); } }
         public string Email { get => email; set { email = value; OnPropertyChanged(); } }
-        public int? HeSoLuong { get => heSoLuong; set { heSoLuong = value; OnPropertyChanged(); } }
+        public double? HeSoLuong { get => heSoLuong; set { heSoLuong = value; OnPropertyChanged(); } }
         public DateTime? NgayVaoLam { get => ngayVaoLam; set { ngayVaoLam = value; OnPropertyChanged(); } }
         public DateTime? NgaySinh { get => ngaySinh; set { ngaySinh = value; OnPropertyChanged(); } }
         public string SDT { get => sDT; set { sDT = value; OnPropertyChanged(); } }
@@ -66,6 +66,12 @@ namespace QuanLyTraiHeo.ViewModel
 
 
         #endregion
+
+
+        public CapNhatTaiKhoanVM()
+        {
+            
+        }
 
         public CapNhatTaiKhoanVM(MainWindowVM mainWindowMD)
         {

@@ -38,6 +38,7 @@ namespace QuanLyTraiHeo.View.Windows
             if ((Char.IsDigit(ch) || ch == '.'))
             {
                 //Here TextBox1.Text is name of your TextBox
+                //int SoLuongDauChamChoPhep = tb_HeSoLuong.Text.Count(f => f == '.');
                 if (ch == '.' && tb_HeSoLuong.Text.Contains('.'))
                     e.Handled = true;
             }

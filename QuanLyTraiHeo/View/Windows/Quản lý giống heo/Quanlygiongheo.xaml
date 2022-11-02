@@ -95,10 +95,10 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <materialDesign:PackIcon Kind="Search" Margin="10 5 0 0 "/>
-                                <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,0,20,0" />
+                                <TextBox x:Name="Find_textbox" materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,0,20,0" />
 
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
+                                    <Button x:Name="Find_button"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
                                     Width="120"
@@ -120,10 +120,12 @@
                     <DataGrid x:Name="Datagrid_giongheo"
                         ItemsSource="{Binding Items1}"
                         CanUserAddRows="False"
-                        HeadersVisibility="All" Cursor="Pen">
-                        <DataGrid.ItemBindingGroup>
-                            <BindingGroup/>
-                        </DataGrid.ItemBindingGroup>
+                        HeadersVisibility="All" Cursor="Arrow" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã giống heo" Binding="{Binding MaGiongHeo}"/>
+                            <DataGridTextColumn Header="Tên giống heo" Binding="{Binding TenGiongHeo}"/>
+                            <DataGridTextColumn Header="Mô tả" Binding="{Binding MoTa}"/>
+                        </DataGrid.Columns>
                     </DataGrid>
                 </StackPanel>
 
@@ -131,9 +133,4 @@
         </Grid>
 
     </Grid>
-
-    <!--<Grid>
-        <Button Content="Thêm giống heo" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_ThemClick"></Button>
-        <Button Content="Sửa giống heo" Margin="20 20 300 20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_SuaClick"></Button>
-    </Grid>-->
 </Window>

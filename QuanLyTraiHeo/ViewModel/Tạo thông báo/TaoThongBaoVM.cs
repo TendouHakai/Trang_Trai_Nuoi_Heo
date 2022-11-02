@@ -42,6 +42,8 @@ namespace QuanLyTraiHeo.ViewModel
         public TaoThongBaoVM()
         {
             txtNGUOIGUI = "";
+            Tieude = "";
+            Noidung = "";
             ListNGUOIGUI = new ObservableCollection<NHANVIEN>();
             #region tạo list CHUCVU
             listCHUCVU = new ObservableCollection<CHUCVU>(DataProvider.Ins.DB.CHUCVUs);
@@ -71,11 +73,11 @@ namespace QuanLyTraiHeo.ViewModel
                     return true; 
                 }, 
                 p => {
-                    foreach(var nguoigui in ListNGUOIGUI)
+                    foreach(var nguoinhan in ListNGUOIGUI)
                     {
                         ThongBao thongbao = new ThongBao();
                         thongbao.MaThongBao = TaoMaThongBao();
-                        thongbao.C_UserName = nguoigui.C_Username;
+                        thongbao.C_MaNguoiNhan = nguoinhan.C_Username;
                         thongbao.TieuDe = Tieude;
                         thongbao.NoiDung = Noidung;
 

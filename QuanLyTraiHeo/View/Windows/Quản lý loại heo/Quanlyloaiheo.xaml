@@ -123,12 +123,14 @@
                         SelectionMode="Extended" ClipboardCopyMode="IncludeHeader" HeadersVisibility="None" />
 -->
                     <DataGrid x:Name="Datagrid_loaiheo"
-                        ItemsSource="{Binding Items1}"
+                        ItemsSource="{Binding i}"
                         CanUserAddRows="False"
-                        HeadersVisibility="All" Cursor="Pen">
-                        <DataGrid.ItemBindingGroup>
-                            <BindingGroup/>
-                        </DataGrid.ItemBindingGroup>
+                        HeadersVisibility="All" Cursor="Arrow" AutoGenerateColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Mã loại heo" Binding="{Binding MaLoaiHeo}"/>
+                            <DataGridTextColumn Header="Tên loại heo" Binding="{Binding TenLoaiHeo}"/>
+                            <DataGridTextColumn Header="Mô tả" Binding="{Binding MoTa}"/>
+                        </DataGrid.Columns>
                         <!--DataGrid.Columns>
                             <DataGridTextColumn x:Name="col1"
                                 Binding="{Binding Code}"
@@ -170,9 +172,4 @@
         </Grid>
 
     </Grid>
-
-    <!--<Grid>
-        <Button Content="Thêm loại heo" Margin="20 20 400 20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_ThemClick"></Button>
-        <Button Content="Sửa loại heo" Margin="20" HorizontalAlignment="Right" VerticalAlignment="Top" Width="200" Height="50" Click="btn_SuaClick"></Button>
-    </Grid>-->
 </Window>

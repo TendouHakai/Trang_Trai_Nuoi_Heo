@@ -101,7 +101,8 @@
                                   Width="103"
                                   IsChecked="True" />
                         <Grid Width="200">
-                            <Button Command="{Binding LoginCommand}"
+                            <Button Name="btn_DangNhap"
+                                    Command="{Binding LoginCommand}"
                                     CommandParameter="{Binding ElementName=LoginWindow}"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="40"

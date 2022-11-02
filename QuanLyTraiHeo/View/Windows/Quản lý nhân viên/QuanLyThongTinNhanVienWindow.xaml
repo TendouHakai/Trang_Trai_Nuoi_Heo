@@ -74,8 +74,7 @@
                                                     <CheckBox IsChecked="{Binding isSelected }"
                                                               Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
                                                                                                     AncestorType={x:Type ItemsControl}},
-                                                                                                    Path= DataContext.TextTimKiemChangeCommand }"
-                                                             >
+                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
                                                     </CheckBox>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>

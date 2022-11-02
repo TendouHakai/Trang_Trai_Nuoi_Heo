@@ -31,6 +31,11 @@ namespace QuanLyTraiHeo.ViewModel
 
         #endregion]
 
+        public DoiMatKhauVM()
+        {
+            
+        }
+
         public DoiMatKhauVM(MainWindowVM mainWindowVM)
         {
             NewPasswordChangedCommand = new RelayCommand<PasswordBox>((p) => { return true; }, p => { newPassword = p.Password; });

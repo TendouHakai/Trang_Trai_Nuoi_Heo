@@ -25,6 +25,13 @@ namespace WpfApp_MVVM.View.Windows
 
             Tb_Username.Text = QuanLyTraiHeo.Properties.Settings.Default.Username;
             PasswordBox.Password = QuanLyTraiHeo.Properties.Settings.Default.Password;
+
+            btn_DangNhap.KeyDown += Btn_DangNhap_KeyDown;
+        }
+
+        private void Btn_DangNhap_KeyDown(object sender, KeyEventArgs e)
+        {
+            throw new NotImplementedException();
         }
     }
 }
