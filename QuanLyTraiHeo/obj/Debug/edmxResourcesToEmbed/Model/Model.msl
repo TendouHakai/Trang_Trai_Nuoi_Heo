@@ -269,6 +269,7 @@
           <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
           <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+          <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
           <ScalarProperty Name="C_MaNguoiGui" ColumnName="_MaNguoiGui" />
           <ScalarProperty Name="C_MaNguoiNhan" ColumnName="_MaNguoiNhan" />
           <ScalarProperty Name="MaThongBao" ColumnName="MaThongBao" />

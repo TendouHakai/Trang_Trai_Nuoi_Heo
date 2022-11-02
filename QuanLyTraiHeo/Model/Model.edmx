@@ -255,6 +255,7 @@
           <Property Name="MaThongBao" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="_MaNguoiNhan" Type="char" MaxLength="16" />
           <Property Name="_MaNguoiGui" Type="char" MaxLength="16" />
+          <Property Name="TinhTrang" Type="nvarchar" MaxLength="16" />
           <Property Name="TieuDe" Type="ntext" />
           <Property Name="NoiDung" Type="ntext" />
           <Property Name="ThoiGian" Type="smalldatetime" />
@@ -1135,6 +1136,7 @@
           <Property Name="MaThongBao" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="C_MaNguoiNhan" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="C_MaNguoiGui" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="TinhTrang" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="TieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGian" Type="DateTime" Precision="0" />
@@ -1727,6 +1729,7 @@
                 <ScalarProperty Name="ThoiGian" ColumnName="ThoiGian" />
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
+                <ScalarProperty Name="TinhTrang" ColumnName="TinhTrang" />
                 <ScalarProperty Name="C_MaNguoiGui" ColumnName="_MaNguoiGui" />
                 <ScalarProperty Name="C_MaNguoiNhan" ColumnName="_MaNguoiNhan" />
                 <ScalarProperty Name="MaThongBao" ColumnName="MaThongBao" />

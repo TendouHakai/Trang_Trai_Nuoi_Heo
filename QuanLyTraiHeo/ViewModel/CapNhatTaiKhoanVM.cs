@@ -24,7 +24,9 @@ namespace QuanLyTraiHeo.ViewModel
         DateTime? ngayVaoLam;
         DateTime? ngaySinh;
         string sDT;
-        
+        System.Windows.Media.Imaging.BitmapImage image;
+        byte[] imageBytes;
+
         #endregion
 
         #region Property
@@ -41,6 +43,7 @@ namespace QuanLyTraiHeo.ViewModel
         public DateTime? NgaySinh { get => ngaySinh; set { ngaySinh = value; OnPropertyChanged(); } }
         public string SDT { get => sDT; set { sDT = value; OnPropertyChanged(); } }
         public string GioiTinh { get => gioiTinh; set { gioiTinh = value; OnPropertyChanged(); } }
+        public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
         public string TenChucVu { get; set ; }
         public string HoTenGoc { get; set; }
 
@@ -63,6 +66,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand NgaySinhChangedCommand { get; set; }
         public ICommand SDTChangedCommand { get; set; }
         public ICommand GioiTinhChangedCommand { get; set; }
+        public ICommand ImageChangedCommand { get; set; }
 
 
         #endregion
@@ -96,6 +100,7 @@ namespace QuanLyTraiHeo.ViewModel
             NgaySinhChangedCommand = new RelayCommand<DatePicker>((p) => { return true; }, p => { NgaySinh = p.SelectedDate; });
             SDTChangedCommand = new RelayCommand<TextBox>((p) => { return true; }, p => { SDT = p.Text; });
             GioiTinhChangedCommand = new RelayCommand<ComboBox>((p) => { return true; }, p => { GioiTinhChanged(p); });
+            ImageChangedCommand = new RelayCommand<object>((p) => { return true; }, p => { ChangeImage(); });
         }
 
         void GioiTinhChanged(ComboBox p)
@@ -123,7 +128,7 @@ namespace QuanLyTraiHeo.ViewModel
             NgaySinh = MainWindowMD.NhanVien.NgaySinh;
             HeSoLuong = MainWindowMD.NhanVien.HeSoLuong;
             HoTenGoc = HoTen;
-
+            MyImage = BytesToBitmapImage(MainWindowMD.NhanVien.MyImage);
             TenChucVu = MainWindowMD.NhanVien.CHUCVU.TenChucVu;
 
 
@@ -149,6 +154,8 @@ namespace QuanLyTraiHeo.ViewModel
                 MainWindowMD.NhanVien.NgaySinh = NgaySinh;
                 MainWindowMD.NhanVien.HeSoLuong = HeSoLuong;
                 MainWindowMD.NhanVien.GioiTinh = GioiTinh;
+                MainWindowMD.NhanVien.MyImage = imageBytes;
+                MainWindowMD.MyImage = MyImage;
                 DataProvider.Ins.DB.SaveChanges();
                 MainWindowMD.UpdateNhanVien();
                 MessageBox.Show("Thay đổi thành công");
@@ -174,6 +181,21 @@ namespace QuanLyTraiHeo.ViewModel
             return true;
         }
 
+        void ChangeImage()
+        {
+            System.Windows.Forms.OpenFileDialog dialog = new System.Windows.Forms.OpenFileDialog();
+            dialog.Filter = "Image (*.jpg)|*.jpg";
+            dialog.InitialDirectory = @"C:\";
+            dialog.Title = "Please select an image file to encrypt.";
+
+            if (dialog.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+            {
+                System.Drawing.Bitmap bitmap = new System.Drawing.Bitmap(dialog.FileName);
+                imageBytes = ImageToByteArray(bitmap);
+                MyImage = BytesToBitmapImage(imageBytes);
+            }
+        }
+
         void CloseWindow(Window p)
         {
             MessageBoxResult dlr = MessageBox.Show("Bạn muốn thoát chương trình?", "Thông báo", MessageBoxButton.YesNo);
@@ -183,6 +205,33 @@ namespace QuanLyTraiHeo.ViewModel
                 return;
             }
             return;
+        }
+
+        public static System.Windows.Media.Imaging.BitmapImage BytesToBitmapImage(byte[] imageData)
+        {
+            if (imageData == null || imageData.Length == 0) return null;
+            var image = new System.Windows.Media.Imaging.BitmapImage();
+            using (var mem = new System.IO.MemoryStream(imageData))
+            {
+                mem.Position = 0;
+                image.BeginInit();
+                image.CreateOptions = System.Windows.Media.Imaging.BitmapCreateOptions.PreservePixelFormat;
+                image.CacheOption = System.Windows.Media.Imaging.BitmapCacheOption.OnLoad;
+                image.UriSource = null;
+                image.StreamSource = mem;
+                image.EndInit();
+            }
+            image.Freeze();
+            return image;
+        }
+
+        public static byte[] ImageToByteArray(System.Drawing.Image imageIn)
+        {
+            using (var ms = new System.IO.MemoryStream())
+            {
+                imageIn.Save(ms, imageIn.RawFormat);
+                return ms.ToArray();
+            }
         }
 
         #endregion

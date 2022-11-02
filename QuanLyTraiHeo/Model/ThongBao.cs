@@ -17,6 +17,7 @@ namespace QuanLyTraiHeo.Model
         public string MaThongBao { get; set; }
         public string C_MaNguoiNhan { get; set; }
         public string C_MaNguoiGui { get; set; }
+        public string TinhTrang { get; set; }
         public string TieuDe { get; set; }
         public string NoiDung { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }

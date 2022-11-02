@@ -318,11 +318,14 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="30"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" Margin="15,0,0,0" FontWeight="Bold" FontSize="16">Hồ sơ của bạn</TextBlock>
-                                <StackPanel Grid.Column="1" Width="30">
-                                    <materialDesign:PopupBox
-                                                StaysOpen="True" 
-                                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                <TextBlock Grid.Column="0"
+                                           Margin="15,0,0,0"
+                                           FontWeight="Bold"
+                                           FontSize="16">Hồ sơ của bạn</TextBlock>
+                                <StackPanel Grid.Column="1"
+                                            Width="30">
+                                    <materialDesign:PopupBox StaysOpen="True"
+                                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                         <StackPanel Width="150">
                                             <Button Name="btn_CapNhatTaiKhoan"
                                                     Command="{Binding OpenCapNhatTaiKhoan}"
@@ -338,7 +341,6 @@
                                     </materialDesign:PopupBox>
                                 </StackPanel>
                             </Grid>
-
                             <Grid>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="110"></ColumnDefinition>
@@ -347,8 +349,9 @@
                                 <Button Width="100" Height="100" Grid.Column="0"
                                     Style="{StaticResource MaterialDesignFloatingActionSecondaryButton}"
                                     ToolTip="Ảnh đại diện"
+                                        Background="Transparent"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                    <Image Source="/Image/avatar.jpg"></Image>
+                                    <Image Source="{Binding MyImage}"></Image>
                                 </Button>
                                 <Grid Grid.Column="1">
                                     <Grid.RowDefinitions>
@@ -482,8 +485,9 @@
                                 <Button
                                     Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                                     ToolTip="{Binding NhanVien.HoTen}"
+                                    Background="Transparent"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                                    <Image Source="/Image/avatar.jpg"/>
+                                    <Image Source="{Binding MyImage}"/>
                                 </Button>
                                 <TextBlock
                             VerticalAlignment="Center"

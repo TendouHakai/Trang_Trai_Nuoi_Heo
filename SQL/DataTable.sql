@@ -136,6 +136,7 @@ Create table ThongBao
 	MaThongBao char(16),
 	_MaNguoiNhan char(16),
 	_MaNguoiGui char(16),
+	TinhTrang nvarchar(16),
 	TieuDe ntext,
 	NoiDung ntext,
 	ThoiGian smalldatetime,
@@ -405,7 +406,7 @@ INSERT INTO PERMISION
 	Permision_Descript)
 VALUES 
 	('20221024000001', 
-	'ChuTrangTrai', 
+	'Chủ trang trại', 
 	'Admin');
 
 INSERT INTO CHUCVU 
@@ -427,7 +428,8 @@ INSERT INTO NHANVIEN
 	_PassWord)
 VALUES 
 	('20221024000001', 
-	 'HongTruongVinh', 
+	 N'Hồng Trường Vinh', 
 	 '20221024000001',
 	 'Admin',
 	 'e3afed0047b08059d0fada10f400c1e5'); 
+

@@ -45,25 +45,24 @@
                 <materialDesign:Card>
                     <StackPanel Orientation="Vertical"
                                 HorizontalAlignment="Center">
-                        <Button Width="130"
-                                Height="130"
-                                Margin="0,15,0,0"
-                                Style="{StaticResource MaterialDesignFloatingActionDarkButton}"
-                                ToolTip="Ảnh đại diện"
-                                IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <Image Source="/Image/avatar.jpg"></Image>
-                        </Button>
-                        <Button     Margin="70,-50,0,0"
-                                    Background="White"
-                                    Width="40"
-                                    Height="40"
-                                    Style="{StaticResource MaterialDesignIconForegroundButton}"
-                                    ToolTip="MaterialDesignIconForegroundButton"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-                            <materialDesign:PackIcon Kind="Camera" />
-                        </Button>
+                        <Image Height="270" Width="270" Source="{Binding MyImage}"></Image>
+                        <TextBlock x:Name="btn_UpdateImage"
+                                   FontWeight="Bold"
+                                   TextDecorations="Underline"
+                                   Cursor="Hand"
+                                   Height="20"
+                                   HorizontalAlignment="Center"
+                                   Text="Cập nhật ảnh">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="MouseDown">
+                                        <i:InvokeCommandAction Command="{Binding ImageChangedCommand}"
+                                                               CommandParameter="{Binding ElementName=DoiMatKhauWD}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                        </TextBlock>
                         <TextBlock FontSize="20"
                                    FontWeight="Bold"
+                                   HorizontalAlignment="Center"
                                    Text="{Binding HoTenGoc}"></TextBlock>
                         <TextBlock FontSize="15"
                                    FontStyle="Italic"

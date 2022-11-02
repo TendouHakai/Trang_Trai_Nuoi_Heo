@@ -52,6 +52,11 @@ namespace QuanLyTraiHeo.View.Windows
             e.Handled = regex.IsMatch(e.Text);
         }
         #endregion
+
+        private void btn_UpdateImage_MouseEnter(object sender, System.Windows.Input.MouseEventArgs e)
+        {
+
+        }
     }
 
     public class NotEmptyValidationRule : ValidationRule

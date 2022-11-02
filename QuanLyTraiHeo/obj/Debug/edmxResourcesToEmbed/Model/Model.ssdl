@@ -250,6 +250,7 @@
     <Property Name="MaThongBao" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="_MaNguoiNhan" Type="char" MaxLength="16" />
     <Property Name="_MaNguoiGui" Type="char" MaxLength="16" />
+    <Property Name="TinhTrang" Type="nvarchar" MaxLength="16" />
     <Property Name="TieuDe" Type="ntext" />
     <Property Name="NoiDung" Type="ntext" />
     <Property Name="ThoiGian" Type="smalldatetime" />

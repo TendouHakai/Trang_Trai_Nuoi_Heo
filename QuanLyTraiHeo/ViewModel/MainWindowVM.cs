@@ -28,6 +28,7 @@ namespace QuanLyTraiHeo.ViewModel
         public bool IsLoaded = false;
         private string _currentWindow = "";
         NHANVIEN nhanVien;
+        System.Windows.Media.Imaging.BitmapImage image;
         private ObservableCollection<ThongBao> _listTHONGBAO;
         private ThongBao _selectedItem;
         #endregion
@@ -35,6 +36,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region Property
         public string currentWindow { get => _currentWindow; set { _currentWindow = value; OnPropertyChanged(); } }
         public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
+        public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
         public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
         public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
         #endregion
@@ -89,6 +91,8 @@ namespace QuanLyTraiHeo.ViewModel
                     p.Show();
 
                     NhanVien = loginWD.NhanVien;
+                    MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.MyImage);
+
                     listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.C_Username));
                 }
                 else
@@ -99,21 +103,14 @@ namespace QuanLyTraiHeo.ViewModel
             });
 
             CodeCommandOpenWindow();
-            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
-                if(selectedItem != null)
-                {
-                    ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
-                    ChiTietThongBaoVM vm = new ChiTietThongBaoVM(this);
-                    wc.DataContext = vm;
-                    wc.ShowDialog();
-                }
-            });
+            
         }
 
         #region Method
         public void UpdateNhanVien()
         {
             OnPropertyChanged("NhanVien");
+            OnPropertyChanged("MyImage");
         }
 
         void CodeCommandOpenWindow()
@@ -304,6 +301,16 @@ namespace QuanLyTraiHeo.ViewModel
                 wc.DataContext = capNhatTaiKhoanVM;
                 wc.ShowDialog();
 
+            });
+
+            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
+                if (selectedItem != null)
+                {
+                    ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
+                    ChiTietThongBaoVM vm = new ChiTietThongBaoVM(this);
+                    wc.DataContext = vm;
+                    wc.ShowDialog();
+                }
             });
         }
         #endregion

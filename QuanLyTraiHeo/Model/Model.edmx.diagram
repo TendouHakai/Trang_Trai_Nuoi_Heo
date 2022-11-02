@@ -4,31 +4,31 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e6d01d40dbe34c8486d72010d794ea26" Name="Diagram1" ZoomLevel="76">
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CHUCVU" Width="1.5" PointX="2.875" PointY="10.5" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CHUONGTRAI" Width="1.5" PointX="15.875" PointY="15.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUHANGHOA" Width="1.5" PointX="11.125" PointY="16" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUHEO" Width="1.5" PointX="14.5" PointY="11.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUKIEMKHO" Width="1.5" PointX="10.875" PointY="7.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUSUACHUA" Width="1.5" PointX="10.75" PointY="19.375" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.DOITAC" Width="1.5" PointX="8.25" PointY="7.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.GIONGHEO" Width="1.5" PointX="6.875" PointY="2.875" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.HANGHOA" Width="1.5" PointX="13" PointY="7.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.HEO" Width="1.5" PointX="10.5" PointY="0.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LICHPHOIGIONG" Width="1.5" PointX="14" PointY="0.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LICHTIEMHEO" Width="1.5" PointX="6.875" PointY="4.875" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.ListActionDetail" Width="1.5" PointX="0.75" PointY="2.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LOAICHUONG" Width="1.5" PointX="18.25" PointY="17.375" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LOAIHEO" Width="1.5" PointX="6.875" PointY="0.875" />
+      <Diagram DiagramId="e6d01d40dbe34c8486d72010d794ea26" Name="Diagram1" ZoomLevel="54">
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CHUCVU" Width="1.5" PointX="3" PointY="11.875" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CHUONGTRAI" Width="1.5" PointX="7.5" PointY="4.5" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUHANGHOA" Width="1.5" PointX="9.75" PointY="19" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUHEO" Width="1.5" PointX="12.75" PointY="12" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUKIEMKHO" Width="1.5" PointX="9.75" PointY="16" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.CT_PHIEUSUACHUA" Width="1.5" PointX="9.75" PointY="8.875" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.DOITAC" Width="1.5" PointX="8.25" PointY="0.75" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.GIONGHEO" Width="1.5" PointX="8.25" PointY="29.375" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.HANGHOA" Width="1.5" PointX="7.5" PointY="32.75" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.HEO" Width="1.5" PointX="10.5" PointY="26.75" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LICHPHOIGIONG" Width="1.5" PointX="12.75" PointY="25.75" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LICHTIEMHEO" Width="1.5" PointX="12.75" PointY="29.875" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.ListActionDetail" Width="1.5" PointX="0.75" PointY="2.625" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LOAICHUONG" Width="1.5" PointX="5.25" PointY="4.875" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LOAIHEO" Width="1.5" PointX="8.25" PointY="26.875" />
         <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.NHANVIEN" Width="1.5" PointX="5.25" PointY="10.375" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PERMISION" Width="1.5" PointX="0.5" PointY="10.625" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PERMISION_DETAIL" Width="1.5" PointX="0.625" PointY="8" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUHANGHOA" Width="1.5" PointX="7.5" PointY="11" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PERMISION" Width="1.5" PointX="0.75" PointY="13.375" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PERMISION_DETAIL" Width="1.5" PointX="3" PointY="18.25" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUHANGHOA" Width="1.5" PointX="7.5" PointY="15.5" />
         <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUHEO" Width="1.5" PointX="10.5" PointY="11.5" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUKIEMKHO" Width="1.5" PointX="3.625" PointY="18.125" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUSUACHUA" Width="1.5" PointX="7" PointY="19.375" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.THAMSO" Width="1.5" PointX="2.75" PointY="2.75" />
-        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.ThongBao" Width="1.5" PointX="0.75" PointY="14.625" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUKIEMKHO" Width="1.5" PointX="7.5" PointY="11.875" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.PHIEUSUACHUA" Width="1.5" PointX="7.5" PointY="8.5" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.THAMSO" Width="1.5" PointX="2.75" PointY="2.625" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.ThongBao" Width="1.5" PointX="7.5" PointY="22.375" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_CV_P" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_NV_MCV" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_CT_MC" />

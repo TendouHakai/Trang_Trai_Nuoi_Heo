@@ -430,6 +430,7 @@
     <Property Name="MaThongBao" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
     <Property Name="C_MaNguoiNhan" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
     <Property Name="C_MaNguoiGui" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="TinhTrang" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <Property Name="TieuDe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="ThoiGian" Type="DateTime" Precision="0" />
