@@ -88,40 +88,65 @@
                         </Expander>-->
 
                         <Expander IsExpanded="False" Header="Loại heo" FontWeight="Bold" Background="White">
-                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                <Grid Margin="0,0,0,10">
-                                    <ListBox >
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <CheckBox x:Name="cb_LoaiHeo" Width="30">
-                                                </CheckBox>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-
-                                </Grid>
-                            </StackPanel>
+                            <ListView ItemsSource="{Binding ListLoai}"
+                                      Margin="20 0 0 0">
+                                <ListView.Resources>
+                                    <Style TargetType="GridViewColumnHeader">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </Style>
+                                </ListView.Resources>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsChecked="{Binding isSelected }"
+                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
+                                                    </CheckBox>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding TenLoaiHeo}" >
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Giống heo" FontWeight="Bold" Background="White">
-                            <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                                <Grid Margin="0,0,0,10">
-                                    <ListBox ItemsSource="{Binding ListGiongHeo}">
-                                        <ListBox.ItemTemplate>
-                                            <DataTemplate>
-                                                <CheckBox x:Name="cb_GiongHeo" Width="220" Content="{Binding TenGiongHeo}" >
-                                                   
-                                                </CheckBox>
-                                            </DataTemplate>
-                                        </ListBox.ItemTemplate>
-                                    </ListBox>
-                                </Grid>
-                            </StackPanel>
+                            <ListView ItemsSource="{Binding ListGiong}"
+                                      Margin="20 0 0 0">
+                                <ListView.Resources>
+                                    <Style TargetType="GridViewColumnHeader">
+                                        <Setter Property="Visibility" Value="Collapsed" />
+                                    </Style>
+                                </ListView.Resources>
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="">
+                                            <GridViewColumn.CellTemplate>
+                                                <DataTemplate>
+                                                    <CheckBox IsChecked="{Binding isSelected }"
+                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
+                                                    </CheckBox>
+                                                </DataTemplate>
+                                            </GridViewColumn.CellTemplate>
+                                        </GridViewColumn>
+                                        <GridViewColumn DisplayMemberBinding="{Binding TenGiongHeo}" >
+                                        </GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Tình trạng" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                                 <CheckBox Margin="0 5">
+                                    Đang khoẻ mạnh
                                 </CheckBox>
                                 <CheckBox Margin="0 5">
                                     <TextBlock>
@@ -178,7 +203,7 @@
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="10,0,10,0">
                                     <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                    <TextBox DataContext="{StaticResource QuanLyThongTinCaTheVM}" materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimMaTen" Height="30" Margin="30,10,20,11">
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimMaTen" Height="30" Margin="30,10,20,11">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction Command="{Binding TimKiemTheoMa_TenCommand}"
@@ -205,11 +230,13 @@
                         </Grid>
                     </materialDesign:Card>
                     <ListView Margin="25 0" x:Name="listviewHeo" HorizontalAlignment="Left" SelectionMode="Single" ItemsSource="{Binding ListHeo}" SelectedItem="{Binding SelectedHeo, Mode=OneWayToSource}" >
+
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
                                 <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
                                 <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh}"/>
+                                <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong}"/>
                                 <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo}"/>
                                 <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo}"/>
                                 <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"/>
@@ -219,11 +246,8 @@
                         </ListView.View>
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <Menu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48" Height="37" DataContext="{StaticResource QuanLyThongTinCaTheVM}" Command="{Binding ShowCommand}" ></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" Height="37" DataContext="{StaticResource QuanLyThongTinCaTheVM}" Command="{Binding EditCommand}"></MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Height="37" DataContext="{StaticResource QuanLyThongTinCaTheVM}" Command="{Binding DeleteCommand}"></MenuItem>
-                                </Menu>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Show and Edit" Command="{Binding EditCommand}" />
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Delete" Command="{Binding DeleteCommand}" />
                             </ContextMenu>
                         </ListView.ContextMenu>
                     </ListView>

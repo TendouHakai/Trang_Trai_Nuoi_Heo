@@ -9,6 +9,7 @@ using System.Collections.ObjectModel;
 using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows;
 using System.Windows.Controls;
+using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -24,7 +25,8 @@ namespace QuanLyTraiHeo.ViewModel
         public HEO SelectedHeo { get; set; }
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
-
+        public string ListTrangThai { get; set; }
+        public string ListNguonGoc { get; set; }
 
         public ICommand AddCommand { get; set; }
         public ICommand ShowCommand { get; set; }
@@ -43,18 +45,13 @@ namespace QuanLyTraiHeo.ViewModel
                 ThemTTHeo themTTHeo = new ThemTTHeo();
                 themTTHeo.ShowDialog();
                 ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
-            });
 
-            ShowCommand = new RelayCommand<Window>((p) => { return true; }, p =>
-            {
-                ThongTinHeo thongTinHeo = new ThongTinHeo();
-                thongTinHeo.DataContext = SelectedHeo;
-                thongTinHeo.ShowDialog();
             });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
+                SuaTTHeoVM suaTTHeoVM = new SuaTTHeoVM(SelectedHeo);
                 SuaTTHeo suaTTHeo = new SuaTTHeo();
-                suaTTHeo.DataContext = SelectedHeo;
+                suaTTHeo.DataContext = suaTTHeoVM;
                 suaTTHeo.ShowDialog();
             });
             DeleteCommand = new RelayCommand<Window>((p) =>
@@ -70,16 +67,16 @@ namespace QuanLyTraiHeo.ViewModel
 
                 return true;
             }, p =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
                 {
-                    MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
-                    if (result == MessageBoxResult.OK)
-                    {
-                        DataProvider.Ins.DB.HEOs.Remove(SelectedHeo);
-                        ListHeo.Remove(SelectedHeo);
-                        DataProvider.Ins.DB.SaveChanges();
+                    DataProvider.Ins.DB.HEOs.Remove(SelectedHeo);
+                    ListHeo.Remove(SelectedHeo);
+                    DataProvider.Ins.DB.SaveChanges();
 
-                    }
                 }
+            }
             );
 
             TimKiemTheoMa_TenCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
@@ -91,11 +88,11 @@ namespace QuanLyTraiHeo.ViewModel
         void TimTheoMa()
         {
             ListHeo.Clear();
-            var HeoTheoMa =DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
+            var HeoTheoMa = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
             foreach (var Heo in HeoTheoMa)
             {
                 ListHeo.Add(Heo);
-            }    
+            }
         }
     }
 }
