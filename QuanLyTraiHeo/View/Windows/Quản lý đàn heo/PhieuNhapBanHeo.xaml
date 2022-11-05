@@ -9,7 +9,8 @@
         Icon="/Image/leaves_icon.png"
         Title="Tạo phiếu mới"
         Height="768"
-        Width="1024">
+        Width="1024"
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>

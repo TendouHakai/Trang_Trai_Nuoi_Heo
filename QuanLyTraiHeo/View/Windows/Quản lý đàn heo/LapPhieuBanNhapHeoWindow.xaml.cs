@@ -23,15 +23,7 @@ namespace QuanLyTraiHeo
         public LapPhieuBanNhapHeoWindow()
         {
             InitializeComponent();
-            Listview.Items.Add("abc");
-            Listview.Items.Add("cde");
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            PhieuNhapBanHeo PhieuNhapBanHeo = new PhieuNhapBanHeo();
-            PhieuNhapBanHeo.ShowDialog();
-
-        }
     }
 }

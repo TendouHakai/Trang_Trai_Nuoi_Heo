@@ -14,13 +14,13 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource PhieuBanHeoVM}"
         x:Name="PhieuNhapBanHeo"
         Title="wLogin"
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid Margin="20,0,20,0">
+    <Grid Margin="20,0,20,0" DataContext="{StaticResource LapPhieuBanNhapHeoVM}"
+>
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -117,11 +117,12 @@
                                     Width="200"
                                     BorderBrush="White"
                                     Content="Tạo phiếu"
-                                    Click="Button_Click"
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Command="{Binding TaoPhieuCommand}"   
+                                        >
 
                                     </Button>
                                 </StackPanel>
@@ -142,16 +143,6 @@
                                         <GridViewColumn Header="Khách hàng"/>
                                         <GridViewColumn Header="Trạng thái"/>
                                         <GridViewColumn Header="Tổng tiền"/>
-                                        <!--<GridViewColumn Header="Thao tác" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Menu>
-                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
-                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
-                                    </Menu>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>-->
                                     </GridView>
                                 </ListView.View>
                             </ListView>

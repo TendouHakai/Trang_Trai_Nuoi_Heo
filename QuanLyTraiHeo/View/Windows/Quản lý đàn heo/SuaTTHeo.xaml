@@ -80,8 +80,8 @@
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   >
-                        <ComboBoxItem>Heo nhập ngoài</ComboBoxItem>
-                        <ComboBoxItem>Đẻ tại trang trại</ComboBoxItem>
+                        <ComboBoxItem>Nhập ngoài</ComboBoxItem>
+                        <ComboBoxItem>Sinh trong trang trại</ComboBoxItem>
                     </ComboBox>
                 </StackPanel>
             </materialDesign:Card>

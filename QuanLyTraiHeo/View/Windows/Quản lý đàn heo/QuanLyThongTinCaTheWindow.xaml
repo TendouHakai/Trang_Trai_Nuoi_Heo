@@ -37,8 +37,7 @@
                                 Width="250"
                                 materialDesign:HintAssist.Hint="Từ ngày"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                SelectedDate="{x:Static sys:DateTime.Now}">
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectedDateChanged">
                                             <i:InvokeCommandAction Command="{Binding TimKiemTheoNgaySinhMinCommand}"
@@ -55,18 +54,17 @@
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Đến ngày"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
-                                SelectedDate="{x:Static sys:DateTime.Now}">
+                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectedDateChanged">
-                                            <i:InvokeCommandAction Command="{Binding TimKiemTheoNgaySinhMinCommand}"
+                                            <i:InvokeCommandAction Command="{Binding TimKiemTheoNgaySinhMaxCommand}"
                                                                    CommandParameter="{Binding ElementName=dtp_DateMax}"></i:InvokeCommandAction>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </DatePicker>
                             </StackPanel>
                         </Expander>
-                        <!--<Expander IsExpanded="False" Header="Trọng lượng" FontWeight="Bold" Background="White">
+                        <Expander IsExpanded="False" Header="Trọng lượng" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                                 <StackPanel Orientation="Horizontal">
                                     <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
@@ -74,6 +72,12 @@
                                              materialDesign:HintAssist.Hint="Trọng lượng tối thiểu"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                              FontWeight="Normal">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoTrongLuongMinCommand}"
+                                                                   CommandParameter="{Binding ElementName=tb_TLMin}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
@@ -82,10 +86,16 @@
                                              materialDesign:HintAssist.Hint="Trọng lượng tối đa"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                              FontWeight="Normal">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoTrongLuongMaxCommand}"
+                                                                   CommandParameter="{Binding ElementName=tb_TLMax}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </TextBox>
                                 </StackPanel>
                             </StackPanel>
-                        </Expander>-->
+                        </Expander>
 
                         <Expander IsExpanded="False" Header="Loại heo" FontWeight="Bold" Background="White">
                             <ListView ItemsSource="{Binding ListLoai}"
@@ -100,15 +110,11 @@
                                         <GridViewColumn Header="">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <CheckBox IsChecked="{Binding isSelected }"
-                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
-                                                                                                    AncestorType={x:Type ItemsControl}},
-                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
+                                                    <CheckBox x:Name="cb_tenloai" Content="{Binding TenLoaiHeo}" Command="{Binding LHCheck}">
+                                                       
                                                     </CheckBox>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn DisplayMemberBinding="{Binding TenLoaiHeo}" >
                                         </GridViewColumn>
                                     </GridView>
                                 </ListView.View>
@@ -116,67 +122,33 @@
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Giống heo" FontWeight="Bold" Background="White">
-                            <ListView ItemsSource="{Binding ListGiong}"
-                                      Margin="20 0 0 0">
-                                <ListView.Resources>
-                                    <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </Style>
-                                </ListView.Resources>
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <CheckBox IsChecked="{Binding isSelected }"
-                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
-                                                                                                    AncestorType={x:Type ItemsControl}},
-                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
-                                                    </CheckBox>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                        <GridViewColumn DisplayMemberBinding="{Binding TenGiongHeo}" >
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Tình trạng" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                                <CheckBox Margin="0 5">
-                                    Đang khoẻ mạnh
+                                <CheckBox x:Name="cb_TT1" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT1}" >
+                                    Sức khoẻ tốt
                                 </CheckBox>
-                                <CheckBox Margin="0 5">
-                                    <TextBlock>
-				                        Đang mang thai
-                                    </TextBlock>
+                                <CheckBox x:Name="cb_TT2" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT2}">
+				                    Đang mang thai
                                 </CheckBox>
-                                <CheckBox Margin="0 5">
-                                    <TextBlock>
-				                        Đang bị bệnh
-                                    </TextBlock>
+                                <CheckBox x:Name="cb_TT3" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT3}">
+				                    Đang bị bệnh
                                 </CheckBox>
-                                <CheckBox Margin="0 5">
-                                    <TextBlock>
-				                        Đã đào thải
-                                    </TextBlock>
+                                <CheckBox x:Name="cb_TT4" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT4}">
+				                    Đã đào thải
                                 </CheckBox>
                             </StackPanel>
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Nguồn gốc" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0">
-                                <CheckBox Margin="0 5">
-                                    <TextBlock>
-				                        Nhập ngoài
-                                    </TextBlock>
+                                <CheckBox x:Name="cb_NG1" Margin="0 5" Command="{Binding NGCheck}" CommandParameter="{Binding ElementName=cb_NG1}">
+				                    Nhập ngoài
                                 </CheckBox>
-                                <CheckBox Margin="0 5">
-                                    <TextBlock>
-				                        Đẻ tại trang trại
-                                    </TextBlock>
+                                <CheckBox x:Name="cb_NG2" Margin="0 5" Command="{Binding NGCheck}" CommandParameter="{Binding ElementName=cb_NG2}">
+                                    Sinh trong trang trại
                                 </CheckBox>
                             </StackPanel>
                         </Expander>
@@ -192,7 +164,7 @@
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition></RowDefinition>
-                                <RowDefinition></RowDefinition>
+                                <RowDefinition Height="*"></RowDefinition>
                             </Grid.RowDefinitions>
                             <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,5,0,5">Danh sách các cá thể heo</TextBlock>
 
@@ -229,28 +201,33 @@
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
-                    <ListView Margin="25 0" x:Name="listviewHeo" HorizontalAlignment="Left" SelectionMode="Single" ItemsSource="{Binding ListHeo}" SelectedItem="{Binding SelectedHeo, Mode=OneWayToSource}" >
+                    <ScrollViewer Height="600" Width="auto">
+                        <ListView x:Name="listviewHeo" HorizontalAlignment="Left" SelectionMode="Single"
+                                  ItemsSource="{Binding ListHeo}" SelectedItem="{Binding SelectedHeo, Mode=OneWayToSource}" 
+                              >
+                            <ListView.View>
 
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
-                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
-                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh}"/>
-                                <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong}"/>
-                                <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo}"/>
-                                <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo}"/>
-                                <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"/>
-                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"/>
-                                <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc}"/>
-                            </GridView>
-                        </ListView.View>
-                        <ListView.ContextMenu>
-                            <ContextMenu>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Show and Edit" Command="{Binding EditCommand}" />
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Delete" Command="{Binding DeleteCommand}" />
-                            </ContextMenu>
-                        </ListView.ContextMenu>
-                    </ListView>
+                                <GridView>
+                                    <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
+                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
+                                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}}"/>
+                                    <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong}"/>
+                                    <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo}"/>
+                                    <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo}"/>
+                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"/>
+                                    <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"/>
+                                    <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc}"/>
+                                </GridView>
+                            </ListView.View>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Show and Edit" Command="{Binding EditCommand}" />
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Delete" Command="{Binding DeleteCommand}" />
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </ScrollViewer>
+
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

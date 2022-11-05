@@ -80,15 +80,12 @@
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Nguồn gốc"
-                                                                    Text="{Binding NguonGoc}"
-
+                                  Text="{Binding NguonGoc}"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                  SelectedItem="{Binding NguonGoc}"
-
-                                  >
-                            <ComboBoxItem>Heo nhập ngoài</ComboBoxItem>
-                            <ComboBoxItem>Đẻ tại trang trại</ComboBoxItem>
+                                  SelectedItem="{Binding NguonGoc}">
+                            <ComboBoxItem>Nhập ngoài</ComboBoxItem>
+                            <ComboBoxItem>Sinh trong trang trại</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
                 </materialDesign:Card>
@@ -162,30 +159,32 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView ItemsSource="{Binding ListHeoAdd}" SelectedItem="{Binding SelectedHeo}" HorizontalAlignment="Stretch">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Mã loại heo" DisplayMemberBinding="{Binding MaLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Mã giống heo" DisplayMemberBinding="{Binding MaGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Mã heo mẹ" DisplayMemberBinding="{Binding MaHeoMe,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Mã heo cha" DisplayMemberBinding="{Binding MaHeoCha,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                        <ListView.ContextMenu>
-                            <ContextMenu>
-                                <Menu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Height="37" Command="{Binding DeleteCommand}"></MenuItem>
-                                </Menu>
-                            </ContextMenu>
-                        </ListView.ContextMenu>
-                    </ListView>
+                    <ScrollViewer Height="600" Width="auto">
+                        <ListView ItemsSource="{Binding ListHeoAdd}" SelectedItem="{Binding SelectedHeo}" HorizontalAlignment="Stretch">
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã loại heo" DisplayMemberBinding="{Binding MaLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã giống heo" DisplayMemberBinding="{Binding MaGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã heo mẹ" DisplayMemberBinding="{Binding MaHeoMe,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã heo cha" DisplayMemberBinding="{Binding MaHeoCha,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <Menu>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Height="37" Command="{Binding DeleteCommand}"></MenuItem>
+                                    </Menu>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
+                    </ScrollViewer>
                 </StackPanel>
             </materialDesign:Card>
 
