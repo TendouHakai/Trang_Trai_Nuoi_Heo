@@ -18,6 +18,7 @@ using System.Windows.Controls;
 using System.Windows.Controls.Primitives;
 using System.Windows.Documents;
 using System.Windows.Input;
+using System.Windows.Media;
 using WpfApp_MVVM.View.Windows;
 
 namespace QuanLyTraiHeo.ViewModel
@@ -30,6 +31,7 @@ namespace QuanLyTraiHeo.ViewModel
         NHANVIEN nhanVien;
         System.Windows.Media.Imaging.BitmapImage image;
         private ObservableCollection<ThongBao> _listTHONGBAO;
+        private int _countThongBaoChuaDoc;
         private ThongBao _selectedItem;
         #endregion
 
@@ -38,6 +40,7 @@ namespace QuanLyTraiHeo.ViewModel
         public NHANVIEN NhanVien { get => nhanVien; set { nhanVien = value; OnPropertyChanged(); } }
         public System.Windows.Media.Imaging.BitmapImage MyImage { get => image; set { image = value; OnPropertyChanged(); } }
         public ObservableCollection<ThongBao> listTHONGBAO { get => _listTHONGBAO; set { _listTHONGBAO = value; OnPropertyChanged(); } }
+        public int countThongBaoChuaDoc { get => _countThongBaoChuaDoc; set { _countThongBaoChuaDoc = value; OnPropertyChanged(); } }
         public ThongBao selectedItem { get => _selectedItem; set { _selectedItem = value; OnPropertyChanged(); } }  
         #endregion
 
@@ -68,7 +71,8 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Event Command
         public ICommand LoadedWindowCommand { get; set; }
-        public ICommand OpenCTThongBao { get; set; }
+        public ICommand OpenCTThongBaoCommand { get; set; }
+        public ICommand OpenTaoThongBaoCommand { get; set; }
         #endregion]
 
         public MainWindowVM()   
@@ -93,7 +97,9 @@ namespace QuanLyTraiHeo.ViewModel
                     NhanVien = loginWD.NhanVien;
                     MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.MyImage);
 
-                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.C_Username));
+                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien));
+
+                    loadCountThongBao();
                 }
                 else
                 {
@@ -103,7 +109,6 @@ namespace QuanLyTraiHeo.ViewModel
             });
 
             CodeCommandOpenWindow();
-            
         }
 
         #region Method
@@ -111,6 +116,12 @@ namespace QuanLyTraiHeo.ViewModel
         {
             OnPropertyChanged("NhanVien");
             OnPropertyChanged("MyImage");
+        }
+
+        void loadCountThongBao()
+        {
+            var listTHONGBAOchuadoc = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.TinhTrang == "Chưa đọc"));
+            countThongBaoChuaDoc = 0;
         }
 
         void CodeCommandOpenWindow()
@@ -303,7 +314,7 @@ namespace QuanLyTraiHeo.ViewModel
 
             });
 
-            OpenCTThongBao = new RelayCommand<Window>((p) => { return true; }, p => {
+            OpenCTThongBaoCommand = new RelayCommand<Window>((p) => { return true; }, p => {
                 if (selectedItem != null)
                 {
                     ChitTietThongBaoWindow wc = new ChitTietThongBaoWindow();
@@ -311,6 +322,13 @@ namespace QuanLyTraiHeo.ViewModel
                     wc.DataContext = vm;
                     wc.ShowDialog();
                 }
+            });
+            OpenTaoThongBaoCommand = new RelayCommand<Window>((p) => { return true; }, p => {
+                TaoThongBaoWindow wc = new TaoThongBaoWindow();
+                TaoThongBaoVM vm = new TaoThongBaoVM();
+                vm.nguoigui = NhanVien;
+                wc.DataContext = vm;
+                wc.ShowDialog();
             });
         }
         #endregion
