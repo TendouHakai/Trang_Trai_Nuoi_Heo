@@ -22,4 +22,25 @@ namespace QuanLyTraiHeo.Model
             TenChucVu = tenChucVu;
         }
     }
+
+    public partial class HoatDong
+    {
+        public string icon { get; set; }
+        public string TenNhanVien { get; set; }
+        public string HanhDong { get; set; }
+        public string MaPhieu { get; set; }
+        public DateTime ThoiGian { get; set; }
+    }
+
+    public partial class HanhDong
+    {
+        public bool ischecked { get; set; }
+        public string TenHanhDong { get; set; }
+        public HanhDong(bool ischecked, string tenHanhDong)
+        {
+            this.ischecked = ischecked;
+            TenHanhDong = tenHanhDong;
+        }
+    }
+
 }

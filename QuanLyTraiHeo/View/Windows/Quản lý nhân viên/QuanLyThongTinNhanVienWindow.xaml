@@ -157,14 +157,14 @@
                 </Grid>
 
             </materialDesign:Card>
-            <ScrollViewer Grid.Row="1"
-                          VerticalScrollBarVisibility="Auto"
-                          HorizontalScrollBarVisibility="Auto">
-                <Grid Margin="10,10">
+                <Grid Margin="10,10"
+                      Grid.Row="1">
                     <ListView Margin="5"
                               x:Name="ListNhanVien"
                               ItemsSource="{Binding listNhanvien, Mode=TwoWay}"
-                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
+                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}"
+                          ScrollViewer.CanContentScroll="True"
+                          ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Mã nhân viên"
@@ -197,7 +197,6 @@
 
                 </Grid>
 
-            </ScrollViewer>
         </Grid>
     </Grid>
 
