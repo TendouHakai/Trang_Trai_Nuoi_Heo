@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -23,15 +24,15 @@ namespace QuanLyTraiHeo.Model
         }
     }
 
-    public partial class HoatDong
+    public partial class NhatKy
     {
         public string icon { get; set; }
         public string TenNhanVien { get; set; }
         public string HanhDong { get; set; }
         public string MaPhieu { get; set; }
         public DateTime ThoiGian { get; set; }
+        public string Ngay { get; set; }
     }
-
     public partial class HanhDong
     {
         public bool ischecked { get; set; }

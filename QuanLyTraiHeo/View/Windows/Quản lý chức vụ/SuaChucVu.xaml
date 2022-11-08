@@ -7,7 +7,9 @@
         xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         DataContext="{DynamicResource SuaChucVuVM }"
-        Title="SuaChucVu" Height="350" Width="350">
+        Title="SuaChucVu"
+        Height="537"
+        Width="350">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -32,6 +34,15 @@
                               SelectedIndex="0"
                               SelectedItem="{Binding permission, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                     </ComboBox>
+                    <TextBox Margin="10,0,10,0"
+                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                             VerticalAlignment="Top"
+                             Height="150"
+                             Text="{Binding Mota, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                             AcceptsReturn="True"
+                             TextWrapping="Wrap"
+                             VerticalScrollBarVisibility="Auto"
+                             materialDesign:HintAssist.Hint="Mô tả công việc" />
 
                 </StackPanel>
             </materialDesign:Card>

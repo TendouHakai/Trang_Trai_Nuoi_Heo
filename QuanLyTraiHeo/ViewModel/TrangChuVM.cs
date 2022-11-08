@@ -19,8 +19,8 @@ namespace QuanLyTraiHeo.ViewModel
         public string[] LabelsDSCPChart { get; set; }
         public SeriesCollection SeriesCollectionNVChart { get; set; }
         public string[] LabelsNVChart { get; set; }
-        public List<HoatDong> LstHoatDong = new List<HoatDong>();
-        public List<HoatDong> lstHoatDong { get => LstHoatDong; set { LstHoatDong = value; OnPropertyChanged(); } }
+        //public List<HoatDong> LstHoatDong = new List<HoatDong>();
+        //public List<HoatDong> lstHoatDong { get => LstHoatDong; set { LstHoatDong = value; OnPropertyChanged(); } }
         public TrangChuVM()
         {
             PointLabel = chartPoint =>

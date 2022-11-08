@@ -52,18 +52,19 @@ namespace QuanLyTraiHeo.ViewModel
             permissionSelectionchanged = new RelayCommand<Button>((p) => { return true; }, p => { PermissionSelectionChanged(); });
 
 
-            TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => {
+            TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p =>
+            {
                 LoadListChucVu();
             });
             LoadListPermission();
             LoadListChucVu();
             permissionModels = new ObservableCollection<PermissionModel>();
-            permissionModels.Add(new PermissionModel(false,"QuanLyNhanVien",1));
-            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo",2));
-            permissionModels.Add(new PermissionModel(false, "QuanLyKho",3));
-            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh",4));
-            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu",5));
-            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy",6));
+            permissionModels.Add(new PermissionModel(false, "QuanLyNhanVien", 1));
+            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo", 2));
+            permissionModels.Add(new PermissionModel(false, "QuanLyKho", 3));
+            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh", 4));
+            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu", 5));
+            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy", 6));
 
         }
 
@@ -73,16 +74,16 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 MessageBox.Show("Vui lòng điền tên chức vụ!");
                 return;
-                    }
-                    if(ModifyPermission == null)
+            }
+            if (ModifyPermission == null)
             {
 
                 ModifyPermission = new PERMISION();
-                ModifyPermission.ID_Permision = "Per"+ listPermission.Count.ToString();
+                ModifyPermission.ID_Permision = "Per" + listPermission.Count.ToString();
                 ModifyPermission.Name_Permision = PermissionName;
                 DataProvider.Ins.DB.PERMISIONs.Add(ModifyPermission);
             }
-            else if(ModifyPermission.Name_Permision != PermissionName)
+            else if (ModifyPermission.Name_Permision != PermissionName)
             {
 
                 ModifyPermission = new PERMISION();
@@ -100,10 +101,10 @@ namespace QuanLyTraiHeo.ViewModel
 
 
             foreach (var item in permissionModels)
-                if(item.isSelected)
+                if (item.isSelected)
                 {
                     PERMISION_DETAIL pERMISION_DETAIL = new PERMISION_DETAIL();
-                    pERMISION_DETAIL.ID_PermisionDetail = ("PD" + ModifyPermission.ID_Permision + item.number.ToString()).ToString().Replace(" ","");
+                    pERMISION_DETAIL.ID_PermisionDetail = ("PD" + ModifyPermission.ID_Permision + item.number.ToString()).ToString().Replace(" ", "");
                     pERMISION_DETAIL.ActionDetail = item.ActionDetail;
                     pERMISION_DETAIL.ID_Permision = ModifyPermission.ID_Permision;
                     MessageBox.Show(pERMISION_DETAIL.ID_PermisionDetail);
@@ -118,16 +119,16 @@ namespace QuanLyTraiHeo.ViewModel
         {
             listChucVu.Clear();
 
-            var list = DataProvider.Ins.DB.CHUCVUs.Where(s => s.TenChucVu.Contains(textTimKiem) ).ToList();
+            var list = DataProvider.Ins.DB.CHUCVUs.Where(s => s.TenChucVu.Contains(textTimKiem)).ToList();
             foreach (var items in list)
                 listChucVu.Add(items);
-          
+
         }
         private void PermissionSelectionChanged()
         {
             if (ModifyPermission == null)
                 return;
-permissionModels.Clear();
+            permissionModels.Clear();
             permissionModels.Add(new PermissionModel(false, "QuanLyNhanVien", 1));
             permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo", 2));
             permissionModels.Add(new PermissionModel(false, "QuanLyKho", 3));
@@ -144,15 +145,12 @@ permissionModels.Clear();
         }
         private void ThemChucVu()
         {
-            //if (selectedChucVu == null)
-            //    return;
-            //MessageBox.Show(selectedChucVu.TenChucVu);
-            if(newChucVu.TenChucVu == String.Empty || newChucVu.TenChucVu == "")
+            if (newChucVu.TenChucVu == String.Empty || newChucVu.TenChucVu == "")
             {
                 MessageBox.Show("Vui lòng nhập tên chức vụ");
                 return;
             }
-            if(selectedPermission==null)
+            if (newChucVu.PERMISION == null)
             {
                 MessageBox.Show("Vui lòng chọn quyền ");
             }
@@ -162,25 +160,22 @@ permissionModels.Clear();
                 MessageBox.Show("Vui lòng đúng thông tin! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-
             newChucVu.MaChucVu = ("CV" + DataProvider.Ins.DB.CHUCVUs.Count().ToString()).Replace(" ", "");
-            newChucVu.ID_Permision = selectedPermission.ID_Permision;
-
-
+            newChucVu.ID_Permision = newChucVu.PERMISION.ID_Permision;
             DataProvider.Ins.DB.CHUCVUs.Add(newChucVu);
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Thêm nhân viên mới thành công! ", "Thông báo!", MessageBoxButton.OK);
-           
+
             newChucVu = new CHUCVU();
             newChucVu.MaChucVu = "";
             newChucVu.TenChucVu = "";
             newChucVu.LuongCoBan = 0;
             LoadListChucVu();
         }
-        
+
         private void LoadListPermission()
         {
-           
+
             listPermission.Clear();
 
             var list = DataProvider.Ins.DB.PERMISIONs.ToList();
@@ -198,7 +193,7 @@ permissionModels.Clear();
             SuaChucVuVM suaChucVuVM = new SuaChucVuVM(listChucVu[listviewSelectedIndex]);
             suaChucVuW.DataContext = suaChucVuVM;
             suaChucVuW.ShowDialog();
-            LoadListChucVu();        
+            LoadListChucVu();
         }
 
     }

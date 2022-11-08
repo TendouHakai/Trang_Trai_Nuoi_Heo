@@ -20,20 +20,7 @@
         <materialDesign:Card Grid.Column="0"
                              Margin="0,0,10,0">
             <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="75"></RowDefinition>
-                    <RowDefinition></RowDefinition>
-                </Grid.RowDefinitions>
-                <materialDesign:Card Height="75"
-                                     Margin="0,5,0,0">
-                    <TextBlock Grid.Column="0"
-                               Grid.Row="0"
-                               FontWeight="Bold"
-                               FontSize="16"
-                               Margin="10,0,0,0">Tìm kiếm thông tin nhân viên</TextBlock>
-                </materialDesign:Card>
-                <ScrollViewer Grid.Row="1"
-                              VerticalScrollBarVisibility="Auto"
+                <ScrollViewer  VerticalScrollBarVisibility="Auto"
                               HorizontalScrollBarVisibility="Auto">
                     <StackPanel  Orientation="Vertical">
                         <!--<Expander IsExpanded="True"
@@ -60,7 +47,7 @@
                             </StackPanel>
                         </Expander>-->
                         <Expander IsExpanded="True"
-                                  Header="Chức vụ"
+                                  Header="Lọc theo chức vụ vụ"
                                   FontWeight="Bold"
                                   Background="White">
                             <ListView ItemsSource="{Binding listChucVu}"
