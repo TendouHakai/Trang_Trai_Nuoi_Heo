@@ -169,7 +169,7 @@ namespace QuanLyTraiHeo
             else
             {
                 p.BadgeBackground = Brushes.Red;
-                p.BadgeBackground = Brushes.White;
+                p.BadgeForeground = Brushes.White;
             }
         }
     }

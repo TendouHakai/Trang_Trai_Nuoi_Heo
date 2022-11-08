@@ -427,10 +427,18 @@
                                             </materialDesign:PackIcon>
                                         </materialDesign:PopupBox.ToggleContent>
                                         <ListBox Width="400" Padding="0" ItemsSource="{Binding listTHONGBAO}" SelectedItem="{Binding selectedItem, Mode=TwoWay}">
-
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                                            <Setter Property="Foreground" Value="#2596be"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Orientation="Vertical" Width="400" Margin="-7, -5, -7, -5">
+                                                    <StackPanel Orientation="Vertical" Width="400">
                                                         <TextBlock Margin="5,0,5,0" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding TieuDe}"></TextBlock>
                                                         <TextBlock Margin="5,0,5,0" FontStyle="Italic" FontSize="10" Text="{Binding ThoiGian}"></TextBlock>
                                                         <TextBlock Margin="5,7,5,0" TextWrapping="Wrap" Text="{Binding NoiDung}"></TextBlock>

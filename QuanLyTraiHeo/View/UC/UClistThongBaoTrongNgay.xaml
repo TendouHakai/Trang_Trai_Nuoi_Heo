@@ -13,8 +13,28 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="310">
-                        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding NHANVIEN.HoTen}"></TextBlock>
-                        <TextBlock FontStyle="Italic" FontSize="10" Text="{Binding TieuDe}"></TextBlock>
+                        <TextBlock x:Name="txt_tenNhanvien" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding NHANVIEN.HoTen}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                            <Setter Property="Foreground" Value="#2596be"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
+                        <TextBlock x:Name="txt_Tieude" FontStyle="Italic" FontSize="10" Text="{Binding TieuDe}">
+                            <TextBlock.Style>
+                                <Style TargetType="TextBlock">
+                                    <Style.Triggers>
+                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                            <Setter Property="Foreground" Value="#2596be"></Setter>
+                                        </DataTrigger>
+                                    </Style.Triggers>
+                                </Style>
+                            </TextBlock.Style>
+                        </TextBlock>
                         <Rectangle Margin="5,5,10,0" VerticalAlignment="Stretch" Fill="Black" Height="1"/>
                     </StackPanel>
                 </DataTemplate>

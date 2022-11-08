@@ -18,10 +18,10 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class ChiTietThongBaoVM:BaseViewModel
     {
-        private MainWindowVM vmMainW;
+        public MainWindowVM vmMainW;
         public string maNhanVien = "";
-        private ObservableCollection<ThongBao> _listTHONGBAOs;
-        public ObservableCollection<ThongBao> listTHONGBAOs { get => _listTHONGBAOs; set { _listTHONGBAOs = value; OnPropertyChanged(); } }
+        //private ObservableCollection<ThongBao> _listTHONGBAOs;
+        //public ObservableCollection<ThongBao> listTHONGBAOs { get => _listTHONGBAOs; set { _listTHONGBAOs = value; OnPropertyChanged(); } }
 
         private ThongBao _SelectedItem;
         public ThongBao SelectedItem { get => _SelectedItem; set { _SelectedItem = value; OnPropertyChanged(); } }
@@ -50,6 +50,8 @@ namespace QuanLyTraiHeo.ViewModel
             vmMainW = vm;
             maNhanVien = vmMainW.NhanVien.MaNhanVien;
             SelectedItem = vmMainW.selectedItem;
+            SelectedItem.TinhTrang = "Đã đọc";
+            DataProvider.Ins.DB.SaveChanges();
             txtTieuDe = "";
             cbTinhTrang = new ComboBoxItem();
             cbTinhTrang.Content = "Tất cả";
@@ -59,6 +61,7 @@ namespace QuanLyTraiHeo.ViewModel
 
             CloseChiTietThongBaoW = new RelayCommand<Window>((p) => { return true; }, p => {
                 vmMainW.selectedItem = null;
+                vmMainW.loadCountThongBao();
             });
             TimKiemTheoTieuDeCommand = new RelayCommand<TextBox>((p) => { return true; }, p => {
                 txtTieuDe = p.Text;
@@ -67,17 +70,54 @@ namespace QuanLyTraiHeo.ViewModel
             TimKiemTheoTinhTrangCommand = new RelayCommand<ComboBox>((p) => { return true; }, p => {
                 TimKiem();
             });
-            deleteThongBao = new RelayCommand<ComboBox>((p) => { if (SelectedItem.NHANVIEN.MaNhanVien == maNhanVien) return true; else return false; }, 
+            deleteThongBao = new RelayCommand<Object>(
+                (p) => {
+                    if (SelectedItem == null)
+                        return false;
+                    else if (SelectedItem.NHANVIEN.MaNhanVien == maNhanVien)
+                        return true;
+                    else return false;
+                }, 
                 p => {
-                    var listThongBao = new List<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == maNhanVien || x.C_MaNguoiGui == maNhanVien).OrderByDescending(x => x.ThoiGian).ToList());
-                    for (int i = 0; i<listThongBao.Count; i++)
+                    var listThongBao = new List<ThongBao>();
+                    foreach(var listhongbaoNgay in thongBaoTheoNgays)
                     {
-                        if (listThongBao[i].MaThongBao == SelectedItem.MaThongBao)
+                        foreach(var thongbao in listhongbaoNgay.thongbaotrongngay)
                         {
-                            SelectedItem = listThongBao[i+1];
-                            break;
+                            listThongBao.Add(thongbao);
                         }
                     }
+                    if (listThongBao.Count <= 1)
+                    {
+                        SelectedItem = null;
+                    }
+                    else
+                    {
+                        int i = 0;
+                        for (; i < listThongBao.Count; i++)
+                        {
+                            if (listThongBao[i].MaThongBao == SelectedItem.MaThongBao)
+                            {
+                                DataProvider.Ins.DB.ThongBaos.Remove(SelectedItem);
+                                DataProvider.Ins.DB.SaveChanges();
+                                if (i == listThongBao.Count - 1)
+                                {
+                                    SelectedItem = listThongBao[0];
+                                }
+                                else
+                                { 
+                                    SelectedItem = listThongBao[i + 1]; 
+                                }
+                                break;
+                            }
+                        }
+                        if (i == listThongBao.Count)
+                        {
+                            SelectedItem = null;
+                        }
+                        TimKiem();
+                    }
+
                 });
         }
         void LoadDSThongBao()
@@ -91,7 +131,6 @@ namespace QuanLyTraiHeo.ViewModel
                 listThongBaoTrongNgayVM thongbaotrongngay = new listThongBaoTrongNgayVM(NgaythongBao, this);
                 thongBaoTheoNgays.Add(thongbaotrongngay);
             }
-            //thongBaoTheoNgays2 = new ObservableCollection<listThongBaoTrongNgayVM>(thongBaoTheoNgays);
         }
         void TimKiem()
         {

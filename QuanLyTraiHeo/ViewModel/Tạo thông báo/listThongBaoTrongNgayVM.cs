@@ -1,4 +1,5 @@
 ﻿using QuanLyTraiHeo.Model;
+using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -7,6 +8,7 @@ using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using System.Windows.Media.Animation;
 
@@ -40,14 +42,26 @@ namespace QuanLyTraiHeo.ViewModel
             LoadDSThongBaoTrongNgay();
 
             selectThongBaotrongngayCommand = new RelayCommand<Object>((p) => { return true; }, p => {
-                if(selectedThongBao!=null)
+                if (selectedThongBao != null)
+                { 
                     vmCTThongBao.SelectedItem = selectedThongBao;
+                    selectedThongBao.TinhTrang = "Đã đọc";
+                    DataProvider.Ins.DB.SaveChanges();
+                }
                 selectedThongBao = null;
             });
         }   
         void LoadDSThongBaoTrongNgay()
         {
-            thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day).OrderByDescending(x=> x.ThoiGian));
+            thongbaotrongngay = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian.Value.Day == NgayThongBao.Day && x.C_MaNguoiNhan==vmCTThongBao.maNhanVien).OrderByDescending(x=> x.ThoiGian));
+            if (thongbaotrongngay.Count == 0)
+            {
+                IsActive = false;
+            }
+            else
+            {
+                IsActive = true;
+            }
         }
         public void TimKiem(string txtTieuDe, string tinhtrang)
         {
@@ -57,16 +71,20 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 thongbaos = thongbaos.Where(x => x.TieuDe.Contains(txtTieuDe)).ToList();
             }
-            if(tinhtrang!="Tất cả")
+            if (tinhtrang.ToString() == "Tất cả")
             {
-                if(tinhtrang=="Đã gửi")
-                {
-                    thongbaos = thongbaos.Where(x => x.C_MaNguoiGui == vmCTThongBao.maNhanVien).ToList();
-                }    
-                else thongbaos = thongbaos.Where(x => x.TinhTrang == "Chưa đọc").ToList();
+                thongbaos = thongbaos.Where(x => x.C_MaNguoiNhan == vmCTThongBao.maNhanVien).ToList();
+            }
+            else if (tinhtrang.ToString() == "Đã gửi")
+            {
+                thongbaos = thongbaos.Where(x => x.C_MaNguoiGui == vmCTThongBao.maNhanVien).ToList();
+            }
+            else
+            {
+                thongbaos = thongbaos.Where(x => x.TinhTrang == "Chưa đọc" && x.C_MaNguoiNhan == vmCTThongBao.maNhanVien).ToList();
             }
 
-            foreach(var thongbao in thongbaos)
+            foreach (var thongbao in thongbaos)
             {
                 thongbaotrongngay.Add(thongbao);
             }
@@ -74,6 +92,10 @@ namespace QuanLyTraiHeo.ViewModel
             if(thongbaotrongngay.Count == 0)
             {
                 IsActive = false;
+            }
+            else
+            {
+                IsActive = true;
             }
 
         }

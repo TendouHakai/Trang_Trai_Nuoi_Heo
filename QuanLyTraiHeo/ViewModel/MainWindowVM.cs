@@ -118,10 +118,10 @@ namespace QuanLyTraiHeo.ViewModel
             OnPropertyChanged("MyImage");
         }
 
-        void loadCountThongBao()
+        public void loadCountThongBao()
         {
-            var listTHONGBAOchuadoc = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.TinhTrang == "Chưa đọc"));
-            countThongBaoChuaDoc = 0;
+            var listTHONGBAOchuadoc = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.TinhTrang == "Chưa đọc" && x.C_MaNguoiNhan == NhanVien.MaNhanVien));
+            countThongBaoChuaDoc = listTHONGBAOchuadoc.Count;
         }
 
         void CodeCommandOpenWindow()

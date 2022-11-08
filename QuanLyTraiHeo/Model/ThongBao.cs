@@ -9,15 +9,17 @@
 
 namespace QuanLyTraiHeo.Model
 {
+    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class ThongBao
+    public partial class ThongBao:BaseViewModel
     {
         public string MaThongBao { get; set; }
         public string C_MaNguoiNhan { get; set; }
         public string C_MaNguoiGui { get; set; }
-        public string TinhTrang { get; set; }
+        private string _TinhTrang { get; set; }
+        public string TinhTrang { get => _TinhTrang; set { _TinhTrang = value; OnPropertyChanged(); } }
         public string TieuDe { get; set; }
         public string NoiDung { get; set; }
         public Nullable<System.DateTime> ThoiGian { get; set; }

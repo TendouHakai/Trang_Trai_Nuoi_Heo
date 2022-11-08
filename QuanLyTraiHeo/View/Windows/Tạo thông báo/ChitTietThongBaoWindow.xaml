@@ -47,7 +47,7 @@
                         </Grid.RowDefinitions>
                         <Grid Grid.Row="0">
                             <materialDesign:PackIcon Kind="Search" Margin="10 15 0 0 "/>
-                            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimTieuDe" Height="30" Margin="35,0,15,0" Text="{Binding txtTieuDe}">
+                            <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimTieuDe" Height="30" Margin="35,0,15,0">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="TextChanged">
                                         <i:InvokeCommandAction Command="{Binding TimKiemTheoTieuDeCommand}"
@@ -139,7 +139,7 @@
             <TextBlock Margin="20,0,20,0" FontSize="12"
                        Text="{Binding SelectedItem.ThoiGian}"></TextBlock>
             <StackPanel Orientation="Horizontal">
-                <TextBlock Margin="20,20,10,0" FontSize="13">Đến: </TextBlock>
+                <TextBlock Margin="20,20,10,0" FontSize="13">Đến:</TextBlock>
                 <TextBlock Margin="0,20,20,0" FontSize="13"
                        Text="{Binding SelectedItem.NHANVIEN1.HoTen}"></TextBlock>
             </StackPanel>
