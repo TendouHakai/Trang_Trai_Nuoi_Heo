@@ -1,12 +1,18 @@
 ﻿
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\App.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\UC\Heo_UC.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\UC\IconChuongUC.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\UC\LichUC.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Sơ đồ\wDSHeo.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Sơ đồ\wDSLichChuong.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Sơ đồ\wSoDo.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Tạo thông báo\ChonNguoiGui.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý kho\ThongTinHangHoa.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý đàn heo\ThongTinHeo.xaml;;
-FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\CapNhatTaiKhoanWindow.xaml;;
-FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\DoiMatKhau.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\QL thông tin cá nhân\CapNhatTaiKhoanWindow.xaml;;
+FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\QL thông tin cá nhân\DoiMatKhau.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý kho\TaoPhieuKho.xaml;;
 FC:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\View\Windows\Quản lý kho\TaoPhieuKiemKho.xaml;;

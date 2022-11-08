@@ -1,4 +1,5 @@
 ﻿using QuanLyTraiHeo.View.Windows;
+using QuanLyTraiHeo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -160,6 +161,14 @@ namespace QuanLyTraiHeo
         private void btn_TaoThongBao_Click(object sender, RoutedEventArgs e)
         {
             TaoThongBaoWindow wc = new TaoThongBaoWindow();
+            wc.ShowDialog();
+        }
+
+        private void btn_OpenSoDo_Click(object sender, RoutedEventArgs e)
+        {
+            wSoDo wc = new wSoDo();
+            SoDoVM soDoVM = new SoDoVM();
+            wc.DataContext = soDoVM;
             wc.ShowDialog();
         }
     }

@@ -162,8 +162,6 @@ C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\ThongTinHangHoa.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.g.cs
-C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.g.cs
-C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.g.cs
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.g.cs
@@ -216,8 +214,6 @@ C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\ThongTinHangHoa.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ThongTinChuong.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThongTinHeo.baml
-C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\CapNhatTaiKhoanWindow.baml
-C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\DoiMatKhau.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\PhieuSuaChua.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKho.baml
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý kho\TaoPhieuKiemKho.baml
@@ -266,3 +262,19 @@ C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\Quan
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\IconChuongUC.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wSoDo.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\IconChuongUC.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wSoDo.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wDSHeo.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wDSHeo.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\Heo_UC.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\Heo_UC.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\LichUC.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\UC\LichUC.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wDSLichChuong.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wDSLichChuong.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\QL thông tin cá nhân\CapNhatTaiKhoanWindow.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\QL thông tin cá nhân\DoiMatKhau.g.cs
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\QL thông tin cá nhân\CapNhatTaiKhoanWindow.baml
+C:\Users\HONG VINH\source\repos\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\QL thông tin cá nhân\DoiMatKhau.baml
