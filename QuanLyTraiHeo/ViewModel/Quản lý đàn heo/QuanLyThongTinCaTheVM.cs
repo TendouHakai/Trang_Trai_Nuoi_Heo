@@ -91,7 +91,7 @@ namespace QuanLyTraiHeo.ViewModel
         void TimTheoMa()
         {
             ListHeo.Clear();
-            var HeoTheoMa =DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
+            var HeoTheoMa = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(MaTim)).ToList();
             foreach (var Heo in HeoTheoMa)
             {
                 ListHeo.Add(Heo);

@@ -20,15 +20,36 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
     /// </summary>
     public partial class SuaLoaiHeo : Window
     {
-
-        public SuaLoaiHeo()
+        public SuaLoaiHeo(LOAIHEO LH)
         {
             InitializeComponent();
+            Textcode.Text = LH.MaLoaiHeo;
+            Textname.Text = LH.TenLoaiHeo;
+            textmota.Text = LH.MoTa;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (Textcode.Text == "")
+            {
+                MessageBox.Show("Chưa nhập mã loại heo.", "", MessageBoxButton.OK);
+                return;
+            }
+            if (Textname.Text == "" || textmota.Text == "")
+            {
+                MessageBox.Show("Chưa nhập đầy đủ thông tin.", "", MessageBoxButton.OK);
+                return;
+            }
+            this.Close();
         }
-    }
+        
+        public LOAIHEO tranferCode()
+        {
+            LOAIHEO LH = new LOAIHEO();
+            LH.MaLoaiHeo = Textcode.Text;
+            LH.TenLoaiHeo = Textname.Text;
+            LH.MoTa = textmota.Text;
+            return LH;
+        }
+    }                         
 }

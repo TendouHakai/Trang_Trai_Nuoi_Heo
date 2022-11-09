@@ -177,6 +177,8 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
+    <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
     <Compile Include="ViewModel\DoiMatKhauVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChonNguoiGuiVM.cs" />
@@ -191,6 +193,21 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Lập lịch\DanhsachHeo.xaml.cs">
+      <DependentUpon>DanhsachHeo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\DanhsachHeoCai.xaml.cs">
+      <DependentUpon>DanhsachHeoCai.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\DanhsachHeoDuc.xaml.cs">
+      <DependentUpon>DanhsachHeoDuc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\DanhSachThuoc.xaml.cs">
+      <DependentUpon>DanhSachThuoc.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Lập lịch\SuaLichHeo.xaml.cs">
+      <DependentUpon>SuaLichHeo.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
     </Compile>
@@ -345,6 +362,26 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Lập lịch\DanhsachHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\DanhsachHeoCai.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\DanhsachHeoDuc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\DanhSachThuoc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Lập lịch\SuaLichHeo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

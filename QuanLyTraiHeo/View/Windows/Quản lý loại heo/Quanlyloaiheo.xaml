@@ -63,18 +63,6 @@
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_ThemClick">
 
                 </Button>
-                <Button Margin="20,10,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Sửa"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Foreground="#00de1e"
-                        Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_SuaClick">
-
-                </Button>
             </StackPanel>
         </materialDesign:Card>
 
@@ -122,50 +110,31 @@
                         SelectionUnit="Cell"
                         SelectionMode="Extended" ClipboardCopyMode="IncludeHeader" HeadersVisibility="None" />
 -->
-                    <DataGrid x:Name="Datagrid_loaiheo"
-                        ItemsSource="{Binding i}"
-                        CanUserAddRows="False"
-                        HeadersVisibility="All" Cursor="Arrow" AutoGenerateColumns="False">
-                        <DataGrid.Columns>
-                            <DataGridTextColumn Header="Mã loại heo" Binding="{Binding MaLoaiHeo}"/>
-                            <DataGridTextColumn Header="Tên loại heo" Binding="{Binding TenLoaiHeo}"/>
-                            <DataGridTextColumn Header="Mô tả" Binding="{Binding MoTa}"/>
-                        </DataGrid.Columns>
-                        <!--DataGrid.Columns>
-                            <DataGridTextColumn x:Name="col1"
-                                Binding="{Binding Code}"
-                                Header="Mã loại heo"                                
-                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}" />
-                            <materialDesign:DataGridTextColumn
-                                
-                                Header="Tên loại heo"
-                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnPopupEditingStyle}">
-                                <materialDesign:DataGridTextColumn.Binding>
-                                    <Binding
-                                        Path="Name">
-                                        <Binding.ValidationRules>
-                                            <local:NotEmptyValidationRule xmlns:domain="clr-namespace:QuanLyTraiHeo.View.Windows" />
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </materialDesign:DataGridTextColumn.Binding>
-                            </materialDesign:DataGridTextColumn>
-                            <DataGridTextColumn
-                                Header="Mô tả"
-                                ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}">
-                                <DataGridTextColumn.Binding>
-                                    <Binding
-                                        Path="Description">
-                                        <Binding.ValidationRules>
-                                            <domain:NotEmptyValidationRule xmlns:domain="clr-namespace:QuanLyTraiHeo.View.Windows" />
-                                        </Binding.ValidationRules>
-                                    </Binding>
-                                </DataGridTextColumn.Binding>
-                            </DataGridTextColumn>
-                        </DataGrid.Columns-->
-                    </DataGrid>
+                    <ListView x:Name="listviewHeo" ItemsSource="{Binding Basegiongheo}" SelectedItem="{Binding MaGiongHeo, Mode=OneWayToSource}" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Mã loại heo" DisplayMemberBinding="{Binding MaLoaiHeo}"/>
+                                <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding TenLoaiHeo}"/>
+                                <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding MoTa}"/>
+                                <GridViewColumn Header="" Width="160">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Menu>
+                                                <MenuItem x:Name="fixB" Icon="{materialDesign:PackIcon Kind=Pen}"  Width="48" Click="btnFix_Click"></MenuItem>
+                                                <MenuItem x:Name="deleteB" Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Click="btnDelete_Click"></MenuItem>
+                                            </Menu>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                                <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonUp" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
+                    </ListView>
                 </StackPanel>
 
             </materialDesign:Card>

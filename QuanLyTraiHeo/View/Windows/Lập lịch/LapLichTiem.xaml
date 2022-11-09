@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows"
+        xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel" 
         xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
@@ -32,11 +33,11 @@
                     <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0">Thông tin lịch tiêm heo</TextBlock>
                 </materialDesign:Card>
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBox Width="190"
+                    <TextBox x:Name="Pigcode_text" Width="190"
                             materialDesign:HintAssist.Hint="Nhập danh sách mã heo"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center" />
-                    <Button Margin="10,0,10,0"
+                    <Button x:Name="ListHeo_button" Margin="10,0,10,0"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="30"
                             Width="80"
@@ -45,16 +46,16 @@
                             FontSize="16"
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="ListHeo_button_Click">
                     </Button>
                 </StackPanel>
 
                 <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <TextBox Width="190"
+                    <TextBox x:Name="Drugcode_text" Width="190"
                             materialDesign:HintAssist.Hint="Nhập mã thuốc"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center" />
-                    <Button Margin="10,0,10,0"
+                    <Button x:Name="ListThuoc_button" Margin="10,0,10,0"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="30"
                             Width="80"
@@ -63,21 +64,21 @@
                             FontSize="16"
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="ListThuoc_button_Click">
                     </Button>
                 </StackPanel>
 
-                <DatePicker Margin="0,10,0,0"
+                <DatePicker x:Name="Datepicker_Ngaytiem" Margin="0,10,0,0"
                           Width="200" HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Nhập ngày tiêm"
                           materialDesign:TextFieldAssist.HasClearButton="True"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <TextBox  Margin="0,10,0,0"
+                <TextBox x:Name="Lieuluong_text"  Margin="0,10,0,0"
                           Width="200" HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Nhập liều lượng"
                           Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                           VerticalAlignment="Center" />
-                <ComboBox Margin="0,10,0,0" Height="35" VerticalContentAlignment="Bottom"
+                <ComboBox x:Name="Trangthai_combobox" Margin="0,10,0,0" Height="35" VerticalContentAlignment="Bottom"
                           Width="200" HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Trạng thái">
                     <ComboBoxItem
@@ -87,7 +88,7 @@
                             Content="Đã tiêm" />
                 </ComboBox>
 
-                <Button Margin="20,20,20,0"
+                <Button x:Name="add_Button" Margin="20,20,20,0"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Height="30"
                         BorderBrush="White"
@@ -95,19 +96,7 @@
                         FontSize="16"
                         Background="#00de1e"
                         materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                </Button>
-                <Button Margin="20,10,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Sửa"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Foreground="#00de1e"
-                        Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="add_Button_Click">
 
                 </Button>
             </StackPanel>
@@ -136,11 +125,11 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         <ColumnDefinition></ColumnDefinition>
                                     </Grid.ColumnDefinitions>
-                                    <DatePicker Grid.Column="0" Margin="5,0,5,0"
+                                    <DatePicker x:Name="Find_date" Grid.Column="0" Margin="5,0,5,0"
                                             materialDesign:HintAssist.Hint="Ngày tiêm heo"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
                                             Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                                    <ComboBox Grid.Column="1" Margin="5,0,5,0"
+                                    <ComboBox x:Name="Find_loaiheo" Grid.Column="1" Margin="5,0,5,0"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
@@ -154,7 +143,7 @@
                                         <ComboBoxItem
                                                 Content="Heo thịt" />
                                     </ComboBox>
-                                    <ComboBox Grid.Column="2" Margin="5,0,5,0"
+                                    <ComboBox x:Name="Find_giongheo" Grid.Column="2" Margin="5,0,5,0"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
@@ -166,7 +155,7 @@
                                         <ComboBoxItem
                                                 Content="Cỏ" />
                                     </ComboBox>
-                                    <ComboBox Grid.Column="3" Margin="5,0,5,0"
+                                    <ComboBox x:Name="FindLoaiThuoc" Grid.Column="3" Margin="5,0,5,0"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
@@ -178,7 +167,7 @@
                                     </ComboBox>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
+                                    <Button x:Name="FindButton"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
                                     Width="120"
@@ -187,7 +176,7 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="FindButton_Click">
 
                                     </Button>
 
@@ -212,30 +201,33 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView
-                        ItemsSource="{Binding lstTinhTrangHeo}">
+                    <ListView x:Name="Listtiemheo" ItemsSource="{Binding Lichtiem}" SelectedItem="{Binding MaHeo, Mode=OneWayToSource}" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Multiple">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding NgayTiem}"
-                                        Header="Ngày tiêm heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding IDHeo}"
-                                        Header="Mã heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Loaiheo}"
-                                        Header="Loại heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Giongheo}"
-                                        Header="Giống heo" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Lieuluong}"
-                                        Header="Liều lượng" />
-                                <GridViewColumn
-                                        DisplayMemberBinding="{Binding Tinhtrang}"
-                                        Header="Tình trạng" />
+                                <GridViewColumn Header="Ngày tiêm heo" DisplayMemberBinding="{Binding NgayTiem}" />
+                                <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
+                                <GridViewColumn Header="Loại heo" DisplayMemberBinding="{Binding HEO.LOAIHEO.TenLoaiHeo}" />
+                                <GridViewColumn Header="Giống heo" DisplayMemberBinding="{Binding HEO.GIONGHEO.TenGiongHeo}" />
+                                <GridViewColumn Header="Liều lượng" DisplayMemberBinding="{Binding LieuLuong}" />
+                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TrangThai}" />
+                                <GridViewColumn Header="" Width="160">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <Menu>
+                                                <MenuItem x:Name="fixB" Icon="{materialDesign:PackIcon Kind=Pen}"  Width="48" Click="btnFix_Click"></MenuItem>
+                                                <MenuItem x:Name="deleteB" Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Click="btnDelete_Click"></MenuItem>
+                                            </Menu>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
+                        <ListView.ItemContainerStyle>
+                            <Style TargetType="ListViewItem">
+                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
+                                <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonUp" />
+                            </Style>
+                        </ListView.ItemContainerStyle>
                     </ListView>
                 </StackPanel>
 
