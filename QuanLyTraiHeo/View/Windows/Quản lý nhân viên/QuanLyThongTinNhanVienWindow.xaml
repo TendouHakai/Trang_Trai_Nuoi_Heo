@@ -50,7 +50,7 @@
                                   Header="Lọc theo chức vụ vụ"
                                   FontWeight="Bold"
                                   Background="White">
-                            <ListView ItemsSource="{Binding listChucVu}"
+                            <ListView ItemsSource="{Binding lstChucVu}"
                                       Name="LVChucVu"
                                       Margin="10">
                                 <ListView.View>
@@ -111,7 +111,7 @@
                             <TextBox materialDesign:HintAssist.Hint="Tìm kiếm"
                                      Height="30"
                                      Margin="30,10,20,11"
-                                     Text="{Binding textTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                     Text="{Binding TextTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 <i:Interaction.Triggers>
                                     <i:EventTrigger EventName="TextChanged">
                                         <i:InvokeCommandAction Command="{Binding TextTimKiemChangeCommand}"
@@ -148,8 +148,8 @@
                       Grid.Row="1">
                     <ListView Margin="5"
                               x:Name="ListNhanVien"
-                              ItemsSource="{Binding listNhanvien, Mode=TwoWay}"
-                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}"
+                              ItemsSource="{Binding lstNhanvien, Mode=TwoWay}"
+                              SelectedIndex="{Binding ListViewSelectedIndex, Mode=TwoWay}"
                           ScrollViewer.CanContentScroll="True"
                           ScrollViewer.HorizontalScrollBarVisibility="Auto">
                         <ListView.View>

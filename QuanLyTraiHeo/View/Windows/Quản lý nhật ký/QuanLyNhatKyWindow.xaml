@@ -129,7 +129,7 @@
 
                         </DatePicker>
 
-                        <ListView ItemsSource="{Binding lstHanhDong , Mode=TwoWay}"
+                        <ListView ItemsSource="{Binding lstActions , Mode=TwoWay}"
                                   Name="LVChucVu"
                                   Margin="10">
                             <ListView.ItemBindingGroup>
@@ -161,7 +161,7 @@
                               Grid.Column="1"
                               Margin="0,0,0,0"
                               VerticalContentAlignment="Center"
-                              ItemsSource="{Binding listNhatKy, Mode=OneWay}"
+                              ItemsSource="{Binding lstNhatKy, Mode=OneWay}"
                               ScrollViewer.CanContentScroll="True"
                               ScrollViewer.HorizontalScrollBarVisibility="Auto"
                               ScrollViewer.VerticalScrollBarVisibility="Hidden">

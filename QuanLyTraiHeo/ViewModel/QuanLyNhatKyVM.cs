@@ -24,19 +24,21 @@ namespace QuanLyTraiHeo.ViewModel
         private int selectedPage { get; set; }
         private int totalPage { get; set; }
         private int rowPerPage = 5;
-        public ObservableCollection<NhatKy> listNhatKy { get; set; }
-        private List<NhatKy> tempListNhatKy;
-        public ObservableCollection<HanhDong> lstHanhDong { get; set; }
-        public DateTime TuNgay { get; set; }
-        public DateTime DenNgay { get; set; }
-
+        public ObservableCollection<NhatKy> lstNhatKy { get; set; }
+        private List<NhatKy> tempLstNhatKy;
+        public ObservableCollection<HanhDong> lstActions { get; set; }
+        private DateTime tuNgay { get; set; }
+        private DateTime denNgay { get; set; }
         #endregion
+
 
         #region Properties
         public int SelectedPage { get => this.selectedPage; set { this.selectedPage = value; OnPropertyChanged(); } }
         public int TotalPage { get =>this.totalPage;  set { this.totalPage = value; OnPropertyChanged(); } }
-
+        public DateTime TuNgay { get => tuNgay; set { tuNgay = value; OnPropertyChanged(); } }
+        public DateTime DenNgay { get => denNgay; set { denNgay = value; OnPropertyChanged(); } }
         #endregion
+
 
         #region EventCommand
         public ICommand TimKiemCommand { get; set; }
@@ -45,23 +47,22 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand LastPageCommand { get; set; }
         public ICommand FirstPageCommand { get; set; }
         public ICommand SelectPageChangedCommand { get; set; }
-
         #endregion
         public QuanLyNhatKyVM()
         {
             SelectedPage = 1;
             TotalPage = 1;
-            listNhatKy = new ObservableCollection<NhatKy>();
-            tempListNhatKy = new List<NhatKy>();
-            lstHanhDong = new ObservableCollection<HanhDong>();
-            lstHanhDong.Add(new HanhDong(true, "Nhập, xuất kho"));
-            lstHanhDong.Add(new HanhDong(true, "Kiểm kho"));
-            lstHanhDong.Add(new HanhDong(true, "Nhập, xuất heo"));
-            lstHanhDong.Add(new HanhDong(true, "Tiêm heo"));
-            lstHanhDong.Add(new HanhDong(true, "Phối giống heo"));
-            lstHanhDong.Add(new HanhDong(true, "Sửa chữa"));
-            DenNgay = DateTime.Today;
-            TuNgay = DenNgay;
+            lstNhatKy = new ObservableCollection<NhatKy>();
+            tempLstNhatKy = new List<NhatKy>();
+            lstActions = new ObservableCollection<HanhDong>();
+            lstActions.Add(new HanhDong(true, "Nhập, xuất kho"));
+            lstActions.Add(new HanhDong(true, "Kiểm kho"));
+            lstActions.Add(new HanhDong(true, "Nhập, xuất heo"));
+            lstActions.Add(new HanhDong(true, "Tiêm heo"));
+            lstActions.Add(new HanhDong(true, "Phối giống heo"));
+            lstActions.Add(new HanhDong(true, "Sửa chữa"));
+            TuNgay = DateTime.Today;
+            DenNgay = TuNgay;
             //LoadListHanhDong(null);
             TimKiemCommand = new RelayCommand<ListView>((p) => { return true; }, p => 
             { 
@@ -99,10 +100,10 @@ namespace QuanLyTraiHeo.ViewModel
                 SelectedPage = 1;
             if (SelectedPage > TotalPage)
                 SelectedPage = TotalPage;
-            listNhatKy.Clear();
-            for (int i = (SelectedPage - 1) * rowPerPage; i < tempListNhatKy.Count() && i < SelectedPage * rowPerPage; i++)
+            lstNhatKy.Clear();
+            for (int i = (SelectedPage - 1) * rowPerPage; i < tempLstNhatKy.Count() && i < SelectedPage * rowPerPage; i++)
             {
-                listNhatKy.Add(tempListNhatKy[i]);
+                lstNhatKy.Add(tempLstNhatKy[i]);
             }
             if (p != null)
             {
@@ -113,10 +114,10 @@ namespace QuanLyTraiHeo.ViewModel
         }
         private void LoadListHanhDong()
         {
-            listNhatKy.Clear();
+            lstNhatKy.Clear();
 
-            tempListNhatKy.Clear();
-            foreach (var item in lstHanhDong)
+            tempLstNhatKy.Clear();
+            foreach (var item in lstActions)
             {
                 if (item.ischecked == true)
                 {
@@ -147,14 +148,14 @@ namespace QuanLyTraiHeo.ViewModel
 
             SelectedPage = 1;
 
-            if (tempListNhatKy.Count() % rowPerPage > 0)
-                TotalPage = tempListNhatKy.Count() / rowPerPage + 1;
+            if (tempLstNhatKy.Count() % rowPerPage > 0)
+                TotalPage = tempLstNhatKy.Count() / rowPerPage + 1;
             else
-                TotalPage = tempListNhatKy.Count() / rowPerPage ;
+                TotalPage = tempLstNhatKy.Count() / rowPerPage ;
 
             if (TotalPage == 0)
                 TotalPage = 1;
-            tempListNhatKy = tempListNhatKy.OrderByDescending(x => x.ThoiGian).ToList();
+            tempLstNhatKy = tempLstNhatKy.OrderByDescending(x => x.ThoiGian).ToList();
 
         }
         private void LoadPhieuHangHoa()
@@ -176,7 +177,7 @@ namespace QuanLyTraiHeo.ViewModel
                                HanhDong = "Vừa tạo 1 phiếu " + p.LoaiPhieu.ToString() + " trị giá " + p.TongTien + "VNĐ"
                            }).ToList();
             foreach (var item in Dataset)
-                tempListNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
         }
         private void LoadPhieuSuaChua()
         {
@@ -196,7 +197,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            }).ToList();
             foreach (var item in Dataset)
-                listNhatKy.Add(item);
+                lstNhatKy.Add(item);
         }
         private void LoadPhieuKiemKho()
         {
@@ -216,7 +217,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            }).ToList();
             foreach (var item in Dataset)
-                listNhatKy.Add(item);
+                lstNhatKy.Add(item);
         }
         private void LoadPhieuHeo()
         {
@@ -234,7 +235,7 @@ namespace QuanLyTraiHeo.ViewModel
                                HanhDong = "Vừa " + p.LoaiPhieu.ToString() + ", trị giá " + p.TongTien + "VNĐ"
                            }).ToList();
             foreach (var item in Dataset)
-                listNhatKy.Add(item);
+                lstNhatKy.Add(item);
         }
         private void LoadPhieuTiemHeo()
         {
@@ -250,7 +251,7 @@ namespace QuanLyTraiHeo.ViewModel
                                HanhDong = "Lên lịch tiêm heo ngày : " + p.NgayTiem.ToString()
                            }).ToList();
             foreach (var item in Dataset)
-                listNhatKy.Add(item);
+                lstNhatKy.Add(item);
         }
         private void LoadPhieuPhoiGiong()
         {
@@ -266,7 +267,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            }).ToList();
             foreach (var item in Dataset)
-                listNhatKy.Add(item);
+                lstNhatKy.Add(item);
 
         }
         #endregion
