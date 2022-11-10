@@ -21,6 +21,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public string TenChucVu { get; set; }
         public int HeSoLuong { get; set; }
+        public string Mota { get; set; }
         public PERMISION permission { get; set; }
         public SuaChucVuVM()
         {
@@ -32,6 +33,7 @@ namespace QuanLyTraiHeo.ViewModel
             TenChucVu = ChucVu.TenChucVu;
             HeSoLuong = Convert.ToInt32( ChucVu.LuongCoBan);
             permission = ChucVu.PERMISION;
+            Mota = chucvu.MoTa;
             listPermission = new ObservableCollection<PERMISION>();
             listPermission.Clear();
             var list = DataProvider.Ins.DB.PERMISIONs.ToList();
@@ -62,7 +64,7 @@ namespace QuanLyTraiHeo.ViewModel
             ChucVu.TenChucVu = TenChucVu;
             ChucVu.LuongCoBan = HeSoLuong;
             ChucVu.ID_Permision = permission.ID_Permision;
-
+            ChucVu.MoTa = Mota;
             DataProvider.Ins.DB.SaveChanges();
 
             MessageBox.Show("Sửa thành công !");

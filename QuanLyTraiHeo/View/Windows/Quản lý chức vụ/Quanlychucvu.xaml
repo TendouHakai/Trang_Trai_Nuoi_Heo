@@ -41,31 +41,32 @@
                                          materialDesign:HintAssist.Hint="Tên chức vụ"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          VerticalAlignment="Center"
-                                         Text="{Binding newChucVu.TenChucVu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                         Text="{Binding NewChucVu.TenChucVu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <TextBox Margin="10"
                                          materialDesign:HintAssist.Hint="Lương cơ bản"
                                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                          VerticalAlignment="Center"
-                                         Text="{Binding newChucVu.LuongCoBan ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+                                         Text="{Binding NewChucVu.LuongCoBan ,Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
                                 <ComboBox Margin="10"
                                           materialDesign:HintAssist.Hint="Quyyền"
                                           Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                          ItemsSource="{Binding listPermission, Mode=TwoWay}"
+                                          ItemsSource="{Binding lstPermission, Mode=OneWay}"
                                           DisplayMemberPath="Name_Permision"
                                           SelectedIndex="0"
-                                          SelectedItem="{Binding selectedPermission, Mode=OneWayToSource}">
+                                          SelectedItem="{Binding NewChucVu.PERMISION, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                                 </ComboBox>
 
-                                <TextBox Grid.Row="1"
+                                <TextBox 
                                          Margin="10,0,10,0"
                                          Style="{StaticResource MaterialDesignOutlinedTextBox}"
                                          VerticalAlignment="Top"
                                          Height="150"
+                                         Text="{Binding NewChucVu.MoTa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                          AcceptsReturn="True"
                                          TextWrapping="Wrap"
                                          VerticalScrollBarVisibility="Auto"
                                          materialDesign:HintAssist.Hint="Mô tả công việc"
-                                         IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}" />
+                                          />
 
                                 <Button Margin="20,20,20,0"
                                         Command="{Binding themCommand}"
@@ -89,7 +90,7 @@
                                 <ComboBox Margin="10"
                                           materialDesign:HintAssist.Hint="Quyyền"
                                           IsEditable="True"
-                                          ItemsSource="{Binding listPermission, Mode=OneWay}"
+                                          ItemsSource="{Binding lstPermission, Mode=OneWay}"
                                           DisplayMemberPath="Name_Permision"
                                           Text ="{Binding PermissionName, Mode=OneWayToSource}"
                                           SelectedItem="{Binding ModifyPermission, Mode=TwoWay}">
@@ -170,7 +171,7 @@
                         <TextBox materialDesign:HintAssist.Hint="Tìm kiếm"
                                  Height="30"
                                  Margin="33,5,17,5"
-                                 Text="{Binding textTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                 Text="{Binding TextTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="TextChanged">
                                     <i:InvokeCommandAction Command="{Binding TextTimKiemChangeCommand}"
@@ -190,43 +191,39 @@
                 </Grid>
 
             </materialDesign:Card>
-            <ScrollViewer Grid.Row="1"
-                          VerticalScrollBarVisibility="Auto"
-                          HorizontalScrollBarVisibility="Auto"
-                          Margin="10,10">
-                <ListView x:Name="ListChucVu"
-                          ItemsSource="{Binding listChucVu}"
-                          SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource}"
-                          SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
-                    <ListView.View>
-                        <GridView>
-                            <GridViewColumn DisplayMemberBinding="{Binding MaChucVu}"
-                                            Header="Mã chức vụ" />
-                            <GridViewColumn DisplayMemberBinding="{Binding TenChucVu}"
-                                            Header="Tên chức vụ" />
-                            <GridViewColumn DisplayMemberBinding="{Binding LuongCoBan}"
-                                            Header="Lương cơ bản" />
-                            <GridViewColumn DisplayMemberBinding="{Binding }"
-                                            Header="Mô tả công việc" />
-                        </GridView>
-                        
-                    </ListView.View>
+            <ListView x:Name="ListChucVu" Grid.Row="1"
+                      ItemsSource="{Binding lstChucVu}"
+                      ScrollViewer.CanContentScroll="True"
+                      ScrollViewer.HorizontalScrollBarVisibility="Auto"
+                SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource}"
+                      SelectedIndex="{Binding ListViewSelectedIndex, Mode=TwoWay}">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn DisplayMemberBinding="{Binding MaChucVu}"
+                                        Header="Mã chức vụ" />
+                        <GridViewColumn DisplayMemberBinding="{Binding TenChucVu}"
+                                        Header="Tên chức vụ" />
+                        <GridViewColumn DisplayMemberBinding="{Binding LuongCoBan}"
+                                        Header="Lương cơ bản" />
+                        <GridViewColumn DisplayMemberBinding="{Binding MoTa }"
+                                        Header="Mô tả công việc" />
+                    </GridView>
 
-                    <ListView.ContextMenu>
-                        <ContextMenu>
-                            <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
-                                      Command="{Binding EditCommand}">
-                                <MenuItem.Header>Xem và chỉnh sửa</MenuItem.Header>
-                            </MenuItem>
-                            <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                </ListView.View>
+
+                <ListView.ContextMenu>
+                    <ContextMenu>
+                        <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
+                                  Command="{Binding EditCommand}">
+                            <MenuItem.Header>Xem và chỉnh sửa</MenuItem.Header>
+                        </MenuItem>
+                        <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
                                     <MenuItem.Header>Xóa</MenuItem.Header>
                                 </MenuItem>-->
-                        </ContextMenu>
-                    </ListView.ContextMenu>
+                    </ContextMenu>
+                </ListView.ContextMenu>
 
-                </ListView>
-            </ScrollViewer>
-
+            </ListView>
         </Grid>
 
     </Grid>

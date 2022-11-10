@@ -23,5 +23,10 @@ namespace QuanLyTraiHeo
         {
             InitializeComponent();
         }
+
+        private void LVChucVu_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

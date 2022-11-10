@@ -17,20 +17,36 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class NhanVienVM:BaseViewModel
     {
-        public ObservableCollection<NHANVIEN> listNhanvien { get; set; }
+        #region Atributies
+        public ObservableCollection<NHANVIEN> lstNhanvien { get; set; }
+        public ObservableCollection<ChucVuModel> lstChucVu { get; set; }
 
-        public ObservableCollection<ChucVuModel> listChucVu { get; set; }
-        public int listviewSelectedIndex { get; set; }
-        public string textTimKiem { get; set; }
+        private int listviewSelectedIndex { get; set; }
+        private string textTimKiem { get; set; }
+
+        #endregion
+
+
+        #region Properties
+        public int ListViewSelectedIndex { get => listviewSelectedIndex; set { listviewSelectedIndex = value; OnPropertyChanged(); } }
+        public string TextTimKiem { get => textTimKiem; set { textTimKiem = value; OnPropertyChanged(); } }
+        #endregion
+
+
+        #region EventCommand
         public ICommand ThemNhanVienCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand TextTimKiemChangeCommand { get; set; }
+
+        #endregion
+
+
         public NhanVienVM()
         {
-            textTimKiem = "";
-            listNhanvien = new ObservableCollection<NHANVIEN>();
-            listChucVu = new ObservableCollection<ChucVuModel>();
-            listviewSelectedIndex = 0;
+            TextTimKiem = "";
+            lstNhanvien = new ObservableCollection<NHANVIEN>();
+            lstChucVu = new ObservableCollection<ChucVuModel>();
+            ListViewSelectedIndex = 0;
             ThemNhanVienCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemNhanVien(p); });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
             TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { TextTimKiemChanged(p); });
@@ -51,13 +67,13 @@ namespace QuanLyTraiHeo.ViewModel
         }
         private void LoadListNhanVien(ListView p  = null)
         {
-            listNhanvien.Clear();
+            lstNhanvien.Clear();
 
-            var listnhanvien = DataProvider.Ins.DB.NHANVIENs.Where(s => s.HoTen.Contains(textTimKiem)).ToList();
+            var listnhanvien = DataProvider.Ins.DB.NHANVIENs.Where(s => s.HoTen.Contains(TextTimKiem)).ToList();
             foreach (var items in listnhanvien)
             {
                 int flag = 0;
-                foreach(var items2 in listChucVu)
+                foreach(var items2 in lstChucVu)
                 {
                     if (items2.isSelected == false)
                         if (items.CHUCVU.TenChucVu == items2.TenChucVu)
@@ -67,24 +83,24 @@ namespace QuanLyTraiHeo.ViewModel
                         }
                 }
                 if(flag == 0)
-                listNhanvien.Add(items);
+                lstNhanvien.Add(items);
             }
         }
 
         void LoadListChucVu()
         {
-            listChucVu.Clear();
+            lstChucVu.Clear();
 
             var listchucvu = DataProvider.Ins.DB.CHUCVUs.ToList();
             foreach (var items in listchucvu)
-                listChucVu.Add(new ChucVuModel(true, items.TenChucVu));
+                lstChucVu.Add(new ChucVuModel(true, items.TenChucVu));
 
         }
         public void Edit(Window p)
         {
-            if(listviewSelectedIndex <0)
+            if(ListViewSelectedIndex <0)
                 return;
-            SuaNhanVienVM suaNhanVienVM = new SuaNhanVienVM(listNhanvien[listviewSelectedIndex]);
+            SuaNhanVienVM suaNhanVienVM = new SuaNhanVienVM(lstNhanvien[ListViewSelectedIndex]);
             SuaNhanVien suaNhanVien = new SuaNhanVien();
             suaNhanVien.DataContext = suaNhanVienVM;
             suaNhanVien.ShowDialog();

@@ -1,5 +1,6 @@
 ﻿using LiveCharts;
 using LiveCharts.Wpf;
+using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,8 +19,8 @@ namespace QuanLyTraiHeo.ViewModel
         public string[] LabelsDSCPChart { get; set; }
         public SeriesCollection SeriesCollectionNVChart { get; set; }
         public string[] LabelsNVChart { get; set; }
-        public List<HoatDong> LstHoatDong = new List<HoatDong>();
-        public List<HoatDong> lstHoatDong { get => LstHoatDong; set { LstHoatDong = value; OnPropertyChanged(); } }
+        //public List<HoatDong> LstHoatDong = new List<HoatDong>();
+        //public List<HoatDong> lstHoatDong { get => LstHoatDong; set { LstHoatDong = value; OnPropertyChanged(); } }
         public TrangChuVM()
         {
             PointLabel = chartPoint =>
@@ -56,18 +57,11 @@ namespace QuanLyTraiHeo.ViewModel
             LabelsNVChart = new[] { "Quản lý", "Nhân viên chăm sóc", "Nhân viên kỹ thuật", "Nhân viên sửa chữa", "Nhân viên kế toán", "Nhân viên kho"};
             #endregion
 
-            #region binding dữ liệu cho danh sách hoạt động
-            lstHoatDong.Add(new HoatDong() { icon = "Warehouse",  TenNhanVien = "Trần Trung Thành", Mota = "Thực hiện một phiếu nhập kho trị giá 3,000,000 VND", MaPhieu = "SP01"});
-            lstHoatDong.Add(new HoatDong() { icon = "Warehouse", TenNhanVien = "", Mota = "", MaPhieu = "" });
-            #endregion
+            //#region binding dữ liệu cho danh sách hoạt động
+            //lstHoatDong.Add(new HoatDong() { icon = "Warehouse",  TenNhanVien = "Trần Trung Thành", Mota = "Thực hiện một phiếu nhập kho trị giá 3,000,000 VND", MaPhieu = "SP01"});
+            //lstHoatDong.Add(new HoatDong() { icon = "Warehouse", TenNhanVien = "", Mota = "", MaPhieu = "" });
+            //#endregion
         }
 
-        public class HoatDong
-        {
-            public string icon { get; set; }
-            public string TenNhanVien { get; set; }
-            public string Mota { get; set; }
-            public string MaPhieu { get; set; }
-        }
     }
 }
