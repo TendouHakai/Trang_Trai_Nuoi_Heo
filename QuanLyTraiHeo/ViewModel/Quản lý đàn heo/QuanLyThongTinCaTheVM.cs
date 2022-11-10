@@ -44,10 +44,10 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand NGCheck { get; set; }
 
         string matim;
-            DateTime? mindate;
-            DateTime? maxdate;
-            int minTL=0;
-            int maxTL=0;
+        DateTime? mindate;
+        DateTime? maxdate;
+        int minTL=0;
+        int maxTL=0;
         public QuanLyThongTinCaTheVM()
         {
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);

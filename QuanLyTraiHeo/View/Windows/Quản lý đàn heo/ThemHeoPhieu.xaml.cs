@@ -1,7 +1,7 @@
-﻿using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
-using QuanLyTraiHeo.ViewModel;
+﻿using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,13 +16,14 @@ using System.Windows.Shapes;
 
 namespace QuanLyTraiHeo.View.Windows
 {
-    public partial class QuanLyThongTinCaTheWindow : Window
+    /// <summary>
+    /// Interaction logic for ThemHeoPhieu.xaml
+    /// </summary>
+    public partial class ThemHeoPhieu : Window
     {
-        public QuanLyThongTinCaTheWindow()
+        public ThemHeoPhieu()
         {
             InitializeComponent();
         }
-
     }
 }
-

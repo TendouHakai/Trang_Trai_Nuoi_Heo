@@ -98,31 +98,27 @@
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Loại heo" FontWeight="Bold" Background="White">
-                            <ListView ItemsSource="{Binding ListLoai}"
-                                      Margin="20 0 0 0">
-                                <ListView.Resources>
-                                    <Style TargetType="GridViewColumnHeader">
-                                        <Setter Property="Visibility" Value="Collapsed" />
-                                    </Style>
-                                </ListView.Resources>
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <CheckBox x:Name="cb_tenloai" Content="{Binding TenLoaiHeo}" Command="{Binding LHCheck}">
-                                                       
-                                                    </CheckBox>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
+                            <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                                <ListBox ItemsSource="{Binding ListLoai}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Margin="0 5" Content="{Binding TenLoaiHeo}"  ></CheckBox>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Giống heo" FontWeight="Bold" Background="White">
-                            
+                            <StackPanel Orientation="Vertical" Margin="20,0,0,0">
+                                <ListBox ItemsSource="{Binding ListGiong}">
+                                    <ListBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <CheckBox Margin="0 5" Content="{Binding TenGiongHeo}" > </CheckBox>
+                                        </DataTemplate>
+                                    </ListBox.ItemTemplate>
+                                </ListBox>
+                            </StackPanel>
                         </Expander>
 
                         <Expander IsExpanded="False" Header="Tình trạng" FontWeight="Bold" Background="White">
@@ -204,12 +200,12 @@
                     <ScrollViewer Height="600" Width="auto">
                         <ListView x:Name="listviewHeo" HorizontalAlignment="Left" SelectionMode="Single"
                                   ItemsSource="{Binding ListHeo}" SelectedItem="{Binding SelectedHeo, Mode=OneWayToSource}" 
-                              >
+                                  ScrollViewer.CanContentScroll="True"
+                                  >
                             <ListView.View>
-
                                 <GridView>
                                     <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
-                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}"/>
+                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh}" />
                                     <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}}"/>
                                     <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong}"/>
                                     <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo}"/>

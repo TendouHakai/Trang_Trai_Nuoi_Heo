@@ -400,3 +400,7 @@ C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo
 C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ChonHeoXuat.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemHeoPhieu.g.cs
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ChonHeoXuat.baml
+C:\Users\Admin\Desktop\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý đàn heo\ThemHeoPhieu.baml
