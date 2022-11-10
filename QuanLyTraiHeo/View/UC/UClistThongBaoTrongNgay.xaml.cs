@@ -10,17 +10,17 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
-using QuanLyTraiHeo.View.UC;
 
-namespace QuanLyTraiHeo.View.Windows
+namespace QuanLyTraiHeo.View.UC
 {
     /// <summary>
-    /// Interaction logic for ChitTietThongBaoWindow.xaml
+    /// Interaction logic for UClistThongBaoTrongNgay.xaml
     /// </summary>
-    public partial class ChitTietThongBaoWindow : Window
+    public partial class UClistThongBaoTrongNgay : UserControl
     {
-        public ChitTietThongBaoWindow()
+        public UClistThongBaoTrongNgay()
         {
             InitializeComponent();
         }

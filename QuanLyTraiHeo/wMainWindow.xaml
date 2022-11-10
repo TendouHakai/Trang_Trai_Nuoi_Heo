@@ -417,8 +417,8 @@
                     <materialDesign:ColorZone DockPanel.Dock="Top" Mode="PrimaryMid" Padding="16" Background="#3ab19b">
                         <DockPanel>
                             <StackPanel Orientation="Horizontal" DockPanel.Dock="Right">
-                                <materialDesign:Badged Margin="8 0 8 0" VerticalAlignment="Center"
-                                        Badge="2" BadgeBackground="Red" BadgeForeground="White">
+                                <materialDesign:Badged Name="bad_ThongBao" Margin="8 0 8 0" VerticalAlignment="Center"
+                                        Badge="{Binding countThongBaoChuaDoc}" BadgeBackground="Red" BadgeForeground="White" BadgeChanged="bad_ThongBao_BadgeChanged">
                                     <materialDesign:PopupBox Foreground="White"
                                                 StaysOpen="True" 
                                                 IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
@@ -426,31 +426,30 @@
                                             <materialDesign:PackIcon Kind="BellRing" Foreground="White" Width="20" Height="20">
                                             </materialDesign:PackIcon>
                                         </materialDesign:PopupBox.ToggleContent>
-                                        <ListBox Width="450" Padding="0" ItemsSource="{Binding listTHONGBAO}" SelectedItem="{Binding selectedItem, Mode=TwoWay}">
-                                            
+                                        <ListBox Width="400" Padding="0" ItemsSource="{Binding listTHONGBAO}" SelectedItem="{Binding selectedItem, Mode=TwoWay}">
+                                            <ListBox.ItemContainerStyle>
+                                                <Style TargetType="{x:Type ListBoxItem}">
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                                            <Setter Property="Foreground" Value="#2596be"/>
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </ListBox.ItemContainerStyle>
                                             <ListBox.ItemTemplate>
                                                 <DataTemplate>
-                                                    <StackPanel Orientation="Vertical">
-                                                        <TextBlock FontWeight="Bold" TextWrapping="Wrap" Text="{Binding TieuDe}"></TextBlock>
-                                                        <TextBlock FontStyle="Italic" FontSize="10" Text="{Binding ThoiGian}"></TextBlock>
-                                                        <TextBlock TextWrapping="Wrap" Margin="0,5,0,0" Text="{Binding NoiDung}"></TextBlock>
+                                                    <StackPanel Orientation="Vertical" Width="400">
+                                                        <TextBlock Margin="5,0,5,0" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding TieuDe}"></TextBlock>
+                                                        <TextBlock Margin="5,0,5,0" FontStyle="Italic" FontSize="10" Text="{Binding ThoiGian}"></TextBlock>
+                                                        <TextBlock Margin="5,7,5,0" TextWrapping="Wrap" Text="{Binding NoiDung}"></TextBlock>
                                                     </StackPanel>
-                                                    <!--<DataTemplate.Triggers>
-                                                        <EventTrigger RoutedEvent="Selected">
-                                                            <i:Interaction.Triggers>
-                                                                <i:EventTrigger EventName="Selected">
-                                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
-                                                                </i:EventTrigger>
-                                                            </i:Interaction.Triggers>
-                                                        </EventTrigger>
-                                                    </DataTemplate.Triggers>-->
-                                                        
+
                                                 </DataTemplate>
                                             </ListBox.ItemTemplate>
-                                            
+
                                             <i:Interaction.Triggers>
                                                 <i:EventTrigger EventName="SelectionChanged">
-                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBao}"></i:InvokeCommandAction>
+                                                    <i:InvokeCommandAction Command="{Binding OpenCTThongBaoCommand}"></i:InvokeCommandAction>
                                                 </i:EventTrigger>
                                             </i:Interaction.Triggers>
                                         </ListBox>
@@ -477,7 +476,8 @@
                                     Foreground="White"
                                         Style="{StaticResource MaterialDesignIconButton}"
                                         ToolTip="Tạo thông báo mới"
-                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="btn_TaoThongBao_Click">
+                                        Command="{Binding OpenTaoThongBaoCommand}"
+                                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                     <materialDesign:PackIcon
                                                 Kind="MessagePlusOutline" />
                                 </Button>

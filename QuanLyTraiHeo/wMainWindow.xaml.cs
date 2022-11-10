@@ -1,4 +1,5 @@
-﻿using QuanLyTraiHeo.View.Windows;
+﻿using MaterialDesignThemes.Wpf;
+using QuanLyTraiHeo.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -157,10 +158,19 @@ namespace QuanLyTraiHeo
             exp_test.IsExpanded = false;
         }
 
-        private void btn_TaoThongBao_Click(object sender, RoutedEventArgs e)
+        private void bad_ThongBao_BadgeChanged(object sender, RoutedPropertyChangedEventArgs<object> e)
         {
-            TaoThongBaoWindow wc = new TaoThongBaoWindow();
-            wc.ShowDialog();
+            Badged p = (sender as Badged);
+            if(p.Badge.ToString() == "0")
+            {
+                p.BadgeBackground = Brushes.Transparent;
+                p.BadgeForeground = Brushes.Transparent;
+            }
+            else
+            {
+                p.BadgeBackground = Brushes.Red;
+                p.BadgeForeground = Brushes.White;
+            }
         }
     }
 }
