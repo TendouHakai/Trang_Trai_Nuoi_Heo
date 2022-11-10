@@ -53,6 +53,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenLapLichTiemWindow { get; set; } 
         public ICommand OpenLaplichPhoiGiongWindow { get; set; }   
         public ICommand OpenQuanLyThongTinChuongWindow { get; set; }
+        public ICommand OpenSoDoChuongWindow { get; set; }
         public ICommand OpenLapPhieuSuaChuaWindow { get; set; }
         public ICommand OpenQuanLyHangHoaTrongKhoWindow { get; set; }
         public ICommand OpenLapPhieuKhoWindow { get; set; }
@@ -197,6 +198,15 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Children.Clear();
                 p.Children.Add(content as UIElement);
                 currentWindow = "Quản lý thông tin chuồng nuôi";
+            });
+            OpenSoDoChuongWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
+                wSoDo wc = new wSoDo();
+                wc.Close();
+                Object content = wc.Content;
+                wc.Content = null;
+                p.Children.Clear();
+                p.Children.Add(content as UIElement);
+                currentWindow = "Sơ đồ chuồng nuôi";
             });
             OpenLapPhieuSuaChuaWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 LapPhieuSuaChuaWindow wc = new LapPhieuSuaChuaWindow();

@@ -81,6 +81,7 @@ namespace QuanLyTraiHeo
         {
             CollapsedMenuDtail();
             Tree_menu_detail_Chuong.Visibility = Visibility.Visible;
+            Tree_menu_detail_SoDoChuong.Visibility = Visibility.Visible;
             Tree_menu_detail_PhieuSuaChua.Visibility = Visibility.Visible;
             exp_test.IsExpanded = true;
             tgl_menu.IsChecked = true;

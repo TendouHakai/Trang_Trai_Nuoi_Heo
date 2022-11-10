@@ -144,6 +144,15 @@
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
                                 </TreeViewItem>
+                                <TreeViewItem Name="Tree_menu_detail_SoDoChuong"
+                                        Header="Xem sơ đồ chuồng nuôi">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="Selected">
+                                            <i:InvokeCommandAction Command="{Binding OpenSoDoChuongWindow}"
+                                                        CommandParameter="{Binding ElementName=grb_TabWindow}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </TreeViewItem>
                                 <TreeViewItem Name="Tree_menu_detail_PhieuSuaChua"
                                         Header="Lập phiếu sửa chữa">
                                     <i:Interaction.Triggers>
