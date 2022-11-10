@@ -1,5 +1,6 @@
 ﻿using MaterialDesignThemes.Wpf;
 using QuanLyTraiHeo.View.Windows;
+using QuanLyTraiHeo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -171,6 +172,14 @@ namespace QuanLyTraiHeo
                 p.BadgeBackground = Brushes.Red;
                 p.BadgeForeground = Brushes.White;
             }
+        }
+
+        private void btn_OpenSoDo_Click(object sender, RoutedEventArgs e)
+        {
+            wSoDo wc = new wSoDo();
+            SoDoVM soDoVM = new SoDoVM();
+            wc.DataContext = soDoVM;
+            wc.ShowDialog();
         }
     }
 }
