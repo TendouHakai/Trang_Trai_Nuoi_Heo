@@ -19,9 +19,9 @@
         <StackPanel VerticalAlignment="Center" Margin="5">
             <materialDesign:Card Margin="5" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center">
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã giống heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Tên giống heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mô tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textcode" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã giống heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textname" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Tên giống heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox x:Name="textmota" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mô tả" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">

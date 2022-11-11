@@ -27,11 +27,7 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             InitializeComponent();
 
 
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
-            {
-                Basegiongheo = _context.GIONGHEOs.ToList();
-            }
-            Datagrid_giongheo.ItemsSource = Basegiongheo;
+            reloadWithDataprovider();
         }
 
         /// <summary>
@@ -68,54 +64,60 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             }
         }
 
-        private void btn_SuaClick(object sender, RoutedEventArgs e)
-        {
-            if (text1.Text == "")
-            {
-                MessageBox.Show("Chưa nhập mã loại heo.", "", MessageBoxButton.OK);
-                return;
-            }
-            if (text2.Text == "" || text3.Text == "")
-            {
-                MessageBox.Show("Chưa nhập đầy đủ thông tin.", "", MessageBoxButton.OK);
-                return;
-            }
-            if (text1.Text != "")
-            {
-                using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
-                {
-                    updating(text1.Text, text2.Text, text3.Text);
-                }
-            }
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            //using (TRANGTRAINUOIHEOEntities context = new TRANGTRAINUOIHEOEntities())
+            Timkiem(Find_textbox.Text);
+        }
+
+        private void btnFix_Click(object sender, RoutedEventArgs e)
+        {
+            GIONGHEO giongheo = (GIONGHEO)listviewHeo.SelectedItem;
+            SuaGiongHeo sua = new SuaGiongHeo(giongheo);
+            sua.ShowDialog();
+            updating(sua.tranferCode());
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            listviewHeo.SelectedItems.Clear();
+
+            var item = sender as ListViewItem;
+            if (item != null)
             {
-                Timkiem(Find_textbox.Text);
+                item.IsSelected = true;
+                listviewHeo.SelectedItem = item;
             }
         }
 
+        private void ListViewItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ListViewItem item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+
+            }
+        }
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            GIONGHEO gIONGHEO = (GIONGHEO)listviewHeo.SelectedItem;
+            Delete(gIONGHEO);
+        }
         /// <summary>
         /// methods
         /// </summary>
-        void updating(string a, string b, string c)
+        public void updating(GIONGHEO GH)
         {
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+            var t = DataProvider.Ins.DB.GIONGHEOs.FirstOrDefault(GIONGHEO => GIONGHEO.MaGiongHeo.Equals(GH.MaGiongHeo));
+            if (t != null)
             {
-                var t = _context.GIONGHEOs.FirstOrDefault(GIONGHEO => GIONGHEO.MaGiongHeo.Contains(a));
-                if (t != null)
-                {
-                    t.TenGiongHeo = b;
-                    t.MoTa = c;
-                    _context.SaveChanges();
-                    reloadWithcontext(_context);
-                }
-                else
-                {
-                    MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
-                }
+                t.TenGiongHeo = GH.TenGiongHeo;
+                t.MoTa = GH.MoTa;
+                DataProvider.Ins.DB.SaveChanges();
+                reloadWithDataprovider();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
             }
         }
 
@@ -123,17 +125,29 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
         {
             try
             {
-                using (var context = new TRANGTRAINUOIHEOEntities())
-                {
-                    context.Entry(giongheo).State = System.Data.Entity.EntityState.Added;
-                    context.SaveChanges();
-                    reloadWithcontext(context);
-                }
+                    DataProvider.Ins.DB.Entry(giongheo).State = System.Data.Entity.EntityState.Added;
+                    DataProvider.Ins.DB.SaveChanges();
+                    reloadWithDataprovider();
             }
             catch (Exception)
             {
 
                 MessageBox.Show("Lỗi nhập xuất", "", MessageBoxButton.OK);
+            }
+        }
+
+        private void Delete(GIONGHEO giongheo)
+        {
+            try
+            {
+                DataProvider.Ins.DB.GIONGHEOs.Remove(giongheo);
+                DataProvider.Ins.DB.SaveChanges();
+                reloadWithDataprovider();                
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Gặp lỗi khi xóa.", "", MessageBoxButton.OK);
             }
         }
 
@@ -144,8 +158,11 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             {
                 Basegiongheo.Clear();
                 foreach (var items in t)
+                {
                     Basegiongheo.Add(items);
-                reloadWithDataprovider();
+                }
+                listviewHeo.ItemsSource = null;
+                listviewHeo.ItemsSource = Basegiongheo;
             }
             else
             {
@@ -164,18 +181,13 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             return true;
         }
 
-        public void reloadWithcontext(TRANGTRAINUOIHEOEntities _context)
-        {
-
-            Datagrid_giongheo.ItemsSource = null;
-            Basegiongheo = _context.GIONGHEOs.ToList();
-            Datagrid_giongheo.ItemsSource = Basegiongheo;
-        }
-
         private void reloadWithDataprovider()
         {
-            Datagrid_giongheo.ItemsSource = null;
-            Datagrid_giongheo.ItemsSource = Basegiongheo;
+            listviewHeo.ItemsSource = null;
+            Basegiongheo = DataProvider.Ins.DB.GIONGHEOs.ToList();
+            listviewHeo.ItemsSource = Basegiongheo;
         }
+
+
     }
 }

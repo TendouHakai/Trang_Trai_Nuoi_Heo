@@ -26,12 +26,7 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
         {
             InitializeComponent();
 
-
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
-            {
-                BaseLoaiHeo = _context.LOAIHEOs.ToList();
-            }
-            Datagrid_loaiheo.ItemsSource = BaseLoaiHeo;
+            reloadUsingDTProvider();
         }
 
         private void btn_ThemClick(object sender, RoutedEventArgs e)
@@ -65,34 +60,23 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
             }
         }
 
-        private void btn_SuaClick(object sender, RoutedEventArgs e)
-        {
-            if (Pigcode_textbox.Text == "")
-            {
-                MessageBox.Show("Chưa nhập mã loại heo.", "", MessageBoxButton.OK);
-                return;
-            }
-            if (Pigname_textbox.Text == "" || Mota_textbox.Text == "")
-            {
-                MessageBox.Show("Chưa nhập đầy đủ thông tin.", "", MessageBoxButton.OK);
-                return;
-            }
-            if (Pigcode_textbox.Text != "")
-            {
-                using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
-                {
-                    updating(Pigcode_textbox.Text, Pigname_textbox.Text, Mota_textbox.Text);
-                }
-            }
-        }
-
         private void Find_button_Click(object sender, RoutedEventArgs e)
         {
-            /*using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
-            {
-                Finding(_context, Find_textbox.Text);              
-            }*/
             Timkiem(Find_textbox.Text);
+        }
+
+        private void btnDelete_Click(object sender, RoutedEventArgs e)
+        {
+            LOAIHEO lOAIHEO = (LOAIHEO)listviewHeo.SelectedItem;
+            Delete(lOAIHEO);
+        }
+
+        private void btnFix_Click(object sender, RoutedEventArgs e)
+        {
+            LOAIHEO loaiheo = (LOAIHEO)listviewHeo.SelectedItem;
+            SuaLoaiHeo sua = new SuaLoaiHeo(loaiheo);
+            sua.ShowDialog();
+            updating(sua.tranferCode());
         }
 
 
@@ -104,13 +88,11 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
         {
             try
             {
-                using (var context = new TRANGTRAINUOIHEOEntities())
-                {
-                    context.Entry(loaiheo).State = System.Data.Entity.EntityState.Added;
-                    context.SaveChanges();
-                    reloadUsingcontext(context);
-                }
+                DataProvider.Ins.DB.Entry(loaiheo).State = System.Data.Entity.EntityState.Added;
+                DataProvider.Ins.DB.SaveChanges();
+                reloadUsingDTProvider();
             }
+            
             catch (Exception)
             {
 
@@ -118,22 +100,63 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
             }
         }
 
-        void updating(string a, string b, string c)
+        public void updating(LOAIHEO LH)
         {
-            using (TRANGTRAINUOIHEOEntities _context = new TRANGTRAINUOIHEOEntities())
+            var t = DataProvider.Ins.DB.LOAIHEOs.FirstOrDefault(s => s.MaLoaiHeo.Equals(LH.MaLoaiHeo));
+            if (t != null)
             {
-                var t = _context.LOAIHEOs.FirstOrDefault(LOAIHEO => LOAIHEO.MaLoaiHeo.Contains(a));
-                if (t != null)
+                try
                 {
-                    t.TenLoaiHeo = b;
-                    t.MoTa = c;
-                    _context.SaveChanges();
-                    reloadUsingcontext(_context);
+                    t.TenLoaiHeo = LH.TenLoaiHeo;
+                    t.MoTa = LH.MoTa;
+                    DataProvider.Ins.DB.SaveChanges();
                 }
-                else
+                catch (Exception)
                 {
-                    MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
+
+                    MessageBox.Show("Có vấn đề trong việc nhập liệu, thử lại sau", "", MessageBoxButton.OK);
                 }
+                reloadUsingDTProvider();
+            }
+            else
+            {
+                MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
+            }
+        }
+
+        private void Delete(LOAIHEO lOAIHEO)
+        {          
+            try
+            {
+                DataProvider.Ins.DB.LOAIHEOs.Remove(lOAIHEO);
+                DataProvider.Ins.DB.SaveChanges();
+                reloadUsingDTProvider();
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Gặp lỗi khi xóa.", "", MessageBoxButton.OK);
+            }
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            listviewHeo.SelectedItems.Clear();
+
+            var item = sender as ListViewItem;
+            if (item != null)
+            {
+                item.IsSelected = true;
+                listviewHeo.SelectedItem = item;
+            }
+        }
+
+        private void ListViewItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            ListViewItem item = sender as ListViewItem;
+            if (item != null && item.IsSelected)
+            {
+                //To do somthing later
             }
         }
 
@@ -148,7 +171,8 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
                 {
                     BaseLoaiHeo.Add(items);
                 }
-                reloadUsingDTProvider();
+                listviewHeo.ItemsSource = null;
+                listviewHeo.ItemsSource = BaseLoaiHeo;
             }
             else
             {
@@ -169,21 +193,9 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
 
         void reloadUsingDTProvider()
         {
-            Datagrid_loaiheo.ItemsSource = null;
-            Datagrid_loaiheo.ItemsSource = BaseLoaiHeo;
+            listviewHeo.ItemsSource = null;
+            BaseLoaiHeo = DataProvider.Ins.DB.LOAIHEOs.ToList();
+            listviewHeo.ItemsSource = BaseLoaiHeo;
         }
-        void reloadUsingcontext(TRANGTRAINUOIHEOEntities _context)
-        {
-            Datagrid_loaiheo.ItemsSource = null;
-            BaseLoaiHeo = _context.LOAIHEOs.ToList();
-            Datagrid_loaiheo.ItemsSource = BaseLoaiHeo;
-        }
-
-        ///For fail method. Delete after release
-        /*static void Finding(TRANGTRAINUOIHEOEntities context, string a)
-        {
-            var t = context.LOAIHEOs.FirstOrDefault(LOAIHEO => LOAIHEO.MaLoaiHeo.Contains(a));
-
-        }*/
     }
 }
