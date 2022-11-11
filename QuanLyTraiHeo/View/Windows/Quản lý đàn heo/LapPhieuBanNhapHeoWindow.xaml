@@ -14,13 +14,13 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         WindowStartupLocation="CenterScreen"
-        DataContext="{StaticResource PhieuBanHeoVM}"
         x:Name="PhieuNhapBanHeo"
         Title="wLogin"
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid Margin="20,0,20,0">
+    <Grid Margin="20,0,20,0" DataContext="{StaticResource LapPhieuBanNhapHeoVM}"
+>
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -36,45 +36,48 @@
                         <DatePicker Grid.Column="0"
                         HorizontalAlignment="Left"
                         Width="250"
+                                    Name="dtp_DateMin"
                         materialDesign:HintAssist.Hint="Từ ngày"
                         materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Normal"/>
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Normal">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding TimKiemTheoNgayMinCommand}"
+                                                                   CommandParameter="{Binding ElementName=dtp_DateMin}"
+                                                                   ></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
 
                         <DatePicker Grid.Column="1"
                         Width="250"
+                                    x:Name="dtp_DateMax"
                         HorizontalAlignment="Left"
                         materialDesign:HintAssist.Hint="Đến ngày"
                         materialDesign:TextFieldAssist.HasClearButton="True"
-                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Normal"/>
+                        Style="{StaticResource MaterialDesignFloatingHintDatePicker}" FontWeight="Normal">
+                            <i:Interaction.Triggers>
+                                <i:EventTrigger EventName="SelectedDateChanged">
+                                    <i:InvokeCommandAction Command="{Binding TimKiemTheoNgayMaxCommand}"
+                                                                   CommandParameter="{Binding ElementName=dtp_DateMax}"
+                                                                   ></i:InvokeCommandAction>
+                                </i:EventTrigger>
+                            </i:Interaction.Triggers>
+                        </DatePicker>
 
                     </StackPanel>
                 </Expander>
                 <Expander IsExpanded="True" Header="Trạng thái" FontWeight="Bold" Background="White">
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                        <Grid Margin="0,0,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="4*" />
-                            </Grid.ColumnDefinitions>
-                            <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Chưa hoàn thành"  Grid.Column="1" FontWeight="Normal"/>
-                        </Grid>
-                        <Grid Margin="0,0,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="4*" />
-                            </Grid.ColumnDefinitions>
-                            <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Đã hoàn thành"  Grid.Column="1" FontWeight="Normal"/>
-                        </Grid>
-                        <Grid Margin="0,0,0,10">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="4*" />
-                            </Grid.ColumnDefinitions>
-                            <CheckBox VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Đã huỷ"  Grid.Column="1" FontWeight="Normal"/>
-                        </Grid>
+                        <CheckBox x:Name="cb_TT1" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT1}" >
+                            Đã hoàn thành
+                        </CheckBox>
+                        <CheckBox x:Name="cb_TT2" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT2}">
+                            Chưa hoàn thành
+                        </CheckBox>
+                        <CheckBox x:Name="cb_TT3" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT3}">
+                           Đã huỷ
+                        </CheckBox>
                     </StackPanel>
                 </Expander>
             </StackPanel>
@@ -103,11 +106,25 @@
                                     </Grid.ColumnDefinitions>
                                     <Grid Grid.Column="0">
                                         <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                        <TextBox materialDesign:HintAssist.Hint="Nhân viên" Height="30" Margin="30,10,20,11" />
+                                        <TextBox x:Name="Txt_TimTenNV" materialDesign:HintAssist.Hint="Nhân viên" Height="30" Margin="30,10,20,11">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction Command="{Binding TimKiemTheoTenNVCommand}"
+                                                                       CommandParameter="{Binding ElementName=Txt_TimTenNV}"></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
                                     </Grid>
                                     <Grid Grid.Column="1">
                                         <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                        <TextBox materialDesign:HintAssist.Hint="Khách hàng" Height="30" Margin="30,10,20,11" />
+                                        <TextBox x:Name="Txt_TimTenKH" materialDesign:HintAssist.Hint="Khách hàng" Height="30" Margin="30,10,20,11" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="TextChanged">
+                                                    <i:InvokeCommandAction Command="{Binding TimKiemTheoTenKHCommand}"
+                                                                       CommandParameter="{Binding ElementName=Txt_TimTenKH}"></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </TextBox>
                                     </Grid>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
@@ -117,11 +134,12 @@
                                     Width="200"
                                     BorderBrush="White"
                                     Content="Tạo phiếu"
-                                    Click="Button_Click"
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                     Command="{Binding TaoPhieuCommand}"   
+                                        >
 
                                     </Button>
                                 </StackPanel>
@@ -133,25 +151,15 @@
                     </materialDesign:Card>
                     <materialDesign:Card >
                         <Expander IsExpanded="True" Header="Danh sách phiếu nhập heo" FontWeight="Bold" Background="White">
-                            <ListView AllowDrop="True" Name="Listview" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" >
+                            <ListView AllowDrop="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding ListPhieuNhap}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Số phiếu"/>
-                                        <GridViewColumn Header="Ngày lập"/>
-                                        <GridViewColumn Header="Nhân viên"/>
-                                        <GridViewColumn Header="Khách hàng"/>
-                                        <GridViewColumn Header="Trạng thái"/>
-                                        <GridViewColumn Header="Tổng tiền"/>
-                                        <!--<GridViewColumn Header="Thao tác" Width="120">
-                            <GridViewColumn.CellTemplate>
-                                <DataTemplate>
-                                    <Menu>
-                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48"></MenuItem>
-                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48"></MenuItem>
-                                    </Menu>
-                                </DataTemplate>
-                            </GridViewColumn.CellTemplate>
-                        </GridViewColumn>-->
+                                        <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"/>
+                                        <GridViewColumn Header="Ngày lập" DisplayMemberBinding="{Binding NgayLap}"/>
+                                        <GridViewColumn Header="Nhân viên" DisplayMemberBinding="{Binding NHANVIEN.HoTen}"/>
+                                        <GridViewColumn Header="Khách hàng" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
+                                        <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>
@@ -161,15 +169,15 @@
 
                     <materialDesign:Card Margin="0,20">
                         <Expander IsExpanded="False" Header="Danh sách phiếu xuất heo" FontWeight="Bold" Background="White">
-                            <ListView>
+                            <ListView AllowDrop="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding ListPhieuXuat}">
                                 <ListView.View>
                                     <GridView>
-                                        <GridViewColumn Header="Số phiếu"/>
-                                        <GridViewColumn Header="Ngày lập"/>
-                                        <GridViewColumn Header="Nhân viên"/>
-                                        <GridViewColumn Header="Khách hàng"/>
-                                        <GridViewColumn Header="Trạng thái"/>
-                                        <GridViewColumn Header="Tổng tiền"/>
+                                        <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"/>
+                                        <GridViewColumn Header="Ngày lập" DisplayMemberBinding="{Binding NgayLap}"/>
+                                        <GridViewColumn Header="Nhân viên" DisplayMemberBinding="{Binding NHANVIEN.HoTen}"/>
+                                        <GridViewColumn Header="Khách hàng" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
+                                        <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"/>
                                     </GridView>
                                 </ListView.View>
                             </ListView>

@@ -10,7 +10,10 @@
     <viewModel:BaoCaoSuaChuaVM x:Key="BaoCaoSuaChuaVM"></viewModel:BaoCaoSuaChuaVM>
     <viewModel:BaoCaoThuChiVM x:Key="BaoCaoThuChiVM"></viewModel:BaoCaoThuChiVM>
     <viewModel:BaoCaoTonKhoVM x:Key="BaoCaoTonKhoVM"></viewModel:BaoCaoTonKhoVM>
-    <viewModel:PhieuBanHeoVM x:Key="PhieuBanHeoVM"></viewModel:PhieuBanHeoVM>
+    <viewModel:LapPhieuBanNhapHeoVM x:Key="LapPhieuBanNhapHeoVM"></viewModel:LapPhieuBanNhapHeoVM>
+    <viewModel:PhieuBanNhapHeoVM x:Key="PhieuBanNhapHeoVM"></viewModel:PhieuBanNhapHeoVM>
+    <viewModel:ThemHeoPhieuVM x:Key="ThemHeoPhieuVM"></viewModel:ThemHeoPhieuVM>
+    <viewModel:ChonHeoXuatVM x:Key="ChonHeoXuatVM"></viewModel:ChonHeoXuatVM>
     <viewModel:QuanLyNhatKyVM x:Key="QuanLyNhatKyVM"></viewModel:QuanLyNhatKyVM>
     <viewModel:LapLichTiemVM x:Key="LapLichTiemVM"></viewModel:LapLichTiemVM>
     <viewModel:DoiMatKhauVM x:Key="DoiMatKhauVM"></viewModel:DoiMatKhauVM>

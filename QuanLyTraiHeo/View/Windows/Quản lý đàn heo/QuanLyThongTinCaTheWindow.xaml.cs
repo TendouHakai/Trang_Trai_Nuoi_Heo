@@ -1,4 +1,5 @@
 ﻿using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
+using QuanLyTraiHeo.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;

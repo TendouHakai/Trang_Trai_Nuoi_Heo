@@ -11,19 +11,17 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
 
-namespace QuanLyTraiHeo
+namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for LapPhieuBanNhapHeoWindow.xaml
+    /// Interaction logic for ChonHeoXuat.xaml
     /// </summary>
-    public partial class LapPhieuBanNhapHeoWindow : Window
+    public partial class ChonHeoXuat : Window
     {
-        public LapPhieuBanNhapHeoWindow()
+        public ChonHeoXuat()
         {
             InitializeComponent();
         }
-
     }
 }

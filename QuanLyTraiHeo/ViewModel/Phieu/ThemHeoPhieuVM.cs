@@ -11,7 +11,7 @@ using System.Windows.Input;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class ThemTTHeoVM : BaseViewModel
+    public class ThemHeoPhieuVM : BaseViewModel
     {
         public ObservableCollection<HEO> ListHeoAdd { get; set; }
         public ObservableCollection<LOAIHEO> ListLoai { get; set; }
@@ -21,8 +21,10 @@ namespace QuanLyTraiHeo.ViewModel
 
 
         public HEO HeoAdd { get; set; }
+
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
+
         public CHUONGTRAI SelectedChuong { get; set; }
         public string MaHeo { get; set; }
         public string MaLoaiHeo { get; set; }
@@ -39,20 +41,19 @@ namespace QuanLyTraiHeo.ViewModel
 
 
         public ICommand AddCommand { get; set; }
-        public ICommand HuyCommand { get; set; }
-        public ICommand DeleteCommand { get; set; }
-        public ICommand XacNhanCommand { get; set; }
+        public ICommand HTCommand { get; set; }
 
 
-        public ThemTTHeoVM()
+        public ThemHeoPhieuVM(ObservableCollection <HEO> a)
         {
             ListHeoAdd = new ObservableCollection<HEO>();
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
             ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            ListHeoAdd = a;
             MaHeo = LayMa();
 
-            AddCommand = new RelayCommand<TextBox>((p) => {
+            AddCommand = new RelayCommand<Window>((p) => {
                 if (SelectedChuong == null || SelectedGiong == null || SelectedLoai == null)
                     return false;
 
@@ -75,29 +76,16 @@ namespace QuanLyTraiHeo.ViewModel
                 HeoAdd.MaChuong = SelectedChuong.MaChuong;
                 HeoAdd.NguonGoc = NguonGoc;
                 HeoAdd.TinhTrang = TinhTrang;
-                ListHeoAdd.Add(HeoAdd);
-                p.Text = LayMa();
+                a.Add(HeoAdd);
+                p.Close();
             });
 
-            HuyCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            HTCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
                 p.Close();
                 ListHeoAdd = null;
             });
 
-            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p =>
-            {
-                ListHeoAdd.Remove(HeoAdd);
-            });
-            XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, p =>
-            {
-                foreach (var item in ListHeoAdd)
-                {
-                    DataProvider.Ins.DB.HEOs.Add(item);
-                }
-                DataProvider.Ins.DB.SaveChanges();
-                p.Close();
-            });
 
         }
         string CreatMaHeo(int lan)
@@ -142,6 +130,6 @@ namespace QuanLyTraiHeo.ViewModel
             }
             return MaCu;
         }
-    }
 
+    }
 }
