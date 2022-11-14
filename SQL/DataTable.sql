@@ -62,6 +62,18 @@ CREATE TABLE LOAICHUONG
 )
 
 
+CREATE TABLE LICHCHUONG
+(
+	MaLichChuong char(16),
+	MaChuong char(16),
+	NgayLam smalldatetime,
+	TrangThai nvarchar(50),
+	TenLich nvarchar(50),
+	Mota nvarchar(50)
+
+	CONSTRAINT PK_LC PRIMARY KEY (MaLichChuong)
+)
+
 
 GO
 CREATE TABLE LICHTIEMHEO
@@ -81,8 +93,9 @@ CREATE TABLE LICHPHOIGIONG
 	MaLichPhoi char(16),
 	MaHeoDuc char(16),
 	MaHeoCai char(16),
+	NgayPhoiGiong smalldatetime,
 	Trangthai nvarchar(64),
-
+		
 	NgayDuKienDe smalldatetime ,
 	NgayDeThucTe smalldatetime ,
 
@@ -91,6 +104,7 @@ CREATE TABLE LICHPHOIGIONG
 	NgayCaiSua smalldatetime,
 
 	SoConChon int,
+	NgayPhoiGiongLaiDuKien smalldatetime,
 	CONSTRAINT PK_LPG PRIMARY KEY (MaLichPhoi)
 )
 
@@ -134,7 +148,6 @@ go
 Create table ThongBao
 (
 	MaThongBao char(16),
-	_MaNguoiNhan char(16),
 	_MaNguoiGui char(16),
 	TinhTrang nvarchar(16),
 	TieuDe ntext,
@@ -199,6 +212,7 @@ Create table PHIEUSUACHUA
 	MaNhanVien char(16),
 	GhiChu ntext,
 	TrangThai nvarchar(64),
+	MaDoiTac char(16)
 	TongTien int,	
 	constraint PK_PSC PRIMARY KEY (SoPhieu)
 )
@@ -312,6 +326,10 @@ FOREIGN KEY (MaChuong) REFERENCES CHUONGTRAI(MaChuong)
 ALTER TABLE CHUONGTRAI ADD CONSTRAINT FK_CT_MC
 FOREIGN KEY (MaLoaiChuong) REFERENCES LOAICHUONG(MaLoaiChuong)
 
+-- table LichChuong--
+ALTER TABLE LICHCHUONG ADD CONSTRAINT FK_LC_MC 
+FOREIGN KEY (MaChuong) REFERENCES CHUONGTRAI(MaChuong)
+
 --table LICHTIEMHEO--
 ALTER TABLE LICHTIEMHEO ADD CONSTRAINT FK_LTH_MH
 FOREIGN KEY (MaHeo) REFERENCES HEO(MaHeo)
@@ -346,6 +364,9 @@ FOREIGN KEY (ID_Permision) REFERENCES PERMISION(ID_Permision)
 --table PHIEUSUACHUA--
 ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MNV
 FOREIGN KEY (MaNhanVien) REFERENCES NHANVIEN(MaNhanVien)
+
+ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MNV
+FOREIGN KEY (MaDoiTac) REFERENCES DOITAC(MaDoiTac)
 
 ALTER TABLE CT_PHIEUSUACHUA ADD CONSTRAINT FK_CT_PSC_SP
 FOREIGN KEY (SoPhieu) REFERENCES PHIEUSUACHUA(SoPhieu)

@@ -17,7 +17,13 @@
                                    CommandParameter="{Binding ElementName=SoDoWD}"></i:InvokeCommandAction>
         </i:EventTrigger>
     </i:Interaction.Triggers>
-    <Grid>
+    <Grid DataContext="{StaticResource SoDoVM}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=SoDoWD}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <materialDesign:Card>
             <StackPanel Orientation="Vertical">
                 <materialDesign:Card>
