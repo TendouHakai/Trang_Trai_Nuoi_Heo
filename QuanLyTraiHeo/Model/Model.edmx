@@ -117,6 +117,7 @@
           <Property Name="MaLichPhoi" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="MaHeoDuc" Type="char" MaxLength="16" />
           <Property Name="MaHeoCai" Type="char" MaxLength="16" />
+          <Property Name="NgayPhoiGiong" Type="smalldatetime" />
           <Property Name="Trangthai" Type="nvarchar" MaxLength="64" />
           <Property Name="NgayDuKienDe" Type="smalldatetime" />
           <Property Name="NgayDeThucTe" Type="smalldatetime" />
@@ -124,6 +125,7 @@
           <Property Name="SoConChet" Type="int" />
           <Property Name="NgayCaiSua" Type="smalldatetime" />
           <Property Name="SoConChon" Type="int" />
+          <Property Name="NgayPhoiGiongLaiDuKien" Type="smalldatetime" />
         </EntityType>
         <EntityType Name="LICHTIEMHEO">
           <Key>
@@ -203,6 +205,7 @@
           <Property Name="SoPhieu" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="NgayLap" Type="smalldatetime" />
           <Property Name="MaNhanVien" Type="char" MaxLength="16" />
+          <Property Name="MaNhanVienNhan" Type="char" MaxLength="16" />
           <Property Name="MaDoiTac" Type="char" MaxLength="16" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
           <Property Name="LoaiPhieu" Type="nvarchar" MaxLength="64" />
@@ -239,6 +242,7 @@
           <Property Name="MaNhanVien" Type="char" MaxLength="16" />
           <Property Name="GhiChu" Type="ntext" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="64" />
+          <Property Name="MaDoiTac" Type="char" MaxLength="16" />
           <Property Name="TongTien" Type="int" />
         </EntityType>
         <EntityType Name="THAMSO">
@@ -253,8 +257,8 @@
             <PropertyRef Name="MaThongBao" />
           </Key>
           <Property Name="MaThongBao" Type="char" MaxLength="16" Nullable="false" />
-          <Property Name="_MaNguoiNhan" Type="char" MaxLength="16" />
           <Property Name="_MaNguoiGui" Type="char" MaxLength="16" />
+          <Property Name="_MaNguoiNhan" Type="char" MaxLength="16" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="16" />
           <Property Name="TieuDe" Type="ntext" />
           <Property Name="NoiDung" Type="ntext" />
@@ -524,6 +528,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PHH_MNVN">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="PHIEUHANGHOA" Type="Self.PHIEUHANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="PHIEUHANGHOA">
+              <PropertyRef Name="MaNhanVienNhan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PKK_MNV">
           <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
           <End Role="PHIEUKIEMKHO" Type="Self.PHIEUKIEMKHO" Multiplicity="*" />
@@ -533,6 +549,18 @@
             </Principal>
             <Dependent Role="PHIEUKIEMKHO">
               <PropertyRef Name="MaNhanVien" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PSC_MDT">
+          <End Role="DOITAC" Type="Self.DOITAC" Multiplicity="0..1" />
+          <End Role="PHIEUSUACHUA" Type="Self.PHIEUSUACHUA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOITAC">
+              <PropertyRef Name="MaDoiTac" />
+            </Principal>
+            <Dependent Role="PHIEUSUACHUA">
+              <PropertyRef Name="MaDoiTac" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -685,9 +713,17 @@
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOA" />
           </AssociationSet>
+          <AssociationSet Name="FK_PHH_MNVN" Association="Self.FK_PHH_MNVN">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOA" />
+          </AssociationSet>
           <AssociationSet Name="FK_PKK_MNV" Association="Self.FK_PKK_MNV">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
             <End Role="PHIEUKIEMKHO" EntitySet="PHIEUKIEMKHO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PSC_MDT" Association="Self.FK_PSC_MDT">
+            <End Role="DOITAC" EntitySet="DOITAC" />
+            <End Role="PHIEUSUACHUA" EntitySet="PHIEUSUACHUA" />
           </AssociationSet>
           <AssociationSet Name="FK_PSC_MNV" Association="Self.FK_PSC_MNV">
             <End Role="NHANVIEN" EntitySet="NHANVIEN" />
@@ -835,6 +871,14 @@
             <End Role="PERMISION" EntitySet="PERMISIONs" />
             <End Role="PERMISION_DETAIL" EntitySet="PERMISION_DETAIL" />
           </AssociationSet>
+          <AssociationSet Name="FK_PSC_MDT" Association="TRANGTRAINUOIHEOModel.FK_PSC_MDT">
+            <End Role="DOITAC" EntitySet="DOITACs" />
+            <End Role="PHIEUSUACHUA" EntitySet="PHIEUSUACHUAs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PHH_MNVN" Association="TRANGTRAINUOIHEOModel.FK_PHH_MNVN">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOAs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CHUCVU">
           <Key>
@@ -920,6 +964,7 @@
           <Property Name="Email" Type="String" MaxLength="2048" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="PHIEUHEOs" Relationship="TRANGTRAINUOIHEOModel.FK_PH_MDT" FromRole="DOITAC" ToRole="PHIEUHEO" />
           <NavigationProperty Name="PHIEUHANGHOAs" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MDT" FromRole="DOITAC" ToRole="PHIEUHANGHOA" />
+          <NavigationProperty Name="PHIEUSUACHUAs" Relationship="TRANGTRAINUOIHEOModel.FK_PSC_MDT" FromRole="DOITAC" ToRole="PHIEUSUACHUA" />
         </EntityType>
         <EntityType Name="GIONGHEO">
           <Key>
@@ -982,6 +1027,8 @@
           <Property Name="SoConChon" Type="Int32" />
           <NavigationProperty Name="HEO" Relationship="TRANGTRAINUOIHEOModel.FK_LPG_MHC" FromRole="LICHPHOIGIONG" ToRole="HEO" />
           <NavigationProperty Name="HEO1" Relationship="TRANGTRAINUOIHEOModel.FK_LPG_MHD" FromRole="LICHPHOIGIONG" ToRole="HEO" />
+          <Property Name="NgayPhoiGiong" Type="DateTime" Precision="0" />
+          <Property Name="NgayPhoiGiongLaiDuKien" Type="DateTime" Precision="0" />
         </EntityType>
         <EntityType Name="LICHTIEMHEO">
           <Key>
@@ -1046,6 +1093,7 @@
           <NavigationProperty Name="PHIEUSUACHUAs" Relationship="TRANGTRAINUOIHEOModel.FK_PSC_MNV" FromRole="NHANVIEN" ToRole="PHIEUSUACHUA" />
           <NavigationProperty Name="ThongBaos" Relationship="TRANGTRAINUOIHEOModel.FK_TB_NG" FromRole="NHANVIEN" ToRole="ThongBao" />
           <NavigationProperty Name="ThongBaos1" Relationship="TRANGTRAINUOIHEOModel.FK_TB_NN" FromRole="NHANVIEN" ToRole="ThongBao" />
+          <NavigationProperty Name="PHIEUHANGHOAs1" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" FromRole="NHANVIEN" ToRole="PHIEUHANGHOA" />
         </EntityType>
         <EntityType Name="PERMISION">
           <Key>
@@ -1082,6 +1130,8 @@
           <NavigationProperty Name="CT_PHIEUKIEMKHO" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PKK_SP" FromRole="PHIEUHANGHOA" ToRole="CT_PHIEUKIEMKHO" />
           <NavigationProperty Name="DOITAC" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MDT" FromRole="PHIEUHANGHOA" ToRole="DOITAC" />
           <NavigationProperty Name="NHANVIEN" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNV" FromRole="PHIEUHANGHOA" ToRole="NHANVIEN" />
+          <Property Name="MaNhanVienNhan" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="NHANVIEN1" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" FromRole="PHIEUHANGHOA" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="PHIEUHEO">
           <Key>
@@ -1121,6 +1171,8 @@
           <Property Name="TongTien" Type="Int32" />
           <NavigationProperty Name="CT_PHIEUSUACHUA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PSC_SP" FromRole="PHIEUSUACHUA" ToRole="CT_PHIEUSUACHUA" />
           <NavigationProperty Name="NHANVIEN" Relationship="TRANGTRAINUOIHEOModel.FK_PSC_MNV" FromRole="PHIEUSUACHUA" ToRole="NHANVIEN" />
+          <Property Name="MaDoiTac" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <NavigationProperty Name="DOITAC" Relationship="TRANGTRAINUOIHEOModel.FK_PSC_MDT" FromRole="PHIEUSUACHUA" ToRole="DOITAC" />
         </EntityType>
         <EntityType Name="THAMSO">
           <Key>
@@ -1455,6 +1507,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_PSC_MDT">
+          <End Type="TRANGTRAINUOIHEOModel.DOITAC" Role="DOITAC" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.PHIEUSUACHUA" Role="PHIEUSUACHUA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DOITAC">
+              <PropertyRef Name="MaDoiTac" />
+            </Principal>
+            <Dependent Role="PHIEUSUACHUA">
+              <PropertyRef Name="MaDoiTac" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PHH_MNVN">
+          <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.PHIEUHANGHOA" Role="PHIEUHANGHOA" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="PHIEUHANGHOA">
+              <PropertyRef Name="MaNhanVienNhan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1575,6 +1651,8 @@
           <EntitySetMapping Name="LICHPHOIGIONGs">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.LICHPHOIGIONG">
               <MappingFragment StoreEntitySet="LICHPHOIGIONG">
+                <ScalarProperty Name="NgayPhoiGiongLaiDuKien" ColumnName="NgayPhoiGiongLaiDuKien" />
+                <ScalarProperty Name="NgayPhoiGiong" ColumnName="NgayPhoiGiong" />
                 <ScalarProperty Name="SoConChon" ColumnName="SoConChon" />
                 <ScalarProperty Name="NgayCaiSua" ColumnName="NgayCaiSua" />
                 <ScalarProperty Name="SoConChet" ColumnName="SoConChet" />
@@ -1669,6 +1747,7 @@
           <EntitySetMapping Name="PHIEUHANGHOAs">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.PHIEUHANGHOA">
               <MappingFragment StoreEntitySet="PHIEUHANGHOA">
+                <ScalarProperty Name="MaNhanVienNhan" ColumnName="MaNhanVienNhan" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="LoaiPhieu" ColumnName="LoaiPhieu" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
@@ -1706,6 +1785,7 @@
           <EntitySetMapping Name="PHIEUSUACHUAs">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.PHIEUSUACHUA">
               <MappingFragment StoreEntitySet="PHIEUSUACHUA">
+                <ScalarProperty Name="MaDoiTac" ColumnName="MaDoiTac" />
                 <ScalarProperty Name="TongTien" ColumnName="TongTien" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="GhiChu" ColumnName="GhiChu" />

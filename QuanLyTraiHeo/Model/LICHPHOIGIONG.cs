@@ -24,6 +24,8 @@ namespace QuanLyTraiHeo.Model
         public Nullable<int> SoConChet { get; set; }
         public Nullable<System.DateTime> NgayCaiSua { get; set; }
         public Nullable<int> SoConChon { get; set; }
+        public Nullable<System.DateTime> NgayPhoiGiong { get; set; }
+        public Nullable<System.DateTime> NgayPhoiGiongLaiDuKien { get; set; }
     
         public virtual HEO HEO { get; set; }
         public virtual HEO HEO1 { get; set; }

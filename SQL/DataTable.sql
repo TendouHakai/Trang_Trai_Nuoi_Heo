@@ -149,6 +149,7 @@ Create table ThongBao
 (
 	MaThongBao char(16),
 	_MaNguoiGui char(16),
+	_MaNguoiNhan char(16),
 	TinhTrang nvarchar(16),
 	TieuDe ntext,
 	NoiDung ntext,
@@ -212,7 +213,7 @@ Create table PHIEUSUACHUA
 	MaNhanVien char(16),
 	GhiChu ntext,
 	TrangThai nvarchar(64),
-	MaDoiTac char(16)
+	MaDoiTac char(16),
 	TongTien int,	
 	constraint PK_PSC PRIMARY KEY (SoPhieu)
 )
@@ -279,6 +280,7 @@ Create table	PHIEUHANGHOA
 	SoPhieu char(16),
 	NgayLap smalldatetime,
 	MaNhanVien char(16),
+	MaNhanVienNhan char(16),
 	MaDoiTac char(16),
 	TrangThai nvarchar(64),
 	LoaiPhieu nvarchar(64),
@@ -365,7 +367,7 @@ FOREIGN KEY (ID_Permision) REFERENCES PERMISION(ID_Permision)
 ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MNV
 FOREIGN KEY (MaNhanVien) REFERENCES NHANVIEN(MaNhanVien)
 
-ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MNV
+ALTER TABLE PHIEUSUACHUA ADD CONSTRAINT FK_PSC_MDT
 FOREIGN KEY (MaDoiTac) REFERENCES DOITAC(MaDoiTac)
 
 ALTER TABLE CT_PHIEUSUACHUA ADD CONSTRAINT FK_CT_PSC_SP
@@ -390,6 +392,9 @@ FOREIGN KEY (MaHeo) REFERENCES HEO(MaHeo)
 --table PHIEUHANGHOA--
 ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MNV
 FOREIGN KEY (MaNhanVien) REFERENCES NHANVIEN(MaNhanVien)
+
+ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MNVN
+FOREIGN KEY (MaNhanVienNhan) REFERENCES NHANVIEN(MaNhanVien)
 
 ALTER TABLE PHIEUHANGHOA ADD CONSTRAINT FK_PHH_MDT
 FOREIGN KEY (MaDoiTac) REFERENCES DOITAC(MaDoiTac)

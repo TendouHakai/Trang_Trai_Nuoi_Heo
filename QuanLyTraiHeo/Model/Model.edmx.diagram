@@ -55,6 +55,8 @@
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_TB_NG" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_TB_NN" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PD_P" />
+        <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PSC_MDT" />
+        <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

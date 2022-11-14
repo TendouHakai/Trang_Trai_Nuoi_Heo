@@ -23,6 +23,7 @@ namespace QuanLyTraiHeo.Model
             this.PHIEUSUACHUAs = new HashSet<PHIEUSUACHUA>();
             this.ThongBaos = new HashSet<ThongBao>();
             this.ThongBaos1 = new HashSet<ThongBao>();
+            this.PHIEUHANGHOAs1 = new HashSet<PHIEUHANGHOA>();
         }
     
         public string MaNhanVien { get; set; }
@@ -54,7 +55,7 @@ namespace QuanLyTraiHeo.Model
         public virtual ICollection<ThongBao> ThongBaos { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ThongBao> ThongBaos1 { get; set; }
-        
-        // s? lý s? ki?n tr
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<PHIEUHANGHOA> PHIEUHANGHOAs1 { get; set; }
     }
 }

@@ -26,9 +26,11 @@ namespace QuanLyTraiHeo.Model
         public string GhiChu { get; set; }
         public string TrangThai { get; set; }
         public Nullable<int> TongTien { get; set; }
+        public string MaDoiTac { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PHIEUSUACHUA> CT_PHIEUSUACHUA { get; set; }
         public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual DOITAC DOITAC { get; set; }
     }
 }

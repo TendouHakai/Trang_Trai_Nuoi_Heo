@@ -39,10 +39,7 @@ namespace QuanLyTraiHeo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PHIEUHEO> CT_PHIEUHEO { get; set; }
         public virtual GIONGHEO GIONGHEO { get; set; }
-        public virtual GIONGHEO GIONGHEOT { get; set; }
         public virtual LOAIHEO LOAIHEO { get; set; }
-        public virtual LOAIHEO LOAIHEOT { get; set; }
-        public virtual LICHTIEMHEO CungTiemNao { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<LICHPHOIGIONG> LICHPHOIGIONGs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
