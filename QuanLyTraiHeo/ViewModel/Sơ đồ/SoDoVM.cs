@@ -1,4 +1,5 @@
-﻿using QuanLyTraiHeo.View.UC;
+﻿using QuanLyTraiHeo.Model;
+using QuanLyTraiHeo.View.UC;
 using QuanLyTraiHeo.View.Windows;
 using System;
 using System.Collections.Generic;
@@ -30,10 +31,18 @@ namespace QuanLyTraiHeo.ViewModel
             
             wc.wp_ListChuong.Children.Clear();
 
-            for (int i = 0; i < 10; i++)
+            List<CHUONGTRAI> listChuongTrai = new List<CHUONGTRAI>();
+            listChuongTrai = DataProvider.Ins.DB.CHUONGTRAIs.ToList();
+
+            foreach (var item in listChuongTrai)
             {
-                wc.wp_ListChuong.Children.Add(new IconChuongUC() { DataContext = new ChuongUC_VM() });
+                IconChuongUC chuong = new IconChuongUC() { Tag = item };
+                chuong.tb_SoLuongHeo.Text = DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaChuong == item.MaChuong).SingleOrDefault().HEOs.Count().ToString();
+                chuong.tb_TenChuong.Text = item.MaChuong;
+                chuong.DataContext = new ChuongUC_VM() { _SoLuongHeo = Int16.Parse(chuong.tb_SoLuongHeo.Text) };
+                wc.wp_ListChuong.Children.Add(chuong);
             }
+
 
         }
 

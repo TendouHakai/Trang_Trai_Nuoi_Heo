@@ -45,9 +45,11 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0"
-                  Background="#ffedc1">
+                  Background="White">
                 <TextBlock VerticalAlignment="Center"
                            FontSize="15"
+                           TextAlignment="Center"
+                           FontWeight="Bold"
                            Text="Danh sách heo">
                 </TextBlock>
             </Grid>
@@ -88,7 +90,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0"
-                  Background="#ffedc1">
+                  Background="White">
                 <ScrollViewer>
                     <StackPanel x:Name="sp_ListHeo">
                         

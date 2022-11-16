@@ -4,7 +4,7 @@ GO
 USE TRANGTRAINUOIHEO
 
 --use master
---drop database TRANGTRAINUOIHEO
+--drop database TRANGTRAINUOIHEO 
 
 GO
 CREATE TABLE HEO
@@ -13,7 +13,7 @@ CREATE TABLE HEO
 	MaLoaiHeo char(16),
 	MaGiongHeo char(16),
 	GioiTinh nvarchar(6),
-	NgaySinh smalldatetime,
+	NgaySinh date,
 	TrongLuong int,
 	MaChuong char(16),
 	MaHeoCha char(16),
@@ -64,14 +64,13 @@ CREATE TABLE LOAICHUONG
 
 CREATE TABLE LICHCHUONG
 (
-	MaLichChuong char(16),
 	MaChuong char(16),
 	NgayLam smalldatetime,
 	TrangThai nvarchar(50),
 	TenLich nvarchar(50),
 	Mota nvarchar(50)
 
-	CONSTRAINT PK_LC PRIMARY KEY (MaLichChuong)
+	CONSTRAINT PK_LC PRIMARY KEY (MaChuong, NgayLam, TenLich)
 )
 
 
@@ -132,11 +131,11 @@ create table NHANVIEN
 	MyImage varbinary(max),
 	MaChucVu char(16),
 	GioiTinh nvarchar(16),
-	NgaySinh smalldatetime,
+	NgaySinh Date,
 	DiaChi nvarchar(1024),
 	email nvarchar(1024),
 	SDT char(16),
-	NgayVaoLam smalldatetime,
+	NgayVaoLam Date,
 	HeSoLuong float,
 	_Username char(64),
 	_PassWord char(64),
@@ -425,37 +424,4 @@ INSERT INTO ListActionDetail VALUES (N'Quản lý tài chính');
 INSERT INTO ListActionDetail VALUES (N'Quản lý cây mục tiêu');
 INSERT INTO ListActionDetail VALUES (N'Quản lý nhật ký');
 
-
-INSERT INTO PERMISION 
-	(ID_Permision,
-	Name_Permision,
-	Permision_Descript)
-VALUES 
-	('20221024000001', 
-	'Chủ trang trại', 
-	'Admin');
-
-INSERT INTO CHUCVU 
-	(MaChucVu,
-	TenChucVu,
-	LuongCoBan,
-	ID_Permision)
-VALUES 
-	('20221024000001', 
-	 'ChuTrangTrai', 
-	 0,
-	 '20221024000001'); 
-
-INSERT INTO NHANVIEN 
-	(MaNhanVien,
-	HoTen,
-	MaChucVu,
-	_Username,
-	_PassWord)
-VALUES 
-	('20221024000001', 
-	 N'Hồng Trường Vinh', 
-	 '20221024000001',
-	 'Admin',
-	 'e3afed0047b08059d0fada10f400c1e5'); 
 

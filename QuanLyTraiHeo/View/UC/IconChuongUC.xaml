@@ -41,10 +41,10 @@
                            Margin="18,56,0,57"></TextBlock>
                 <TextBlock FontSize="30"
                            Name="tb_SoLuongHeo"
-                           
+                           Text="0"
                            FontWeight="Black"
                            Foreground="#FFAB91"
-                           Margin="63,-60,126,171">8</TextBlock>
+                           Margin="63,-60,126,171"></TextBlock>
             </Grid>
         </Button>
         <Button VerticalAlignment="Top"
@@ -60,7 +60,7 @@
                                      Height="100"
                                      Width="100"
                                      Foreground="Blue"
-                                     Background="White"
+                                     Background="AliceBlue"
                                      Margin="-19">
             </materialDesign:PackIcon>
         </Button>

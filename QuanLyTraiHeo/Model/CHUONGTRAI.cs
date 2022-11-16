@@ -19,6 +19,7 @@ namespace QuanLyTraiHeo.Model
         {
             this.CT_PHIEUSUACHUA = new HashSet<CT_PHIEUSUACHUA>();
             this.HEOs = new HashSet<HEO>();
+            this.LICHCHUONGs = new HashSet<LICHCHUONG>();
         }
     
         public string MaChuong { get; set; }
@@ -32,5 +33,7 @@ namespace QuanLyTraiHeo.Model
         public virtual ICollection<CT_PHIEUSUACHUA> CT_PHIEUSUACHUA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<HEO> HEOs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LICHCHUONG> LICHCHUONGs { get; set; }
     }
 }

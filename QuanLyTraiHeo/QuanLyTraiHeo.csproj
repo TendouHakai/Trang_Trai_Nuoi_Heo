@@ -119,6 +119,9 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\HEOXUAT.cs" />
+    <Compile Include="Model\LICHCHUONG.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\LICHPHOIGIONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -185,6 +188,7 @@
     <Compile Include="ViewModel\Phieu\ThemHeoPhieuVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\ChuongUC_VM.cs" />
     <Compile Include="ViewModel\Sơ đồ\DSHeoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\DSLichChuongVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\SoDoVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
@@ -714,6 +718,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\ChuongHeo.png" />
+    <Resource Include="Image\pig-pigsty-icon-237822462.jpg" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>

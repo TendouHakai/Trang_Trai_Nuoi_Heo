@@ -313,7 +313,8 @@
                                              Name="tb_HeSoLuong"
                                              PreviewTextInput="tb_HeSoLuong_PreviewTextInput"
                                              Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                             VerticalAlignment="Top">
+                                             VerticalAlignment="Top"
+                                             IsEnabled="False">
                                         <TextBox.Text>
                                             <Binding Path="HeSoLuong"
                                                      UpdateSourceTrigger="PropertyChanged">
