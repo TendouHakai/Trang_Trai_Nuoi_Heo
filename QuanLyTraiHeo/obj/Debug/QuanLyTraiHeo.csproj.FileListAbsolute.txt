@@ -160,3 +160,5 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ChiTietPhieuSuaChua.g.cs
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ChiTietPhieuSuaChua.baml

@@ -6,9 +6,8 @@
         xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Name="ThemHeoPhieuW"
-        Title="ThemHeoPhieu" Height="350" Width="350" WindowStartupLocation="Manual" Left = "920" Top = "35">
-    <Grid>
+        Title="ChiTietPhieuSuaChua" Height="450" Width="350" WindowStartupLocation="CenterScreen" Left = "920" Top = "35">
+    <Grid DataContext="{StaticResource ChiTietPhieuSuaChuaVM}">
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                 <GradientStop Color="#3ab19b" Offset="0.05"/>
@@ -24,9 +23,13 @@
             <StackPanel Margin="5,0,5,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
                 <materialDesign:Card Grid.Row="0" Margin="5" Background="White" VerticalAlignment="Center">
                     <StackPanel VerticalAlignment="Center">
+                        <TextBox materialDesign:HintAssist.Hint="Số phiếu" 
+                                 Height="30" Margin="30,0,20,11" 
+                                 DataContext="{StaticResource ThemPhieuSuaChuaVM}"
+                                 Text="{Binding SoPhieu, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox materialDesign:HintAssist.Hint="Mã chuồng" 
                                  Height="30" Margin="30,0,20,11" 
-                                 Text="{Binding SDT, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding MaChuong, UpdateSourceTrigger=PropertyChanged}"/>
                         <TextBox Margin="30,0,20,11"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
                             VerticalAlignment="Top"
@@ -36,7 +39,7 @@
                             VerticalScrollBarVisibility="Auto"
                             materialDesign:HintAssist.Hint="Mô tả"
                             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
-                                 Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
+                                 Text="{Binding Mota, UpdateSourceTrigger=PropertyChanged}"/>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
@@ -51,8 +54,7 @@
                         Background="#00de1e"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding AddCommand}" 
-                        CommandParameter="{Binding ElementName=ThemHeoPhieuW}">
+                        Command="{Binding XacNhanCommand}">
                             </Button>
                             <Button Margin="20,10,20,0"
                         Style="{StaticResource MaterialDesignRaisedButton}"
@@ -64,8 +66,7 @@
                         Foreground="#00de1e"
                         Background="#dcf7e0"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding HTCommand}"
-                                    CommandParameter="{Binding ElementName=ThemHeoPhieuW}">
+                        Command="{Binding HuyCommand}">
                             </Button>
                         </StackPanel>
                     </Border>

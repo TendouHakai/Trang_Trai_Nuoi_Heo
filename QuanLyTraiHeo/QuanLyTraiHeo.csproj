@@ -179,6 +179,7 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\ChiTietPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\LapPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ThemPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
