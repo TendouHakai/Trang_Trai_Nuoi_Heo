@@ -10,7 +10,6 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        DataContext="{StaticResource BaoCaoSuaChuaVM}"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -21,8 +20,8 @@
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid>
-        <Grid Background="#f3f3f9" Margin="20,0,20,0" DataContext="{StaticResource BaoCaoSuaChuaVM}">
+    <Grid DataContext="{StaticResource BaoCaoSuaChuaVM}">
+        <Grid Background="#f3f3f9" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -70,7 +69,6 @@
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>
-               
                 <materialDesign:Card Grid.Column="2" Margin="10,0,0,0">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:Card Height="30">
@@ -85,7 +83,6 @@
                                      Margin="0,3,0,5">
                                 </TextBox>
                             </Grid>
-
                         </materialDesign:Card>
                         <lvc:CartesianChart Series="{Binding SeriesCollectionTSheoChart}" LegendLocation="Bottom" Height="264" >
                             <lvc:CartesianChart.AxisY>
@@ -118,7 +115,7 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
-                                            
+
                                         </Grid.ColumnDefinitions>
                                         <DatePicker Grid.Column="0"
                                             Width="100"
@@ -142,9 +139,7 @@
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
                                         </Button>
-
                                         <Button
                                     Margin="20,0,0,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
@@ -156,43 +151,74 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding XuatFileExcelCommand}">
                                         </Button>
                                     </StackPanel>
-
                                 </Grid>
-
                             </Grid>
-
                         </materialDesign:Card>
-                        <ListView ItemsSource="{Binding lstPhieu}">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding STT}"
-                                        Header="STT" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding IDPhieu}"
-                                        Header="Mã phiếu" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding IDChuong}"
-                                        Header="Mã chuồng" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Ngay}"
-                                        Header="Ngày sửa chữa" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding NhanVien}"
-                                        Header="Nhân viên" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding TongTien}"
-                                        Header="Tổng tiền" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Ghichu}"
-                                        Header="Ghi chú" />
-                                    
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        
+                        <ScrollViewer>
+                            <!--<DataGrid Grid.Column="2"
+                                      ItemsSource="{Binding LstPhieu}"                                      
+                  Name="DanhSachPheuSuaChua"
+                  HeadersVisibility="All"
+                  SelectionUnit="{Binding ElementName=DanhSachPheuSuaChua, Path=SelectedValue}"
+                  MaxColumnWidth="120">
+                                <DataGrid.Resources>
+                                </DataGrid.Resources>
+                                <DataGrid.Columns>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding SoPhieu}"
+                                    Header="Số phiếu"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding MaNhanVien}"
+                                    Header="Mã nhân viên"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding MaDoiTac}"
+                                    Header="Mã đối tác"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding NgaySuaChua}"
+                                    Header="Ngày sửa chữa"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding GhiChu}"
+                                    Header="Ghi chú"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding TrangThai}"
+                                    Header="Trạng thái"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                    <materialDesign:DataGridTextColumn Binding="{Binding TongTien}"
+                                    Header="Tổng tiền"
+                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
+                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
+                                </DataGrid.Columns>
+                            </DataGrid>-->
+                            <ListView AllowDrop="True"
+                                      x:Name="Listviewk"
+                                      ItemsSource="{Binding LstPhieu}"
+                                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" 
+                                      >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"></GridViewColumn>
+                                        <GridViewColumn Header="Ngày sửa chữa" DisplayMemberBinding="{Binding NgaySuaChua}"></GridViewColumn>
+                                        <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding MaNhanVien}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên đối tác" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"></GridViewColumn>
+                                        <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding GhiChu}"></GridViewColumn>
+                                        <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
                     </StackPanel>
-
                 </materialDesign:Card>
             </Grid>
         </Grid>
-
     </Grid>
 </Window>

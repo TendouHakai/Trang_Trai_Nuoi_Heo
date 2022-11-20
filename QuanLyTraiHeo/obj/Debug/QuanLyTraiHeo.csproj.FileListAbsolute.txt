@@ -162,3 +162,22 @@ C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\o
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ChiTietPhieuSuaChua.g.cs
 C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Quản lý chuồng nuôi\ChiTietPhieuSuaChua.baml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EPPlus.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\EPPlus.xml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.ResolveComReference.cache
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\AutoMapper.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\protobuf-net.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\ServiceStack.Text.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Unipluss.Sign.Client.Common.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Unipluss.Sign.Client.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Unipluss.Sign.Common.Rest.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Unipluss.Sign.Common.Validation.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\Unipluss.Sign.ExternalContract.dll
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\AutoMapper.xml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\protobuf-net.pdb
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\protobuf-net.xml
+C:\Users\dkhoa\OneDrive\Tài liệu\GitHub\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\ServiceStack.Text.xml
