@@ -96,7 +96,7 @@
                                           SelectedItem="{Binding ModifyPermission, Mode=TwoWay}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
-                                            <i:InvokeCommandAction Command="{Binding permissionSelectionchanged}"/>
+                                            <i:InvokeCommandAction Command="{Binding permissionSelectionChangedCommand}"/>
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
 
@@ -195,7 +195,6 @@
                       ItemsSource="{Binding lstChucVu}"
                       ScrollViewer.CanContentScroll="True"
                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
-                SelectedItem="{Binding selectedChucVu, Mode=OneWayToSource}"
                       SelectedIndex="{Binding ListViewSelectedIndex, Mode=TwoWay}">
                 <ListView.View>
                     <GridView>
