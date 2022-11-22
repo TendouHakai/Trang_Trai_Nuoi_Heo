@@ -131,6 +131,7 @@
     <Compile Include="Model\CHUONGTRAI.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\CTPhieuModel.cs" />
     <Compile Include="Model\CT_PHIEUHANGHOA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>

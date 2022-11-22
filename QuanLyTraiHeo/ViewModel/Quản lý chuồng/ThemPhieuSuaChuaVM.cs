@@ -9,6 +9,8 @@ using System.Windows.Input;
 using System.Windows;
 using System.Windows.Controls;
 using QuanLyTraiHeo.View.Windows;
+using System.Collections.Specialized;
+using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -16,6 +18,7 @@ namespace QuanLyTraiHeo.ViewModel
     {
         #region Attributes
         private List<CT_PHIEUSUACHUA> cT_PHIEUSUACHUAs = new List<CT_PHIEUSUACHUA>();
+        private ObservableCollection<CTPhieuModel> cTPhieuModels = new ObservableCollection<CTPhieuModel>();
         private string _TenNhanVien = "";
         private string _MaDoiTac = "";
         private string _TenDoiTac = "";
@@ -27,10 +30,12 @@ namespace QuanLyTraiHeo.ViewModel
         private string _GhiChu = "";
         private int _TongTien = 0;
         private string _TrangThai = "";
+        private string _MaChuongCanTim = "";
         #endregion
 
         #region Property
         public List<CT_PHIEUSUACHUA> CT_PHIEUSUACHUAs { get => cT_PHIEUSUACHUAs; set { cT_PHIEUSUACHUAs = value; OnPropertyChanged(); } }
+        public ObservableCollection<CTPhieuModel> CTPhieu { get => cTPhieuModels; set { cTPhieuModels = value; OnPropertyChanged(); } }
         public string TenNhanVien { get => _TenNhanVien; set { _TenNhanVien = value; OnPropertyChanged(); } }
         public string MaDoiTac { get => _MaDoiTac; set { _MaDoiTac = value; OnPropertyChanged(); } }
         public string TenDoiTac { get => _TenDoiTac; set { _TenDoiTac = value; OnPropertyChanged(); } }
@@ -42,29 +47,43 @@ namespace QuanLyTraiHeo.ViewModel
         public string GhiChu { get => _GhiChu; set { _GhiChu = value; OnPropertyChanged(); } }
         public int TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public string TrangThai { get => _TrangThai; set { _TrangThai = value; OnPropertyChanged(); } }
+        public string MaChuongCanTim { get => _MaChuongCanTim; set { _MaChuongCanTim = value; OnPropertyChanged(); } }
         #endregion
 
         #region Command
         public ICommand AddCommand { get; set; }
         public ICommand HuyCommand { get; set; }
         public ICommand XacNhanCommand { get; set; }
+        public ICommand TimKiemTheoMaChuongCommand { get; set; }
         #endregion
 
         public ThemPhieuSuaChuaVM()
         {
             cT_PHIEUSUACHUAs = DataProvider.Ins.DB.CT_PHIEUSUACHUA.ToList();
             _SoPhieu = TaoSoPhieu();
-            AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            AddCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
             {
-                ChiTietPhieuSuaChua ctphieuSuaChua = new ChiTietPhieuSuaChua();
+                ChiTietPhieuSuaChua ctphieuSuaChua = new ChiTietPhieuSuaChua
+                {
+                    DataContext = new ChiTietPhieuSuaChuaVM(CTPhieu)
+                };
                 ctphieuSuaChua.ShowDialog();
             });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                var item = new PHIEUSUACHUA() { MaNhanVien = TenNhanVien, MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = TrangThai };
+                var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email };
+                DataProvider.Ins.DB.DOITACs.Add(temp);
+                DataProvider.Ins.DB.SaveChanges();
+                var item = new PHIEUSUACHUA() { MaNhanVien = LayMaNhanVien(TenNhanVien), MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = TrangThai };
                 DataProvider.Ins.DB.PHIEUSUACHUAs.Add(item);
                 DataProvider.Ins.DB.SaveChanges();
                 cT_PHIEUSUACHUAs.Clear();
+                foreach (var x in CTPhieu)
+                {
+                    var y = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = x.MaChuong, MoTa = x.MoTa };
+                    DataProvider.Ins.DB.CT_PHIEUSUACHUA.Add(y);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
                 MessageBox.Show("Đã thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 p.Close();
             });
@@ -73,6 +92,21 @@ namespace QuanLyTraiHeo.ViewModel
                 cT_PHIEUSUACHUAs.Clear();
                 p.Close();
             });
+            TimKiemTheoMaChuongCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
+            {
+                _MaChuongCanTim = p.Text;
+                TimKiem();
+            });
+        }
+        string LayMaNhanVien(string ten)
+        {
+            string ma = "";
+            var item = DataProvider.Ins.DB.NHANVIENs.Where(x => x.HoTen.Equals(ten)).ToList();
+            foreach (var i in item)
+            {
+                ma = i.MaNhanVien;
+            }
+            return ma;
         }
         string TaoSoPhieu()
         {
@@ -80,6 +114,28 @@ namespace QuanLyTraiHeo.ViewModel
             var List = new List<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
             soPhieu = List.Count + 1;
             return soPhieu.ToString();
+        }
+        void TimKiem()
+        {
+            var temp1 = CTPhieu;
+            var temp2 = CTPhieu;
+            int count = 0;
+            CTPhieu.Clear();
+            if (!String.IsNullOrWhiteSpace(_MaChuongCanTim))
+            {
+                foreach (var i in temp1)
+                {
+                    if (i.MaChuong.Contains(_MaChuongCanTim))
+                    {
+                        CTPhieu.Add(i);
+                        count++;
+                    }
+                }
+            }
+            if (count == 0)
+            {
+                CTPhieu = temp2;
+            }
         }
     }
 }

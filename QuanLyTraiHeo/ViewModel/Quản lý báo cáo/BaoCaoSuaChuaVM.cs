@@ -88,7 +88,7 @@ namespace QuanLyTraiHeo.ViewModel
                         excelPackage.Workbook.Worksheets.Add("Báo cáo");
                         ExcelWorksheet ws = excelPackage.Workbook.Worksheets[0];
                         ws.Name = "Báo cáo";
-                        ws.Cells.Style.Font.Size = 15;
+                        ws.Cells.Style.Font.Size = 14;
                         ws.Cells.Style.Font.Name = "Times New Roman";
                         string[] arrColumnHeader = {
                             "Số phiếu",

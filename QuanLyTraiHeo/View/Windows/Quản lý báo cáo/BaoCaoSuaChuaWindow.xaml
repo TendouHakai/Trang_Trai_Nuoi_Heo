@@ -115,7 +115,6 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
-
                                         </Grid.ColumnDefinitions>
                                         <DatePicker Grid.Column="0"
                                             Width="100"
@@ -159,45 +158,6 @@
                             </Grid>
                         </materialDesign:Card>
                         <ScrollViewer>
-                            <!--<DataGrid Grid.Column="2"
-                                      ItemsSource="{Binding LstPhieu}"                                      
-                  Name="DanhSachPheuSuaChua"
-                  HeadersVisibility="All"
-                  SelectionUnit="{Binding ElementName=DanhSachPheuSuaChua, Path=SelectedValue}"
-                  MaxColumnWidth="120">
-                                <DataGrid.Resources>
-                                </DataGrid.Resources>
-                                <DataGrid.Columns>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding SoPhieu}"
-                                    Header="Số phiếu"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding MaNhanVien}"
-                                    Header="Mã nhân viên"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding MaDoiTac}"
-                                    Header="Mã đối tác"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding NgaySuaChua}"
-                                    Header="Ngày sửa chữa"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding GhiChu}"
-                                    Header="Ghi chú"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding TrangThai}"
-                                    Header="Trạng thái"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                    <materialDesign:DataGridTextColumn Binding="{Binding TongTien}"
-                                    Header="Tổng tiền"
-                                    ElementStyle="{StaticResource MaterialDesignDataGridTextColumnStyle}"
-                                    EditingElementStyle="{StaticResource MaterialDesignDataGridTextColumnEditingStyle}"/>
-                                </DataGrid.Columns>
-                            </DataGrid>-->
                             <ListView AllowDrop="True"
                                       x:Name="Listviewk"
                                       ItemsSource="{Binding LstPhieu}"

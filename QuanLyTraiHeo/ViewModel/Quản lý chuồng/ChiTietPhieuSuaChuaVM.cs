@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using System.Windows;
+using System.Windows.Data;
+using System.Collections.ObjectModel;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -13,14 +15,14 @@ namespace QuanLyTraiHeo.ViewModel
     {
         #region Attributes
         string _MaChuong = "";
-        string _Mota = "";
-        string _SoPhieu = "";
+        string _MoTa = "";
+        //string _SoPhieu = "";
         #endregion
 
         #region Property
         public string MaChuong { get => _MaChuong; set { _MaChuong = value; OnPropertyChanged(); } }
-        public string Mota { get => _Mota; set { _Mota = value; OnPropertyChanged(); } }
-        public string SoPhieu { get => _SoPhieu; set { _SoPhieu = value; OnPropertyChanged(); } }
+        public string MoTa { get => _MoTa; set { _MoTa = value; OnPropertyChanged(); } }
+        //public string SoPhieu { get => _SoPhieu; set { _SoPhieu = value; OnPropertyChanged(); } }
         #endregion
 
         #region Command
@@ -28,13 +30,12 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand HuyCommand { get; set; }
         #endregion
 
-        public ChiTietPhieuSuaChuaVM()
+        public ChiTietPhieuSuaChuaVM(ObservableCollection<CTPhieuModel> vm)
         {
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                CT_PHIEUSUACHUA cT_PHIEUSUACHUA = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = MaChuong, MoTa = Mota };
-                DataProvider.Ins.DB.CT_PHIEUSUACHUA.Add(cT_PHIEUSUACHUA);
-                DataProvider.Ins.DB.SaveChanges();
+                CTPhieuModel temp = new CTPhieuModel(MaChuong, MoTa);
+                vm.Add(temp);
                 MessageBox.Show("Đã thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 p.Close();
             });
@@ -42,6 +43,10 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 p.Close();
             });
+        }
+        public ChiTietPhieuSuaChuaVM()
+        {
+
         }
     }
 }

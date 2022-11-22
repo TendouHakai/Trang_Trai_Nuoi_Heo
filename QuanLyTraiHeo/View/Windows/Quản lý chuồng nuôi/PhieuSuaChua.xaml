@@ -4,13 +4,15 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyTraiHeo"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Title="Tạo phiếu mới"
+        Name="TaoPhieuMoik"
         Height="788"
         Width="1024"
-        WindowStartupLocation="CenterScreen">
-    <Grid DataContext="{StaticResource ThemPhieuSuaChuaVM}">
+        WindowStartupLocation="CenterScreen"
+        DataContext="{StaticResource ThemPhieuSuaChuaVM}">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition></ColumnDefinition>
             <ColumnDefinition Width="350"></ColumnDefinition>
@@ -39,9 +41,19 @@
                                       Margin="10,0,10,0">
                                     <materialDesign:PackIcon Kind="Search"
                                                              Margin="0 15 0 0 " />
-                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm"
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm theo mã chuồng"
                                              Height="30"
-                                             Margin="30,10,20,11" />
+                                             Name="Txt_MaNhanVien"
+                                             Margin="30,10,20,11">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction
+                                                    Command="{Binding TimKiemTheoMaChuongCommand}"
+                                                    CommandParameter="{Binding ElementName=Txt_MaNhanVien}">
+                                                </i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
                                 </Grid>
                                 <StackPanel Grid.Column="1"
                                             Orientation="Horizontal"
@@ -64,13 +76,15 @@
                     </materialDesign:Card>
                     <Grid>
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="253*"/>
+                            <ColumnDefinition Width="47*"/>
+                            <ColumnDefinition Width="58*"/>
+                            <ColumnDefinition Width="148*"/>
                             <ColumnDefinition Width="84*"/>
                         </Grid.ColumnDefinitions>
                         <ListView 
                             Name="Listview"
                             Margin="20,15,20,15"
-                            ItemsSource="{Binding CT_PHIEUSUACHUAs}" >
+                            ItemsSource="{Binding CTPhieu}" Grid.ColumnSpan="3" >
                             <!--SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" Grid.ColumnSpan="2"-->
                             <ListView.View>
                                 <GridView>
@@ -222,7 +236,7 @@
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Command="{Binding XacNhanCommand}">
+                            Command="{Binding XacNhanCommand}" CommandParameter="{Binding ElementName=TaoPhieuMoik}">
 
                     </Button>
                     <Button Margin="20,10,20,0"
