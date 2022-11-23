@@ -66,7 +66,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 Themchuong themChuong = new Themchuong();
                 themChuong.ShowDialog();
-                _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+                ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
                 MaxC();
                 MaxH();
             });
@@ -90,7 +90,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     DataProvider.Ins.DB.CHUONGTRAIs.Remove(SelectedItem);
                     DataProvider.Ins.DB.SaveChanges();
-                    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+                    ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
                     MessageBox.Show("xóa");
                     MaxC();
                     MaxH();

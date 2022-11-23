@@ -56,7 +56,6 @@ namespace QuanLyTraiHeo.ViewModel
             });
             ThemCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
             {
-                MaChuong = LayMa();
                 var ChuongTrai = new CHUONGTRAI() { MaChuong = MaChuong, MaLoaiChuong = MaLoaiChuong, TinhTrang = TinhTrang, SuaChuaToiDa = SucChuaToiDa, SoLuongHeo = SoLuongHeo };
                 _ChuongTrais.Add(ChuongTrai);
                 p.Items.Refresh();
@@ -75,7 +74,7 @@ namespace QuanLyTraiHeo.ViewModel
             string maChuong;
             if (soChuong == 0)
             {
-                maChuong = "CHUONG000001" + DateTime.Now.ToString("_ddMM");
+                maChuong = "CHUONG1" + DateTime.Now.ToString("_ddMM");
             }
             else
             {

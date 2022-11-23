@@ -55,6 +55,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand HuyCommand { get; set; }
         public ICommand XacNhanCommand { get; set; }
         public ICommand TimKiemTheoMaChuongCommand { get; set; }
+        public ICommand XuatThongTinDoiTacCommand { get; set; }
         #endregion
 
         public ThemPhieuSuaChuaVM()
@@ -71,7 +72,7 @@ namespace QuanLyTraiHeo.ViewModel
             });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email };
+                var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email, LoaiDoiTac = "Đối tác sửa chữa" };
                 DataProvider.Ins.DB.DOITACs.Add(temp);
                 DataProvider.Ins.DB.SaveChanges();
                 var item = new PHIEUSUACHUA() { MaNhanVien = LayMaNhanVien(TenNhanVien), MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = TrangThai };
@@ -96,6 +97,11 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 _MaChuongCanTim = p.Text;
                 TimKiem();
+            });
+            XuatThongTinDoiTacCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
+            {
+                _MaDoiTac = p.Text;
+                TimKiemThongTinDoiTac(_MaDoiTac);
             });
         }
         string LayMaNhanVien(string ten)
@@ -135,6 +141,20 @@ namespace QuanLyTraiHeo.ViewModel
             if (count == 0)
             {
                 CTPhieu = temp2;
+            }
+        }
+        void TimKiemThongTinDoiTac(string a)
+        {
+            var temp = DataProvider.Ins.DB.DOITACs.ToList();
+            foreach (var i in temp)
+            {
+                if (i.MaDoiTac.Trim().Equals(a))
+                {
+                    TenDoiTac = i.TenDoiTac;
+                    Email = i.Email;
+                    SDT = i.SDT;
+                    DiaChiLienLac = i.DiaChi;
+                }  
             }
         }
     }
