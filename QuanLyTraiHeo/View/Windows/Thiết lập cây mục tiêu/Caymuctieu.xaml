@@ -39,90 +39,90 @@
             </materialDesign:Card>
             <materialDesign:Card x:Name="the2" Height="70" Margin="273,146,260,0" VerticalAlignment="Top" Width="260">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="25" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Soheotrongnam" Content="25" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Soheotrongnam_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
                     <Label Content="Heo con cai sữa/nái/năm" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_2" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Image x:Name="Soheotrongnam_Icon" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the3" Height="70" Margin="514,254,113,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Số heo con cai sữa/nái" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_3" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="Soheocaisua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Soheocaisua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Soheocaisua_textbox" Content="Số heo con cai sữa/nái" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Soheocaisua_Icon" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the4" Height="70" Margin="115,254,512,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Trung bình lứa/nái/năm" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_4" HorizontalAlignment="Left" Height="22" Margin="132,38,0,0" VerticalAlignment="Top" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="TrungbinhLua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="TrungbinhLua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="TrungbinhLua_textbox" Content="Trung bình lứa/nái/năm" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="TrungbinhLua_Icon" HorizontalAlignment="Left" Height="22" Margin="132,38,0,0" VerticalAlignment="Top" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the5" Height="70" Margin="413,365,214,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Số heo con còn sống/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_5" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="Soheoconsong" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Soheoconsong_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Soheoconsong_textbox" Content="Số heo con còn sống/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Soheoconsong_Icon" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the6" Height="70" Margin="617,365,10,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Tỷ lệ eo con chết trước khi cai sữa/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0" Height="32" Width="146"/>
-                    <Image x:Name="_6" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="Tylechet" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Tylechet_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Tylechet_textbox" Content="Tỷ lệ eo con chết trước khi cai sữa/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0" Height="32" Width="146"/>
+                    <Image x:Name="Tylechet_Icon" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the7" Height="70" Margin="413,475,214,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Số heo con sinh ra/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_7" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
+                    <Label x:Name="Soheoconsinhra_lua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
+                    <Label x:Name="Soheoconsinhra_lua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Soheoconsinhra_lua_textbox" Content="Số heo con sinh ra/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Soheoconsinhra_lua_Icon" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the8" Height="70" Margin="617,475,10,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Ổ đẻ ít con" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_8" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
+                    <Label x:Name="Odeitcon" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
+                    <Label x:Name="Odeitcon_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Odeitcon_textbox" Content="Ổ đẻ ít con" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Odeitcon_Icon" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the9" Height="70" Margin="10,365,617,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Số ngày heo nái không làm việc" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_9" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="SoNgayKhongLamViec" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="SoNgayKhongLamViec_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="SoNgayKhongLamViec_textbox" Content="Số ngày heo nái không làm việc" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="SoNgayKhongLamViec_Icon" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the10" Height="70" Margin="219,365,408,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Thời gian mang thai/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_10" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="Thoigianmangthai" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Thoigianmangthai_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Thoigianmangthai_textbox" Content="Thời gian mang thai/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Thoigianmangthai_Icon" Margin="0,0,10.333,10" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="24" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the11" Height="70" Margin="10,475,617,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Thời gian cho bú/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_11" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
+                    <Label x:Name="Songaycaisua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
+                    <Label x:Name="Songaycaisua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Songaycaisua_textbox" Content="Thời gian cho bú/lứa" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Songaycaisua_Icon" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the12" Height="70" Margin="413,596,214,0" VerticalAlignment="Top" Width="166">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Tỷ lệ đẻ" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
-                    <Image x:Name="_12" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
+                    <Label x:Name="Tylede_main" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
+                    <Label x:Name="Tylede_muctieu_textbox" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Tylede_textbox" Content="Tỷ lệ đẻ" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Image x:Name="Tylede_icon" Margin="0,0,10.333,10" HorizontalAlignment="Right" Width="24" Height="22" VerticalAlignment="Bottom" Source="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"/>
                 </Grid>
             </materialDesign:Card>
             <materialDesign:Card x:Name="the13" Height="70" Margin="617,596,10,0" VerticalAlignment="Top" Width="166">

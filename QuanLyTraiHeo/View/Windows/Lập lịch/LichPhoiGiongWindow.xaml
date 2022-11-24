@@ -27,34 +27,18 @@
         </Grid.ColumnDefinitions>
 
         <materialDesign:Card Grid.Column="0" Margin="0,0,10,0">
-            <StackPanel Orientation="Vertical">
+            <StackPanel Orientation="Vertical" ScrollViewer.HorizontalScrollBarVisibility="Auto" CanVerticallyScroll="True" CanHorizontallyScroll="True" ScrollViewer.CanContentScroll="True">
                 <materialDesign:Card Height="64" Margin="0,5,0,0">
-                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0">Thông tin lịch phối giống</TextBlock>
+                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" Margin="10,0,0,0"><Run Text="Thông tin lịch phối giống"/></TextBlock>
                 </materialDesign:Card>
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBox x:Name="Pigcode_textd" Width="190"
-                            materialDesign:HintAssist.Hint="Nhập mã heo đực"
-                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                            VerticalAlignment="Center" />
-                    <Button x:Name="Searchcode_Heoduc" Margin="5,0,10,0"
-                            Style="{StaticResource MaterialDesignRaisedButton}"
-                            Height="30"
-                            Width="80"
-                            BorderBrush="White"
-                            Content="Tìm"
-                            FontSize="16"
-                            Background="#00de1e"
-                            materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="ListHeod_button_Click">
-                    </Button>
-                </StackPanel>
-
-                <StackPanel Orientation="Horizontal" Margin="10,10,0,0">
-                    <TextBox x:Name="Pigcode_textn" Width="190"
+                <Grid Height="679">
+                    <StackPanel Margin="0,0,0,10">
+                        <StackPanel Orientation="Horizontal" Height="50" Width="281">
+                            <TextBox x:Name="Pigcode_textn" Width="190"
                             materialDesign:HintAssist.Hint="Nhập mã heo nái"
                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                             VerticalAlignment="Center" />
-                    <Button x:Name="Search_heocai" Margin="5,0,10,0"
+                            <Button x:Name="Search_heocai" Margin="5,0,10,0"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="30"
                             Width="80"
@@ -63,80 +47,91 @@
                             FontSize="16"
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="ListHeon_button_Click">
-                    </Button>
-                </StackPanel>
-
-                <DatePicker x:Name="Datepicker_Ngayphoigiong" Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="ListHeon_button_Click"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Height="50" Width="282">
+                            <TextBox x:Name="Pigcode_textd" Width="190"
+                            materialDesign:HintAssist.Hint="Nhập mã heo đực"
+                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                            VerticalAlignment="Center" />
+                            <Button x:Name="Searchcode_Heoduc" Margin="5,0,10,0"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Height="30"
+                            Width="80"
+                            BorderBrush="White"
+                            Content="Tìm"
+                            FontSize="16"
+                            Background="#00de1e"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="ListHeod_button_Click"/>
+                        </StackPanel>
+                        <DatePicker x:Name="Datepicker_Ngayphoigiong"
+                          Width="200"
+                                    HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Nhập ngày phối giống"
                           materialDesign:TextFieldAssist.HasClearButton="True"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                <ComboBox x:Name="TrangThai" Margin="10,10,0,0" Height="35" VerticalContentAlignment="Bottom"
-                          Width="200" HorizontalAlignment="Left"
+                        <ComboBox x:Name="TrangThai" Height="35" VerticalContentAlignment="Bottom"
+                          Width="200"
+                                  HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Trạng thái">
-                    <ComboBoxItem
+                            <ComboBoxItem
                             IsSelected="True"
                             Content="Chưa phối giống" />
-                    <ComboBoxItem Content="Không đậu thai"/>
-                    <ComboBoxItem Content="Đã mang thai" />
-                    <ComboBoxItem Content="Đã xảy thai"/>
-                    <ComboBoxItem Content="Đã đẻ"/>
-                </ComboBox>
-
-                <DatePicker x:Name="Datepicker_ngayde" Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                            <ComboBoxItem Content="Không đậu thai"/>
+                            <ComboBoxItem Content="Đã mang thai" />
+                            <ComboBoxItem Content="Đã xảy thai"/>
+                            <ComboBoxItem Content="Đã đẻ"/>
+                        </ComboBox>
+                        <DatePicker x:Name="Datepicker_ngayde"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập ngày đẻ dự kiến"
+                                    HorizontalAlignment="Left"
                           materialDesign:TextFieldAssist.HasClearButton="True"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                <DatePicker x:Name="Ngaydethucte" Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                        <DatePicker x:Name="Ngaydethucte"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập ngày đẻ thực tế"
                           materialDesign:TextFieldAssist.HasClearButton="True"
+                                    HorizontalAlignment="Left"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                <TextBox x:Name="Socon"  Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                        <TextBox x:Name="Socon"
+                          Width="200"
+                                 HorizontalAlignment="Left"
                           materialDesign:HintAssist.Hint="Nhập số con đẻ"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          VerticalAlignment="Center" />
-
-                <TextBox x:Name="Sochet"  Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <TextBox x:Name="Sochet"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập số con chết"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          VerticalAlignment="Center" />
-
-                <DatePicker x:Name="Ngaycaisua" Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                                 HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <DatePicker x:Name="Ngaycaisua"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập ngày cai sữa heo con"
+                                    HorizontalAlignment="Left"
                           materialDesign:TextFieldAssist.HasClearButton="True"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-
-                <TextBox x:Name="Soconchon"  Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                        <TextBox x:Name="Soconchon"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập số con chọn"
-                          Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                          VerticalAlignment="Center" />
-
-                <DatePicker x:Name="NgayPhoiGiongLai" Margin="10,10,0,0"
-                          Width="200" HorizontalAlignment="Left"
+                                 HorizontalAlignment="Left"
+                          Style="{StaticResource MaterialDesignFloatingHintTextBox}" />
+                        <DatePicker x:Name="NgayPhoiGiongLai"
+                          Width="200"
                           materialDesign:HintAssist.Hint="Nhập ngày phối giống lại dự kiến"
                           materialDesign:TextFieldAssist.HasClearButton="True"
+                          HorizontalAlignment="Left"
                           Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                
-                <Button x:Name="Add_button" Margin="20,20,20,0"
+                        <Button x:Name="Add_button"
                         Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
                         BorderBrush="White"
                         Content="Thêm"
                         FontSize="16"
                         Background="#00de1e"
                         materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="add_Button_Click">
-
-                </Button>
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="add_Button_Click" Height="32" Width="250"/>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
         </materialDesign:Card>
 
@@ -192,7 +187,7 @@
 
                                     </Button>
 
-                                    <Button
+                                    <Button x:Name="Output_button"
                                     Margin="20,0,0,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
@@ -203,7 +198,7 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Output_excel_Click">
 
                                     </Button>
                                 </StackPanel>
@@ -217,20 +212,20 @@
                         ItemsSource="{Binding LichPhoiGiong}" SelectedItem="{Binding MaLichPhoi, Mode=OneWayToSource}" >
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Ngày phối giống" DisplayMemberBinding="{Binding NgayPhoiGiong}" />
+                                <GridViewColumn Header="Ngày phối giống" DisplayMemberBinding="{Binding NgayPhoiGiong, StringFormat=\{0:d\}}" />
                                 <GridViewColumn Header="Mã heo nái" DisplayMemberBinding="{Binding MaHeoCai}" />
                                 <GridViewColumn Header="Mã heo đực" DisplayMemberBinding="{Binding MaHeoDuc}" />
-                                <GridViewColumn Header="Ngày đẻ dự kiến" DisplayMemberBinding="{Binding NgayDuKienDe}" />
-                                <GridViewColumn Header="Ngày đẻ thực tế" DisplayMemberBinding="{Binding NgayDeThucTe}" />
+                                <GridViewColumn Header="Ngày đẻ dự kiến" DisplayMemberBinding="{Binding NgayDuKienDe, StringFormat=\{0:d\}}" />
+                                <GridViewColumn Header="Ngày đẻ thực tế" DisplayMemberBinding="{Binding NgayDeThucTe, StringFormat=\{0:d\}}" />
                                 <GridViewColumn Header="Số con đẻ" DisplayMemberBinding="{Binding SoCon}" />
                                 <GridViewColumn Header="Số con chết" DisplayMemberBinding="{Binding SoConChet}" />
-                                <GridViewColumn Header="Ngày heo con cai sữa" DisplayMemberBinding="{Binding NgayCaiSua}" />
+                                <GridViewColumn Header="Ngày heo con cai sữa" DisplayMemberBinding="{Binding NgayCaiSua, StringFormat=\{0:d\}}" />
                                 <GridViewColumn Header="Số con chọn" DisplayMemberBinding="{Binding SoConChon}" />
                                 <GridViewColumn Header="" Width="160">
                                     <GridViewColumn.CellTemplate>
                                         <DataTemplate>
                                             <Menu>
-                                                <MenuItem x:Name="fixB" Icon="{materialDesign:PackIcon Kind=Pen}"  Width="48"></MenuItem>
+                                                <MenuItem x:Name="fixB" Icon="{materialDesign:PackIcon Kind=Pen}"  Width="48" Click="btnFix_Click"></MenuItem>
                                                 <MenuItem x:Name="deleteB" Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Click="btnDelete_Click"></MenuItem>
                                             </Menu>
                                         </DataTemplate>
