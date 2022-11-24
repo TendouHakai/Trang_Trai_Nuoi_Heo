@@ -11,7 +11,7 @@ namespace QuanLyTraiHeo.Model
 {
     using System;
     using System.Collections.Generic;
-    
+
     public partial class LICHTIEMHEO
     {
         public string MaLichTiem { get; set; }
@@ -20,7 +20,8 @@ namespace QuanLyTraiHeo.Model
         public Nullable<System.DateTime> NgayTiem { get; set; }
         public Nullable<int> LieuLuong { get; set; }
         public string TrangThai { get; set; }
-    
+
         public virtual HEO HEO { get; set; }
+        public virtual HANGHOA hh { get; set; }
     }
 }
