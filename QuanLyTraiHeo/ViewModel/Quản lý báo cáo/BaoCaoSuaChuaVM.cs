@@ -74,7 +74,10 @@ namespace QuanLyTraiHeo.ViewModel
             });
             LaySoLuongChuongDaSuaTheoNam = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                LaySoLuongChuongDaSua(Convert.ToInt32(p.Text));
+                if (!string.IsNullOrWhiteSpace(p.Text))
+                {
+                    LaySoLuongChuongDaSua(Convert.ToInt32(p.Text));
+                }
             });
             TimKiemTheoNgaySC2Command = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
@@ -201,18 +204,23 @@ namespace QuanLyTraiHeo.ViewModel
         }
         public void LaySoLuongChuongDaSua(int nam)
         {
-            var temp = DataProvider.Ins.DB.PHIEUSUACHUAs.ToList();
-            foreach (var x in temp)
+            ResetData();
+            var temp1 = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == nam).ToList();
+            for (int i = 0; i < 12; ++i)
             {
-                if (x.NgaySuaChua.Value.Year == nam)
+                var temp2 = temp1.Where(x => x.NgaySuaChua.Value.Month == (i + 1)).ToList();
+                foreach (var y in temp2)
                 {
-                    for (int i = 0; i < 12; ++i)
-                    {
-                        if (x.NgaySuaChua.Value.Month == 1 + i)
-                            SoLuongChuongDaSua[i] = x.CT_PHIEUSUACHUA.Count;
-                    }
+                    SoLuongChuongDaSua[i] += y.CT_PHIEUSUACHUA.Count;
                 }
             }
+        }
+        void ResetData()
+        {
+            for(int i=0;i<12;i++)
+            {
+                SoLuongChuongDaSua[i] = 0;
+            }    
         }
         void TimKiem()
         {
