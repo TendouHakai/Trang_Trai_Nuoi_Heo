@@ -26,6 +26,8 @@ namespace QuanLyTraiHeo.ViewModel
         public HEO SelectedHeo { get; set; }
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
+        public List<string> ListTenLoai { get; set; }
+        public List<string> ListTenGiong { get; set; }
         public List <string> ListTinhTrang { get; set; }
         public List<string> ListNguonGoc { get; set; }
 
@@ -39,6 +41,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand TimKiemTheoTrongLuongMinCommand { get; set; }
         public ICommand TimKiemTheoTrongLuongMaxCommand { get; set; }
         public ICommand TimKiemTheoLoaiCommand { get; set; }
+        public ICommand TimKiemTheoGiongCommand { get; set; }
 
         public ICommand TTCheck { get; set; }
         public ICommand NGCheck { get; set; }
@@ -53,6 +56,8 @@ namespace QuanLyTraiHeo.ViewModel
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
+            ListTenLoai = new List<string>();
+            ListTenGiong = new List<string>();  
             ListTinhTrang = new List<string>();
             ListNguonGoc = new List<string>();
 
@@ -75,16 +80,14 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (SelectedHeo == null)
                     return false;
-                if (SelectedHeo.CT_PHIEUHEO.Count() > 0)
-                    return false;
-                if (SelectedHeo.LICHTIEMHEOs.Count() > 0)
-                    return false;
-                if (SelectedHeo.LICHPHOIGIONGs.Count() > 0)
-                    return false;
-
-                return true;
+                else return true;
             }, p =>
             {
+                if (SelectedHeo.CT_PHIEUHEO.Count() > 0 || SelectedHeo.LICHTIEMHEOs.Count() > 0 || SelectedHeo.LICHPHOIGIONGs.Count() > 0)
+                {
+                    MessageBox.Show("Không thẻ xoá con heo này. Vì đang tồn tại trong lịch hoặc phiếu?", "Chú ý");
+                    return;
+                }
                 MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
                 if (result == MessageBoxResult.OK)
                 {
@@ -137,6 +140,22 @@ namespace QuanLyTraiHeo.ViewModel
                 TimKiem();
 
             });
+            TimKiemTheoLoaiCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
+            {
+
+                if (p.IsChecked == true)
+                    ListTenLoai.Add(p.Content.ToString());
+                else ListTenLoai.Remove(p.Content.ToString());
+                TimKiem();
+            });
+            TimKiemTheoGiongCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
+            {
+
+                if (p.IsChecked == true)
+                    ListTenGiong.Add(p.Content.ToString());
+                else ListTenGiong.Remove(p.Content.ToString());
+                TimKiem();
+            });
             TTCheck = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
                if(p.IsChecked==true)
@@ -154,7 +173,7 @@ namespace QuanLyTraiHeo.ViewModel
         }
         void TimKiem()
         {
-            List<HEO> full=DataProvider.Ins.DB.HEOs.ToList();
+            List<HEO> full = DataProvider.Ins.DB.HEOs.ToList();
             List<HEO> hEOs;
             List<HEO> hEOs1;
             List<HEO> hEOs2;
@@ -166,39 +185,61 @@ namespace QuanLyTraiHeo.ViewModel
             List<HEO> hEOs8 = new List<HEO>();
             ListHeo.Clear();
 
-            if(matim!=null && matim!="")
-                 hEOs = DataProvider.Ins.DB.HEOs.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
+            if (matim != null && matim != "")
+                hEOs = full.Where(Heo => Heo.MaHeo.Contains(matim)).ToList();
             else hEOs = full;
             if (mindate != null && mindate != DateTime.Now.Date)
-                hEOs1 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh >= mindate).ToList();
+                hEOs1 = full.Where(x => x.NgaySinh >= mindate).ToList();
             else hEOs1 = full;
 
             if (maxdate != null && maxdate != DateTime.Now.Date)
-                hEOs2 = DataProvider.Ins.DB.HEOs.Where(x => x.NgaySinh <= maxdate).ToList();
+                hEOs2 = full.Where(x => x.NgaySinh <= maxdate).ToList();
             else
                 hEOs2 = full;
-            if ( minTL >0)
-                hEOs3 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong >= minTL).ToList();
+            if (minTL > 0)
+                hEOs3 = full.Where(x => x.TrongLuong >= minTL).ToList();
             else hEOs3 = full;
 
-            if ( maxTL > minTL)
-                hEOs4 = DataProvider.Ins.DB.HEOs.Where(x => x.TrongLuong <= maxTL).ToList();
+            if (maxTL > minTL)
+                hEOs4 = full.Where(x => x.TrongLuong <= maxTL).ToList();
             else
                 hEOs4 = full;
-
-            hEOs5 = full;
-            hEOs6 = full;
-
+            if (ListTenLoai.Count > 0)
+            {
+                foreach (string i in ListTenLoai)
+                {
+                    List<HEO> x = full.Where(a => a.LOAIHEO.TenLoaiHeo == i).ToList();
+                    foreach (HEO h in x)
+                    {
+                        hEOs5.Add(h);
+                    }
+                }
+            }
+            else
+                hEOs5 = full;
+            if (ListTenGiong.Count > 0)
+            {
+                foreach (string i in ListTenGiong)
+                {
+                    List<HEO> x = full.Where(a => a.GIONGHEO.TenGiongHeo == i).ToList();
+                    foreach (HEO h in x)
+                    {
+                        hEOs6.Add(h);
+                    }
+                }
+            }
+            else
+                hEOs6 = full;
             if (ListTinhTrang.Count > 0)
             {
                 foreach (string i in ListTinhTrang)
                 {
-                    List <HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.TinhTrang == i).ToList();
-                    foreach( HEO h in x)
+                    List<HEO> x = full.Where(a => a.TinhTrang == i).ToList();
+                    foreach (HEO h in x)
                     {
                         hEOs7.Add(h);
                     }
-                }    
+                }
             }
             else
                 hEOs7 = full;
@@ -206,7 +247,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 foreach (string i in ListNguonGoc)
                 {
-                    List<HEO> x = DataProvider.Ins.DB.HEOs.Where(a => a.NguonGoc == i).ToList();
+                    List<HEO> x = full.Where(a => a.NguonGoc == i).ToList();
                     foreach (HEO h in x)
                     {
                         hEOs8.Add(h);
@@ -215,29 +256,29 @@ namespace QuanLyTraiHeo.ViewModel
             }
             else
                 hEOs8 = full;
-            IEnumerable <HEO> heo = from HEO a in hEOs
-                                    join HEO b in hEOs1
-                                    on a.MaHeo equals b.MaHeo
-                                    join HEO c in hEOs2
-                                    on a.MaHeo equals c.MaHeo
-                                    join HEO d in hEOs3
-                                    on a.MaHeo equals d.MaHeo
-                                    join HEO e in hEOs4
-                                    on a.MaHeo equals e.MaHeo
-                                    join HEO f in hEOs5
-                                    on a.MaHeo equals f.MaHeo
-                                    join HEO g in hEOs6
-                                    on a.MaHeo equals g.MaHeo
-                                    join HEO h in hEOs7
-                                    on a.MaHeo equals h.MaHeo
-                                    join HEO j in hEOs8
-                                    on a.MaHeo equals j.MaHeo
-                                    select a;
+            IEnumerable<HEO> heo = from HEO a in hEOs
+                                   join HEO b in hEOs1
+                                   on a.MaHeo equals b.MaHeo
+                                   join HEO c in hEOs2
+                                   on a.MaHeo equals c.MaHeo
+                                   join HEO d in hEOs3
+                                   on a.MaHeo equals d.MaHeo
+                                   join HEO e in hEOs4
+                                   on a.MaHeo equals e.MaHeo
+                                   join HEO f in hEOs5
+                                   on a.MaHeo equals f.MaHeo
+                                   join HEO g in hEOs6
+                                   on a.MaHeo equals g.MaHeo
+                                   join HEO h in hEOs7
+                                   on a.MaHeo equals h.MaHeo
+                                   join HEO j in hEOs8
+                                   on a.MaHeo equals j.MaHeo
+                                   select a;
 
-            foreach(HEO h in heo)
+            foreach (HEO h in heo)
             {
                 ListHeo.Add(h);
-            }    
+            }
         }
     }
 }

@@ -11,14 +11,20 @@ using QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo;
 using System.Windows.Controls;
 using LiveCharts.Maps;
 using static QuanLyTraiHeo.ViewModel.BaoCaoTinhTrangHeoVM;
+using QuanLyTraiHeo.View.Windows;
 
 namespace QuanLyTraiHeo.ViewModel
 {
     public class LapPhieuBanNhapHeoVM : BaseViewModel
     {
-        public ObservableCollection<PHIEUHEO> ListPhieuNhap { get; set; }
-        public ObservableCollection<PHIEUHEO> ListPhieuXuat { get; set; }
+        private ObservableCollection<PHIEUHEO> _ListPhieuXuat;
+        private ObservableCollection<PHIEUHEO> _ListPhieuNhap;
 
+        public ObservableCollection<PHIEUHEO> ListPhieuNhap { get => _ListPhieuNhap; set { _ListPhieuNhap = value; OnPropertyChanged(); } }
+        public ObservableCollection<PHIEUHEO> ListPhieuXuat { get => _ListPhieuXuat; set { _ListPhieuXuat = value; OnPropertyChanged(); } }
+
+        private PHIEUHEO selectedPhieu;
+        public PHIEUHEO SelectedPhieu { get => selectedPhieu; set => selectedPhieu = value; }
         public List<string> ListTrangThai { get; set; }
         public string TenNV { get; set; }
         public string TenKH { get; set; }
@@ -31,10 +37,11 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand TimKiemTheoNgayMaxCommand { get; set; }
         public ICommand TimKiemTheoTenKHCommand { get; set; }
         public ICommand TTCheck { get; set; }
+        public ICommand EditCommand { get; set; }
 
         public LapPhieuBanNhapHeoVM()
         {
-            ListTrangThai = new List<string>(); 
+            ListTrangThai = new List<string>();
             ListPhieuNhap = new ObservableCollection<PHIEUHEO>(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu nhập heo"));
             ListPhieuXuat = new ObservableCollection<PHIEUHEO>(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo"));
 
@@ -77,12 +84,20 @@ namespace QuanLyTraiHeo.ViewModel
                 else ListTrangThai.Remove(p.Content.ToString());
                 TimKiem();
             });
+            EditCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {               
+                ChiTietPhieuVM vm = new ChiTietPhieuVM(SelectedPhieu);
+
+               ChiTietPhieuWindow chiTietPhieuWindow = new ChiTietPhieuWindow();
+                chiTietPhieuWindow.DataContext = vm;
+                chiTietPhieuWindow.ShowDialog();
+            });
         }
         void TimKiem()
         {
             ListPhieuNhap.Clear();
             ListPhieuXuat.Clear();
-            List<PHIEUHEO> full = DataProvider.Ins.DB.PHIEUHEOs.Where(x=>x.LoaiPhieu!=null).ToList();
+            List<PHIEUHEO> full = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu != null).ToList();
             List<PHIEUHEO> phieutheoNV;
             List<PHIEUHEO> phieutheoKH;
             List<PHIEUHEO> phieutheoNgayMin;
@@ -91,13 +106,13 @@ namespace QuanLyTraiHeo.ViewModel
 
             if (TenNV != null)
             {
-               phieutheoNV = full.Where(x => x.NHANVIEN.HoTen.Contains(TenNV)).ToList();
+                phieutheoNV = full.Where(x => x.NHANVIEN.HoTen.Contains(TenNV)).ToList();
             }
             else { phieutheoNV = full; }
 
             if (TenKH != null)
             {
-               phieutheoKH = full.Where(x => x.DOITAC.TenDoiTac.Contains(TenKH)).ToList();
+                phieutheoKH = full.Where(x => x.DOITAC.TenDoiTac.Contains(TenKH)).ToList();
             }
             else { phieutheoKH = full; }
             if (mindate != null)
@@ -105,7 +120,7 @@ namespace QuanLyTraiHeo.ViewModel
                 phieutheoNgayMin = full.Where(x => x.NgayLap >= mindate).ToList();
             }
             else { phieutheoNgayMin = full; }
-            if (maxdate != null && maxdate>=mindate)
+            if (maxdate != null && maxdate >= mindate)
             {
                 phieutheoNgayMax = full.Where(x => x.NgayLap <= maxdate).ToList();
             }
@@ -135,7 +150,7 @@ namespace QuanLyTraiHeo.ViewModel
                                              select a;
             foreach (PHIEUHEO h in phieuheo)
             {
-                if(h.LoaiPhieu=="Phiếu nhập heo")
+                if (h.LoaiPhieu == "Phiếu nhập heo")
                     ListPhieuNhap.Add(h);
                 else
                     ListPhieuXuat.Add(h);

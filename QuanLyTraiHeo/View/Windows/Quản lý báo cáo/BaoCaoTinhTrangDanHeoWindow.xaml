@@ -47,27 +47,18 @@
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu đàn heo</TextBlock>
-                                <TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
+                                <!--<TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
                                     materialDesign:HintAssist.Hint="Tháng"
                                      Margin="0,3,0,5">
                                 </TextBox>
                                 <TextBox Grid.Column="2" VerticalAlignment="Center" Width="80"
                                     materialDesign:HintAssist.Hint="Năm"
                                      Margin="0,3,0,5">
-                                </TextBox>
+                                </TextBox>-->
                             </Grid>
                         </materialDesign:Card>
-                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium">
-                            <lvc:PieChart.Series>
-                                <lvc:PieSeries Title="Heo nái" Values="30" DataLabels="True"
-                               LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Heo đực giống" Values="20" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Heo con" Values="100" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Heo thịt" Values="200" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            </lvc:PieChart.Series>
+                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium" Series="{Binding CoCauLoai}">
+
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>
@@ -81,25 +72,18 @@
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu giống heo</TextBlock>
-                                <TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
+                                <!--<TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
                                     materialDesign:HintAssist.Hint="Tháng"
                                      Margin="0,3,0,5">
                                 </TextBox>
                                 <TextBox Grid.Column="2" VerticalAlignment="Center" Width="80"
                                     materialDesign:HintAssist.Hint="Năm"
                                      Margin="0,3,0,5">
-                                </TextBox>
+                                </TextBox>-->
                             </Grid>
                         </materialDesign:Card>
-                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium">
-                            <lvc:PieChart.Series>
-                                <lvc:PieSeries Title="Móng Cái" Values="30" DataLabels="True"
-                               LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Ỉ" Values="20" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Cỏ" Values="100" DataLabels="True" 
-                               LabelPoint="{Binding PointLabel}"/>
-                            </lvc:PieChart.Series>
+                        <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium" Series="{Binding CoCauGiong}">
+                           
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>
@@ -111,10 +95,17 @@
                                     <ColumnDefinition></ColumnDefinition>
                                     <ColumnDefinition Width="135"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Biểu đồ tổng số heo và số heo bị loại thải</TextBlock>
-                                <TextBox Grid.Column="1" VerticalAlignment="Center"
+                                <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Biểu đồ thay đổi số lượng heo</TextBlock>
+                                <TextBox x:Name="txt_NamSL" Grid.Column="1" VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Năm"
-                                     Margin="0,3,0,5">
+                                     Margin="0,3,0,5"
+                                         Text="{Binding Nam}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="TextChanged">
+                                            <i:InvokeCommandAction Command="{Binding SLNam}"
+                                                                   CommandParameter="{Binding ElementName=txt_NamSL}"></i:InvokeCommandAction>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
                                 </TextBox>
                             </Grid>
 
@@ -153,43 +144,56 @@
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
                                         </Grid.ColumnDefinitions>
-                                        <DatePicker Grid.Column="0"
+                                        <DatePicker 
+                                            Name="dtp_NgaySinh"
+                                            Grid.Column="0"
                                             Width="100"
-                                            materialDesign:HintAssist.Hint="Thời điểm"
+                                            materialDesign:HintAssist.Hint="Ngày sinh"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                                        <DatePicker Grid.Column="1"
+                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedDateChanged">
+                                                    <i:InvokeCommandAction Command="{Binding NgaySinhCommand}"
+                                                                   CommandParameter="{Binding ElementName=dtp_NgaySinh}"
+                                                                   ></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </DatePicker>
+                                        <DatePicker 
+                                            Name="dtp_NgayNhap"
+                                            Grid.Column="1"
                                             Width="135"
                                             materialDesign:HintAssist.Hint="Ngày nhập đàn"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" >
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedDateChanged">
+                                                    <i:InvokeCommandAction Command="{Binding NgayNhapCommand}"
+                                                                   CommandParameter="{Binding ElementName=dtp_NgayNhap}"
+                                                                   ></i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </DatePicker>
                                         <ComboBox Grid.Column="2"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
                                                 materialDesign:HintAssist.Hint="Loại heo"
-                                                Width="135">
-                                            <ComboBoxItem
-                                                Content="Heo nái" />
-                                            <ComboBoxItem
-                                                Content="Heo đực giống" />
-                                            <ComboBoxItem
-                                                Content="Heo con" />
-                                            <ComboBoxItem
-                                                Content="Heo thịt" />
+                                                Width="135"
+                                                ItemsSource="{Binding ListLoai, Mode=OneWay}"
+                                                DisplayMemberPath="TenLoaiHeo"
+                                                SelectedItem="{Binding SelectedLoai, Mode=TwoWay}">
                                         </ComboBox>
                                         <ComboBox Grid.Column="3"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
                                                 materialDesign:HintAssist.Hint="Giống heo"
-                                                Width="135">
-                                            <ComboBoxItem
-                                                Content="Móng Cái" />
-                                            <ComboBoxItem
-                                                Content="Ỉ" />
-                                            <ComboBoxItem
-                                                Content="Cỏ" />
+                                                Width="135"
+                                                ItemsSource="{Binding ListGiong, Mode=OneWay}"
+                                                DisplayMemberPath="TenGiongHeo"
+                                                SelectedItem="{Binding SelectedGiong, Mode=TwoWay}">
+                                          
                                         </ComboBox>
                                     </Grid>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
@@ -202,7 +206,8 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Command="{Binding TimKiemCommand}">
 
                                         </Button>
 
@@ -217,7 +222,8 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                            Command="{Binding XuatFileExcelCommand}">
 
                                         </Button>
                                     </StackPanel>
@@ -228,24 +234,24 @@
 
                         </materialDesign:Card>
                         <ListView
-                        ItemsSource="{Binding lstTinhTrangHeo}">
+                        ItemsSource="{Binding ListHeo}" ScrollViewer.CanContentScroll="True">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn
-                                        DisplayMemberBinding="{Binding STT}"
-                                        Header="STT" />
-                                    <GridViewColumn
-                                        DisplayMemberBinding="{Binding IDHeo}"
+                                        DisplayMemberBinding="{Binding MaHeo}"
                                         Header="Mã heo" />
                                     <GridViewColumn
-                                        DisplayMemberBinding="{Binding Loaiheo}"
+                                        DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}}"
+                                        Header="Ngày sinh" />
+                                    <GridViewColumn
+                                        DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo}"
                                         Header="Loại heo" />
                                     <GridViewColumn
-                                        DisplayMemberBinding="{Binding Giongheo}"
+                                        DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo}"
                                         Header="Giống heo" />
-                                    <GridViewColumn
-                                        DisplayMemberBinding="{Binding NgayNhap}"
-                                        Header="Ngày nhập đàn" />
+                                    <!--<GridViewColumn
+                                        DisplayMemberBinding="{Binding }"
+                                        Header="Ngày nhập đàn" />-->
                                     <GridViewColumn
                                         DisplayMemberBinding="{Binding TinhTrang}"
                                         Header="Tình trạng" />
@@ -255,7 +261,6 @@
                                     <GridViewColumn
                                         DisplayMemberBinding="{Binding TrongLuong}"
                                         Header="Trọng lượng" />
-
                                 </GridView>
                             </ListView.View>
                         </ListView>

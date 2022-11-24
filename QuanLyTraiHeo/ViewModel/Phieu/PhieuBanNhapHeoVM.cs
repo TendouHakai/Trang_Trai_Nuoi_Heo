@@ -17,7 +17,7 @@ namespace QuanLyTraiHeo.ViewModel
     public class PhieuBanNhapHeoVM : BaseViewModel
     {
         public ObservableCollection<HEO> ListHeo { get; set; }
-
+    
         public PHIEUHEO PhieuHeo { get; set; }
         private string _MaPhieu;
         public string MaPhieu { get => _MaPhieu; set { _MaPhieu = value; OnPropertyChanged(); } }
@@ -60,7 +60,10 @@ namespace QuanLyTraiHeo.ViewModel
             ListHeo = new ObservableCollection<HEO>();
             PhieuHeo = new PHIEUHEO();
             KhachHang = new DOITAC();
-
+            NhanVien = new NHANVIEN();
+            var NV = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Properties.Settings.Default.Username).First();
+            NhanVien = NV;
+            TenNV = NhanVien.HoTen;
             SelectedLoaiPhieu = new RelayCommand<ComboBox>((p) => { return true; }, p =>
             {
                 ComboBoxItem z = (ComboBoxItem)p.SelectedItem;
@@ -142,14 +145,14 @@ namespace QuanLyTraiHeo.ViewModel
                 }
                 PhieuHeo.SoPhieu = MaPhieu;
                 PhieuHeo.LoaiPhieu = loaiPhieu;
-                //PhieuHeo.MaNhanVien = NhanVien.MaNhanVien;
+                PhieuHeo.MaNhanVien = NhanVien.MaNhanVien;
                 PhieuHeo.MaDoiTac = KhachHang.MaDoiTac;
                 PhieuHeo.NgayLap = NgayLap;
-                PhieuHeo.TrangThai = "Đã hoàn thành";
+                PhieuHeo.TrangThai = "Chưa hoàn thành";
 
                 foreach (HEO x in ListHeo)
                 {
-                    if(loaiPhieu=="Phiếu nhập heo")
+                    if (loaiPhieu == "Phiếu nhập heo")
                         DataProvider.Ins.DB.HEOs.Add(x);
                     CT_PHIEUHEO CT = new CT_PHIEUHEO
                     {
@@ -160,11 +163,16 @@ namespace QuanLyTraiHeo.ViewModel
                     };
                     TongTien += (int)x.TrongLuong * DonGia;
                     DataProvider.Ins.DB.CT_PHIEUHEO.Add(CT);
-                }    
+                    if (loaiPhieu == "Phiếu xuất heo")
+                    {
+                        x.TinhTrang = "Đã xuất";
+                    }
+                }
+
                 PhieuHeo.TongTien = TongTien;
-               DataProvider.Ins.DB.PHIEUHEOs.Add(PhieuHeo);
-               DataProvider.Ins.DB.SaveChanges();
-               MessageBox.Show("Thêm thành công");
+                DataProvider.Ins.DB.PHIEUHEOs.Add(PhieuHeo);
+                DataProvider.Ins.DB.SaveChanges();
+                MessageBox.Show("Thêm thành công");
                 p.Close();
                 p.DataContext = null;
             });

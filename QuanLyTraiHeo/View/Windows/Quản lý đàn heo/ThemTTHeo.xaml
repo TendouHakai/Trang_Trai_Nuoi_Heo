@@ -68,7 +68,7 @@
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
-                                                                    Text="{Binding TinhTrang}"
+                                  Text="{Binding TinhTrang}"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   SelectedItem="{Binding TinhTrang}"
