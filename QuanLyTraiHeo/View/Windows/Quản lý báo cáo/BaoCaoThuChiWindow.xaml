@@ -69,7 +69,7 @@
                                           MinWidth="72"
                                           Margin="0,5,3,0"
                                           ItemsSource="{Binding yearList, Mode=OneTime}"
-                                          SelectedValue="{Binding YearChiChart,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
+                                          SelectedValue="{Binding YearThuChart,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectionChanged">
                                             <i:InvokeCommandAction Command="{Binding ThuChartCommand}" />
@@ -329,8 +329,9 @@
                                             materialDesign:ButtonAssist.CornerRadius="5"
                                             Foreground="#00de1e"
                                             Background="#dcf7e0"
-                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
+                                            Command="{Binding ExportToExcelCommand}"
+                                            >
+                                            
                                     </Button>
 
                                 </Grid>

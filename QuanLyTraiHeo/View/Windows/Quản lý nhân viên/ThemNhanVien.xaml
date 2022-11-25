@@ -76,7 +76,7 @@
                                     materialDesign:TextFieldAssist.HasClearButton="True"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         <TextBox Margin="10 5 10 10"
-                                 Text="{Binding newNhanVien.HeSoLuong, Mode=TwoWay}"
+                                 Text="{Binding newNhanVien.HeSoLuong,  StringFormat={}{0:N0}, Mode=TwoWay}"
                                  materialDesign:HintAssist.Hint="Hệ số lương"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center" />

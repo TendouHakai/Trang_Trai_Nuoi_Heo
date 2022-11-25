@@ -1,23 +1,19 @@
 ﻿using LiveCharts;
 using LiveCharts.Defaults;
-using LiveCharts.Definitions.Series;
 using LiveCharts.Wpf;
-using LiveCharts.Wpf.Points;
 using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics.CodeAnalysis;
 using System.Linq;
-using System.Runtime.Remoting.Contexts;
-using System.Security.Cryptography;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Forms;
 using System.Windows.Input;
-using static QuanLyTraiHeo.ViewModel.BaoCaoSuaChuaVM;
+using OfficeOpenXml;
+using MessageBox = System.Windows.MessageBox;
+using OfficeOpenXml.Style;
+using System.IO;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -55,9 +51,6 @@ namespace QuanLyTraiHeo.ViewModel
         public DateTime TuNgayChart { get => tuNgayChart; set { tuNgayChart = value; OnPropertyChanged(); } }
         public DateTime DenNgayChart { get => denNgayChart; set { denNgayChart = value; OnPropertyChanged(); } }
 
-        public List<string> ListLoaiBaoCaoChart { get; set; }
-
-
         public ObservableCollection<PhieuThuChi> LstPhieuThuChi { get; }
         public ChartValues<ObservablePoint> DoanhThuGraphValues { get; }
         public ChartValues<ObservablePoint> ChiPhiGraphValues { get; }
@@ -73,10 +66,12 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand ChiChartCommand { get; set; }
         public ICommand DoiTacChartCommand { get; set; }
         public ICommand ListBaoCaoCommand { get; set; }
+        public ICommand ExportToExcelCommand { get; set; }
 
         #endregion
         public BaoCaoThuChiVM()
         {
+            #region initial attributes
             yearList = new List<int>();
             monthList = new List<int>();
 
@@ -104,24 +99,30 @@ namespace QuanLyTraiHeo.ViewModel
             DenNgayChart = DateTime.Now;
             ThuChartViews = new SeriesCollection();
             ChiChartViews = new SeriesCollection();
-            DoiTacChartViews= new SeriesCollection();
+            DoiTacChartViews = new SeriesCollection();
 
             DoanhThuGraphValues = new ChartValues<ObservablePoint>();
             ChiPhiGraphValues = new ChartValues<ObservablePoint>();
 
             LstPhieuThuChi = new ObservableCollection<PhieuThuChi>();
 
-            LoadThuChiChart();
-            LoadChiChart();
-            LoadDoiTacChart();
-            LoadThuChart();
-
+            #endregion
+            #region initial command
             ThuChiChartCommand = new RelayCommand<Grid>((p) => { return true; }, p => LoadThuChiChart());
             ChiChartCommand = new RelayCommand<Grid>((p) => { return true; }, p => LoadChiChart());
             ThuChartCommand = new RelayCommand<Grid>((p) => { return true; }, p => LoadThuChart());
             DoiTacChartCommand = new RelayCommand<Grid>((p) => { return true; }, p => LoadDoiTacChart());
             ListBaoCaoCommand = new RelayCommand<Grid>((p) => { return true; }, p => LoadListThuChi());
+            ExportToExcelCommand = new RelayCommand<System.Windows.Forms.ListView>((p) => { return true; }, p => ExportToExcel());
 
+            #endregion
+
+            #region LoadData
+            LoadThuChiChart();
+            LoadChiChart();
+            LoadDoiTacChart();
+            LoadThuChart();
+            #endregion
         }
 
 
@@ -132,34 +133,6 @@ namespace QuanLyTraiHeo.ViewModel
             ChiPhiGraphValues.Clear();
             //Load sqldata phieu thu, chi
             var PhieuHangHoa = (from d in DataProvider.Ins.DB.PHIEUHANGHOAs
-                             where (d.NgayLap.Value.Year == YearThuChiChart)
-                             group d by new
-                             {
-                                 Year = d.NgayLap.Value.Year,
-                                 LoaiPhieu = d.LoaiPhieu,
-                                 Month = d.NgayLap.Value.Month
-                             } into g
-                             select new
-                             {
-                                 Month = g.Key.Month,
-                                 loaiphieu = g.Key.LoaiPhieu,
-
-                                 Total = g.Sum(x => x.TongTien)
-                             }).ToList();
-            var PhieuSuaChua = (from d in DataProvider.Ins.DB.PHIEUSUACHUAs
-                                where (d.NgaySuaChua.Value.Year == YearThuChiChart)
-                                group d by new
-                                {
-                                    Year = d.NgaySuaChua.Value.Year,
-                                    Month = d.NgaySuaChua.Value.Month
-                                } into g
-                                select new
-                                {
-                                    Month = g.Key.Month,
-                                    Total = g.Sum(x => x.TongTien)
-                                }).ToList();
-
-            var PhieuHeo = (from d in DataProvider.Ins.DB.PHIEUHEOs
                                 where (d.NgayLap.Value.Year == YearThuChiChart)
                                 group d by new
                                 {
@@ -174,6 +147,34 @@ namespace QuanLyTraiHeo.ViewModel
 
                                     Total = g.Sum(x => x.TongTien)
                                 }).ToList();
+            var PhieuSuaChua = (from d in DataProvider.Ins.DB.PHIEUSUACHUAs
+                                where (d.NgaySuaChua.Value.Year == YearThuChiChart)
+                                group d by new
+                                {
+                                    Year = d.NgaySuaChua.Value.Year,
+                                    Month = d.NgaySuaChua.Value.Month
+                                } into g
+                                select new
+                                {
+                                    Month = g.Key.Month,
+                                    Total = g.Sum(x => x.TongTien)
+                                }).ToList();
+
+            var PhieuHeo = (from d in DataProvider.Ins.DB.PHIEUHEOs
+                            where (d.NgayLap.Value.Year == YearThuChiChart)
+                            group d by new
+                            {
+                                Year = d.NgayLap.Value.Year,
+                                LoaiPhieu = d.LoaiPhieu,
+                                Month = d.NgayLap.Value.Month
+                            } into g
+                            select new
+                            {
+                                Month = g.Key.Month,
+                                loaiphieu = g.Key.LoaiPhieu,
+
+                                Total = g.Sum(x => x.TongTien)
+                            }).ToList();
 
 
             for (int i = 1; i <= 12; i++)
@@ -188,8 +189,8 @@ namespace QuanLyTraiHeo.ViewModel
                 ChiPhiPoint.Y = 0;
 
                 //Load data doanh thu
-                var pointHangHoaThu = PhieuHangHoa.Where(x => (x.Month == i /*&& x.loaiphieu== ""*/) ) ;
-                if(pointHangHoaThu.Count() > 0)
+                var pointHangHoaThu = PhieuHangHoa.Where(x => (x.Month == i /*&& x.loaiphieu== ""*/));
+                if (pointHangHoaThu.Count() > 0)
                 {
                     DoanhThuPoint.Y += pointHangHoaThu.ElementAt(0).Total.Value;
                 }
@@ -221,7 +222,7 @@ namespace QuanLyTraiHeo.ViewModel
                 DoanhThuGraphValues.Add(DoanhThuPoint);
             }
 
-           
+
         }
         private void LoadThuChart()
         {
@@ -229,38 +230,6 @@ namespace QuanLyTraiHeo.ViewModel
             ThuChartViews.Clear();
             //Load Value BanHeo tu hoa don ban heo
             var valueBanHeo = (from d in DataProvider.Ins.DB.PHIEUHEOs
-                                where (
-                                        d.NgayLap.Value.Year == YearThuChart 
-                                        && d.NgayLap.Value.Month == MonthThuChart
-                                        //&& d.LoaiPhieu.ToString() == ""
-                                        )
-                                group d by new
-                                {
-                                    Year = d.NgayLap.Value.Year,
-                                    Month = d.NgayLap.Value.Month
-                                } into g
-                                select new
-                                {
-                                    Total = g.Sum(x => x.TongTien)
-                                }).ToList();
-
-
-            PieSeries pieBanHeo = new PieSeries
-            {
-                Title = "Bán heo",
-                Values = new ChartValues<ObservableValue> { new ObservableValue(0) },
-                DataLabels = true
-            };
-
-            if(valueBanHeo.Count > 0)
-            {
-                pieBanHeo.Values.Clear();
-                pieBanHeo.Values.Add(new ObservableValue(valueBanHeo.ElementAt(0).Total.Value)) ;
-            }
-            ThuChartViews.Add(pieBanHeo);
-
-            //Load Value BanHeo tu hoa don ban heo
-            var valueHangHoa = (from d in DataProvider.Ins.DB.PHIEUHANGHOAs
                                where (
                                        d.NgayLap.Value.Year == YearThuChart
                                        && d.NgayLap.Value.Month == MonthThuChart
@@ -275,6 +244,38 @@ namespace QuanLyTraiHeo.ViewModel
                                {
                                    Total = g.Sum(x => x.TongTien)
                                }).ToList();
+
+
+            PieSeries pieBanHeo = new PieSeries
+            {
+                Title = "Bán heo",
+                Values = new ChartValues<ObservableValue> { new ObservableValue(0) },
+                DataLabels = true
+            };
+
+            if (valueBanHeo.Count > 0)
+            {
+                pieBanHeo.Values.Clear();
+                pieBanHeo.Values.Add(new ObservableValue(valueBanHeo.ElementAt(0).Total.Value));
+            }
+            ThuChartViews.Add(pieBanHeo);
+
+            //Load Value BanHeo tu hoa don ban heo
+            var valueHangHoa = (from d in DataProvider.Ins.DB.PHIEUHANGHOAs
+                                where (
+                                        d.NgayLap.Value.Year == YearThuChart
+                                        && d.NgayLap.Value.Month == MonthThuChart
+                                        //&& d.LoaiPhieu.ToString() == ""
+                                        )
+                                group d by new
+                                {
+                                    Year = d.NgayLap.Value.Year,
+                                    Month = d.NgayLap.Value.Month
+                                } into g
+                                select new
+                                {
+                                    Total = g.Sum(x => x.TongTien)
+                                }).ToList();
 
 
             PieSeries pieHangHoa = new PieSeries
@@ -432,16 +433,16 @@ namespace QuanLyTraiHeo.ViewModel
                                   }).ToList();
 
             var valueDoiTac = (from g in valueDoiTacPH.Union(valueDoiTacPHH)
-                              group g by new {
-                               doitac = g.doitac     
-                              } into p
-                              select new
-                              {
-                                  TenDoiTac = p.Key.doitac.TenDoiTac,
-                                  total = p.Sum(x=>x.Total)
-                              }).ToList();
+                               group g by new {
+                                   doitac = g.doitac
+                               } into p
+                               select new
+                               {
+                                   TenDoiTac = p.Key.doitac.TenDoiTac,
+                                   total = p.Sum(x => x.Total)
+                               }).ToList();
 
-            foreach(var i in valueDoiTac)
+            foreach (var i in valueDoiTac)
             {
                 PieSeries pieDoiTac = new PieSeries
                 {
@@ -455,7 +456,6 @@ namespace QuanLyTraiHeo.ViewModel
 
 
         }
-
         private void LoadListThuChi()
         {
             LstPhieuThuChi.Clear();
@@ -468,8 +468,8 @@ namespace QuanLyTraiHeo.ViewModel
                                     Ngay = d.NgayLap.Value,
                                     NhanVien = d.NHANVIEN.HoTen,
                                     DoiTac = d.DOITAC.TenDoiTac,
-                                    LoaiPhieu = d.LoaiPhieu, 
-                                    TongTien =  d.TongTien.ToString()
+                                    LoaiPhieu = d.LoaiPhieu,
+                                    TongTien = d.TongTien.ToString()
 
                                 }).ToList();
             var PhieuHeo = (from d in DataProvider.Ins.DB.PHIEUHEOs
@@ -485,17 +485,17 @@ namespace QuanLyTraiHeo.ViewModel
 
                             }).ToList();
             var PhieuSuaChua = (from d in DataProvider.Ins.DB.PHIEUSUACHUAs
-                            where (d.NgaySuaChua <= DenNgayChart && d.NgaySuaChua >= TuNgayChart)
-                            select new PhieuThuChi
-                            {
-                                IDPhieu = d.SoPhieu,
-                                Ngay = d.NgaySuaChua.Value,
-                                NhanVien = d.NHANVIEN.HoTen,
-                                DoiTac = d.DOITAC.TenDoiTac,
-                                LoaiPhieu = "Phiếu sữa chữa",
-                                TongTien = d.TongTien.ToString()
+                                where (d.NgaySuaChua <= DenNgayChart && d.NgaySuaChua >= TuNgayChart)
+                                select new PhieuThuChi
+                                {
+                                    IDPhieu = d.SoPhieu,
+                                    Ngay = d.NgaySuaChua.Value,
+                                    NhanVien = d.NHANVIEN.HoTen,
+                                    DoiTac = d.DOITAC.TenDoiTac,
+                                    LoaiPhieu = "Phiếu sữa chữa",
+                                    TongTien = d.TongTien.ToString()
 
-                            }).ToList();
+                                }).ToList();
 
             foreach (var i in PhieuHangHoa)
             {
@@ -511,7 +511,65 @@ namespace QuanLyTraiHeo.ViewModel
             }
 
         }
+        private void ExportToExcel()
+        {
+            string filePath = "";
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "Excel | *.xlsx";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                filePath = dialog.FileName;
+            }
+            if (string.IsNullOrEmpty(filePath))
+            {
+                MessageBox.Show("Đường dẫn không hợp lệ!");
+                return;
+            }
+            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
 
+            try
+            {
+                using (ExcelPackage excelPackage = new ExcelPackage())
+                {
+                    excelPackage.Workbook.Properties.Title = "Báo cáo thu chi";
+                    excelPackage.Workbook.Worksheets.Add("Báo cáo");
+                    ExcelWorksheet ws = excelPackage.Workbook.Worksheets[0];
+                    ws.Name = "Báo cáo";
+                    ws.Cells.Style.Font.Size = 14;
+                    ws.Cells.Style.Font.Name = "Times New Roman";
+                    ws.Cells[1, 1].Value = "Báo cáo sửa chữa";
+                    int colIndex = 1;
+                    int rowIndex = 1;
+                        colIndex = 1;
+                        rowIndex++;
+                    ws.Cells[rowIndex, colIndex++].Value = "Mã phiếu";
+                        ws.Cells[rowIndex, colIndex++].Value = "Ngày lập";
+                    ws.Cells[rowIndex, colIndex++].Value = "Nhân viên";
+                    ws.Cells[rowIndex, colIndex++].Value = "Đối tác";
+                    ws.Cells[rowIndex, colIndex++].Value = "Loại phiếu";
+                    ws.Cells[rowIndex, colIndex++].Value = "Tổng tiền";
+
+                    foreach (var item in LstPhieuThuChi)
+                    {
+                        colIndex = 1;
+                        rowIndex++;
+                        ws.Cells[rowIndex, colIndex++].Value = item.IDPhieu.ToString();
+                        ws.Cells[rowIndex, colIndex++].Value = item.Ngay.ToString();
+                        ws.Cells[rowIndex, colIndex++].Value = item.NhanVien.ToString();
+                        ws.Cells[rowIndex, colIndex++].Value = item.DoiTac.ToString();
+                        ws.Cells[rowIndex, colIndex++].Value = item.LoaiPhieu.ToString();
+                        ws.Cells[rowIndex, colIndex++].Value = item.TongTien.ToString();
+                    }
+                    Byte[] bin = excelPackage.GetAsByteArray();
+                    File.WriteAllBytes(filePath, bin);
+                }
+                MessageBox.Show("Xuất file excel thành công!");
+            }
+            catch
+            {
+                MessageBox.Show("Có lỗi xảy ra khi xuất file excel!");
+            }
+        }
         #endregion
         public class PhieuThuChi
         {

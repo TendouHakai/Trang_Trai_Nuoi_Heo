@@ -1,18 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Data.Entity.Migrations.Builders;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using LiveCharts.Defaults;
-using MaterialDesignThemes.Wpf.Transitions;
 using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ;
-using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -24,18 +17,19 @@ namespace QuanLyTraiHeo.ViewModel
         private CHUCVU newChucVu { get; set; }
         private string textTimKiem { get; set; }
         private string permissionName { get; set; }
-        public ObservableCollection<CHUCVU> lstChucVu { get; set; }
-        public ObservableCollection<PERMISION> lstPermission { get; set; }
-        public ObservableCollection<PermissionModel> permissionModels { get; set; }
         #endregion
 
 
         #region Properties
-        public CHUCVU NewChucVu { get => newChucVu; set { newChucVu = value; OnPropertyChanged(); } }
-        public PERMISION ModifyPermission { get => modifyPermission; set { modifyPermission = value; OnPropertyChanged(); } }
+        public CHUCVU NewChucVu             { get => newChucVu; set { newChucVu = value; OnPropertyChanged(); } }
+        public PERMISION ModifyPermission   { get => modifyPermission; set { modifyPermission = value; OnPropertyChanged(); } }
         public int  ListViewSelectedIndex   { get => listviewSelectedIndex; set { listviewSelectedIndex = value; OnPropertyChanged(); } }
         public string PermissionName        { get => permissionName; set { permissionName = value; OnPropertyChanged(); } }
         public string TextTimKiem           { get => textTimKiem; set { textTimKiem = value; OnPropertyChanged(); } }
+        public ObservableCollection<CHUCVU> lstChucVu { get; set; }
+        public ObservableCollection<PERMISION> lstPermission { get; set; }
+        public ObservableCollection<PermissionModel> permissionModels { get; set; }
+
         #endregion
 
 
@@ -50,14 +44,20 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ChucVuVM()
         {
+            #region Initial attributes
 
             textTimKiem = "";
             lstChucVu = new ObservableCollection<CHUCVU>();
             lstPermission = new ObservableCollection<PERMISION>();
             NewChucVu = new CHUCVU();
+            NewChucVu.MaChucVu = "";
+            NewChucVu.TenChucVu = "";
+            NewChucVu.LuongCoBan = 0;
+            NewChucVu.PERMISION = null;
             ModifyPermission = new PERMISION();
+            #endregion
 
-
+            #region Initial commands
             themCommand = new RelayCommand<Grid>((p) => { return true; }, p => { ThemChucVu(); });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
             ChinhSuaPermissionCommand = new RelayCommand<Button>((p) => { return true; }, p => { ChinhSuaPermission(); });
@@ -68,17 +68,21 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 LoadlstChucVu();
             });
+            #endregion
+
+            #region LoadData
             LoadlstPermission();
             LoadlstChucVu();
             permissionModels = new ObservableCollection<PermissionModel>();
-            permissionModels.Add(new PermissionModel(false, "QuanLyNhanVien", 1));
-            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo", 2));
-            permissionModels.Add(new PermissionModel(false, "QuanLyKho", 3));
-            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh", 4));
-            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu", 5));
-            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy", 6));
+            permissionModels.Add(new PermissionModel(false, "Quản lý nhân viên", 1));
+            permissionModels.Add(new PermissionModel(false, "Quản lý đàn heo", 2));
+            permissionModels.Add(new PermissionModel(false, "Quản lý kho", 3));
+            permissionModels.Add(new PermissionModel(false, "Quản lý tài chính", 4));
+            permissionModels.Add(new PermissionModel(false, "Quản lý cây mục tiêu", 5));
+            permissionModels.Add(new PermissionModel(false, "Quản lý nhật ký", 6));
+            #endregion
         }
-
+        
         #region Methods
         private void ChinhSuaPermission()
         {
@@ -141,13 +145,12 @@ namespace QuanLyTraiHeo.ViewModel
             if (ModifyPermission == null)
                 return;
             permissionModels.Clear();
-            permissionModels.Add(new PermissionModel(false, "QuanLyNhanVien", 1));
-            permissionModels.Add(new PermissionModel(false, "QuanLyDanHeo", 2));
-            permissionModels.Add(new PermissionModel(false, "QuanLyKho", 3));
-            permissionModels.Add(new PermissionModel(false, "QuanLyTaiChinh", 4));
-            permissionModels.Add(new PermissionModel(false, "QuanLyCayMucTieu", 5));
-            permissionModels.Add(new PermissionModel(false, "QuanlyNhatKy", 6));
-
+            permissionModels.Add(new PermissionModel(false, "Quản lý nhân viên", 1));
+            permissionModels.Add(new PermissionModel(false, "Quản lý đàn heo", 2));
+            permissionModels.Add(new PermissionModel(false, "Quản lý kho", 3));
+            permissionModels.Add(new PermissionModel(false, "Quản lý tài chính", 4));
+            permissionModels.Add(new PermissionModel(false, "Quản lý cây mục tiêu", 5));
+            permissionModels.Add(new PermissionModel(false, "Quản lý nhật ký", 6));
             foreach (var item in ModifyPermission.PERMISION_DETAIL)
                 foreach (var item2 in permissionModels)
                     if (item.ActionDetail == item2.ActionDetail)

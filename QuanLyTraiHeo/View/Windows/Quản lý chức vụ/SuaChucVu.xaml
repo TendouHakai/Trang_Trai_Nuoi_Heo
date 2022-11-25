@@ -22,10 +22,21 @@
             <materialDesign:Card Margin="5" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center">
                     <TextBox Text="{Binding ChucVu.MaChucVu}"
-                             Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã chức vụ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"
+                             Margin="20 15 20 10"
+                             materialDesign:HintAssist.Hint="Mã chức vụ"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center"
                              IsEnabled="False" />
-                    <TextBox Text="{Binding TenChucVu}" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Tên chức vụ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Text="{Binding HeSoLuong}" Margin="20 15 20 10" materialDesign:HintAssist.Hint="Lương cơ bản" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox Text="{Binding TenChucVu}"
+                             Margin="20 15 20 10"
+                             materialDesign:HintAssist.Hint="Tên chức vụ"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center" />
+                    <TextBox Text="{Binding HeSoLuong, StringFormat={}{0:N0}}"
+                             Margin="20 15 20 10"
+                             materialDesign:HintAssist.Hint="Lương cơ bản"
+                             Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                             VerticalAlignment="Center" />
                     <ComboBox Margin="20 15 20 10"
                               materialDesign:HintAssist.Hint="Quyền"
                               Style="{StaticResource MaterialDesignFloatingHintComboBox}"

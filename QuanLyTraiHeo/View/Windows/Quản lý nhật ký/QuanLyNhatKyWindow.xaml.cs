@@ -22,11 +22,10 @@ namespace QuanLyTraiHeo
         public QuanLyNhatKyWindow()
         {
             InitializeComponent();
-        }
-
-        private void LVChucVu_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
+            ListNhatKy.Items.GroupDescriptions.Clear();
+            ListNhatKy.Items.GroupDescriptions.Add(new PropertyGroupDescription("Ngay"));
 
         }
+
     }
 }

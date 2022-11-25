@@ -76,13 +76,8 @@
                                     materialDesign:TextFieldAssist.HasClearButton="True"
                                     Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
                         <TextBox Margin="10 5 10 10"
-                                 Text="{Binding TTNhanVien.HeSoLuong, Mode=TwoWay}"
+                                 Text="{Binding TTNhanVien.HeSoLuong, StringFormat={}{0:N0 }, Mode=TwoWay}"
                                  materialDesign:HintAssist.Hint="Hệ số lương"
-                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 VerticalAlignment="Center" />
-                        <TextBox Margin="10 5 10 10"
-                                 Text="{Binding TTNhanVien.C_Username, Mode=TwoWay}"
-                                 materialDesign:HintAssist.Hint="Username"
                                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center" />
                     </StackPanel>
