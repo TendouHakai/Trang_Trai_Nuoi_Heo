@@ -160,3 +160,9 @@ C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\obj
 C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\EPPlus.dll
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\EPPlus.Interfaces.dll
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\EPPlus.System.Drawing.dll
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.dll
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\EPPlus.xml
+C:\Users\TendouHakai\Desktop\merge code\Trang trại nuôi heo\QuanLyTraiHeo\bin\Debug\Microsoft.IO.RecyclableMemoryStream.xml

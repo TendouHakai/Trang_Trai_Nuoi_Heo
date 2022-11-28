@@ -49,5 +49,8 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<PHIEUSUACHUA> PHIEUSUACHUAs { get; set; }
         public virtual DbSet<THAMSO> THAMSOes { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
+        public virtual DbSet<BAOCAOTONKHO> BAOCAOTONKHOes { get; set; }
+        public virtual DbSet<LICHCHUONG> LICHCHUONGs { get; set; }
+        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

@@ -280,5 +280,42 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="BAOCAOTONKHOes">
+      <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.BAOCAOTONKHO">
+        <MappingFragment StoreEntitySet="BAOCAOTONKHO">
+          <ScalarProperty Name="SoLuongXuatRa" ColumnName="SoLuongXuatRa" />
+          <ScalarProperty Name="SoLuongNhapThem" ColumnName="SoLuongNhapThem" />
+          <ScalarProperty Name="TonCuoi" ColumnName="TonCuoi" />
+          <ScalarProperty Name="TonDau" ColumnName="TonDau" />
+          <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+          <ScalarProperty Name="Nam" ColumnName="Nam" />
+          <ScalarProperty Name="Thang" ColumnName="Thang" />
+          <ScalarProperty Name="MaBCTK" ColumnName="MaBCTK" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LICHCHUONGs">
+      <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.LICHCHUONG">
+        <MappingFragment StoreEntitySet="LICHCHUONG">
+          <ScalarProperty Name="Mota" ColumnName="Mota" />
+          <ScalarProperty Name="TenLich" ColumnName="TenLich" />
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="NgayLam" ColumnName="NgayLam" />
+          <ScalarProperty Name="MaChuong" ColumnName="MaChuong" />
+          <ScalarProperty Name="MaLichChuong" ColumnName="MaLichChuong" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

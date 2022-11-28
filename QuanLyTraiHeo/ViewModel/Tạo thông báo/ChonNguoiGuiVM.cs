@@ -54,7 +54,9 @@ namespace QuanLyTraiHeo.ViewModel
         {
             vmThongBao = vm;
             #region list Nhân viên
-            maChucVu = vmThongBao.selectCHUCVU.MaChucVu;
+            if(vmThongBao.selectCHUCVU.TenChucVu != "Tất cả")
+                maChucVu = vmThongBao.selectCHUCVU.MaChucVu;
+            else maChucVu = null;
             loadDSNhanVien();
             listNGUOIGUI = new ObservableCollection<NHANVIEN>();
             #endregion
@@ -112,7 +114,9 @@ namespace QuanLyTraiHeo.ViewModel
             //listNGUOIGUI = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs.Where(x => x.CHUCVU.MaChucVu == maChucVu));
 
             //var nhanviens = DataProvider.Ins.DB.NHANVIENs;
-            var Nhanviens = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MaChucVu == maChucVu).ToList();
+            var Nhanviens = DataProvider.Ins.DB.NHANVIENs.ToList();
+            if (maChucVu!=null)
+                Nhanviens = Nhanviens.Where(x => x.MaChucVu == maChucVu).ToList();
 
             foreach (var Nhanvien in Nhanviens)
             {
@@ -138,7 +142,9 @@ namespace QuanLyTraiHeo.ViewModel
         void TimKiem()
         {
             listNHANVIEN.Clear();
-            var Nhanviens = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MaChucVu == maChucVu).ToList();
+            var Nhanviens = DataProvider.Ins.DB.NHANVIENs.ToList();
+            if (maChucVu!=null)
+                Nhanviens = DataProvider.Ins.DB.NHANVIENs.Where(x => x.MaChucVu == maChucVu).ToList();
             if(_Ten != "")
                 Nhanviens = Nhanviens.Where(x => x.HoTen.Contains(_Ten) == true).ToList();
             if(_Ngaysinh.Year != 1)

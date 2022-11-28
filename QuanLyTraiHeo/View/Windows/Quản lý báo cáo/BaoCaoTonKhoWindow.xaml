@@ -17,6 +17,7 @@
         WindowStartupLocation="CenterScreen"
         ScrollViewer.CanContentScroll="True"
         Title="Báo cáo tồn kho"
+        Name="BaocaotonkhoW"
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
@@ -44,39 +45,50 @@
                                         <ColumnDefinition></ColumnDefinition>
                                         
                                     </Grid.ColumnDefinitions>
-                                    <TextBox Grid.Column="0" Width="180"
-                                            materialDesign:HintAssist.Hint="Tháng"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
-                                    <TextBox Grid.Column="1" Width="180"
-                                            materialDesign:HintAssist.Hint="Năm"
-                                            Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                            VerticalAlignment="Center" />
+                                    <ComboBox Grid.Column="0" x:Name="CB_Thang"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:TextFieldAssist.HasClearButton="True"
+                                                materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                                                materialDesign:HintAssist.Hint="Tháng"
+                                                Width="180"
+                                                ItemsSource="{Binding ListThang}"
+                                                SelectedItem="{Binding SelectedThang}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoThang}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
+                                    <ComboBox Grid.Column="1" x:Name="CB_Nam"
+                                                Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                                materialDesign:TextFieldAssist.HasClearButton="True"
+                                                materialDesign:ColorZoneAssist.Mode="SecondaryLight"
+                                                materialDesign:HintAssist.Hint="Năm"
+                                                Width="180"
+                                                ItemsSource="{Binding ListNam}"
+                                                SelectedItem="{Binding SelectedNam}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoNam}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </ComboBox>
                                     <ComboBox Grid.Column="2"
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
                                                 materialDesign:HintAssist.Hint="Loại hàng hoá"
-                                                Width="135">
-                                        <ComboBoxItem
-                                                Content="Thuốc" />
-                                        <ComboBoxItem
-                                                Content="Thức ăn" />
+                                                Width="135"
+                                                ItemsSource="{Binding ListLoaiHH}"
+                                                SelectedItem="{Binding SelectedLoaiHH}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="SelectionChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoLoaiHH}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
                                     </ComboBox>
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Height="30"
-                                    Width="120"
-                                    BorderBrush="White"
-                                    Content="Tìm"
-                                    FontSize="16"
-                                    Background="#00de1e"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                                    </Button>
 
                                     <Button
                                     Margin="20,0,0,0"
@@ -89,7 +101,8 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding XuatFileExcelCommand}">
 
                                     </Button>
                                 </StackPanel>
@@ -100,33 +113,33 @@
 
                     </materialDesign:Card>
                     <ListView
-                        ItemsSource="{Binding lstHangHoa}">
+                        ItemsSource="{Binding ListBCTKs, Mode=OneWay}">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn
                                         DisplayMemberBinding="{Binding STT}"
                                         Header="STT" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding IDHangHoa}"
+                                        DisplayMemberBinding="{Binding bctk.MaHH}"
                                         Header="Mã hàng hoá" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding TenHangHoa}"
+                                        DisplayMemberBinding="{Binding bctk.HANGHOA.TenHangHoa}"
                                         Header="Tên hàng hoá" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding LoaiHangHoa}"
+                                        DisplayMemberBinding="{Binding bctk.HANGHOA.LoaiHangHoa}"
                                         Header="Loại hàng hoá" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding Soluong}"
-                                        Header="Số lượng" />
+                                        DisplayMemberBinding="{Binding bctk.TonDau}"
+                                        Header="Số lượng tồn đầu" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding DVT}"
-                                        Header="Đơn vị tính" />
+                                        DisplayMemberBinding="{Binding bctk.TonCuoi}"
+                                        Header="Số lượng tồn cuối" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding TonDau}"
-                                        Header="Tồn đầu" />
+                                        DisplayMemberBinding="{Binding bctk.SoLuongNhapThem}"
+                                        Header="Số lượng nhập thêm" />
                                 <GridViewColumn
-                                        DisplayMemberBinding="{Binding NhapThem}"
-                                        Header="Nhập thêm" />
+                                        DisplayMemberBinding="{Binding bctk.SoLuongXuatRa}"
+                                        Header="Số lượng xuất ra" />
                             </GridView>
                         </ListView.View>
                     </ListView>

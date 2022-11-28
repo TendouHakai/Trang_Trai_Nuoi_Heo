@@ -6,11 +6,15 @@ using QuanLyTraiHeo.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+//using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Input;
 using System.Windows.Markup;
+using System.Windows.Media;
+using static OfficeOpenXml.ExcelErrorValue;
 using static QuanLyTraiHeo.ViewModel.BaoCaoSuaChuaVM;
 
 namespace QuanLyTraiHeo.ViewModel
@@ -23,12 +27,6 @@ namespace QuanLyTraiHeo.ViewModel
         public string[] LabelsDSCPChart { get; set; }
         public SeriesCollection SeriesCollectionNVChart { get; set; }
         public string[] LabelsNVChart { get; set; }
-
-        private List<int> _listNamPieChartCoCauHeo;
-        public List<int> listNamPieChartCoCauHeo { get => _listNamPieChartCoCauHeo; set { _listNamPieChartCoCauHeo = value; OnPropertyChanged(); } }
-
-        private List<int> _listNamPieChartCoCauChuong;
-        public List<int> listNamPieChartCoCauChuong { get => _listNamPieChartCoCauChuong; set { _listNamPieChartCoCauChuong = value; OnPropertyChanged(); } }
 
         private List<int> _listNamColumnChartDoanhThuChiTieu;
         public List<int> listNamColumnChartDoanhThuChiTieu { get => _listNamColumnChartDoanhThuChiTieu; set { _listNamColumnChartDoanhThuChiTieu = value; OnPropertyChanged(); } }
@@ -58,6 +56,9 @@ namespace QuanLyTraiHeo.ViewModel
         private float _TangTruongDoanhThu;
         public float TangTruongDoanhThu { get => _TangTruongDoanhThu; set { _TangTruongDoanhThu = value; OnPropertyChanged();} }
 
+        private bool _IsTangDoanhThu;
+        public bool IsTangDoanhThu { get => _IsTangDoanhThu; set { _IsTangDoanhThu = value; OnPropertyChanged();} }  
+
         private int Chitieutrongngay;
         private string _ChiTieuTrongNgay;
         public string ChiTieuTrongNgay { get => _ChiTieuTrongNgay; set { _ChiTieuTrongNgay = value; OnPropertyChanged();} }
@@ -65,15 +66,22 @@ namespace QuanLyTraiHeo.ViewModel
         private float _SuyGiamChiPhi;
         public float SuyGiamChiPhi { get => _SuyGiamChiPhi; set { _SuyGiamChiPhi = value; OnPropertyChanged();} }
 
+        private bool _IsGiamChiPhi;
+        public bool IsGiamChiPhi { get => _IsGiamChiPhi; set { _IsGiamChiPhi = value; OnPropertyChanged(); } }
+
         private SeriesCollection _SeriesCoCauHeo;
         public SeriesCollection SeriesCoCauHeo { get => _SeriesCoCauHeo; set { _SeriesCoCauHeo = value; OnPropertyChanged();} }
 
         private SeriesCollection _SeriesCoCauChuong;
         public SeriesCollection SeriesCoCauChuong { get => _SeriesCoCauChuong; set { _SeriesCoCauChuong = value; OnPropertyChanged(); } }
 
+        private int _selectedNamChartDoanhthuChiTieu;
+        public int selectedNamChartDoanhthuChiTieu { get => _selectedNamChartDoanhthuChiTieu; set { _selectedNamChartDoanhthuChiTieu = value; OnPropertyChanged(); } }
 
-        //public List<HoatDong> LstHoatDong = new List<HoatDong>();
-        //public List<HoatDong> lstHoatDong { get => LstHoatDong; set { LstHoatDong = value; OnPropertyChanged(); } }
+        private List<HoatDong> _lstHoatDong;
+        public List<HoatDong> lstHoatDong { get => _lstHoatDong; set { _lstHoatDong = value; OnPropertyChanged(); } }
+
+        public ICommand changeSelectedNamChartDoanhThu { get; set; }
         public TrangChuVM()
         {
             PointLabel = chartPoint =>
@@ -83,17 +91,11 @@ namespace QuanLyTraiHeo.ViewModel
             SeriesCoCauChuong = new SeriesCollection();
             SeriesCollectionDSCPChart = new SeriesCollection();
             SeriesCollectionNVChart = new SeriesCollection();
-            listNamPieChartCoCauHeo = new List<int>();
-            listNamPieChartCoCauChuong = new List<int>();
             listNamColumnChartDoanhThuChiTieu = new List<int>();
-
-            #region Khởi tạo list năm cho PieChart Cơ cấu heo
-            listNamPieChartCoCauHeo = DataProvider.Ins.DB.HEOs.Select(x => x.NgaySinh.Value.Year).Distinct().ToList();
-            #endregion
-
-            #region Khởi tạo list năm cho PieChart Cơ cấu chuồng
-            //listNamPieChartCoCauChuong = DataProvider.Ins.DB.CHUONGTRAIs.Select(x=>x.)
-            #endregion
+            lstHoatDong = new List<HoatDong>();
+            IsTangDoanhThu = true;
+            IsGiamChiPhi = true;
+            selectedNamChartDoanhthuChiTieu = DateTime.Today.Year;
 
             #region Khởi tạo list năm cho ColumnChart Doanh thu chi tiêu
             var listNamColumnChartDoanhThuChiTieuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Select(x => x.NgayLap.Value.Year).Distinct().ToList();
@@ -142,9 +144,15 @@ namespace QuanLyTraiHeo.ViewModel
             //#endregion
 
             //#region binding dữ liệu cho danh sách hoạt động
-            //lstHoatDong.Add(new HoatDong() { icon = "Warehouse",  TenNhanVien = "Trần Trung Thành", Mota = "Thực hiện một phiếu nhập kho trị giá 3,000,000 VND", MaPhieu = "SP01"});
+            //lstHoatDong.Add(new HoatDong() { icon = "Warehouse", TenNhanVien = "Trần Trung Thành", Mota = "Thực hiện một phiếu nhập kho trị giá 3,000,000 VND", MaPhieu = "SP01" });
             //lstHoatDong.Add(new HoatDong() { icon = "Warehouse", TenNhanVien = "", Mota = "", MaPhieu = "" });
             //#endregion
+
+            #region command change SelectedNamChartDoanhThuChiPhi
+            changeSelectedNamChartDoanhThu = new RelayCommand<Window>((p) => { return true; }, p => {
+                loadLineChartDoanhThuChiTieu();
+            });
+            #endregion
         }
 
         void loadSoLuongHeoTot()
@@ -211,9 +219,11 @@ namespace QuanLyTraiHeo.ViewModel
                 DoanhThuHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
+            if (DoanhThuHomQua > Doanhthutrongngay) IsTangDoanhThu = false;
+            else IsTangDoanhThu = true;
             if (DoanhThuHomQua > 0)
                 TangTruongDoanhThu = Math.Abs((Doanhthutrongngay - DoanhThuHomQua)*100/DoanhThuHomQua);
-            else TangTruongDoanhThu = 0;
+            else TangTruongDoanhThu = 100;
         }
         void loadChiPhiTrongNgay()
         {
@@ -226,6 +236,11 @@ namespace QuanLyTraiHeo.ViewModel
             try
             {
                 Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu nhập kho" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+            }
+            catch (Exception e) { }
+            try
+            {
+                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x =>x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             ChiTieuTrongNgay = String.Format("{0:#,##0}", Chitieutrongngay);
@@ -244,10 +259,12 @@ namespace QuanLyTraiHeo.ViewModel
                 ChiPhiHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
+            if (ChiPhiHomQua < Chitieutrongngay) IsGiamChiPhi = false;
+            else IsGiamChiPhi = true;
             if (ChiPhiHomQua>0)
                 SuyGiamChiPhi = Math.Abs((Chitieutrongngay - ChiPhiHomQua) * 100 / ChiPhiHomQua);
             else 
-                SuyGiamChiPhi = 0;
+                SuyGiamChiPhi = 100;
         }
         void LoadDSThongSo() 
         {
@@ -261,6 +278,7 @@ namespace QuanLyTraiHeo.ViewModel
             loadTangTruongDoanhThu();
             loadChiPhiTrongNgay();
             loadSuyGiamChiPhi();
+            loadDSHoatDong();
         }
         void loadPieChartCoCauHeo()
         {
@@ -302,19 +320,19 @@ namespace QuanLyTraiHeo.ViewModel
             lineDoanhThu.Values = new ChartValues<double> { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 };
             SeriesCollectionDSCPChart.Add(lineDoanhThu);
 
-            var listDoanhThuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap.Value.Year == DateTime.Today.Year && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgayLap.Value.Month).ToList();
+            var listDoanhThuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap.Value.Year == selectedNamChartDoanhthuChiTieu && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgayLap.Value.Month).ToList();
             foreach(var item in listDoanhThuTheoPhieuHeo)
             {
                 double Tongtien = double.Parse(lineDoanhThu.Values[item.Key - 1].ToString()) + double.Parse(item.Sum(x => x.TongTien).ToString());
                 lineDoanhThu.Values[item.Key - 1] = Tongtien;
             }
-            var listDoanhThuTheoPhieuHangHoa = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap.Value.Year == DateTime.Today.Year && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgayLap.Value.Month).ToList();
+            var listDoanhThuTheoPhieuHangHoa = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap.Value.Year == selectedNamChartDoanhthuChiTieu && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgayLap.Value.Month).ToList();
             foreach (var item in listDoanhThuTheoPhieuHangHoa)
             {
                 double Tongtien = double.Parse(lineDoanhThu.Values[item.Key - 1].ToString()) + double.Parse(item.Sum(x => x.TongTien).ToString());
                 lineDoanhThu.Values[item.Key - 1] = Tongtien;
             }
-            var listDoanhThuTheoPhieuSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == DateTime.Today.Year && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgaySuaChua.Value.Month).ToList();
+            var listDoanhThuTheoPhieuSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == selectedNamChartDoanhthuChiTieu && x.TrangThai == "Đã hoàn thành").GroupBy(x => x.NgaySuaChua.Value.Month).ToList();
             foreach(var item in listDoanhThuTheoPhieuSuaChua)
             {
                 double Tongtien = double.Parse(lineDoanhThu.Values[item.Key - 1].ToString()) + double.Parse(item.Sum(x => x.TongTien).ToString());
@@ -360,6 +378,49 @@ namespace QuanLyTraiHeo.ViewModel
                 LabelsNVChart[i] = item.Key.ToString();
                 i++;
             }
+        }
+        void loadDSHoatDong()
+        {
+            lstHoatDong.Clear();
+            var lstHDHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            foreach (var item in lstHDHeo)
+            {
+                var hoatdong = new HoatDong();
+                hoatdong.icon = "PiggyBank";
+                hoatdong.TenNhanVien = item.NHANVIEN.HoTen;
+                hoatdong.Mota = "Đã thực hiện 1 phiếu " + item.LoaiPhieu+ " trị giá "+ string.Format("{0:#,##0}", item.TongTien) + " VND";
+                hoatdong.MaPhieu = "Mã phiếu: " + item.SoPhieu;
+                lstHoatDong.Add(hoatdong);
+            }
+
+            var lstHDSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            foreach (var item in lstHDSuaChua)
+            {
+                var hoatdong = new HoatDong();
+                hoatdong.icon = "Wrench";
+                hoatdong.TenNhanVien = item.NHANVIEN.HoTen;
+                hoatdong.Mota = "Đã thực hiện 1 phiếu sửa chữa trị giá " + string.Format("{0:#,##0}", item.TongTien) + " VND";
+                hoatdong.MaPhieu = "Mã phiếu: " + item.SoPhieu;
+                lstHoatDong.Add(hoatdong);
+            }
+
+            var lstHDKho = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            foreach(var item in lstHDKho)
+            {
+                var hoatdong = new HoatDong();
+                hoatdong.icon = "Warehouse";
+                hoatdong.TenNhanVien = item.NHANVIEN.HoTen;
+                hoatdong.Mota = "Đã thực hiện 1 phiếu " + item.LoaiPhieu + " trị giá " + string.Format("{0:#,##0}", item.TongTien) + " VND";
+                hoatdong.MaPhieu = "Mã phiếu: " + item.SoPhieu;
+                lstHoatDong.Add(hoatdong);
+            }
+        }
+        public class HoatDong
+        {
+            public string icon { get; set; }
+            public string TenNhanVien { get; set; }
+            public string Mota { get; set; }
+            public string MaPhieu { get; set; }
         }
     }
 }

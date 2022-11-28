@@ -1,5 +1,18 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="TRANGTRAINUOIHEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BAOCAOTONKHO">
+    <Key>
+      <PropertyRef Name="MaBCTK" />
+    </Key>
+    <Property Name="MaBCTK" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="Thang" Type="int" />
+    <Property Name="Nam" Type="int" />
+    <Property Name="MaHH" Type="char" MaxLength="16" />
+    <Property Name="TonDau" Type="int" />
+    <Property Name="TonCuoi" Type="int" />
+    <Property Name="SoLuongNhapThem" Type="int" />
+    <Property Name="SoLuongXuatRa" Type="int" />
+  </EntityType>
   <EntityType Name="CHUCVU">
     <Key>
       <PropertyRef Name="MaChucVu" />
@@ -104,6 +117,17 @@
     <Property Name="MaHeoMe" Type="char" MaxLength="16" />
     <Property Name="NguonGoc" Type="nvarchar" MaxLength="255" />
     <Property Name="TinhTrang" Type="nvarchar" MaxLength="512" />
+  </EntityType>
+  <EntityType Name="LICHCHUONG">
+    <Key>
+      <PropertyRef Name="MaLichChuong" />
+    </Key>
+    <Property Name="MaLichChuong" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="MaChuong" Type="char" MaxLength="16" />
+    <Property Name="NgayLam" Type="smalldatetime" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenLich" Type="nvarchar" MaxLength="50" />
+    <Property Name="Mota" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="LICHPHOIGIONG">
     <Key>
@@ -240,6 +264,16 @@
     <Property Name="MaDoiTac" Type="char" MaxLength="16" />
     <Property Name="TongTien" Type="int" />
   </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
   <EntityType Name="THAMSO">
     <Key>
       <PropertyRef Name="id" />
@@ -259,6 +293,18 @@
     <Property Name="NoiDung" Type="ntext" />
     <Property Name="ThoiGian" Type="smalldatetime" />
   </EntityType>
+  <Association Name="FK_BCTK_HH">
+    <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="0..1" />
+    <End Role="BAOCAOTONKHO" Type="Self.BAOCAOTONKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MaHangHoa" />
+      </Principal>
+      <Dependent Role="BAOCAOTONKHO">
+        <PropertyRef Name="MaHH" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_CT_MC">
     <End Role="LOAICHUONG" Type="Self.LOAICHUONG" Multiplicity="0..1" />
     <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="*" />
@@ -412,6 +458,18 @@
       </Principal>
       <Dependent Role="HEO">
         <PropertyRef Name="MaLoaiHeo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LC_MC">
+    <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="0..1" />
+    <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUONGTRAI">
+        <PropertyRef Name="MaChuong" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaChuong" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -596,6 +654,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="TRANGTRAINUOIHEOModelStoreContainer">
+    <EntitySet Name="BAOCAOTONKHO" EntityType="Self.BAOCAOTONKHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CHUONGTRAI" EntityType="Self.CHUONGTRAI" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="CT_PHIEUHANGHOA" EntityType="Self.CT_PHIEUHANGHOA" Schema="dbo" store:Type="Tables" />
@@ -606,6 +665,7 @@
     <EntitySet Name="GIONGHEO" EntityType="Self.GIONGHEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HEO" EntityType="Self.HEO" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LICHCHUONG" EntityType="Self.LICHCHUONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHPHOIGIONG" EntityType="Self.LICHPHOIGIONG" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="LICHTIEMHEO" EntityType="Self.LICHTIEMHEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ListActionDetail" EntityType="Self.ListActionDetail" Schema="dbo" store:Type="Tables" />
@@ -618,8 +678,13 @@
     <EntitySet Name="PHIEUHEO" EntityType="Self.PHIEUHEO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUKIEMKHO" EntityType="Self.PHIEUKIEMKHO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="PHIEUSUACHUA" EntityType="Self.PHIEUSUACHUA" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_BCTK_HH" Association="Self.FK_BCTK_HH">
+      <End Role="HANGHOA" EntitySet="HANGHOA" />
+      <End Role="BAOCAOTONKHO" EntitySet="BAOCAOTONKHO" />
+    </AssociationSet>
     <AssociationSet Name="FK_CT_MC" Association="Self.FK_CT_MC">
       <End Role="LOAICHUONG" EntitySet="LOAICHUONG" />
       <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
@@ -671,6 +736,10 @@
     <AssociationSet Name="FK_H_MLH" Association="Self.FK_H_MLH">
       <End Role="LOAIHEO" EntitySet="LOAIHEO" />
       <End Role="HEO" EntitySet="HEO" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LC_MC" Association="Self.FK_LC_MC">
+      <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
     </AssociationSet>
     <AssociationSet Name="FK_LPG_MHC" Association="Self.FK_LPG_MHC">
       <End Role="HEO" EntitySet="HEO" />

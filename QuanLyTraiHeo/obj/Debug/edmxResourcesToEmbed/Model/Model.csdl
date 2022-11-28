@@ -137,6 +137,17 @@
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOAs" />
     </AssociationSet>
+    <EntitySet Name="BAOCAOTONKHOes" EntityType="TRANGTRAINUOIHEOModel.BAOCAOTONKHO" />
+    <EntitySet Name="LICHCHUONGs" EntityType="TRANGTRAINUOIHEOModel.LICHCHUONG" />
+    <EntitySet Name="sysdiagrams" EntityType="TRANGTRAINUOIHEOModel.sysdiagram" />
+    <AssociationSet Name="FK_LC_MC" Association="TRANGTRAINUOIHEOModel.FK_LC_MC">
+      <End Role="CHUONGTRAI" EntitySet="CHUONGTRAIs" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_BCTK_HH" Association="TRANGTRAINUOIHEOModel.FK_BCTK_HH">
+      <End Role="HANGHOA" EntitySet="HANGHOAs" />
+      <End Role="BAOCAOTONKHO" EntitySet="BAOCAOTONKHOes" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="CHUCVU">
     <Key>
@@ -162,6 +173,7 @@
     <NavigationProperty Name="LOAICHUONG" Relationship="TRANGTRAINUOIHEOModel.FK_CT_MC" FromRole="CHUONGTRAI" ToRole="LOAICHUONG" />
     <NavigationProperty Name="CT_PHIEUSUACHUA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PSC_MC" FromRole="CHUONGTRAI" ToRole="CT_PHIEUSUACHUA" />
     <NavigationProperty Name="HEOs" Relationship="TRANGTRAINUOIHEOModel.FK_H_CT" FromRole="CHUONGTRAI" ToRole="HEO" />
+    <NavigationProperty Name="LICHCHUONGs" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="CHUONGTRAI" ToRole="LICHCHUONG" />
   </EntityType>
   <EntityType Name="CT_PHIEUHANGHOA">
     <Key>
@@ -245,6 +257,7 @@
     <Property Name="LoaiHangHoa" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="CT_PHIEUHANGHOA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PHH_MHH" FromRole="HANGHOA" ToRole="CT_PHIEUHANGHOA" />
     <NavigationProperty Name="CT_PHIEUKIEMKHO" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PKK_MHH" FromRole="HANGHOA" ToRole="CT_PHIEUKIEMKHO" />
+    <NavigationProperty Name="BAOCAOTONKHOes" Relationship="TRANGTRAINUOIHEOModel.FK_BCTK_HH" FromRole="HANGHOA" ToRole="BAOCAOTONKHO" />
   </EntityType>
   <EntityType Name="HEO">
     <Key>
@@ -786,6 +799,66 @@
       </Principal>
       <Dependent Role="PHIEUHANGHOA">
         <PropertyRef Name="MaNhanVienNhan" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="BAOCAOTONKHO">
+    <Key>
+      <PropertyRef Name="MaBCTK" />
+    </Key>
+    <Property Name="MaBCTK" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="Thang" Type="Int32" />
+    <Property Name="Nam" Type="Int32" />
+    <Property Name="MaHH" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="TonDau" Type="Int32" />
+    <Property Name="TonCuoi" Type="Int32" />
+    <Property Name="SoLuongNhapThem" Type="Int32" />
+    <Property Name="SoLuongXuatRa" Type="Int32" />
+    <NavigationProperty Name="HANGHOA" Relationship="TRANGTRAINUOIHEOModel.FK_BCTK_HH" FromRole="BAOCAOTONKHO" ToRole="HANGHOA" />
+  </EntityType>
+  <EntityType Name="LICHCHUONG">
+    <Key>
+      <PropertyRef Name="MaLichChuong" />
+    </Key>
+    <Property Name="MaLichChuong" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="MaChuong" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="NgayLam" Type="DateTime" Precision="0" />
+    <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TenLich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="CHUONGTRAI" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="LICHCHUONG" ToRole="CHUONGTRAI" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <Association Name="FK_LC_MC">
+    <End Type="TRANGTRAINUOIHEOModel.CHUONGTRAI" Role="CHUONGTRAI" Multiplicity="0..1" />
+    <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CHUONGTRAI">
+        <PropertyRef Name="MaChuong" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaChuong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_BCTK_HH">
+    <End Type="TRANGTRAINUOIHEOModel.HANGHOA" Role="HANGHOA" Multiplicity="0..1" />
+    <End Type="TRANGTRAINUOIHEOModel.BAOCAOTONKHO" Role="BAOCAOTONKHO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="HANGHOA">
+        <PropertyRef Name="MaHangHoa" />
+      </Principal>
+      <Dependent Role="BAOCAOTONKHO">
+        <PropertyRef Name="MaHH" />
       </Dependent>
     </ReferentialConstraint>
   </Association>

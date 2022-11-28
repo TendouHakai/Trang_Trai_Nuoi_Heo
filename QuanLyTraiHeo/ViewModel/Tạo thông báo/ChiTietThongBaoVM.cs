@@ -72,51 +72,58 @@ namespace QuanLyTraiHeo.ViewModel
             });
             deleteThongBao = new RelayCommand<Object>(
                 (p) => {
-                    if (SelectedItem == null)
+                    try
+                    {
+                        if (SelectedItem != null)
+                        {
+                            if (SelectedItem.C_MaNguoiGui == maNhanVien)
+                            {
+                                return true;
+                            }
+                            else return false;
+                        }
+                        else return false;
+                    }
+                    catch(Exception e)
+                    {
                         return false;
-                    else if (SelectedItem.NHANVIEN.MaNhanVien == maNhanVien)
-                        return true;
-                    else return false;
+                    }
                 }, 
                 p => {
+                    ThongBao deleteTB = SelectedItem;
+                    SelectedItem = null;
                     var listThongBao = new List<ThongBao>();
                     foreach(var listhongbaoNgay in thongBaoTheoNgays)
                     {
                         foreach(var thongbao in listhongbaoNgay.thongbaotrongngay)
                         {
-                            listThongBao.Add(thongbao);
+                            listThongBao.Add(thongbao.tb);
                         }
                     }
-                    if (listThongBao.Count <= 1)
+                    int i = 0;
+                    for (; i < listThongBao.Count; i++)
                     {
-                        SelectedItem = null;
-                    }
-                    else
-                    {
-                        int i = 0;
-                        for (; i < listThongBao.Count; i++)
+                        if (listThongBao[i].MaThongBao == deleteTB.MaThongBao)
                         {
-                            if (listThongBao[i].MaThongBao == SelectedItem.MaThongBao)
+                            DataProvider.Ins.DB.ThongBaos.Remove(deleteTB);
+                            DataProvider.Ins.DB.SaveChanges();
+                            if (listThongBao.Count > 1)
                             {
-                                DataProvider.Ins.DB.ThongBaos.Remove(SelectedItem);
-                                DataProvider.Ins.DB.SaveChanges();
-                                if (i == listThongBao.Count - 1)
-                                {
-                                    SelectedItem = listThongBao[0];
-                                }
-                                else
-                                { 
-                                    SelectedItem = listThongBao[i + 1]; 
-                                }
-                                break;
+                                SelectedItem = listThongBao[i + 1];
                             }
+                            else if(listThongBao.Count == 1)
+                            {
+                                SelectedItem = null;
+                            }
+                            else if(i == listThongBao.Count - 1)
+                            {
+                                SelectedItem = listThongBao[0];
+                            }
+                            break;
                         }
-                        if (i == listThongBao.Count)
-                        {
-                            SelectedItem = null;
-                        }
-                        TimKiem();
                     }
+                    TimKiem();
+
 
                 });
         }
