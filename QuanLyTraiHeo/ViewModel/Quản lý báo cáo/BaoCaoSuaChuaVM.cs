@@ -21,7 +21,7 @@ using SeriesCollection = LiveCharts.SeriesCollection;
 using System.Windows.Controls;
 using DataTable = System.Data.DataTable;
 using OfficeOpenXml.Style;
-using QuanLyTraiHeo.View.Windows.Quản_lý_nhân_viên;
+using Microsoft.Office.Interop.Excel;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -33,6 +33,7 @@ namespace QuanLyTraiHeo.ViewModel
         private DateTime? _NgaySuaChua1 = new DateTime();
         private DateTime? _NgaySuaChua2 = new DateTime();
         public int[] SoLuongChuongDaSua = new int[12];
+        private SeriesCollection _SeriesCollectionTSheoChart;
         private ChartValues<int> _SoChuongBinhThuong = new ChartValues<int>();
         private ChartValues<int> _SoChuongDangSuaChua = new ChartValues<int>();
         private ChartValues<int> _SoChuongKhongSuDung = new ChartValues<int>();
@@ -50,7 +51,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ChartValues<int> SoChuongDangSuaChua { get => _SoChuongDangSuaChua; set { _SoChuongDangSuaChua = value; OnPropertyChanged(); } }
         public ChartValues<int> SoChuongKhongSuDung { get => _SoChuongKhongSuDung; set { _SoChuongKhongSuDung = value; OnPropertyChanged(); } }
         public ChartValues<int> SoChuongDaHu { get => _SoChuongDaHu; set { _SoChuongDaHu = value; OnPropertyChanged(); } }
-        public SeriesCollection SeriesCollectionTSheoChart { get; set; }
+        public SeriesCollection SeriesCollectionTSheoChart { get => _SeriesCollectionTSheoChart; set { _SeriesCollectionTSheoChart = value; OnPropertyChanged(); } }
         public DateTime? NgaySuaChua1 { get => _NgaySuaChua1; set { _NgaySuaChua1 = value; OnPropertyChanged(); } }
         public DateTime? NgaySuaChua2 { get => _NgaySuaChua2; set { _NgaySuaChua2 = value; OnPropertyChanged(); } }
         public string[] LabelsTSheoChart { get; set; }
@@ -66,17 +67,17 @@ namespace QuanLyTraiHeo.ViewModel
         public BaoCaoSuaChuaVM()
         {
             TinhGiaTriBieuDo();
-            LaySoLuongChuongDaSua(2022);
+            LoadDT(2022);
             TimKiemTheoNgaySC1Command = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
                 _NgaySuaChua1 = p.SelectedDate;
                 TimKiem();
             });
-            LaySoLuongChuongDaSuaTheoNam = new RelayCommand<TextBox>((p) => { return true; }, p =>
+            LaySoLuongChuongDaSuaTheoNam = new RelayCommand<System.Windows.Controls.TextBox>((p) => { return true; }, p =>
             {
                 if (!string.IsNullOrWhiteSpace(p.Text))
                 {
-                    LaySoLuongChuongDaSua(Convert.ToInt32(p.Text));
+                    LoadDT(Convert.ToInt32(p.Text));
                 }
             });
             TimKiemTheoNgaySC2Command = new RelayCommand<DatePicker>((p) => { return true; }, p =>
@@ -88,14 +89,14 @@ namespace QuanLyTraiHeo.ViewModel
             PointLabel = chartPoint =>
                 string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
             #region binding dữ liệu cho Biểu đồ tổng số chuồng trại đã sửa chửa
-            SeriesCollectionTSheoChart = new SeriesCollection
-            {
-                new LineSeries
-                {
-                    Title ="Chuồng đã sửa chữa",
-                    Values = new ChartValues<int>(SoLuongChuongDaSua)
-                }
-            };
+            //SeriesCollectionTSheoChart = new SeriesCollection
+            //{
+            //    new LineSeries
+            //    {
+            //        Title ="Chuồng đã sửa chữa",
+            //        Values = new ChartValues<int>(SoLuongChuongDaSua)
+            //    }
+            //};
             LabelsTSheoChart = new[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" };
             #endregion
             XuatFileExcelCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
@@ -175,6 +176,28 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             });
         }
+        public void LoadDT(int nam)
+        {
+            SeriesCollectionTSheoChart = new SeriesCollection();
+            ChartValues<int> giatri = new ChartValues<int>();
+            LineSeries c1 = new LineSeries
+            {
+                Title = "Chuồng đã sửa chữa",
+            };
+            ResetData();
+            var temp1 = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == nam).ToList();
+            for (int i = 0; i < 12; ++i)
+            {
+                var temp2 = temp1.Where(x => x.NgaySuaChua.Value.Month == (i + 1)).ToList();
+                foreach (var y in temp2)
+                {
+                    SoLuongChuongDaSua[i] += y.CT_PHIEUSUACHUA.Count;
+                }
+                giatri.Add(SoLuongChuongDaSua[i]);
+            }
+            c1.Values = giatri;
+            SeriesCollectionTSheoChart.Add(c1);
+        }
         public void TinhGiaTriBieuDo()
         {
             var temp = DataProvider.Ins.DB.CHUONGTRAIs.ToList();
@@ -202,25 +225,25 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             }
         }
-        public void LaySoLuongChuongDaSua(int nam)
-        {
-            ResetData();
-            var temp1 = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == nam).ToList();
-            for (int i = 0; i < 12; ++i)
-            {
-                var temp2 = temp1.Where(x => x.NgaySuaChua.Value.Month == (i + 1)).ToList();
-                foreach (var y in temp2)
-                {
-                    SoLuongChuongDaSua[i] += y.CT_PHIEUSUACHUA.Count;
-                }
-            }
-        }
+        //public void LaySoLuongChuongDaSua(int nam)
+        //{
+        //    ResetData();
+        //    var temp1 = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua.Value.Year == nam).ToList();
+        //    for (int i = 0; i < 12; ++i)
+        //    {
+        //        var temp2 = temp1.Where(x => x.NgaySuaChua.Value.Month == (i + 1)).ToList();
+        //        foreach (var y in temp2)
+        //        {
+        //            SoLuongChuongDaSua[i] += y.CT_PHIEUSUACHUA.Count;
+        //        }
+        //    }
+        //}
         void ResetData()
         {
-            for(int i=0;i<12;i++)
+            for (int i = 0; i < 12; i++)
             {
                 SoLuongChuongDaSua[i] = 0;
-            }    
+            }
         }
         void TimKiem()
         {

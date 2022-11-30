@@ -74,6 +74,7 @@
                                 <TextBox Grid.Column="1" VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Năm"
                                          Name="Namx"
+                                         Text="2022"
                                      Margin="0,3,0,5">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
@@ -86,11 +87,8 @@
                                     </TextBox>
                             </Grid>
                         </materialDesign:Card>
-                        <lvc:CartesianChart Series="{Binding SeriesCollectionTSheoChart}" LegendLocation="Bottom" Height="264" >
-                            <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Chuồng" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
-                            </lvc:CartesianChart.AxisY>
-                            <lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart Series="{Binding SeriesCollectionTSheoChart}" LegendLocation="Bottom" Height="264">
+                                <lvc:CartesianChart.AxisX>
                                 <lvc:Axis Title="Tháng" Labels="{Binding LabelsTSheoChart}"></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
