@@ -9,7 +9,7 @@
         Title="Tạo phiếu mới"
         Name="TaoPhieuMoik"
         Height="788"
-        Width="1024"
+        Width="1100"
         WindowStartupLocation="CenterScreen"
         DataContext="{StaticResource ThemPhieuSuaChuaVM}">
     <Grid>
@@ -189,7 +189,7 @@
                                  Margin="0,10,10,0">
 
                 <StackPanel Orientation="Vertical">
-                    <materialDesign:Card Height="30">
+                    <materialDesign:Card Height="40">
                         <TextBlock Grid.Column="0"
                                    FontWeight="Bold"
                                    FontSize="16"
@@ -265,7 +265,7 @@
                             Foreground="#00de1e"
                             Background="#dcf7e0"
                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                            Command="{Binding HuyCommand}">
+                            Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=TaoPhieuMoik}">
 
                     </Button>
                 </StackPanel>

@@ -31,12 +31,14 @@ namespace QuanLyTraiHeo.ViewModel
         private int _TongTien = 0;
         private string _TrangThai = "";
         private string _MaChuongCanTim = "";
+        private bool _Flag = false;
         #endregion
 
         #region Property
         public List<CT_PHIEUSUACHUA> CT_PHIEUSUACHUAs { get => cT_PHIEUSUACHUAs; set { cT_PHIEUSUACHUAs = value; OnPropertyChanged(); } }
         public ObservableCollection<CTPhieuModel> CTPhieu { get => cTPhieuModels; set { cTPhieuModels = value; OnPropertyChanged(); } }
         public string TenNhanVien { get => _TenNhanVien; set { _TenNhanVien = value; OnPropertyChanged(); } }
+        public bool Flag { get => _Flag; set { _Flag = value; OnPropertyChanged(); } }
         public string MaDoiTac { get => _MaDoiTac; set { _MaDoiTac = value; OnPropertyChanged(); } }
         public string TenDoiTac { get => _TenDoiTac; set { _TenDoiTac = value; OnPropertyChanged(); } }
         public string Email { get => _Email; set { _Email = value; OnPropertyChanged(); } }
@@ -101,7 +103,27 @@ namespace QuanLyTraiHeo.ViewModel
             XuatThongTinDoiTacCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
                 _MaDoiTac = p.Text;
-                TimKiemThongTinDoiTac(_MaDoiTac);
+                var temp = DataProvider.Ins.DB.DOITACs.Where(x => x.MaDoiTac.Trim().Equals(_MaDoiTac)).ToList();
+                if (temp.Count > 0)
+                {
+                    var i = temp.First();
+                    TenDoiTac = i.TenDoiTac;
+                    Email = i.Email;
+                    SDT = i.SDT;
+                    DiaChiLienLac = i.DiaChi;
+                    Flag = true;
+                }
+                else
+                {
+                    if (Flag == true)
+                    {
+                        TenDoiTac = "";
+                        Email = "";
+                        SDT = "";
+                        DiaChiLienLac = "";
+                        Flag = false;
+                    }
+                }
             });
         }
         string LayMaNhanVien(string ten)
@@ -141,20 +163,6 @@ namespace QuanLyTraiHeo.ViewModel
             if (count == 0)
             {
                 CTPhieu = temp2;
-            }
-        }
-        void TimKiemThongTinDoiTac(string a)
-        {
-            var temp = DataProvider.Ins.DB.DOITACs.ToList();
-            foreach (var i in temp)
-            {
-                if (i.MaDoiTac.Trim().Equals(a))
-                {
-                    TenDoiTac = i.TenDoiTac;
-                    Email = i.Email;
-                    SDT = i.SDT;
-                    DiaChiLienLac = i.DiaChi;
-                }  
             }
         }
     }
