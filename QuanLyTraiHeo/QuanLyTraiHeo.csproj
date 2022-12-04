@@ -323,9 +323,6 @@
     <Compile Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml.cs">
       <DependentUpon>SuaChucVu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml.cs">
-      <DependentUpon>ThemChucVu.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\Windows\Quản lý giống heo\Quanlygiongheo.xaml.cs">
       <DependentUpon>Quanlygiongheo.xaml</DependentUpon>
     </Compile>
@@ -545,10 +542,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý chức vụ\SuaChucVu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\Windows\Quản lý chức vụ\ThemChucVu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

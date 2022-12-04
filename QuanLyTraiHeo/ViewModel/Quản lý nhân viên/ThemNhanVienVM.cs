@@ -50,10 +50,9 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập Tên đăng nhập! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            try { Convert.ToInt32(newNhanVien.HeSoLuong); }
-            catch
+            if (newNhanVien.HeSoLuong == null)
             {
-                MessageBox.Show("Vui lòng đúng thông tin! ", "Thông báo!", MessageBoxButton.OK);
+                newNhanVien.HeSoLuong = 0;
                 return;
             }
             newNhanVien.HoTen.ToString().Replace(" ", "");

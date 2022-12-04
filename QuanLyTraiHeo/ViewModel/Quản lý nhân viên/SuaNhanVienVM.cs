@@ -43,24 +43,23 @@ namespace QuanLyTraiHeo.ViewModel
         }
         private void Sua(Window p)
         {
-                if (TTNhanVien.HoTen == String.Empty || TTNhanVien.HoTen == null)
-                {
-                    MessageBox.Show("Vui lòng nhập họ tên ! ", "Thông báo!", MessageBoxButton.OK);
-                    return;
-                }
+            if (TTNhanVien.HoTen == String.Empty || TTNhanVien.HoTen == null)
+            {
+                MessageBox.Show("Vui lòng nhập họ tên ! ", "Thông báo!", MessageBoxButton.OK);
+                return;
+            }
 
-                if (TTNhanVien.C_Username == String.Empty || TTNhanVien.C_Username == null)
-                {
-                    MessageBox.Show("Vui lòng nhập Tên đăng nhập! ", "Thông báo!", MessageBoxButton.OK);
-                    return;
-                }
-                try { Convert.ToInt32(TTNhanVien.HeSoLuong); }
-                catch
-                {
-                    MessageBox.Show("Vui lòng đúng thông tin! ", "Thông báo!", MessageBoxButton.OK);
-                    return;
-                }
-                TTNhanVien.MaChucVu = chucvu.MaChucVu;
+            if (TTNhanVien.C_Username == String.Empty || TTNhanVien.C_Username == null)
+            {
+                MessageBox.Show("Vui lòng nhập Tên đăng nhập! ", "Thông báo!", MessageBoxButton.OK);
+                return;
+            }
+            if (TTNhanVien.HeSoLuong == null)
+            {
+                TTNhanVien.HeSoLuong = 0;
+                return;
+            }
+            TTNhanVien.MaChucVu = chucvu.MaChucVu;
 
             TTNhanVien.HoTen.ToString().Replace(" ", "");
             TTNhanVien.C_Username.ToString().Replace(" ", "");

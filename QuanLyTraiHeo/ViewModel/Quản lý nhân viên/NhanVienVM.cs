@@ -20,7 +20,6 @@ namespace QuanLyTraiHeo.ViewModel
         #region Atributies
         public ObservableCollection<NHANVIEN> lstNhanvien { get; set; }
         public ObservableCollection<ChucVuModel> lstChucVu { get; set; }
-
         private int listviewSelectedIndex { get; set; }
         private string textTimKiem { get; set; }
 
@@ -43,17 +42,26 @@ namespace QuanLyTraiHeo.ViewModel
 
         public NhanVienVM()
         {
+            #region Initial Atributes
             TextTimKiem = "";
             lstNhanvien = new ObservableCollection<NHANVIEN>();
             lstChucVu = new ObservableCollection<ChucVuModel>();
             ListViewSelectedIndex = 0;
+            #endregion
+
+            #region Initial Command
             ThemNhanVienCommand = new RelayCommand<Window>((p) => { return true; }, p => { ThemNhanVien(p); });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
             TextTimKiemChangeCommand = new RelayCommand<ListView>((p) => { return true; }, p => { TextTimKiemChanged(p); });
+            #endregion
+
+            #region LoadData
             LoadListNhanVien();
             LoadListChucVu();
-            
+            #endregion
         }
+
+        #region Methods
         public void ThemNhanVien(Window p)
         {
             ThemNhanVien themNhanVien = new ThemNhanVien();
@@ -105,5 +113,6 @@ namespace QuanLyTraiHeo.ViewModel
             suaNhanVien.DataContext = suaNhanVienVM;
             suaNhanVien.ShowDialog();
         }
+        #endregion
     }
 }
