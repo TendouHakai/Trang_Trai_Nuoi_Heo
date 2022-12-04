@@ -102,25 +102,33 @@
                                 <ListBox ItemsSource="{Binding ListLoai}">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <CheckBox Margin="0 5" Content="{Binding TenLoaiHeo}"  ></CheckBox>
+                                            <CheckBox x:Name="cb_Loai" Margin="0 5" Content="{Binding TenLoaiHeo}" Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TimKiemTheoLoaiCommand }" 
+                                                      CommandParameter="{Binding ElementName=cb_Loai}"
+                                                      ></CheckBox>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </StackPanel>
                         </Expander>
-
                         <Expander IsExpanded="False" Header="Giống heo" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                                 <ListBox ItemsSource="{Binding ListGiong}">
                                     <ListBox.ItemTemplate>
                                         <DataTemplate>
-                                            <CheckBox Margin="0 5" Content="{Binding TenGiongHeo}" > </CheckBox>
+                                            <CheckBox x:Name="cb_Giong" Margin="0 5" Content="{Binding TenGiongHeo}" 
+                                                      Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TimKiemTheoGiongCommand }"
+                                                      CommandParameter="{Binding ElementName=cb_Giong}"
+                                                      ></CheckBox>
                                         </DataTemplate>
                                     </ListBox.ItemTemplate>
                                 </ListBox>
                             </StackPanel>
                         </Expander>
-
+                        
                         <Expander IsExpanded="False" Header="Tình trạng" FontWeight="Bold" Background="White">
                             <StackPanel Orientation="Vertical" Margin="20,0,0,0">
                                 <CheckBox x:Name="cb_TT1" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT1}" >
@@ -133,6 +141,9 @@
 				                    Đang bị bệnh
                                 </CheckBox>
                                 <CheckBox x:Name="cb_TT4" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT4}">
+                                    Đã xuất
+                                </CheckBox>
+                                <CheckBox x:Name="cb_TT5" Margin="0 5" Command="{Binding TTCheck}" CommandParameter="{Binding ElementName=cb_TT5}">
 				                    Đã đào thải
                                 </CheckBox>
                             </StackPanel>
@@ -217,8 +228,8 @@
                             </ListView.View>
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Show and Edit" Command="{Binding EditCommand}" />
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Delete" Command="{Binding DeleteCommand}" />
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Xem hoặc sửa" Command="{Binding EditCommand}" />
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Xoá" Command="{Binding DeleteCommand}" />
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>

@@ -72,6 +72,7 @@
                         <ComboBoxItem>Sức khoẻ tốt</ComboBoxItem>
                         <ComboBoxItem>Đang mang thai</ComboBoxItem>
                         <ComboBoxItem>Đang bị bệnh</ComboBoxItem>
+                        <ComboBoxItem>Đã xuất</ComboBoxItem>
                         <ComboBoxItem>Đã đào thải</ComboBoxItem>
                     </ComboBox>
                     <ComboBox Margin="10 5 10 10"

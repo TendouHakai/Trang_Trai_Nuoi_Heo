@@ -201,6 +201,7 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Phieu\ChiTietPhieuVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
     <Compile Include="ViewModel\Phieu\ChonHeoXuatVM.cs" />
@@ -224,6 +225,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Quản lý đàn heo\ChiTietPhieuWindow.xaml.cs">
+      <DependentUpon>ChiTietPhieuWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Lập lịch\DanhsachHeo.xaml.cs">
       <DependentUpon>DanhsachHeo.xaml</DependentUpon>
     </Compile>
@@ -417,6 +421,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quản lý đàn heo\ChiTietPhieuWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Lập lịch\DanhsachHeo.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

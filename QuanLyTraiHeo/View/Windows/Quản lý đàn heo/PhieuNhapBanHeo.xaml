@@ -98,7 +98,7 @@
                     </materialDesign:Card>
                     <Grid>
                         <materialDesign:PackIcon Kind="Account" Margin="10 15 0 0 "/>
-                        <TextBox materialDesign:HintAssist.Hint="Tên nhân viên" Height="30" Margin="30,10,20,11" Text="{Binding TenNV}" />
+                        <TextBox materialDesign:HintAssist.Hint="Tên nhân viên" Height="30" Margin="30,10,20,11" Text="{Binding TenNV}" IsReadOnly="True"/>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
