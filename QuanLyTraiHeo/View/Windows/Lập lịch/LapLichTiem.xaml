@@ -159,14 +159,14 @@
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
-                                                materialDesign:HintAssist.Hint="Giống heo">
+                                                materialDesign:HintAssist.Hint="Tên thuốc">
                                         <ComboBoxItem
                                                 Content="Thức ăn HH cao cấp cho heo nái mang thai 8042" />
                                         <ComboBoxItem
                                                 Content="B52/AMPI-COL" />
                                     </ComboBox>
                                 </Grid>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
+                                <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="5,0,5,0">
                                     <Button x:Name="FindButton"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
@@ -180,7 +180,7 @@
 
                                     </Button>
 
-                                    <Button
+                                    <Button x:Name="Output_excel"
                                     Margin="20,0,0,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
@@ -191,7 +191,7 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Output_excel_Click">
 
                                     </Button>
                                 </StackPanel>
@@ -204,10 +204,11 @@
                     <ListView x:Name="Listtiemheo" ItemsSource="{Binding Lichtiem}" SelectedItem="{Binding MaHeo, Mode=OneWayToSource}" Margin="15,0,10,0" ScrollViewer.HorizontalScrollBarVisibility="Visible" ScrollViewer.VerticalScrollBarVisibility="Visible" SelectionMode="Multiple">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Ngày tiêm heo" DisplayMemberBinding="{Binding NgayTiem}" />
+                                <GridViewColumn Header="Ngày tiêm heo" DisplayMemberBinding="{Binding NgayTiem, StringFormat=\{0:d\}}" />
                                 <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo}" />
                                 <GridViewColumn Header="Loại heo" DisplayMemberBinding="{Binding HEO.LOAIHEO.TenLoaiHeo}" />
                                 <GridViewColumn Header="Giống heo" DisplayMemberBinding="{Binding HEO.GIONGHEO.TenGiongHeo}" />
+                                <GridViewColumn Header="Loại thuốc" DisplayMemberBinding="{Binding hh.TenHangHoa}" />
                                 <GridViewColumn Header="Liều lượng" DisplayMemberBinding="{Binding LieuLuong}" />
                                 <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TrangThai}" />
                                 <GridViewColumn Header="" Width="160">
@@ -232,86 +233,7 @@
                 </StackPanel>
 
             </materialDesign:Card>
-        </Grid>        
+        </Grid>
 
     </Grid>
-    <!--<Grid DataContext="{StaticResource LapLichTiemVM}">
-
-        <Grid.RowDefinitions>
-            <RowDefinition Height="80"></RowDefinition>
-            <RowDefinition Height="auto"></RowDefinition>
-        </Grid.RowDefinitions>
-        <Grid Grid.Row="0"
-              Height="55">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-                <ColumnDefinition></ColumnDefinition>
-            </Grid.ColumnDefinitions>
-
-            <Grid Grid.Column="0">
-                <StackPanel Orientation="Horizontal">
-                    <materialDesign:PackIcon Width="40"
-                                             HorizontalAlignment="Left"
-                                             VerticalAlignment="Center"
-                                             Kind="Search" />
-                    <Button Style="{StaticResource MaterialDesignFlatLightButton}"
-                            ToolTip="Nhấn để chọn danh sách heo sẽ được lên lịch"
-                            Content="Chọn danh sách heo"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" />
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Column="1">
-                <StackPanel Orientation="Horizontal">
-                    <ComboBox HorizontalAlignment="Left"
-                              VerticalAlignment="Center"
-                              Width="auto"
-                              materialDesign:HintAssist.Hint="Loại thuốc"></ComboBox>
-                    <DatePicker Width="auto"
-                                Margin="50,0,0,10"
-                                materialDesign:HintAssist.Hint="Chọn ngày"
-                                Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
-                </StackPanel>
-            </Grid>
-
-            <Grid Grid.Column="2">
-                <StackPanel Orientation="Horizontal">
-                    <Button Width="auto"
-                            ToolTip="Nhấn lưu danh sánh này"
-                            Background="#3ab19b">Thêm lịch</Button>
-                    <Button Width="auto"
-                            Margin="10"
-                            Background="#3ab19b">Sửa</Button>
-                    <Button Width="auto"
-                            Background="#3ab19b">Xóa</Button>
-                </StackPanel>
-            </Grid>
-
-        </Grid>
-        
-        <DataGrid Grid.Row="1" x:Name="DG_DSHeo"
-                  ItemsSource="{Binding DanhSachHeoLapLich}"
-                  CanUserAddRows="False"
-                  AutoGenerateColumns="False">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="STT"
-                                    IsReadOnly="True"
-                                    Binding="{Binding STT}"
-                                    Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Mã heo"
-                                    IsReadOnly="True"
-                                    Binding="{Binding MaHeo}"
-                                    Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Loại heo"
-                                    IsReadOnly="True"
-                                    Binding="{Binding LoaiHeo}"
-                                    Width="*"></DataGridTextColumn>
-                <DataGridTextColumn Header="Số liều"
-                                    IsReadOnly="False"
-                                    Binding="{Binding SoLieu}"
-                                    Width="*"></DataGridTextColumn>
-            </DataGrid.Columns>
-        </DataGrid>
-    </Grid>-->
 </Window>

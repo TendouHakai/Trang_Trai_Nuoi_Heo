@@ -21,6 +21,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
     public partial class SuaLichHeo : Window
     {
         string temp { get; set; }
+        static int check = 0;
         public SuaLichHeo(LICHTIEMHEO tiem)
         {
             InitializeComponent();
@@ -34,6 +35,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void Confirm_button_Click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             this.Close();
         }
 
@@ -63,14 +65,24 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         
         public LICHTIEMHEO returnValue()
         {
-            LICHTIEMHEO tiem = new LICHTIEMHEO();
-            tiem.MaLichTiem = temp;
-            tiem.MaHeo = textcode.Text;
-            tiem.MaThuoc = Drugcode_text.Text;
-            tiem.NgayTiem = Datepicker_Ngaytiem.SelectedDate.Value;
-            tiem.LieuLuong = int.Parse(Lieuluong_text.Text);
-            tiem.TrangThai = Trangthai_combobox.Text;
-            return tiem;
+            if (check == 1)
+            {
+                LICHTIEMHEO tiem = new LICHTIEMHEO();
+                tiem.MaLichTiem = temp;
+                tiem.MaHeo = textcode.Text;
+                tiem.MaThuoc = Drugcode_text.Text;
+                tiem.NgayTiem = Datepicker_Ngaytiem.SelectedDate.Value;
+                tiem.LieuLuong = int.Parse(Lieuluong_text.Text);
+                tiem.TrangThai = Trangthai_combobox.Text;
+                return tiem;
+            }
+            return null;
+        }
+
+        private void Huy_button_Click(object sender, RoutedEventArgs e)
+        {
+            check = 0;
+            this.Close();
         }
     }
     

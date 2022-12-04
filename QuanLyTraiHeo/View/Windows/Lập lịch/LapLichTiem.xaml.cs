@@ -1,4 +1,5 @@
-﻿using QuanLyTraiHeo.Model;
+﻿using Microsoft.Win32;
+using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows.Lập_lịch;
 using QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo;
 using System;
@@ -6,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -14,13 +16,16 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Microsoft.Office.Interop.Excel;
+//using System.Windows.Forms;
+using WPFWindow = System.Windows;
 
 namespace QuanLyTraiHeo
 {
     /// <summary>
     /// Interaction logic for LapLichTiem.xaml
     /// </summary>
-    public partial class LapLichTiem : Window
+    public partial class LapLichTiem : WPFWindow.Window
     {
         public List<LICHTIEMHEO> Lichtiem { get; set; }
         public LICHTIEMHEO lICHTIEMHEO { get; set; }
@@ -54,7 +59,7 @@ namespace QuanLyTraiHeo
             lichtiem.MaThuoc = Drugcode_text.Text;
             try
             {
-                lichtiem.NgayTiem = Datepicker_Ngaytiem.SelectedDate.Value;
+                lichtiem.NgayTiem = Datepicker_Ngaytiem.SelectedDate.Value.Date;
             }
             catch (Exception)
             {
@@ -132,6 +137,8 @@ namespace QuanLyTraiHeo
             LICHTIEMHEO tiemheo = (LICHTIEMHEO)Listtiemheo.SelectedItem;
             SuaLichHeo sua = new SuaLichHeo(tiemheo);
             sua.ShowDialog();
+            if (sua.returnValue() == null)
+                return;
             updating(sua.returnValue());
         }
 
@@ -239,73 +246,123 @@ namespace QuanLyTraiHeo
         }
         private void Timkiem()
         {
+            //1
             if((Find_date.Text != "")&&(Find_giongheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                ti = ti.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti1 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
+                ti1 = ti1.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
+                /*if(ti!=null)
+                {
+                    Lichtiem.Clear();
+                    foreach (var items in ti)
+                    {
+                        Lichtiem.Add(items);
+                    }
+                    Listtiemheo.ItemsSource = null;
+                    Listtiemheo.ItemsSource = Lichtiem;
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy", "", MessageBoxButton.OK);
+                }*/
+            
+                //Listtiemheo.ItemsSource = null;
+                Listtiemheo.ItemsSource = ti1;
+                MessageBox.Show("1");
             }
             if ((Find_date.Text != "") && (Find_loaiheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
-                ti = ti.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti2 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
+                ti2 = ti2.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
+                Listtiemheo.ItemsSource = ti2;
+                MessageBox.Show("2");
             }
             if ((Find_date.Text != "") && (Find_loaiheo.Text != "")&&(Find_giongheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
-                ti = ti.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
-                ti = ti.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti3 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
+                ti3 = ti3.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
+                ti3 = ti3.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
+                Listtiemheo.ItemsSource = ti3;
+                MessageBox.Show("3");
             }
             if ((Find_date.Text != "") && (Find_loaiheo.Text == "") && (Find_giongheo.Text == ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti4 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
+                Listtiemheo.ItemsSource = ti4;
+                MessageBox.Show("4");
             }
-            if ((Find_date.Text == "") && (Find_loaiheo.Text != "") &&(Find_giongheo.Text == ""))
+            if ((Find_date.Text == "") && ((Find_loaiheo.Text != "")||(Find_loaiheo.Text != null)) &&(Find_giongheo.Text == ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti5 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
+                Listtiemheo.ItemsSource = ti5;
+                MessageBox.Show("5");
             }
             if ((Find_date.Text == "") && (Find_loaiheo.Text == "") && (Find_giongheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti6 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
+                Listtiemheo.ItemsSource = ti6;
+                MessageBox.Show("6");
             }
             if ((Find_date.Text == "") && (Find_loaiheo.Text != "") && (Find_giongheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
-                ti = ti.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti7 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
+                ti7 = ti7.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
+                Listtiemheo.ItemsSource = ti7;
+                MessageBox.Show("7");
             }
             if ((Find_date.Text != "") && (Find_loaiheo.Text == "") && (Find_giongheo.Text != ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
-                ti = ti.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
-                Listtiemheo.ItemsSource = ti;
+                var ti8 = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text)).ToList();
+                ti8 = ti8.Where(s => s.NgayTiem == Find_date.SelectedDate.Value).ToList();
+                Listtiemheo.ItemsSource = ti8;
+                MessageBox.Show("8");
             }
-
-            /*if (FindLoaiThuoc.Text != "")
+            if((Find_date.Text == "") && (Find_loaiheo.Text == "") && (Find_giongheo.Text == ""))
             {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.MaThuoc.Contains(FindLoaiThuoc.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
+                reloadWithData();
+                MessageBox.Show("9");
             }
-            {
-                var ti = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                Listtiemheo.ItemsSource = ti;
-            }
-        }
-    }
-    var t = DataProvider.Ins.DB.LICHTIEMHEOs.Where(s => s.MaLichTiem.Contains(Timkiem_text.Text));
-            Listtiemheo.ItemsSource = t;*/
         }
     
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Find_date.Text + Find_giongheo.Text + Find_loaiheo.Text);
+            MessageBox.Show(Find_date.Text + "/" + Find_loaiheo.Text + "/" + Find_giongheo.Text);
             Timkiem();
+        }
+
+        private void Output_excel_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog() { Filter = "Excel Workbook|*.xls", ValidateNames = true };
+            {
+                if (sfd.ShowDialog() == true)
+                {
+                    Microsoft.Office.Interop.Excel.Application app = new Microsoft.Office.Interop.Excel.Application();
+                    Workbook workbook = app.Workbooks.Add(XlSheetType.xlWorksheet);
+                    Worksheet worksheet = (Worksheet)app.ActiveSheet;
+                    app.Visible = false;
+                    worksheet.Cells[1, 1] = "Ngày tiêm heo";
+                    worksheet.Cells[1, 2] = "Mã heo";
+                    worksheet.Cells[1, 3] = "Loại heo";
+                    worksheet.Cells[1, 4] = "Giống heo";
+                    worksheet.Cells[1, 5] = "Liều lượng";
+                    worksheet.Cells[1, 6] = "Trạng thái";
+                    int i = 2;
+                    foreach (var items in DataProvider.Ins.DB.LICHTIEMHEOs)
+                    {
+                        worksheet.Cells[i, 1] = items.NgayTiem.Value.ToString();
+                        worksheet.Cells[i, 2] = items.MaHeo;
+                        worksheet.Cells[i, 3] = items.HEO.LOAIHEO.TenLoaiHeo;
+                        worksheet.Cells[i, 4] = items.HEO.GIONGHEO.TenGiongHeo;
+                        worksheet.Cells[i, 5] = items.LieuLuong;
+                        worksheet.Cells[i, 6] = items.TrangThai;
+                        i++;
+                    }
+                    worksheet.SaveAs(sfd.FileName, XlFileFormat.xlWorkbookDefault,Type.Missing,true,false,XlSaveAsAccessMode.xlNoChange,XlSaveConflictResolution.xlLocalSessionChanges,Type.Missing,Type.Missing);
+                    app.Quit();
+                    MessageBox.Show("Dữ liệu đã được lưu thành công", "", MessageBoxButton.OK);                    
+                }
+            }
         }
     }
 }

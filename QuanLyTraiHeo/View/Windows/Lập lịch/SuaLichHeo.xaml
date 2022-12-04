@@ -8,7 +8,7 @@
         mc:Ignorable="d"
         Title="" Height="350" Width="350"
         WindowStartupLocation="CenterScreen"
-        ResizeMode="NoResize">
+        ResizeMode="NoResize" WindowStyle="None">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -79,7 +79,10 @@
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
                 <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                    <Button x:Name="Confirm_button" Background="#3ab19b" Content="Xác nhận" Width="150" Height="40" VerticalAlignment="Bottom" Click="Confirm_button_Click"></Button>
+                    <Grid Width="270">
+                        <Button x:Name="Confirm_button_Copy" Background="#3ab19b" Content="Xác nhận" Height="40" VerticalAlignment="Center" Click="Confirm_button_Click" Margin="0,0,140,0"/>
+                        <Button x:Name="huy_button"  Background="#FFB13A3A" Content="Hủy" Height="40" VerticalAlignment="Center" Click="Huy_button_Click" Margin="140,0,0,0" Width="130"/>
+                    </Grid>
                 </Border>
             </materialDesign:Card>
         </StackPanel>
