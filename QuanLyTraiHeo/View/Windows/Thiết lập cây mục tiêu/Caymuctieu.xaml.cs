@@ -1,4 +1,5 @@
-﻿using QuanLyTraiHeo.Model;
+﻿using MaterialDesignThemes.Wpf;
+using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -24,6 +26,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public List<LICHTIEMHEO> Lichtiem { get; set; }
         public List<HEO> Heo { get; set; }
         public List<LICHPHOIGIONG> LichPhoiGiong { get; set; }
+        public List<CT_PHIEUHEO> BanHeo { get; set; }
 
         public static int SoHeo = 0;
         public static int SoHeoDe = 0;
@@ -51,12 +54,34 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         public static double SoLuaDeTrongMotNam = 0;
         public static double SoConHeoSuaTrongMotNam = 0;
+
+        public static int SoHeoDuocban = 0;
         /// <summary>
         /// Giá trị mặc định
         /// </summary>
-        static float Tylede_muctieu = 86;
-        static double SoHeoConSinhRa_muctieu = 12.5;
-        static float ODeItCon_muctieu = 12;       
+        public static double Tylede_muctieu = 86;
+        public static double SoHeoConSinhRa_muctieu = 12.5;
+        public static double ODeItCon_muctieu = 12;
+        public static double SoHeoConSong_MucTieu = 11;
+        public static double SoHeoCaiSua_muctieu = 9.5;
+        public static double SoConChetTruocKhiCaiSua_MucTieu = 18;
+        public static string ThoiGianMangThai_MucTieu = "110-117";
+        public static string SoNgayCaiSua_MucTieu = "20-28";
+        public static string SoNgayKhongLamViec_MucTieu = "12";
+        public static double TrungBnhLua_MucTieu = 2.3;
+        public static double SoHeoTrongNam_MucTieu = 22;
+
+        public double Tylede_muctieuClone = Tylede_muctieu;
+        public double SoHeoConSinhRa_muctieuClone = SoHeoConSinhRa_muctieu;
+        public double ODeItCon_muctieuClone = ODeItCon_muctieu;
+        public double SoHeoConSong_MucTieuClone = SoHeoConSong_MucTieu;
+        public double SoHeoCaiSua_muctieuClone = SoHeoCaiSua_muctieu;
+        public double SoConChetTruocKhiCaiSua_MucTieuClone = SoConChetTruocKhiCaiSua_MucTieu;
+        public string ThoiGianMangThai_MucTieuClone = ThoiGianMangThai_MucTieu;
+        public string SoNgayCaiSua_MucTieuClone = SoNgayCaiSua_MucTieu;
+        public string SoNgayKhongLamViec_MucTieuClone = SoNgayKhongLamViec_MucTieu;
+        public double TrungBnhLua_MucTieuClone = TrungBnhLua_MucTieu;
+        public double SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu;
 
         public Caymuctieu(int? yearStart, int? yearEnd)
         {
@@ -88,11 +113,41 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ResetView();
             }
         }
-        
+        public void clone()
+        {
+            Tylede_muctieu = Tylede_muctieuClone;
+            Tylede_muctieu_textbox.Content = "Mục tiêu: " + Tylede_muctieu + "%";
+            SoHeoConSinhRa_muctieu = SoHeoConSinhRa_muctieuClone;
+            Soheoconsinhra_lua_muctieu.Content = "Mục tiêu: " + SoHeoConSinhRa_muctieu + " con";
+            ODeItCon_muctieu = ODeItCon_muctieuClone;
+            Odeitcon_muctieu.Content = "Mục tiêu: " + ODeItCon_muctieu + "%";
+            SoHeoConSong_MucTieu = SoHeoConSong_MucTieuClone;
+            Soheoconsong_muctieu.Content = "Mục tiêu: " + SoHeoConSong_MucTieu + " con";
+            SoHeoCaiSua_muctieu = SoHeoCaiSua_muctieuClone;
+            Soheocaisua_muctieu.Content = "Mục tiêu: " + SoHeoCaiSua_muctieu + " con";
+            SoConChetTruocKhiCaiSua_MucTieu = SoConChetTruocKhiCaiSua_MucTieuClone;
+            Tylechet_muctieu.Content = "Mục tiêu: " + SoConChetTruocKhiCaiSua_MucTieu + "%";
+            ThoiGianMangThai_MucTieu = ThoiGianMangThai_MucTieuClone;
+            Thoigianmangthai_muctieu.Content = "Mục tiêu: " + ThoiGianMangThai_MucTieu + " ngày";
+            SoNgayCaiSua_MucTieu = SoNgayCaiSua_MucTieuClone;
+            Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
+            SoNgayKhongLamViec_MucTieu = SoNgayKhongLamViec_MucTieuClone;
+            Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
+            TrungBnhLua_MucTieu = TrungBnhLua_MucTieuClone;
+            Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
+            SoHeoTrongNam_MucTieu = SoHeoTrongNam_MucTieuClone;
+            Soheotrongnam_muctieu.Content = "Mục tiêu: " + SoHeoTrongNam_MucTieu + " con";
+        }
+
         void hamHienView(int y1, int y2)
         {
+            CT_PHIEUHEO test;
+            CT_PHIEUHEO test1;
+
             foreach (var t in DataProvider.Ins.DB.LICHPHOIGIONGs)
             {
+                //test = (CT_PHIEUHEO)t.HEO.CT_PHIEUHEO;
+                //test1 = (CT_PHIEUHEO)t.HEO1.CT_PHIEUHEO;
                 if (t.NgayPhoiGiong != null && t.NgayPhoiGiong.Value.Year >= y1 && t.NgayPhoiGiong.Value.Year <= y2)
                 {
                     SoHeo += 2;
@@ -100,6 +155,17 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                     { SoHeoDuc++; }
                     else
                     { SoHeoNai++; }
+
+                    /*if(t.HEO.CT_PHIEUHEO != null && BanHeo.Contains(test) != true)
+                    {
+                        BanHeo.Add(test);
+                        SoHeoDuocban++;
+                    }
+                    if (t.HEO1.CT_PHIEUHEO != null && BanHeo.Contains(test1) != true)
+                    {
+                        BanHeo.Add(test1);
+                        SoHeoDuocban++;
+                    }*/
 
                     if (t.HEO1.GioiTinh == "Đực")
                     { SoHeoDuc++; }
@@ -153,17 +219,25 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                     }
                 }
             }
-            Tylede();
-            SoHeoDe_lua();
-            TinhsocondeIt();
-            SoconSinhraConSong();
-            SoHeoCaiSua();
-            SoConChetTruocKhiCaiSua();
-            ThoiGianMangThai();
-            SoNgayCaiSua();
-            SongayHeoNaiKhongLamViec();
-            Trungbinhlua();
-            SoHeoConTrongNam();
+            try
+            {
+                Tylede();
+                SoHeoDe_lua();
+                TinhsocondeIt();
+                SoconSinhraConSong();
+                SoHeoCaiSua();
+                SoConChetTruocKhiCaiSua();
+                ThoiGianMangThai();
+                SoNgayCaiSua();
+                SongayHeoNaiKhongLamViec();
+                Trungbinhlua();
+                SoHeoConTrongNam();
+            }
+            catch (Exception)
+            {
+
+
+            }
         }
 
         void ResetView()
@@ -195,7 +269,11 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         }
         void Tylede()
         {
-            float tyle = ((float)SoHeoDe / SoHeoNai) * 100;
+            float tyle;
+            if (SoHeoNai != 0)
+            { tyle = ((float)SoHeoDe / SoHeoNai) * 100; }
+            else
+            { tyle = 0; }
             Tylede_main.Content = Math.Round(tyle, 2) + "%";
             Tylede_muctieu_textbox.Content = "Mục tiêu: " + Tylede_muctieu + "%";
             if (tyle < 82)
@@ -217,7 +295,10 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         void SoHeoDe_lua()
         {
             Soheoconsinhra_lua_muctieu.Content = "Mục tiêu: " + SoHeoConSinhRa_muctieu + " con";
-            SoConDe_Lua_TB = (double)SoConDe/SoLuaDe;
+            if (SoLuaDe != 0)
+            { SoConDe_Lua_TB = (double)SoConDe / SoLuaDe; }
+            else
+            { SoConDe_Lua_TB = 0; }
             Soheoconsinhra_lua.Content = SoConDe_Lua_TB + " con";
             if (SoConDe_Lua_TB < SoHeoConSinhRa_muctieu)
             {
@@ -234,11 +315,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 Soheoconsinhra_lua_Icon.Source = imageSource;
             }
         }
-        
+
         void TinhsocondeIt()
         {
+            double tyle;
             Odeitcon_muctieu.Content = "Mục tiêu: " + ODeItCon_muctieu + "%";
-            double tyle = (double)(SoODeItCon/SoLuaDe) * 100;
+            if (SoLuaDe != 0)
+            { tyle = (double)(SoODeItCon / SoLuaDe) * 100; }
+            else { tyle = 0; }
             Odeitcon.Content = Math.Round(tyle, 2) + "%";
             if (tyle > ODeItCon_muctieu)
             {
@@ -258,8 +342,15 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         void SoconSinhraConSong()
         {
-            SoConDeThucTe_TB = (double)SoConDeThucTe / SoLuaDe;
-            Soheoconsong_muctieu.Content = "Mục tiêu: " + 11 + " con";
+            if (SoLuaDe != 0)
+            {
+                SoConDeThucTe_TB = (double)SoConDeThucTe / SoLuaDe;
+            }
+            else
+            {
+                SoConDeThucTe_TB = 0;
+            }
+            Soheoconsong_muctieu.Content = "Mục tiêu: " + SoHeoConSong_MucTieu + " con";
             Soheoconsong.Content = Math.Round(SoConDeThucTe_TB, 2) + " con";
             if (SoConDeThucTe_TB < 11)
             {
@@ -279,8 +370,11 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         void SoHeoCaiSua()
         {
-            Soheocaisua_muctieu.Content = "Mục tiêu: " + 9.5 + " con";
-            SoConCaiSua_TB = (double)(SoConCaiSua/SoLuaDe);
+            Soheocaisua_muctieu.Content = "Mục tiêu: " + SoHeoCaiSua_muctieu + " con";
+            if (SoLuaDe != 0)
+            { SoConCaiSua_TB = (double)(SoConCaiSua / SoLuaDe); }
+            else
+            { SoConCaiSua_TB = 0; }
             Soheocaisua.Content = Math.Round(SoConCaiSua_TB, 2) + " con";
             if (SoConCaiSua_TB < 9.5)
             {
@@ -298,12 +392,15 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             }
 
         }
-        
+
         void SoConChetTruocKhiCaiSua()
         {
+            double tyle;
             double temp = SoConDeThucTe_TB - SoConCaiSua_TB;
-            Tylechet_muctieu.Content = "Mục tiêu: " + 18 + "%";
-            double tyle = (double)(temp / SoConDeThucTe_TB) * 100;
+            Tylechet_muctieu.Content = "Mục tiêu: " + SoConChetTruocKhiCaiSua_MucTieu + "%";
+            if (SoConDeThucTe_TB != 0)
+            { tyle = (double)(temp / SoConDeThucTe_TB) * 100; }
+            else { tyle = 0; }
             Tylechet.Content = Math.Round(tyle, 2) + "%";
             if (tyle > 18)
             {
@@ -323,8 +420,13 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         void ThoiGianMangThai()
         {
-            Thoigianmangthai_muctieu.Content = "Mục tiêu: " + "110-117" + " ngày";
-            Songaymangthai_tb = (double)(Songaymangthai_tb / SoLuaDe);
+            Thoigianmangthai_muctieu.Content = "Mục tiêu: " + ThoiGianMangThai_MucTieu + " ngày";
+            if (SoLuaDe != 0)
+            { Songaymangthai_tb = (double)(Songaymangthai_tb / SoLuaDe); }
+            else
+            {
+                Songaymangthai_tb = 0;
+            }
             Thoigianmangthai.Content = Math.Round(Songaymangthai_tb, 2) + " ngày";
             if (Songaymangthai_tb < 110 || Songaymangthai_tb > 117)
             {
@@ -341,11 +443,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 Thoigianmangthai_Icon.Source = imageSource;
             }
         }
-        
+
         void SoNgayCaiSua()
         {
-            Songaycaisua_muctieu.Content = "Mục tiêu: " + "20-28" + " ngày";
-            Songaycaisua_tb = (double)(Songaycaisua_tb / SoLuaDe);
+            Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
+            if (SoLuaDe != 0)
+                Songaycaisua_tb = (double)(Songaycaisua_tb / SoLuaDe);
+            else
+                Songaycaisua_tb = 0;
             Songaycaisua.Content = Math.Round(Songaycaisua_tb, 2) + " ngày";
             if (Songaycaisua_tb < 20 || Songaycaisua_tb > 28)
             {
@@ -365,8 +470,11 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         void SongayHeoNaiKhongLamViec()
         {
-            SoNgayKhongLamViec_muctieu.Content = "Mục tiêu: " + "12" + " ngày";
-            Songaychophoigiong_tb = (double)(Songaychophoigiong_tb / SoLuaDe);
+            SoNgayKhongLamViec_muctieu.Content = "Mục tiêu: " + SoNgayKhongLamViec_MucTieu + " ngày";
+            if (SoLuaDe != 0)
+                Songaychophoigiong_tb = (double)(Songaychophoigiong_tb / SoLuaDe);
+            else
+                Songaychophoigiong_tb = 0;
             SoNgayKhongLamViec.Content = Math.Round(Songaychophoigiong_tb, 2) + " ngày";
             if (Songaychophoigiong_tb > 12)
             {
@@ -383,23 +491,26 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 SoNgayKhongLamViec_Icon.Source = imageSource;
             }
         }
-        
+
         void Trungbinhlua()
         {
-            TrungbinhLua_muctieu.Content = "Mục tiêu: " + "2,3" + " lứa";
-            SoLuaDeTrongMotNam = (double)(365 / (Songaycaisua_tb + Songaychophoigiong_tb + Songaymangthai_tb));
+            TrungbinhLua_muctieu.Content = "Mục tiêu: " + TrungBnhLua_MucTieu + " lứa";
+            if (Songaycaisua_tb + Songaychophoigiong_tb + Songaymangthai_tb != 0)
+                SoLuaDeTrongMotNam = (double)(365 / (Songaycaisua_tb + Songaychophoigiong_tb + Songaymangthai_tb));
+            else
+                SoLuaDeTrongMotNam = 0;
             TrungbinhLua.Content = Math.Round(SoLuaDeTrongMotNam, 2) + " lứa";
             if (SoLuaDeTrongMotNam < 2.3)
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
-                TrungbinhLua.Foreground = Brushes.Red;
+                TrungbinhLua.Foreground = System.Windows.Media.Brushes.Red;
                 TrungbinhLua.FontWeight = FontWeights.Bold;
                 TrungbinhLua_Icon.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
-                TrungbinhLua.Foreground = Brushes.Green;
+                TrungbinhLua.Foreground = System.Windows.Media.Brushes.Green;
                 TrungbinhLua.FontWeight = FontWeights.Bold;
                 TrungbinhLua_Icon.Source = imageSource;
             }
@@ -407,25 +518,52 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         void SoHeoConTrongNam()
         {
-            Soheotrongnam_muctieu.Content = "Mục tiêu: " + "22" + " con";
+            Soheotrongnam_muctieu.Content = "Mục tiêu: " + SoHeoTrongNam_MucTieu + " con";
             SoConHeoSuaTrongMotNam = (double)(SoConCaiSua_TB * SoLuaDeTrongMotNam);
             Soheotrongnam.Content = Math.Round(SoConHeoSuaTrongMotNam, 2) + " con";
             if (SoConHeoSuaTrongMotNam < 22)
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
-                Soheotrongnam.Foreground = Brushes.Red;
+                Soheotrongnam.Foreground = System.Windows.Media.Brushes.Red;
                 Soheotrongnam.FontWeight = FontWeights.Bold;
-                Soheotrongnam_Icon.Source = imageSource;
+                //Soheotrongnam_Icon.Source = imageSource;
+                Soheotrongnam_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
-                Soheotrongnam.Foreground = Brushes.Green;
+                Soheotrongnam.Foreground = System.Windows.Media.Brushes.Green;
                 Soheotrongnam.FontWeight = FontWeights.Bold;
-                Soheotrongnam_Icon.Source = imageSource;
+                //Soheotrongnam_Icon.Source = imageSource;
+                Soheotrongnam_button_image.Source = imageSource;
             }
         }
-        
+
+        void DoanhThuTrungBinh()
+        {
+            int temp = 0;
+            foreach (var item in BanHeo)
+            {
+                temp += int.Parse(item.DonGia.ToString());
+            }
+            DoanhThuUocTinh_uoctinh.Content = "Mục tiêu: " + (1400000 * SoConHeoSuaTrongMotNam) + " triệu";
+            DoanhThuUocTinh.Content = (double)temp / SoHeoDuocban + " triệu";
+            if ((temp / SoHeoDuocban) < (1400000 * SoConHeoSuaTrongMotNam))
+            {
+                ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
+                DoanhThuUocTinh.Foreground = System.Windows.Media.Brushes.Red;
+                DoanhThuUocTinh.FontWeight = FontWeights.Bold;
+                DoanhThuUocTinh_Icon.Source = imageSource;
+            }
+            else
+            {
+                ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
+                DoanhThuUocTinh.Foreground = System.Windows.Media.Brushes.Green;
+                DoanhThuUocTinh.FontWeight = FontWeights.Bold;
+                DoanhThuUocTinh_Icon.Source = imageSource;
+            }
+        }
+
         private void _1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Doanh số không đạt chỉ tiêu dự kiến, không đủ tiền chi trả cho nhân viên và chi phí vận hành", "Chi tiết", MessageBoxButton.OK, MessageBoxImage.Warning);
@@ -433,16 +571,115 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 
         private void zoom_in_Click(object sender, RoutedEventArgs e)
         {
-            UpdateViewBox(50);
+
+            var scaler = Zoomviewbox.LayoutTransform as ScaleTransform;
+
+            if (scaler == null)
+            {
+                // Currently no zoom, so go instantly to max zoom.
+                Zoomviewbox.LayoutTransform = new ScaleTransform(1.5, 1.5);
+            }
+            else
+            {
+                double curZoomFactor = scaler.ScaleX;
+
+                // If the current ScaleX and ScaleY properties were set by animation,
+                // we'll have to remove the animation before we can explicitly set
+                // them to "local" values.
+
+                if (scaler.HasAnimatedProperties)
+                {
+                    // Remove the animation by assigning a null
+                    // AnimationTimeline to the properties.
+                    // Note that this causes them to revert to
+                    // their most recently assigned "local" values.
+
+                    scaler.BeginAnimation(ScaleTransform.ScaleXProperty, null);
+                    scaler.BeginAnimation(ScaleTransform.ScaleYProperty, null);
+                }
+
+                if (curZoomFactor < 3.0)
+                {
+                    scaler.ScaleX += 0.5;
+                    scaler.ScaleY += 0.5;
+                }
+            }
         }
 
-        private void UpdateViewBox(int newValue)
+        void enterCard(ToggleButton toggle, Card c)
         {
-            if ((Zoomviewbox.Width >= 0) && Zoomviewbox.Height >= 0)
+            toggle.IsChecked = true;
+            toggle.Background = System.Windows.Media.Brushes.Yellow;
+            c.Background = Brushes.WhiteSmoke;
+        }
+
+        void leaveCard(ToggleButton toggle, Card c)
+        {
+            toggle.IsChecked = false;
+            toggle.Background = System.Windows.Media.Brushes.White;
+            c.Background = Brushes.White;
+        }
+        void checkclick(ToggleButton toggle)
+        {
+            if (Soheotrongnam_button.IsChecked == true)
             {
-                Zoomviewbox.Width += newValue;
-                Zoomviewbox.Height += newValue;
+                toggle.Background = System.Windows.Media.Brushes.Yellow;
+            }
+            else
+            {
+                toggle.Background = System.Windows.Media.Brushes.White;
+            }
+        }
+        private void the2_MouseEnter(object sender, MouseEventArgs e)
+        {
+            enterCard(Soheotrongnam_button, the2);
+        }
+
+        private void the2_MouseLeave(object sender, MouseEventArgs e)
+        {
+            leaveCard(Soheotrongnam_button, the2);
+        }
+
+        private void Soheotrongnam_button_Click(object sender, RoutedEventArgs e)
+        {
+            checkclick(Soheotrongnam_button);
+        }
+
+        private void zoom_out_Click(object sender, RoutedEventArgs e)
+        {
+            var scaler = Zoomviewbox.LayoutTransform as ScaleTransform;
+
+            if (scaler == null)
+            {
+                // Currently no zoom, so go instantly to max zoom.
+                Zoomviewbox.LayoutTransform = new ScaleTransform(1.5, 1.5);
+            }
+            else
+            {
+                double curZoomFactor = scaler.ScaleX;
+
+                // If the current ScaleX and ScaleY properties were set by animation,
+                // we'll have to remove the animation before we can explicitly set
+                // them to "local" values.
+
+                if (scaler.HasAnimatedProperties)
+                {
+                    // Remove the animation by assigning a null
+                    // AnimationTimeline to the properties.
+                    // Note that this causes them to revert to
+                    // their most recently assigned "local" values.
+
+                    scaler.BeginAnimation(ScaleTransform.ScaleXProperty, null);
+                    scaler.BeginAnimation(ScaleTransform.ScaleYProperty, null);
+                }
+
+                if (curZoomFactor > 1.0)
+                {
+                    scaler.ScaleX -= 0.5;
+                    scaler.ScaleY -= 0.5;
+                }
             }
         }
     }
 }
+

@@ -19,9 +19,10 @@
         <Grid Grid.Row="0" Margin="0,13,0.333,0" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="cot1" Width="23*"/>
-                <ColumnDefinition Width="241*"/>
-                <ColumnDefinition x:Name="cot2" Width="265*"/>
-                <ColumnDefinition x:Name="cot3" Width="264*"/>
+                <ColumnDefinition Width="243*"/>
+                <ColumnDefinition x:Name="cot2" Width="267*"/>
+                <ColumnDefinition x:Name="cot3" Width="144*"/>
+                <ColumnDefinition Width="122*"/>
             </Grid.ColumnDefinitions>
             <ComboBox
                     x:Name="OutlinedComboBox"
@@ -42,7 +43,8 @@
                 <ComboBoxItem Content="2022"/>
             </ComboBox>
 
-            <Button x:Name="Boloc" Grid.Column="3"  Width="200" Background="#3ab19b" HorizontalAlignment="Left" Content="Bộ Lọc" Margin="29.667,12,0,11" Click="BoLoc"/>
+            <Button x:Name="Boloc" Grid.Column="3" Background="#3ab19b" Content="Bộ Lọc" Margin="20,19,20,16" Click="BoLoc"/>
+            <Button x:Name="Muctieu_button_1" Grid.Column="4" Background="#3ab19b" Content="Đặt mục tiêu" Margin="8,18,10,17" Click="Muctieu_button"/>
         </Grid>
         <ScrollViewer Margin="0,0,0.333,-0.333" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
             <Grid x:Name="showmake" RenderTransformOrigin="0.5,0.5" Background="#FFF8F6F6" ScrollViewer.CanContentScroll="True" Margin="10,0,10,10"/>

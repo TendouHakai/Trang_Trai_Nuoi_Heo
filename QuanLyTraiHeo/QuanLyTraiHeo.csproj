@@ -259,6 +259,12 @@
     <Compile Include="View\Windows\Sơ đồ\wSoDo.xaml.cs">
       <DependentUpon>wSoDo.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml.cs">
+      <DependentUpon>DatMucTieu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml.cs">
+      <DependentUpon>ThongTinCanBiet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
     </Compile>
@@ -470,6 +476,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\UC\UClistThongBaoTrongNgay.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -165,3 +165,7 @@ D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\L�
 D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\BouncyCastle.Crypto.dll
 D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\GemBox.Spreadsheet.dll
 D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\bin\Debug\GemBox.Spreadsheet.xml
+D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\DatMucTieu.g.cs
+D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.g.cs
+D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\DatMucTieu.baml
+D:\programer\Github\Trang_Trai_Nuoi_Heo\QuanLyTraiHeo\obj\Debug\View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.baml
