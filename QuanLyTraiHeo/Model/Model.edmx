@@ -5,6 +5,19 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="TRANGTRAINUOIHEOModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="BAOCAOTONKHO">
+          <Key>
+            <PropertyRef Name="MaBCTK" />
+          </Key>
+          <Property Name="MaBCTK" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="Thang" Type="int" />
+          <Property Name="Nam" Type="int" />
+          <Property Name="MaHH" Type="char" MaxLength="16" />
+          <Property Name="TonDau" Type="int" />
+          <Property Name="TonCuoi" Type="int" />
+          <Property Name="SoLuongNhapThem" Type="int" />
+          <Property Name="SoLuongXuatRa" Type="int" />
+        </EntityType>
         <EntityType Name="CHUCVU">
           <Key>
             <PropertyRef Name="MaChucVu" />
@@ -109,6 +122,17 @@
           <Property Name="MaHeoMe" Type="char" MaxLength="16" />
           <Property Name="NguonGoc" Type="nvarchar" MaxLength="255" />
           <Property Name="TinhTrang" Type="nvarchar" MaxLength="512" />
+        </EntityType>
+        <EntityType Name="LICHCHUONG">
+          <Key>
+            <PropertyRef Name="MaLichChuong" />
+          </Key>
+          <Property Name="MaLichChuong" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="MaChuong" Type="char" MaxLength="16" />
+          <Property Name="NgayLam" Type="smalldatetime" />
+          <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
+          <Property Name="TenLich" Type="nvarchar" MaxLength="50" />
+          <Property Name="Mota" Type="nvarchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="LICHPHOIGIONG">
           <Key>
@@ -245,6 +269,16 @@
           <Property Name="MaDoiTac" Type="char" MaxLength="16" />
           <Property Name="TongTien" Type="int" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
         <EntityType Name="THAMSO">
           <Key>
             <PropertyRef Name="id" />
@@ -264,6 +298,18 @@
           <Property Name="NoiDung" Type="ntext" />
           <Property Name="ThoiGian" Type="smalldatetime" />
         </EntityType>
+        <Association Name="FK_BCTK_HH">
+          <End Role="HANGHOA" Type="Self.HANGHOA" Multiplicity="0..1" />
+          <End Role="BAOCAOTONKHO" Type="Self.BAOCAOTONKHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HANGHOA">
+              <PropertyRef Name="MaHangHoa" />
+            </Principal>
+            <Dependent Role="BAOCAOTONKHO">
+              <PropertyRef Name="MaHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_CT_MC">
           <End Role="LOAICHUONG" Type="Self.LOAICHUONG" Multiplicity="0..1" />
           <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="*" />
@@ -417,6 +463,18 @@
             </Principal>
             <Dependent Role="HEO">
               <PropertyRef Name="MaLoaiHeo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LC_MC">
+          <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="0..1" />
+          <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUONGTRAI">
+              <PropertyRef Name="MaChuong" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaChuong" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -601,6 +659,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="TRANGTRAINUOIHEOModelStoreContainer">
+          <EntitySet Name="BAOCAOTONKHO" EntityType="Self.BAOCAOTONKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUCVU" EntityType="Self.CHUCVU" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CHUONGTRAI" EntityType="Self.CHUONGTRAI" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="CT_PHIEUHANGHOA" EntityType="Self.CT_PHIEUHANGHOA" Schema="dbo" store:Type="Tables" />
@@ -611,6 +670,7 @@
           <EntitySet Name="GIONGHEO" EntityType="Self.GIONGHEO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HANGHOA" EntityType="Self.HANGHOA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HEO" EntityType="Self.HEO" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LICHCHUONG" EntityType="Self.LICHCHUONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICHPHOIGIONG" EntityType="Self.LICHPHOIGIONG" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LICHTIEMHEO" EntityType="Self.LICHTIEMHEO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ListActionDetail" EntityType="Self.ListActionDetail" Schema="dbo" store:Type="Tables" />
@@ -623,8 +683,13 @@
           <EntitySet Name="PHIEUHEO" EntityType="Self.PHIEUHEO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUKIEMKHO" EntityType="Self.PHIEUKIEMKHO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PHIEUSUACHUA" EntityType="Self.PHIEUSUACHUA" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="THAMSO" EntityType="Self.THAMSO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongBao" EntityType="Self.ThongBao" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_BCTK_HH" Association="Self.FK_BCTK_HH">
+            <End Role="HANGHOA" EntitySet="HANGHOA" />
+            <End Role="BAOCAOTONKHO" EntitySet="BAOCAOTONKHO" />
+          </AssociationSet>
           <AssociationSet Name="FK_CT_MC" Association="Self.FK_CT_MC">
             <End Role="LOAICHUONG" EntitySet="LOAICHUONG" />
             <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
@@ -676,6 +741,10 @@
           <AssociationSet Name="FK_H_MLH" Association="Self.FK_H_MLH">
             <End Role="LOAIHEO" EntitySet="LOAIHEO" />
             <End Role="HEO" EntitySet="HEO" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LC_MC" Association="Self.FK_LC_MC">
+            <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
           </AssociationSet>
           <AssociationSet Name="FK_LPG_MHC" Association="Self.FK_LPG_MHC">
             <End Role="HEO" EntitySet="HEO" />
@@ -879,6 +948,17 @@
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
             <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOAs" />
           </AssociationSet>
+          <EntitySet Name="BAOCAOTONKHOes" EntityType="TRANGTRAINUOIHEOModel.BAOCAOTONKHO" />
+          <EntitySet Name="LICHCHUONGs" EntityType="TRANGTRAINUOIHEOModel.LICHCHUONG" />
+          <EntitySet Name="sysdiagrams" EntityType="TRANGTRAINUOIHEOModel.sysdiagram" />
+          <AssociationSet Name="FK_LC_MC" Association="TRANGTRAINUOIHEOModel.FK_LC_MC">
+            <End Role="CHUONGTRAI" EntitySet="CHUONGTRAIs" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BCTK_HH" Association="TRANGTRAINUOIHEOModel.FK_BCTK_HH">
+            <End Role="HANGHOA" EntitySet="HANGHOAs" />
+            <End Role="BAOCAOTONKHO" EntitySet="BAOCAOTONKHOes" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="CHUCVU">
           <Key>
@@ -904,6 +984,7 @@
           <NavigationProperty Name="LOAICHUONG" Relationship="TRANGTRAINUOIHEOModel.FK_CT_MC" FromRole="CHUONGTRAI" ToRole="LOAICHUONG" />
           <NavigationProperty Name="CT_PHIEUSUACHUA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PSC_MC" FromRole="CHUONGTRAI" ToRole="CT_PHIEUSUACHUA" />
           <NavigationProperty Name="HEOs" Relationship="TRANGTRAINUOIHEOModel.FK_H_CT" FromRole="CHUONGTRAI" ToRole="HEO" />
+          <NavigationProperty Name="LICHCHUONGs" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="CHUONGTRAI" ToRole="LICHCHUONG" />
         </EntityType>
         <EntityType Name="CT_PHIEUHANGHOA">
           <Key>
@@ -987,6 +1068,7 @@
           <Property Name="LoaiHangHoa" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="CT_PHIEUHANGHOA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PHH_MHH" FromRole="HANGHOA" ToRole="CT_PHIEUHANGHOA" />
           <NavigationProperty Name="CT_PHIEUKIEMKHO" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PKK_MHH" FromRole="HANGHOA" ToRole="CT_PHIEUKIEMKHO" />
+          <NavigationProperty Name="BAOCAOTONKHOes" Relationship="TRANGTRAINUOIHEOModel.FK_BCTK_HH" FromRole="HANGHOA" ToRole="BAOCAOTONKHO" />
         </EntityType>
         <EntityType Name="HEO">
           <Key>
@@ -1531,6 +1613,66 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="BAOCAOTONKHO">
+          <Key>
+            <PropertyRef Name="MaBCTK" />
+          </Key>
+          <Property Name="MaBCTK" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="Thang" Type="Int32" />
+          <Property Name="Nam" Type="Int32" />
+          <Property Name="MaHH" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="TonDau" Type="Int32" />
+          <Property Name="TonCuoi" Type="Int32" />
+          <Property Name="SoLuongNhapThem" Type="Int32" />
+          <Property Name="SoLuongXuatRa" Type="Int32" />
+          <NavigationProperty Name="HANGHOA" Relationship="TRANGTRAINUOIHEOModel.FK_BCTK_HH" FromRole="BAOCAOTONKHO" ToRole="HANGHOA" />
+        </EntityType>
+        <EntityType Name="LICHCHUONG">
+          <Key>
+            <PropertyRef Name="MaLichChuong" />
+          </Key>
+          <Property Name="MaLichChuong" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="MaChuong" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="NgayLam" Type="DateTime" Precision="0" />
+          <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TenLich" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="CHUONGTRAI" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="LICHCHUONG" ToRole="CHUONGTRAI" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_LC_MC">
+          <End Type="TRANGTRAINUOIHEOModel.CHUONGTRAI" Role="CHUONGTRAI" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CHUONGTRAI">
+              <PropertyRef Name="MaChuong" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaChuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BCTK_HH">
+          <End Type="TRANGTRAINUOIHEOModel.HANGHOA" Role="HANGHOA" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.BAOCAOTONKHO" Role="BAOCAOTONKHO" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="HANGHOA">
+              <PropertyRef Name="MaHangHoa" />
+            </Principal>
+            <Dependent Role="BAOCAOTONKHO">
+              <PropertyRef Name="MaHH" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1813,6 +1955,43 @@
                 <ScalarProperty Name="C_MaNguoiGui" ColumnName="_MaNguoiGui" />
                 <ScalarProperty Name="C_MaNguoiNhan" ColumnName="_MaNguoiNhan" />
                 <ScalarProperty Name="MaThongBao" ColumnName="MaThongBao" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BAOCAOTONKHOes">
+            <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.BAOCAOTONKHO">
+              <MappingFragment StoreEntitySet="BAOCAOTONKHO">
+                <ScalarProperty Name="SoLuongXuatRa" ColumnName="SoLuongXuatRa" />
+                <ScalarProperty Name="SoLuongNhapThem" ColumnName="SoLuongNhapThem" />
+                <ScalarProperty Name="TonCuoi" ColumnName="TonCuoi" />
+                <ScalarProperty Name="TonDau" ColumnName="TonDau" />
+                <ScalarProperty Name="MaHH" ColumnName="MaHH" />
+                <ScalarProperty Name="Nam" ColumnName="Nam" />
+                <ScalarProperty Name="Thang" ColumnName="Thang" />
+                <ScalarProperty Name="MaBCTK" ColumnName="MaBCTK" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LICHCHUONGs">
+            <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.LICHCHUONG">
+              <MappingFragment StoreEntitySet="LICHCHUONG">
+                <ScalarProperty Name="Mota" ColumnName="Mota" />
+                <ScalarProperty Name="TenLich" ColumnName="TenLich" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="NgayLam" ColumnName="NgayLam" />
+                <ScalarProperty Name="MaChuong" ColumnName="MaChuong" />
+                <ScalarProperty Name="MaLichChuong" ColumnName="MaLichChuong" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,24 +13,32 @@
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Vertical" Width="310">
-                        <TextBlock x:Name="txt_tenNhanvien" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding NHANVIEN.HoTen}">
+                        <TextBlock x:Name="txt_tenNhanvien" FontWeight="Bold" TextWrapping="Wrap" Text="{Binding tb.NHANVIEN.HoTen}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding tb.TinhTrang}" Value="Chưa đọc"></Condition>
+                                                <Condition Binding="{Binding isTBGui}" Value="1"></Condition>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Foreground" Value="#2596be"></Setter>
-                                        </DataTrigger>
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>
                         </TextBlock>
-                        <TextBlock x:Name="txt_Tieude" FontStyle="Italic" FontSize="10" Text="{Binding TieuDe}">
+                        <TextBlock x:Name="txt_Tieude" FontStyle="Italic" FontSize="10" Text="{Binding tb.TieuDe}">
                             <TextBlock.Style>
                                 <Style TargetType="TextBlock">
                                     <Style.Triggers>
-                                        <DataTrigger Binding="{Binding TinhTrang}" Value="Chưa đọc">
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition Binding="{Binding tb.TinhTrang}" Value="Chưa đọc"></Condition>
+                                                <Condition Binding="{Binding isTBGui}" Value="0"></Condition>
+                                            </MultiDataTrigger.Conditions>
                                             <Setter Property="Foreground" Value="#2596be"></Setter>
-                                        </DataTrigger>
+                                        </MultiDataTrigger>
                                     </Style.Triggers>
                                 </Style>
                             </TextBlock.Style>

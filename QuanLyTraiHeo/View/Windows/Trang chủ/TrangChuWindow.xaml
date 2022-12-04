@@ -20,6 +20,7 @@
         DataContext="{StaticResource TrangChuVM}"
         Height="768"
         Width="1024"
+        Name="TrangChuW"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
     <Grid Background="#f3f3f9" DataContext="{StaticResource TrangChuVM}">
         <Grid.RowDefinitions>
@@ -58,10 +59,14 @@
                                     Kind="Charity" />
                                 </Button>
                             </Grid>
-                            <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">521 con</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0" Text="{Binding SoLuongHeoTot}"></TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">con</TextBlock>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ChartPie" Width="25" Height="25" Foreground="#099885"/>
-                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#099885">85%</TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#099885" Text="{Binding PhanTramHeoTot}"></TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#099885">%</TextBlock>
                                 <TextBlock FontSize="13" VerticalAlignment="Center"> Tổng số heo</TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -84,10 +89,14 @@
                                     Kind="EmoticonSick" />
                                 </Button>
                             </Grid>
-                            <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">20 con</TextBlock>
+                            <StackPanel Orientation="Horizontal"> 
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0" Text="{Binding SoLuongHeoBenhChet}"></TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">con</TextBlock>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ChartPie" Width="25" Height="25" Foreground="#f06548"/>
-                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548">15%</TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548" Text="{Binding PhanTramHeoBenhChet}"></TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548">%</TextBlock>
                                 <TextBlock FontSize="13" VerticalAlignment="Center"> Tổng số heo</TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -110,10 +119,14 @@
                                     Kind="Fence" />
                                 </Button>
                             </Grid>
-                            <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">10 chuồng</TextBlock>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0" Text="{Binding SoLuongChuongHong}"></TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">chuồng</TextBlock>
+                            </StackPanel>
                             <StackPanel Orientation="Horizontal">
                                 <materialDesign:PackIcon Kind="ChartPie" Width="25" Height="25" Foreground="#f06548"/>
-                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548">5%</TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548" Text="{Binding PhanTramChuongHong}"></TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#f06548">%</TextBlock>
                                 <TextBlock FontSize="13" VerticalAlignment="Center"> Tổng số chuồng nuôi</TextBlock>
                             </StackPanel>
                         </StackPanel>
@@ -136,11 +149,51 @@
                                     Kind="CurrencyUsd" />
                                 </Button>
                             </Grid>
-                            <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">7,250,00 VND</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ArrowTopRightThin" Width="25" Height="25" Foreground="#099885"/>
-                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#099885">15%</TextBlock>
-                                <TextBlock FontSize="13" VerticalAlignment="Center"> So với hôm qua</TextBlock>
+                                <TextBlock x:Name="tb_DoanhThu" FontWeight="Bold" FontSize="22" Margin="10,0,0,0" Text="{Binding DoanhThuTrongNgay}">
+                                </TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">VND</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" >
+                                <materialDesign:PackIcon Name="icon_DoanhThu" Width="25" Height="25">
+                                    <materialDesign:PackIcon.Style>
+                                        <Style TargetType="materialDesign:PackIcon">
+                                            <Setter Property="Kind" Value="ArrowTopRightThin"></Setter>
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsTangDoanhThu}" Value="false">
+                                                    <Setter Property="Kind" Value="ArrowBottomRightThin"></Setter>
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </materialDesign:PackIcon.Style>
+                                </materialDesign:PackIcon>
+                                <TextBlock Name="Tb_PhanTramDoanhThu" Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Text="{Binding TangTruongDoanhThu}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsTangDoanhThu}" Value="false">
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock Name="Tb_PhanTramDT" Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Text="%">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsTangDoanhThu}" Value="false">
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock FontSize="13" VerticalAlignment="Center" Text=" So với hôm qua"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                         <Rectangle DockPanel.Dock="Right" HorizontalAlignment="Right" Width="0.3" Margin="0,8,0,8" Stroke="Black" />
@@ -162,11 +215,50 @@
                                     Kind="CurrencyUsdOff" />
                                 </Button>
                             </Grid>
-                            <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">1,250,00 VND</TextBlock>
                             <StackPanel Orientation="Horizontal">
-                                <materialDesign:PackIcon Kind="ArrowBottomRightThin" Width="25" Height="25" Foreground="#099885"/>
-                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Foreground="#099885">15%</TextBlock>
-                                <TextBlock FontSize="13" VerticalAlignment="Center"> So với hôm qua</TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0" Text="{Binding ChiTieuTrongNgay}"></TextBlock>
+                                <TextBlock FontWeight="Bold" FontSize="22" Margin="10,0,0,0">VND</TextBlock>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <materialDesign:PackIcon Width="25" Height="25">
+                                    <materialDesign:PackIcon.Style>
+                                        <Style TargetType="materialDesign:PackIcon">
+                                            <Setter Property="Kind" Value="ArrowBottomRightThin"></Setter>
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsGiamChiPhi}" Value="false">
+                                                    <Setter Property="Kind" Value="ArrowTopRightThin"></Setter>
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter> 
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </materialDesign:PackIcon.Style>
+                                </materialDesign:PackIcon>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Text="{Binding SuyGiamChiPhi}">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsGiamChiPhi}" Value="false">
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock Margin="5,0,0,0" FontSize="13" VerticalAlignment="Center" Text="%">
+                                    <TextBlock.Style>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="Foreground" Value="#099885"></Setter>
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding IsGiamChiPhi}" Value="false">
+                                                    <Setter Property="Foreground" Value="#f06548"></Setter>
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </TextBlock.Style>
+                                </TextBlock>
+                                <TextBlock FontSize="13" VerticalAlignment="Center" Text=" So với hôm qua"></TextBlock>
                             </StackPanel>
                         </StackPanel>
                         <Rectangle DockPanel.Dock="Right" HorizontalAlignment="Right" Width="0.3" Margin="0,8,0,8" Stroke="Black" />
@@ -185,24 +277,11 @@
                 <StackPanel Orientation="Vertical">
                     <materialDesign:Card Height="30">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu đàn heo</TextBlock>
-                            <TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Tháng"
-                                     Margin="0,3,0,5">
-                            </TextBox>
-                            <TextBox Grid.Column="2" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Năm"
-                                     Margin="0,3,0,5">
-                            </TextBox>
                         </Grid>
                     </materialDesign:Card>
-                    <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="189" Margin="10,10,10,0" FontStretch="Medium">
-                        <lvc:PieChart.Series>
+                    <lvc:PieChart Series="{Binding SeriesCoCauHeo}" LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="189" Margin="10,10,10,0" FontStretch="Medium">
+                        <!--<lvc:PieChart.Series>
                             <lvc:PieSeries Title="Heo nái" Values="30" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="Heo đực giống" Values="20" DataLabels="True" 
@@ -211,7 +290,7 @@
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="Heo thịt" Values="200" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                        </lvc:PieChart.Series>
+                        </lvc:PieChart.Series>-->
                     </lvc:PieChart>
                 </StackPanel>
             </materialDesign:Card>
@@ -219,24 +298,11 @@
                 <StackPanel Orientation="Vertical">
                     <materialDesign:Card Height="30">
                         <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                                <ColumnDefinition Width="100"></ColumnDefinition>
-                            </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu chuồng nuôi</TextBlock>
-                            <TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Tháng"
-                                     Margin="0,3,0,5">
-                            </TextBox>
-                            <TextBox Grid.Column="2" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Năm"
-                                     Margin="0,3,0,5">
-                            </TextBox>
                         </Grid>
                     </materialDesign:Card>
-                    <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="190" Margin="10,10,10,0" FontStretch="Medium">
-                        <lvc:PieChart.Series>
+                    <lvc:PieChart Series="{Binding SeriesCoCauChuong}" LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="190" Margin="10,10,10,0" FontStretch="Medium">
+                        <!--<lvc:PieChart.Series>
                             <lvc:PieSeries Title="Đang hoạt động" Values="30" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="Không sử dụng" Values="20" DataLabels="True" 
@@ -245,7 +311,7 @@
                                LabelPoint="{Binding PointLabel}"/>
                             <lvc:PieSeries Title="Đã hư hỏng" Values="2" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                        </lvc:PieChart.Series>
+                        </lvc:PieChart.Series>-->
                     </lvc:PieChart>
                 </StackPanel>
             </materialDesign:Card>
@@ -258,15 +324,22 @@
                                 <ColumnDefinition Width="135"></ColumnDefinition>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Biểu đồ doanh thu và chi phí</TextBlock>
-                            <TextBox Grid.Column="1" VerticalAlignment="Center"
+                            <ComboBox Grid.Column="1" VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Năm"
-                                     Margin="0,3,0,5">
-                            </TextBox>
+                                     Margin="0,3,10,5"
+                                      ItemsSource="{Binding listNamColumnChartDoanhThuChiTieu}"
+                                      SelectedItem="{Binding selectedNamChartDoanhthuChiTieu}">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="SelectionChanged">
+                                        <i:InvokeCommandAction Command="{Binding changeSelectedNamChartDoanhThu}"></i:InvokeCommandAction>
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </ComboBox>
                         </Grid>
                     </materialDesign:Card>
                     <lvc:CartesianChart Series="{Binding SeriesCollectionDSCPChart}" LegendLocation="Bottom" Height="196" >
                         <lvc:CartesianChart.AxisY>
-                            <lvc:Axis Title="VND" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
+                            <lvc:Axis Title="VND"></lvc:Axis>
                         </lvc:CartesianChart.AxisY>
                         <lvc:CartesianChart.AxisX>
                             <lvc:Axis Title="Tháng" Labels="{Binding LabelsDSCPChart}"></lvc:Axis>
@@ -300,12 +373,26 @@
                                         <GridViewColumn>
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <Button Grid.Column="1" Background="#d8edf9" Foreground="#4aace1" Width="30" Height="30"
-                                                            Style="{StaticResource MaterialDesignIconForegroundButton}"
-                                                            ToolTip="MaterialDesignIconForegroundButton"
+                                                    <Button Grid.Column="1" Width="30" Height="30"
                                                             IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                                         <materialDesign:PackIcon
                                                             Kind="{Binding icon}" />
+                                                        <Button.Style>
+                                                            <Style TargetType="Button" BasedOn="{StaticResource MaterialDesignIconForegroundButton}">
+                                                                <Setter Property="Background" Value="#d8edf9"></Setter>
+                                                                <Setter Property="Foreground" Value="#4aace1"></Setter>
+                                                                <Style.Triggers>
+                                                                    <DataTrigger Binding="{Binding icon}" Value="Wrench">
+                                                                        <Setter Property="Background" Value="#ffe6cc"></Setter>
+                                                                        <Setter Property="Foreground" Value="#ffa366"></Setter>
+                                                                    </DataTrigger>
+                                                                    <DataTrigger Binding="{Binding icon}" Value="Warehouse">
+                                                                        <Setter Property="Background" Value="#c6ecd9"></Setter>
+                                                                        <Setter Property="Foreground" Value="#40bf80"></Setter>
+                                                                    </DataTrigger>
+                                                                </Style.Triggers>
+                                                            </Style>
+                                                        </Button.Style>
                                                     </Button>
                                                 </DataTemplate>
                                             </GridViewColumn.CellTemplate>
@@ -346,7 +433,7 @@
                     </materialDesign:Card>
                     <lvc:CartesianChart Series="{Binding SeriesCollectionNVChart}" LegendLocation="Bottom" Height="199">
                         <lvc:CartesianChart.AxisX>
-                            <lvc:Axis Title="Người" LabelFormatter="{Binding Formatter}"></lvc:Axis>
+                            <lvc:Axis Title="Người"></lvc:Axis>
                         </lvc:CartesianChart.AxisX>
                         <lvc:CartesianChart.AxisY>
                             <lvc:Axis Title="Chức vụ" Labels="{Binding LabelsNVChart}"></lvc:Axis>

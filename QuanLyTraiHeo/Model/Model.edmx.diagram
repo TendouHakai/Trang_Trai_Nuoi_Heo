@@ -57,6 +57,11 @@
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PD_P" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PSC_MDT" />
         <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.BAOCAOTONKHO" Width="1.5" PointX="11" PointY="1.5" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.LICHCHUONG" Width="1.5" PointX="10.125" PointY="4.75" />
+        <EntityTypeShape EntityType="TRANGTRAINUOIHEOModel.sysdiagram" Width="1.5" PointX="0.75" PointY="5.75" />
+        <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_LC_MC" />
+        <AssociationConnector Association="TRANGTRAINUOIHEOModel.FK_BCTK_HH" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

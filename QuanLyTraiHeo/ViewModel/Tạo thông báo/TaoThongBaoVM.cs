@@ -56,6 +56,11 @@ namespace QuanLyTraiHeo.ViewModel
             #region code button chọn người gửi
             ChonNguoiGuiCommand = new RelayCommand<Grid>((p) => { return true; }, p => {
                 ChonNguoiGui wc = new ChonNguoiGui();
+                if(selectCHUCVU == null)
+                {
+                    MessageBox.Show("Bạn phải chọn bộ phận để gửi trước!!!");
+                    return;
+                }    
                 ChonNguoiGuiVM vm = new ChonNguoiGuiVM(this);
                 wc.DataContext = vm;
                 wc.ShowDialog();
