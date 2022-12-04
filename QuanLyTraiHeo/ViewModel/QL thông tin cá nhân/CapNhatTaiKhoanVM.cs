@@ -128,7 +128,7 @@ namespace QuanLyTraiHeo.ViewModel
             NgaySinh = MainWindowMD.NhanVien.NgaySinh;
             HeSoLuong = MainWindowMD.NhanVien.HeSoLuong;
             HoTenGoc = HoTen;
-            MyImage = BytesToBitmapImage(MainWindowMD.NhanVien.MyImage);
+            MyImage = BytesToBitmapImage(MainWindowMD.NhanVien.BytesImage);
             TenChucVu = MainWindowMD.NhanVien.CHUCVU.TenChucVu;
 
 
@@ -154,7 +154,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MainWindowMD.NhanVien.NgaySinh = NgaySinh;
                 MainWindowMD.NhanVien.HeSoLuong = HeSoLuong;
                 MainWindowMD.NhanVien.GioiTinh = GioiTinh;
-                MainWindowMD.NhanVien.MyImage = imageBytes;
+                MainWindowMD.NhanVien.BytesImage = imageBytes;
                 MainWindowMD.MyImage = MyImage;
                 DataProvider.Ins.DB.SaveChanges();
                 MainWindowMD.UpdateNhanVien();

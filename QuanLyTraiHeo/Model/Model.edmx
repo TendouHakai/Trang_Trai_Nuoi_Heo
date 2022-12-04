@@ -121,6 +121,8 @@
           <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
           <Property Name="TenLich" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Mota" Type="nvarchar" MaxLength="50" />
+          <Property Name="MaNguoiTao" Type="char" MaxLength="16" />
+          <Property Name="MaNguoiLam" Type="char" MaxLength="16" />
         </EntityType>
         <EntityType Name="LICHPHOIGIONG">
           <Key>
@@ -179,9 +181,7 @@
           </Key>
           <Property Name="MaNhanVien" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
-          <Property Name="ImageLink" Type="char" MaxLength="255" />
-          <Property Name="ImageName" Type="nvarchar" MaxLength="100" />
-          <Property Name="MyImage" Type="varbinary(max)" />
+          <Property Name="BytesImage" Type="varbinary(max)" />
           <Property Name="MaChucVu" Type="char" MaxLength="16" />
           <Property Name="GioiTinh" Type="nvarchar" MaxLength="16" />
           <Property Name="NgaySinh" Type="date" />
@@ -441,6 +441,30 @@
             </Principal>
             <Dependent Role="LICHCHUONG">
               <PropertyRef Name="MaChuong" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LC_MNL">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaNguoiLam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LC_MNT">
+          <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+          <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaNguoiTao" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -706,6 +730,14 @@
             <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
             <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
           </AssociationSet>
+          <AssociationSet Name="FK_LC_MNL" Association="Self.FK_LC_MNL">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LC_MNT" Association="Self.FK_LC_MNT">
+            <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
+          </AssociationSet>
           <AssociationSet Name="FK_LPG_MHC" Association="Self.FK_LPG_MHC">
             <End Role="HEO" EntitySet="HEO" />
             <End Role="LICHPHOIGIONG" EntitySet="LICHPHOIGIONG" />
@@ -880,6 +912,14 @@
           <AssociationSet Name="FK_LTH_MH" Association="TRANGTRAINUOIHEOModel.FK_LTH_MH">
             <End Role="HEO" EntitySet="HEOs" />
             <End Role="LICHTIEMHEO" EntitySet="LICHTIEMHEOs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LC_MNL" Association="TRANGTRAINUOIHEOModel.FK_LC_MNL">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LC_MNT" Association="TRANGTRAINUOIHEOModel.FK_LC_MNT">
+            <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+            <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
           </AssociationSet>
           <AssociationSet Name="FK_PH_MNV" Association="TRANGTRAINUOIHEOModel.FK_PH_MNV">
             <End Role="NHANVIEN" EntitySet="NHANVIENs" />
@@ -1057,7 +1097,11 @@
           <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="TenLich" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MaNguoiTao" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="MaNguoiLam" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CHUONGTRAI" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="LICHCHUONG" ToRole="CHUONGTRAI" />
+          <NavigationProperty Name="NHANVIEN" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNL" FromRole="LICHCHUONG" ToRole="NHANVIEN" />
+          <NavigationProperty Name="NHANVIEN1" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNT" FromRole="LICHCHUONG" ToRole="NHANVIEN" />
         </EntityType>
         <EntityType Name="LICHPHOIGIONG">
           <Key>
@@ -1121,9 +1165,7 @@
           </Key>
           <Property Name="MaNhanVien" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
-          <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="MyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="BytesImage" Type="Binary" MaxLength="Max" FixedLength="false" />
           <Property Name="MaChucVu" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="GioiTinh" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="NgaySinh" Type="DateTime" Precision="0" />
@@ -1135,6 +1177,8 @@
           <Property Name="C_Username" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <Property Name="C_PassWord" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
           <NavigationProperty Name="CHUCVU" Relationship="TRANGTRAINUOIHEOModel.FK_NV_MCV" FromRole="NHANVIEN" ToRole="CHUCVU" />
+          <NavigationProperty Name="LICHCHUONGs" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNL" FromRole="NHANVIEN" ToRole="LICHCHUONG" />
+          <NavigationProperty Name="LICHCHUONGs1" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNT" FromRole="NHANVIEN" ToRole="LICHCHUONG" />
           <NavigationProperty Name="PHIEUHEOs" Relationship="TRANGTRAINUOIHEOModel.FK_PH_MNV" FromRole="NHANVIEN" ToRole="PHIEUHEO" />
           <NavigationProperty Name="PHIEUHANGHOAs" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNV" FromRole="NHANVIEN" ToRole="PHIEUHANGHOA" />
           <NavigationProperty Name="PHIEUHANGHOAs1" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" FromRole="NHANVIEN" ToRole="PHIEUHANGHOA" />
@@ -1495,6 +1539,30 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_LC_MNL">
+          <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaNguoiLam" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_LC_MNT">
+          <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+          <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NHANVIEN">
+              <PropertyRef Name="MaNhanVien" />
+            </Principal>
+            <Dependent Role="LICHCHUONG">
+              <PropertyRef Name="MaNguoiTao" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_PH_MNV">
           <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
           <End Type="TRANGTRAINUOIHEOModel.PHIEUHEO" Role="PHIEUHEO" Multiplicity="*" />
@@ -1711,6 +1779,8 @@
           <EntitySetMapping Name="LICHCHUONGs">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.LICHCHUONG">
               <MappingFragment StoreEntitySet="LICHCHUONG">
+                <ScalarProperty Name="MaNguoiLam" ColumnName="MaNguoiLam" />
+                <ScalarProperty Name="MaNguoiTao" ColumnName="MaNguoiTao" />
                 <ScalarProperty Name="Mota" ColumnName="Mota" />
                 <ScalarProperty Name="TenLich" ColumnName="TenLich" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
@@ -1788,9 +1858,7 @@
                 <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
                 <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
                 <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
-                <ScalarProperty Name="MyImage" ColumnName="MyImage" />
-                <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="BytesImage" ColumnName="BytesImage" />
                 <ScalarProperty Name="HoTen" ColumnName="HoTen" />
                 <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
               </MappingFragment>

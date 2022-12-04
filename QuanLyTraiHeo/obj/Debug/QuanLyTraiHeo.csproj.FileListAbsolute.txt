@@ -160,3 +160,5 @@ C:\DoAn\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CoreCompileInputs.cache
 C:\DoAn\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.csproj.CopyComplete
 C:\DoAn\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.exe
 C:\DoAn\QuanLyTraiHeo\obj\Debug\QuanLyTraiHeo.pdb
+C:\DoAn\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wThemLichMoi.g.cs
+C:\DoAn\QuanLyTraiHeo\obj\Debug\View\Windows\Sơ đồ\wThemLichMoi.baml

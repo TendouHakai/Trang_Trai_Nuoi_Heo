@@ -17,6 +17,8 @@ namespace QuanLyTraiHeo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NHANVIEN()
         {
+            this.LICHCHUONGs = new HashSet<LICHCHUONG>();
+            this.LICHCHUONGs1 = new HashSet<LICHCHUONG>();
             this.PHIEUHEOs = new HashSet<PHIEUHEO>();
             this.PHIEUHANGHOAs = new HashSet<PHIEUHANGHOA>();
             this.PHIEUHANGHOAs1 = new HashSet<PHIEUHANGHOA>();
@@ -28,9 +30,7 @@ namespace QuanLyTraiHeo.Model
     
         public string MaNhanVien { get; set; }
         public string HoTen { get; set; }
-        public string ImageLink { get; set; }
-        public string ImageName { get; set; }
-        public byte[] MyImage { get; set; }
+        public byte[] BytesImage { get; set; }
         public string MaChucVu { get; set; }
         public string GioiTinh { get; set; }
         public Nullable<System.DateTime> NgaySinh { get; set; }
@@ -43,6 +43,10 @@ namespace QuanLyTraiHeo.Model
         public string C_PassWord { get; set; }
     
         public virtual CHUCVU CHUCVU { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LICHCHUONG> LICHCHUONGs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LICHCHUONG> LICHCHUONGs1 { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PHIEUHEO> PHIEUHEOs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

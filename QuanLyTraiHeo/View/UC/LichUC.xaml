@@ -8,7 +8,7 @@
              mc:Ignorable="d"
              d:DesignWidth="520"
              Height="100">
-    <Border x:Name="border_Heo"
+    <Border x:Name="border_Lich"
             BorderThickness="4"
             BorderBrush="#54acf3"
             Background="AliceBlue"
@@ -56,14 +56,23 @@
 
                     </Grid>
                     <Grid Grid.Row="1">
-                        <TextBlock x:Name="tb_TieuDeLich"
-                                   Text="Tách chuồng"
-                                   Foreground="Black"
-                                   VerticalAlignment="Center"
-                                   HorizontalAlignment="Left"
-                                   FontSize="20">
+                        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom">
+                            <TextBlock x:Name="tb_TieuDeLich"
+                                       Text="Tách chuồng"
+                                       Foreground="Black"
+                                       VerticalAlignment="Center"
+                                       HorizontalAlignment="Left"
+                                       FontSize="20">
 
-                        </TextBlock>
+                            </TextBlock>
+                            <TextBlock Foreground="AliceBlue" FontSize="20" Text="::"></TextBlock>
+                            <TextBlock x:Name="tb_ChiTietLich"
+                                       Height="20"
+                                       VerticalAlignment="Bottom"
+                                       Foreground="#6b607a"
+                                       Text="Aabc">
+                            </TextBlock>
+                        </StackPanel>
                     </Grid>
                     <Grid Grid.Row="2">
                         <TextBlock VerticalAlignment="Center"

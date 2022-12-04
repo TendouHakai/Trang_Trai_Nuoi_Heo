@@ -96,7 +96,7 @@ namespace QuanLyTraiHeo.ViewModel
                     p.Show();
 
                     NhanVien = loginWD.NhanVien;
-                    MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.MyImage);
+                    MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.BytesImage);
 
                     listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien));
 

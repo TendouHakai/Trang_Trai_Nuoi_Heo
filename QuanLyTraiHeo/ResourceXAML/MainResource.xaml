@@ -35,4 +35,5 @@
     <viewModel:SoDoVM x:Key="SoDoVM"></viewModel:SoDoVM>
     <viewModel:ChuongUC_VM x:Key="ChuongUC_VM"></viewModel:ChuongUC_VM>
     <viewModel:QuanlygiongheoVM x:Key="QuanlygiongheoVVM"></viewModel:QuanlygiongheoVM>
+    <viewModel:ThemLichMoiVM x:Key="ThemLichMoiVM"></viewModel:ThemLichMoiVM>
 </ResourceDictionary>

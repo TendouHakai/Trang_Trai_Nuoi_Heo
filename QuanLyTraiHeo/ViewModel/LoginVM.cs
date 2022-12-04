@@ -74,6 +74,9 @@ namespace QuanLyTraiHeo.ViewModel
             }
             #endregion
 
+
+            Account.TaiKhoan = nhanVien;// Lưu lại tài khoản của người đăng nhập
+
             IsLogin = true;
             p.Close();
         }

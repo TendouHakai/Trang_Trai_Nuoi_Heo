@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for wSoDo.xaml
+    /// Interaction logic for wThemLichMoi.xaml
     /// </summary>
-    public partial class wSoDo : Window
+    public partial class wThemLichMoi : Window
     {
-        public wSoDo()
+        public wThemLichMoi()
         {
             InitializeComponent();
-        }
-
-        private void Txt_SoChuong_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.Key == Key.Back)
-            {
-                Txt_SoChuong.Text = " ";
-            }
         }
     }
 }

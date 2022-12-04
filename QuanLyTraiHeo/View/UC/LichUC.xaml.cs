@@ -32,7 +32,20 @@ namespace QuanLyTraiHeo.View.UC
             if (this.Click != null)
             {
                 this.Click(this, e);
+                UpdateColor();
             }
+        }
+        public LichUC LichBeforSelected;
+        void UpdateColor()
+        {
+            var bc = new BrushConverter();
+
+            if (LichBeforSelected != null)
+            {
+                LichBeforSelected.border_Lich.BorderBrush = (Brush)bc.ConvertFrom("#54acf3");
+            }
+
+            this.border_Lich.BorderBrush = (Brush)bc.ConvertFrom("#FFAB91");
         }
     }
 }

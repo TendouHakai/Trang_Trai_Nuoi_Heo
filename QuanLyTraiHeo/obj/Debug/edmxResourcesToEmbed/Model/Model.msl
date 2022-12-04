@@ -115,6 +115,8 @@
     <EntitySetMapping Name="LICHCHUONGs">
       <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.LICHCHUONG">
         <MappingFragment StoreEntitySet="LICHCHUONG">
+          <ScalarProperty Name="MaNguoiLam" ColumnName="MaNguoiLam" />
+          <ScalarProperty Name="MaNguoiTao" ColumnName="MaNguoiTao" />
           <ScalarProperty Name="Mota" ColumnName="Mota" />
           <ScalarProperty Name="TenLich" ColumnName="TenLich" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
@@ -192,9 +194,7 @@
           <ScalarProperty Name="NgaySinh" ColumnName="NgaySinh" />
           <ScalarProperty Name="GioiTinh" ColumnName="GioiTinh" />
           <ScalarProperty Name="MaChucVu" ColumnName="MaChucVu" />
-          <ScalarProperty Name="MyImage" ColumnName="MyImage" />
-          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
-          <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+          <ScalarProperty Name="BytesImage" ColumnName="BytesImage" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
           <ScalarProperty Name="MaNhanVien" ColumnName="MaNhanVien" />
         </MappingFragment>

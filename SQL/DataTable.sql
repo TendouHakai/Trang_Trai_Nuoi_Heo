@@ -68,7 +68,9 @@ CREATE TABLE LICHCHUONG
 	NgayLam smalldatetime,
 	TrangThai nvarchar(50),
 	TenLich nvarchar(50),
-	Mota nvarchar(50)
+	Mota nvarchar(50),
+	MaNguoiTao char(16),
+	MaNguoiLam char(16) NULL,
 
 	CONSTRAINT PK_LC PRIMARY KEY (MaChuong, NgayLam, TenLich)
 )
@@ -126,9 +128,7 @@ create table NHANVIEN
 (
 	MaNhanVien char(16),
 	HoTen nvarchar(255),
-	ImageLink char(255),
-	ImageName nvarchar(100),
-	MyImage varbinary(max),
+	BytesImage varbinary(max),
 	MaChucVu char(16),
 	GioiTinh nvarchar(16),
 	NgaySinh Date,
@@ -330,6 +330,12 @@ FOREIGN KEY (MaLoaiChuong) REFERENCES LOAICHUONG(MaLoaiChuong)
 -- table LichChuong--
 ALTER TABLE LICHCHUONG ADD CONSTRAINT FK_LC_MC 
 FOREIGN KEY (MaChuong) REFERENCES CHUONGTRAI(MaChuong)
+
+ALTER TABLE LICHCHUONG ADD CONSTRAINT FK_LC_MNT 
+FOREIGN KEY (MaNguoiTao) REFERENCES NHANVIEN(MaNhanVien)
+
+ALTER TABLE LICHCHUONG ADD CONSTRAINT FK_LC_MNL 
+FOREIGN KEY (MaNguoiLam) REFERENCES NHANVIEN(MaNhanVien)
 
 --table LICHTIEMHEO--
 ALTER TABLE LICHTIEMHEO ADD CONSTRAINT FK_LTH_MH

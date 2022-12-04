@@ -110,6 +110,14 @@
       <End Role="HEO" EntitySet="HEOs" />
       <End Role="LICHTIEMHEO" EntitySet="LICHTIEMHEOs" />
     </AssociationSet>
+    <AssociationSet Name="FK_LC_MNL" Association="TRANGTRAINUOIHEOModel.FK_LC_MNL">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LC_MNT" Association="TRANGTRAINUOIHEOModel.FK_LC_MNT">
+      <End Role="NHANVIEN" EntitySet="NHANVIENs" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONGs" />
+    </AssociationSet>
     <AssociationSet Name="FK_PH_MNV" Association="TRANGTRAINUOIHEOModel.FK_PH_MNV">
       <End Role="NHANVIEN" EntitySet="NHANVIENs" />
       <End Role="PHIEUHEO" EntitySet="PHIEUHEOs" />
@@ -286,7 +294,11 @@
     <Property Name="TrangThai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="TenLich" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="Mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MaNguoiTao" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
+    <Property Name="MaNguoiLam" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="CHUONGTRAI" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MC" FromRole="LICHCHUONG" ToRole="CHUONGTRAI" />
+    <NavigationProperty Name="NHANVIEN" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNL" FromRole="LICHCHUONG" ToRole="NHANVIEN" />
+    <NavigationProperty Name="NHANVIEN1" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNT" FromRole="LICHCHUONG" ToRole="NHANVIEN" />
   </EntityType>
   <EntityType Name="LICHPHOIGIONG">
     <Key>
@@ -350,9 +362,7 @@
     </Key>
     <Property Name="MaNhanVien" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
     <Property Name="HoTen" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-    <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="true" Unicode="false" />
-    <Property Name="ImageName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
-    <Property Name="MyImage" Type="Binary" MaxLength="Max" FixedLength="false" />
+    <Property Name="BytesImage" Type="Binary" MaxLength="Max" FixedLength="false" />
     <Property Name="MaChucVu" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
     <Property Name="GioiTinh" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
     <Property Name="NgaySinh" Type="DateTime" Precision="0" />
@@ -364,6 +374,8 @@
     <Property Name="C_Username" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
     <Property Name="C_PassWord" Type="String" MaxLength="64" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="CHUCVU" Relationship="TRANGTRAINUOIHEOModel.FK_NV_MCV" FromRole="NHANVIEN" ToRole="CHUCVU" />
+    <NavigationProperty Name="LICHCHUONGs" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNL" FromRole="NHANVIEN" ToRole="LICHCHUONG" />
+    <NavigationProperty Name="LICHCHUONGs1" Relationship="TRANGTRAINUOIHEOModel.FK_LC_MNT" FromRole="NHANVIEN" ToRole="LICHCHUONG" />
     <NavigationProperty Name="PHIEUHEOs" Relationship="TRANGTRAINUOIHEOModel.FK_PH_MNV" FromRole="NHANVIEN" ToRole="PHIEUHEO" />
     <NavigationProperty Name="PHIEUHANGHOAs" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNV" FromRole="NHANVIEN" ToRole="PHIEUHANGHOA" />
     <NavigationProperty Name="PHIEUHANGHOAs1" Relationship="TRANGTRAINUOIHEOModel.FK_PHH_MNVN" FromRole="NHANVIEN" ToRole="PHIEUHANGHOA" />
@@ -721,6 +733,30 @@
       </Principal>
       <Dependent Role="LICHTIEMHEO">
         <PropertyRef Name="MaHeo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LC_MNL">
+    <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaNguoiLam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LC_MNT">
+    <End Type="TRANGTRAINUOIHEOModel.NHANVIEN" Role="NHANVIEN" Multiplicity="0..1" />
+    <End Type="TRANGTRAINUOIHEOModel.LICHCHUONG" Role="LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaNguoiTao" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
