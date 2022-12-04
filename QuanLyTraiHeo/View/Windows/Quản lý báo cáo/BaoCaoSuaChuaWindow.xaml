@@ -10,7 +10,6 @@
         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
         TextElement.FontWeight="Regular"
         TextElement.FontSize="13"
-        DataContext="{StaticResource BaoCaoSuaChuaVM}"
         TextOptions.TextFormattingMode="Ideal"
         TextOptions.TextRenderingMode="Auto"
         Background="{DynamicResource MaterialDesignPaper}"
@@ -21,8 +20,9 @@
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid>
-        <Grid Background="#f3f3f9" Margin="20,0,20,0" DataContext="{StaticResource BaoCaoSuaChuaVM}">
+    <ScrollViewer HorizontalScrollBarVisibility="Disabled" VerticalScrollBarVisibility="Auto">
+    <Grid DataContext="{StaticResource BaoCaoSuaChuaVM}">
+        <Grid Background="#f3f3f9" Margin="20,0,20,0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="50"></RowDefinition>
                 <RowDefinition></RowDefinition>
@@ -45,32 +45,23 @@
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                     <ColumnDefinition Width="100"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu chuồng trại</TextBlock>
-                                <TextBox Grid.Column="1" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Tháng"
-                                     Margin="0,3,0,5">
-                                </TextBox>
-                                <TextBox Grid.Column="2" VerticalAlignment="Center" Width="80"
-                                    materialDesign:HintAssist.Hint="Năm"
-                                     Margin="0,3,0,5">
-                                </TextBox>
-                            </Grid>
+                                    <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Cơ cấu chuồng trại</TextBlock>
+                                </Grid>
                         </materialDesign:Card>
                         <lvc:PieChart LegendLocation="Bottom" FontSize="10" DataClick="Chart_OnDataClick" Hoverable="False" DataTooltip="{x:Null}" Height="250" Margin="10,10,10,0" FontStretch="Medium">
                             <lvc:PieChart.Series>
-                                <lvc:PieSeries Title="Đang hoạt động" Values="30" DataLabels="True"
+                                <lvc:PieSeries Title="Đang hoạt động" Values="{Binding SoChuongBinhThuong}" DataLabels="True"
                                LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Không sử dụng" Values="20" DataLabels="True" 
+                                <lvc:PieSeries Title="Không sử dụng" Values="{Binding SoChuongKhongSuDung}" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Đang sửa chữa" Values="11" DataLabels="True" 
+                                <lvc:PieSeries Title="Đang sửa chữa" Values="{Binding SoChuongDangSuaChua}" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
-                                <lvc:PieSeries Title="Đã hư hỏng" Values="2" DataLabels="True" 
+                                <lvc:PieSeries Title="Đã hư hỏng" Values="{Binding SoChuongDaHu}" DataLabels="True" 
                                LabelPoint="{Binding PointLabel}"/>
                             </lvc:PieChart.Series>
                         </lvc:PieChart>
                     </StackPanel>
                 </materialDesign:Card>
-               
                 <materialDesign:Card Grid.Column="2" Margin="10,0,0,0">
                     <StackPanel Orientation="Vertical">
                         <materialDesign:Card Height="30">
@@ -82,16 +73,22 @@
                                 <TextBlock Grid.Column="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,0,0,0">Biểu đồ số chuồng nuôi được sửa chữa</TextBlock>
                                 <TextBox Grid.Column="1" VerticalAlignment="Center"
                                     materialDesign:HintAssist.Hint="Năm"
+                                         Name="Namx"
+                                         Text="2022"
                                      Margin="0,3,0,5">
-                                </TextBox>
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction
+                                                    Command="{Binding LaySoLuongChuongDaSuaTheoNam}"
+                                                    CommandParameter="{Binding ElementName=Namx}">
+                                                </i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
                             </Grid>
-
                         </materialDesign:Card>
-                        <lvc:CartesianChart Series="{Binding SeriesCollectionTSheoChart}" LegendLocation="Bottom" Height="264" >
-                            <lvc:CartesianChart.AxisY>
-                                <lvc:Axis Title="Chuồng" LabelFormatter="{Binding YFormatter}"></lvc:Axis>
-                            </lvc:CartesianChart.AxisY>
-                            <lvc:CartesianChart.AxisX>
+                            <lvc:CartesianChart Series="{Binding SeriesCollectionTSheoChart}" LegendLocation="Bottom" Height="264">
+                                <lvc:CartesianChart.AxisX>
                                 <lvc:Axis Title="Tháng" Labels="{Binding LabelsTSheoChart}"></lvc:Axis>
                             </lvc:CartesianChart.AxisX>
                         </lvc:CartesianChart>
@@ -118,81 +115,79 @@
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition></ColumnDefinition>
                                             <ColumnDefinition></ColumnDefinition>
-                                            
                                         </Grid.ColumnDefinitions>
                                         <DatePicker Grid.Column="0"
                                             Width="100"
+                                            Name="DTPK_1"
                                             materialDesign:HintAssist.Hint="Từ ngày"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedDateChanged">
+                                                    <i:InvokeCommandAction
+                                                    Command="{Binding TimKiemTheoNgaySC1Command}"
+                                                    CommandParameter="{Binding ElementName=DTPK_1}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </DatePicker>
                                         <DatePicker Grid.Column="1"
                                             Width="135"
                                             materialDesign:HintAssist.Hint="Đến ngày"
+                                            Name="DTPK_2"
                                             materialDesign:TextFieldAssist.HasClearButton="True"
-                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}" />
+                                            Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
+                                            <i:Interaction.Triggers>
+                                                <i:EventTrigger EventName="SelectedDateChanged">
+                                                    <i:InvokeCommandAction
+                                                    Command="{Binding TimKiemTheoNgaySC2Command}"
+                                                    CommandParameter="{Binding ElementName=DTPK_2}">
+                                                    </i:InvokeCommandAction>
+                                                </i:EventTrigger>
+                                            </i:Interaction.Triggers>
+                                        </DatePicker>
                                     </Grid>
                                     <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                                         <Button
+                                    Margin="20,0,40,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
-                                    Width="120"
-                                    BorderBrush="White"
-                                    Content="Tìm"
-                                    FontSize="16"
-                                    Background="#00de1e"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
-                                        </Button>
-
-                                        <Button
-                                    Margin="20,0,0,0"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Height="30"
-                                    Width="120"
+                                    Width="150"
                                     BorderBrush="White"
                                     Content="Xuất excel"
                                     FontSize="16"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    Foreground="#00de1e"
-                                    Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
+                                    Background="#00de1e"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding XuatFileExcelCommand}">
                                         </Button>
                                     </StackPanel>
-
                                 </Grid>
-
                             </Grid>
-
                         </materialDesign:Card>
-                        <ListView ItemsSource="{Binding lstPhieu}">
-                            <ListView.View>
-                                <GridView>
-                                    <GridViewColumn DisplayMemberBinding="{Binding STT}"
-                                        Header="STT" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding IDPhieu}"
-                                        Header="Mã phiếu" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding IDChuong}"
-                                        Header="Mã chuồng" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Ngay}"
-                                        Header="Ngày sửa chữa" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding NhanVien}"
-                                        Header="Nhân viên" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding TongTien}"
-                                        Header="Tổng tiền" />
-                                    <GridViewColumn DisplayMemberBinding="{Binding Ghichu}"
-                                        Header="Ghi chú" />
-                                    
-                                </GridView>
-                            </ListView.View>
-                        </ListView>
-                        
+                        <ScrollViewer>
+                            <ListView AllowDrop="True"
+                                      x:Name="Listviewk"
+                                      ItemsSource="{Binding LstPhieu}"
+                                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" 
+                                      >
+                                <ListView.View>
+                                    <GridView>
+                                        <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"></GridViewColumn>
+                                        <GridViewColumn Header="Ngày sửa chữa" DisplayMemberBinding="{Binding NgaySuaChua}"></GridViewColumn>
+                                        <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding MaNhanVien}"></GridViewColumn>
+                                        <GridViewColumn Header="Tên đối tác" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"></GridViewColumn>
+                                        <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding GhiChu}"></GridViewColumn>
+                                        <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"></GridViewColumn>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
+                                    </GridView>
+                                </ListView.View>
+                            </ListView>
+                        </ScrollViewer>
                     </StackPanel>
-
                 </materialDesign:Card>
             </Grid>
         </Grid>
-
     </Grid>
+    </ScrollViewer>
 </Window>

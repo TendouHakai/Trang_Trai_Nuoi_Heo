@@ -27,6 +27,7 @@ namespace QuanLyTraiHeo
         }
         private void Chart_OnDataClick(object sender, ChartPoint chartpoint)
         {
+
             var chart = (LiveCharts.Wpf.PieChart)chartpoint.ChartView;
 
             //clear selected slice.

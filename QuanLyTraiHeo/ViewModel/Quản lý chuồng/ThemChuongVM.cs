@@ -10,6 +10,8 @@ using QuanLyTraiHeo.View.Windows;
 using System.Windows.Controls;
 using System.ComponentModel;
 using System.Windows.Data;
+using static QuanLyTraiHeo.ViewModel.BaoCaoTinhTrangHeoVM;
+using System.Collections.ObjectModel;
 
 namespace QuanLyTraiHeo.ViewModel
 {
@@ -40,6 +42,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ThemChuongVM()
         {
+            MaChuong = LayMa();
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 foreach(var item in _ChuongTrais)
@@ -57,6 +60,48 @@ namespace QuanLyTraiHeo.ViewModel
                 _ChuongTrais.Add(ChuongTrai);
                 p.Items.Refresh();
             });
+        }
+        string CreatMaChuong(int lan)
+        {
+            ObservableCollection<CHUONGTRAI> Chuongs = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            int soChuong;
+            if (_ChuongTrais != null)
+            { soChuong = Chuongs.Count + _ChuongTrais.Count + lan; }
+            else
+            {
+                soChuong = Chuongs.Count + lan;
+            }
+            string maChuong;
+            if (soChuong == 0)
+            {
+                maChuong = "CHUONG1" + DateTime.Now.ToString("_ddMM");
+            }
+            else
+            {
+                int STT = soChuong;
+                STT++;
+                string strSTT = STT.ToString();
+                for (int i = strSTT.Length; i <= 5; i++)
+                {
+                    strSTT = "0" + strSTT;
+                }
+
+                maChuong = "CHUONG" + strSTT + DateTime.Now.ToString("_ddMM");
+            }
+            return maChuong;
+        }
+        string LayMa()
+        {
+            string MaCu = CreatMaChuong(0);
+            int i = 0;
+            var SL = new List<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaChuong == MaCu));
+            while (SL.Count > 0)
+            {
+                i++;
+                MaCu = CreatMaChuong(i);
+                SL = new List<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaChuong == MaCu));
+            }
+            return MaCu;
         }
     }
 }

@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Title="SuaChuong" Height="450" Width="350"
         ResizeMode="NoResize"
@@ -22,7 +22,17 @@
                 <StackPanel VerticalAlignment="Center">
                     <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã chuồng" Text="{Binding MaChuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                     <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Mã loại chuồng" Text="{Binding MaLoaiChuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                    <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Tình trạng" Text="{Binding TinhTrang}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <ComboBox Margin="20 10 20 10"
+                                  materialDesign:HintAssist.Hint="Tình trạng"
+                                  VerticalAlignment="Center"
+                                  Text="{Binding TinhTrang}"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  SelectedIndex="0">
+                        <ComboBoxItem>Bình thường</ComboBoxItem>
+                        <ComboBoxItem>Đang sửa chữa</ComboBoxItem>
+                        <ComboBoxItem>Không sử dụng</ComboBoxItem>
+                        <ComboBoxItem>Đã hư</ComboBoxItem>
+                    </ComboBox>
                     <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Sức chứa tối đa" Text="{Binding SuaChuaToiDa}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                     <TextBox Margin="20 10 20 15" materialDesign:HintAssist.Hint="Số heo hiện có" Text="{Binding SoLuongHeo}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                 </StackPanel>

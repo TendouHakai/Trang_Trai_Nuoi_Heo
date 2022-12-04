@@ -32,15 +32,11 @@
                             <ListBox ItemsSource="{Binding ListLoaiChuong}" Grid.ColumnSpan="3">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox x:Name="Check_LoaiChuong" Content="{Binding TenLoai}">
-                                            <i:Interaction.Triggers>
-                                                <i:EventTrigger EventName="IsChecked">
-                                                    <i:InvokeCommandAction
-                                                    Command="{Binding TimKiemTheoLoaiChuongCommand}"
+                                        <CheckBox x:Name="Check_LoaiChuong" Content="{Binding TenLoai}" 
+                                                  Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TimKiemTheoLoaiChuongCommand }"
                                                     CommandParameter="{Binding ElementName=Check_LoaiChuong}">
-                                                    </i:InvokeCommandAction>
-                                                </i:EventTrigger>
-                                            </i:Interaction.Triggers>
                                         </CheckBox>
                                     </DataTemplate>
                                 </ListBox.ItemTemplate>
@@ -105,8 +101,7 @@
                                     <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
                                     <TextBox x:Name="Txt_MaChuong" materialDesign:HintAssist.Hint="Tìm kiếm theo mã chuồng"
                                              Height="30"
-                                             Margin="30,10,20,11" 
-                                             Text="{Binding MaChuongCanTim}">
+                                             Margin="30,10,20,11">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction
@@ -141,7 +136,10 @@
                                 <ColumnDefinition Width="391*"/>
                                 <ColumnDefinition Width="473*"/>
                             </Grid.ColumnDefinitions>
-                            <ListView Margin="25,0,25,0" x:Name="listviewk" ItemsSource="{Binding ListChuongTrai}" SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" Grid.ColumnSpan="3">
+                            <ListView Margin="25,0,25,0" x:Name="listviewk"
+                                      ItemsSource="{Binding ListChuongTrai}" 
+                                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" 
+                                      Grid.ColumnSpan="3">
                                 <ListView.View>
                                     <GridView>
                                         <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>

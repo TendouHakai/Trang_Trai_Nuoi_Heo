@@ -1,4 +1,4 @@
-﻿using QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi;
+﻿using QuanLyTraiHeo.View.Windows;
 using System;
 using System.Collections.Generic;
 using System.Linq;

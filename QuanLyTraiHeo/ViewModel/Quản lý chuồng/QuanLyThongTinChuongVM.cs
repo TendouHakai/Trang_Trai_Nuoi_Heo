@@ -1,6 +1,5 @@
 ﻿using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows;
-using QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -26,9 +25,7 @@ namespace QuanLyTraiHeo.ViewModel
         int _SoHeoCanTim = 0;
         private ObservableCollection<CHUONGTRAI> _ListChuongTrai;
         private ObservableCollection<LOAICHUONG> _ListLoaiChuong;
-        private ObservableCollection<LOAICHUONG> _ListLoaiChuongCanTim;
-        private ObservableCollection<CHUONGTRAI> _ListMaLoaiChuongCanTim;
-        List<string> _LoaiChuongCanTim;
+        List<string> _ListTenLoaiChuongCanTim = new List<string>();
         #endregion                                                                                                                                                                                                              
 
         #region Property
@@ -37,9 +34,7 @@ namespace QuanLyTraiHeo.ViewModel
         public int SoHeoCanTim { get => _SoHeoCanTim; set { _SoHeoCanTim = value; OnPropertyChanged(); } }
         public ObservableCollection<CHUONGTRAI> ListChuongTrai { get => _ListChuongTrai; set { _ListChuongTrai = value; OnPropertyChanged(); } }
         public ObservableCollection<LOAICHUONG> ListLoaiChuong { get => _ListLoaiChuong; set { _ListLoaiChuong = value; OnPropertyChanged(); } }
-        public ObservableCollection<LOAICHUONG> ListLoaiChuongCanTim { get => _ListLoaiChuongCanTim; set { _ListLoaiChuongCanTim = value; OnPropertyChanged(); } }
-        public ObservableCollection<CHUONGTRAI> ListMaLoaiChuongCanTim { get => _ListMaLoaiChuongCanTim; set { _ListMaLoaiChuongCanTim = value; OnPropertyChanged(); } }
-        public List<string> LoaiChuongCanTim { get => _LoaiChuongCanTim; set { _LoaiChuongCanTim = value; OnPropertyChanged(); } }
+        public List<string> ListTenLoaiChuongCanTim { get => _ListTenLoaiChuongCanTim; set { _ListTenLoaiChuongCanTim = value; OnPropertyChanged(); } }
         public CHUONGTRAI SelectedItem
         {
             get => _SelectedItem;
@@ -71,7 +66,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 Themchuong themChuong = new Themchuong();
                 themChuong.ShowDialog();
-                _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+                ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
                 MaxC();
                 MaxH();
             });
@@ -95,7 +90,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     DataProvider.Ins.DB.CHUONGTRAIs.Remove(SelectedItem);
                     DataProvider.Ins.DB.SaveChanges();
-                    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+                    ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
                     MessageBox.Show("xóa");
                     MaxC();
                     MaxH();
@@ -119,22 +114,21 @@ namespace QuanLyTraiHeo.ViewModel
             });
             TimKiemTheoLoaiChuongCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
-                _LoaiChuongCanTim.Add((string)p.Content);
-                foreach(var item in _LoaiChuongCanTim)
+                if (p.IsChecked == true)
                 {
-                    var temp = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs.Where(x => x.TenLoai == item));
-                    foreach(var i in temp)
-                    {
-                        _ListLoaiChuongCanTim.Add(i);
-                    }
+                    _ListTenLoaiChuongCanTim.Add(p.Content.ToString());
                 }
-                LayMaLoaiChuong();
+                else
+                {
+                    _ListTenLoaiChuongCanTim.Remove(p.Content.ToString());
+                }
                 TimKiem();
             });
             #endregion
             MaxC();
             MaxH();
         }
+
         void MaxC()
         {
             _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
@@ -146,6 +140,7 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             }
         }
+
         void MaxH()
         {
             _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
@@ -157,25 +152,14 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             }
         }
-        void LayMaLoaiChuong()
-        {
-            foreach (var item in _ListLoaiChuongCanTim)
-            {
-                var temp = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaLoaiChuong == item.MaLoaiChuong));
-                foreach (var i in temp)
-                {
-                    _ListMaLoaiChuongCanTim.Add(i);
-                }
-            }
-        }
+
         void TimKiem()
         {
             _ListChuongTrai.Clear();
-            var ChuongTrais = DataProvider.Ins.DB.CHUONGTRAIs.ToList();
-            var temp = DataProvider.Ins.DB.CHUONGTRAIs.ToList();
+            var ChuongTrais = DataProvider.Ins.DB.CHUONGTRAIs.ToList();;
             if (_MaChuongCanTim != "")
             {
-                ChuongTrais = ChuongTrais.Where(x => x.MaChuong.Contains(_MaChuongCanTim) == true).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.MaChuong.Contains(_MaChuongCanTim)).ToList();
             }
             if (_SucChuaCanTim != 0)
             {
@@ -185,15 +169,28 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo.Equals(_SoHeoCanTim)).ToList();
             }
-            if (_ListLoaiChuongCanTim != null)
+            if (_ListTenLoaiChuongCanTim.Count > 0)
             {
-                
+                var DK = ChuongTrais;
+                foreach (var lChuong in _ListTenLoaiChuongCanTim)
+                {
+                    ChuongTrais = DK.Where(x => x.LOAICHUONG.TenLoai.Equals(lChuong)).ToList();
+                    foreach (var item in ChuongTrais)
+                    {
+                        CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
+                        cHUONGTRAI = item;
+                        _ListChuongTrai.Add(cHUONGTRAI);
+                    }
+                }
             }
-            foreach (var item in ChuongTrais)
+            else
             {
-                CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
-                cHUONGTRAI = item;
-                _ListChuongTrai.Add(cHUONGTRAI);
+                foreach (var item in ChuongTrais)
+                {
+                    CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
+                    cHUONGTRAI = item;
+                    _ListChuongTrai.Add(cHUONGTRAI);
+                }
             }
         }
     }
