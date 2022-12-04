@@ -313,6 +313,20 @@ create table ListActionDetail
 	ActionDetail nvarchar(64)
 )
 
+Create table	BAOCAOHANGHOA
+(
+	MaBCTK char(16),
+	Thang int,
+	Nam int,
+	MaHH char(16),
+	TonDau int,
+	TonCuoi int,
+	SoLuongNhapThem int,
+	SoLuongXuatRa int,
+
+	constraint PK_BCTK primary key (MaBCTK)
+)
+
 GO
 --table Heo--
 ALTER TABLE HEO ADD CONSTRAINT FK_H_MLH
@@ -414,6 +428,10 @@ FOREIGN KEY (SoPhieu) REFERENCES PHIEUHANGHOA(SoPhieu)
 
 ALTER TABLE CT_PHIEUKIEMKHO ADD CONSTRAINT FK_CT_PKK_MHH
 FOREIGN KEY (MaHangHoa) REFERENCES HANGHOA(MaHangHoa)
+
+--table BAOCAOTONKHO
+ALTER TABLE BAOCAOTONKHO ADD CONSTRAINT FK_BCTK_HH
+FOREIGN KEY (MaHH) REFERENCES HANGHOA(MaHangHoa)
 
 go
 
