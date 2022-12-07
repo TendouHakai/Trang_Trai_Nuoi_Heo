@@ -12,17 +12,13 @@ namespace QuanLyTraiHeo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class ThongBao
+    public partial class MuaDichBenh
     {
-        public string MaThongBao { get; set; }
-        public string C_MaNguoiGui { get; set; }
-        public string C_MaNguoiNhan { get; set; }
-        public string TinhTrang { get; set; }
-        public string TieuDe { get; set; }
-        public string NoiDung { get; set; }
-        public Nullable<System.DateTime> ThoiGian { get; set; }
-    
-        public virtual NHANVIEN NHANVIEN { get; set; }
-        public virtual NHANVIEN NHANVIEN1 { get; set; }
+        public string MaDichBenh { get; set; }
+        public string TenDichBenh { get; set; }
+        public Nullable<System.DateTime> NgayBatDau { get; set; }
+        public Nullable<System.DateTime> NgayKetThuc { get; set; }
+        public string NguyenNhan { get; set; }
+        public string BienPhap { get; set; }
     }
 }

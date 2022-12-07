@@ -182,5 +182,18 @@ namespace QuanLyTraiHeo
             wc.DataContext = soDoVM;
             wc.ShowDialog();
         }
+
+        private void Menu_QuyDinh_Selected(object sender, RoutedEventArgs e)
+        {
+            CollapsedMenuDtail();
+            Tree_menu_QuyDinh.Visibility = Visibility.Visible;
+            exp_test.IsExpanded = true;
+            tgl_menu.IsChecked = true;
+            formatMenu();
+            var bc = new BrushConverter();
+            (sender as ListBoxItem).Foreground = Brushes.White;
+            (sender as ListBoxItem).Background = (Brush)bc.ConvertFrom("#41c4ac");
+
+        }
     }
 }

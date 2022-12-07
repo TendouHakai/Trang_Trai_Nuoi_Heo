@@ -17,6 +17,7 @@ namespace QuanLyTraiHeo.Model
         public string MaLichPhoi { get; set; }
         public string MaHeoDuc { get; set; }
         public string MaHeoCai { get; set; }
+        public Nullable<System.DateTime> NgayPhoiGiong { get; set; }
         public string Trangthai { get; set; }
         public Nullable<System.DateTime> NgayDuKienDe { get; set; }
         public Nullable<System.DateTime> NgayDeThucTe { get; set; }
@@ -24,7 +25,6 @@ namespace QuanLyTraiHeo.Model
         public Nullable<int> SoConChet { get; set; }
         public Nullable<System.DateTime> NgayCaiSua { get; set; }
         public Nullable<int> SoConChon { get; set; }
-        public Nullable<System.DateTime> NgayPhoiGiong { get; set; }
         public Nullable<System.DateTime> NgayPhoiGiongLaiDuKien { get; set; }
     
         public virtual HEO HEO { get; set; }

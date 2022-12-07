@@ -25,6 +25,7 @@ namespace QuanLyTraiHeo.Model
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<BAOCAOTONKHO> BAOCAOTONKHOes { get; set; }
         public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
         public virtual DbSet<CHUONGTRAI> CHUONGTRAIs { get; set; }
         public virtual DbSet<CT_PHIEUHANGHOA> CT_PHIEUHANGHOA { get; set; }
@@ -35,11 +36,13 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<GIONGHEO> GIONGHEOs { get; set; }
         public virtual DbSet<HANGHOA> HANGHOAs { get; set; }
         public virtual DbSet<HEO> HEOs { get; set; }
+        public virtual DbSet<LICHCHUONG> LICHCHUONGs { get; set; }
         public virtual DbSet<LICHPHOIGIONG> LICHPHOIGIONGs { get; set; }
         public virtual DbSet<LICHTIEMHEO> LICHTIEMHEOs { get; set; }
         public virtual DbSet<ListActionDetail> ListActionDetails { get; set; }
         public virtual DbSet<LOAICHUONG> LOAICHUONGs { get; set; }
         public virtual DbSet<LOAIHEO> LOAIHEOs { get; set; }
+        public virtual DbSet<MuaDichBenh> MuaDichBenhs { get; set; }
         public virtual DbSet<NHANVIEN> NHANVIENs { get; set; }
         public virtual DbSet<PERMISION> PERMISIONs { get; set; }
         public virtual DbSet<PERMISION_DETAIL> PERMISION_DETAIL { get; set; }
@@ -47,10 +50,8 @@ namespace QuanLyTraiHeo.Model
         public virtual DbSet<PHIEUHEO> PHIEUHEOs { get; set; }
         public virtual DbSet<PHIEUKIEMKHO> PHIEUKIEMKHOes { get; set; }
         public virtual DbSet<PHIEUSUACHUA> PHIEUSUACHUAs { get; set; }
+        public virtual DbSet<QuyDinhTiemHeo> QuyDinhTiemHeos { get; set; }
         public virtual DbSet<THAMSO> THAMSOes { get; set; }
         public virtual DbSet<ThongBao> ThongBaos { get; set; }
-        public virtual DbSet<BAOCAOTONKHO> BAOCAOTONKHOes { get; set; }
-        public virtual DbSet<LICHCHUONG> LICHCHUONGs { get; set; }
-        public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     }
 }

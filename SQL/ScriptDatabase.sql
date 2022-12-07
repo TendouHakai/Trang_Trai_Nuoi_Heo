@@ -1,4 +1,8 @@
 ﻿--giống heo
+go
+use TRANGTRAINUOIHEO
+
+go
 INSERT INTO GIONGHEO VALUES('GH02112022000001', N'Heo Móng Cái', N'Màu sắc lông da trắng, lưng và mông có khoang đen yên ngựa, da mỏng mịn, lông thưa và thô. Đầu to, miệng nhỏ dài, tai nhỏ và nhọn, có nếp nhăn to và ngắn ở miệng. Cổ to và ngắn, ngực nở và sâu, lưng dài và hơi võng, bụng hơi xệ, mông rộng và xuôi. Bốn chân tương đối cao thẳng, móng xoè.
 Khối lượng heo sơ sinh: 450-500 gr/ con, heo trưởng thành: 140-170 kg/con. Có con tới 200 kg nhưng thời gian nuôi rất lâu. Tỷ lệ mỡ/thịt xẻ 35-38%.
 Sinh sản: Heo đực 3 tháng tuổi biết nhảy cái và trong tinh dịch đã có tinh trùng, lượng tinh dịch 80- 100 ml. Heo cái 3 tháng tuổi đã bắt đầu động hớn nhưng chưa có khả năng thụ thai. Thường thì heo cái đến khoảng 7-8 tháng tuổi trở đi mới có đủ điều kiện tốt nhất cho phối giống và có chửa, thời điểm đó heo đã đạt khối lượng khoảng 40-50 kg hoặc lớn hơn .')

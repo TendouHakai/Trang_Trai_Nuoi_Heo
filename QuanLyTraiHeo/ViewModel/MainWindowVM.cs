@@ -4,6 +4,7 @@ using QuanLyTraiHeo.View.Windows;
 using QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ;
 using QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo;
 using QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo;
+using QuanLyTraiHeo.View.Windows.Quy_Định;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -65,6 +66,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand OpenQuanLyChucVu { get; set; }
         public ICommand OpenQuanLyNhatKyWindow { get; set; }
         public ICommand OpenThietLapCayMucTieuWindow { get; set; }
+        public ICommand OpenQuyDinhWindow { get; set; }
 
         public ICommand OpenCapNhatTaiKhoan { get; set; }
         public ICommand OpenDoiMatKhau { get; set; }
@@ -300,6 +302,15 @@ namespace QuanLyTraiHeo.ViewModel
             });
             OpenThietLapCayMucTieuWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 ThietLapCayMucTieuWindow wc = new ThietLapCayMucTieuWindow();
+                wc.Close();
+                Object content = wc.Content;
+                wc.Content = null;
+                p.Children.Clear();
+                p.Children.Add(content as UIElement);
+                currentWindow = "Thiết lập cây mục tiêu";
+            });
+            OpenQuyDinhWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
+                QuyDinhWindow wc = new QuyDinhWindow();
                 wc.Close();
                 Object content = wc.Content;
                 wc.Content = null;

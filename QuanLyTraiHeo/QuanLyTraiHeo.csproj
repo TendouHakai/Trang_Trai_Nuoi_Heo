@@ -207,6 +207,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Model\MuaDichBenh.cs">
+      <DependentUpon>Model.tt</DependentUpon>
+    </Compile>
     <Compile Include="Model\NguoiGui.cs" />
     <Compile Include="Model\NHANVIEN.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -230,7 +233,7 @@
     <Compile Include="Model\PHIEUSUACHUA.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\sysdiagram.cs">
+    <Compile Include="Model\QuyDinhTiemHeo.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Model\THAMSO.cs">
@@ -241,6 +244,7 @@
     </Compile>
     <Compile Include="ViewModel\Phieu\ChiTietPhieuVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LaplichtiemVM.cs" />
+    <Compile Include="ViewModel\QuyDinhVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ChiTietPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\LapPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ThemPhieuSuaChuaVM.cs" />
@@ -266,6 +270,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
+      <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ChiTietPhieuWindow.xaml.cs">
       <DependentUpon>ChiTietPhieuWindow.xaml</DependentUpon>
     </Compile>
@@ -474,6 +481,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quy Định\QuyDinhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ChiTietPhieuWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

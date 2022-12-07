@@ -17,9 +17,10 @@ namespace QuanLyTraiHeo.Model
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public HANGHOA()
         {
+            this.BAOCAOTONKHOes = new HashSet<BAOCAOTONKHO>();
             this.CT_PHIEUHANGHOA = new HashSet<CT_PHIEUHANGHOA>();
             this.CT_PHIEUKIEMKHO = new HashSet<CT_PHIEUKIEMKHO>();
-            this.BAOCAOTONKHOes = new HashSet<BAOCAOTONKHO>();
+            this.QuyDinhTiemHeos = new HashSet<QuyDinhTiemHeo>();
         }
     
         public string MaHangHoa { get; set; }
@@ -30,10 +31,12 @@ namespace QuanLyTraiHeo.Model
         public string LoaiHangHoa { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<BAOCAOTONKHO> BAOCAOTONKHOes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PHIEUHANGHOA> CT_PHIEUHANGHOA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CT_PHIEUKIEMKHO> CT_PHIEUKIEMKHO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<BAOCAOTONKHO> BAOCAOTONKHOes { get; set; }
+        public virtual ICollection<QuyDinhTiemHeo> QuyDinhTiemHeos { get; set; }
     }
 }
