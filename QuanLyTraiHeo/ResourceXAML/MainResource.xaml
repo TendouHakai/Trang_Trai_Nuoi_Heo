@@ -39,5 +39,9 @@
     <viewModel:ChiTietPhieuSuaChuaVM x:Key="ChiTietPhieuSuaChuaVM"></viewModel:ChiTietPhieuSuaChuaVM>
     <viewModel:ThemPhieuSuaChuaVM x:Key="ThemPhieuSuaChuaVM"></viewModel:ThemPhieuSuaChuaVM>
     <viewModel:QuyDinhVM x:Key="QuyDinhVM"></viewModel:QuyDinhVM>
+    <viewModel:QuanLyHangHoaWindowVM x:Key="QuanLyHangHoaWindowVM"></viewModel:QuanLyHangHoaWindowVM>
+    <viewModel:ThongTinHangHoaVM x:Key="ThongTinHangHoaVM"></viewModel:ThongTinHangHoaVM>
+    <viewModel:ThemHangHoaVM x:Key="ThemHangHoaVM"></viewModel:ThemHangHoaVM>
+    <viewModel:LapPhieuKhoWindowVM x:Key="LapPhieuKhoWindowVM"></viewModel:LapPhieuKhoWindowVM>
 
 </ResourceDictionary>

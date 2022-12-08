@@ -3,13 +3,14 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:local="clr-namespace:QuanLyTraiHeo" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         Title="QuanLyHangHoaWindow" 
         Height="768"
         Width="1024">
-    <Grid Margin="20,0,20,0">
+    <Grid Margin="20,0,20,0"
+        DataContext="{StaticResource QuanLyHangHoaWindowVM}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition  Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -23,15 +24,35 @@
                 <Expander IsExpanded="True" Header="Đơn giá" FontWeight="Bold" Background="White">
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                            <TextBox 
+                                     Text="{Binding textDonGiaToiThieu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Tối thiểu"
-                                     FontWeight="Normal"/>
+                                     FontWeight="Normal">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding DongiatoithieuChangeCommand}"
+                                                               CommandParameter="{Binding ElementName=ListHangHoa}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
+
+
                             <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">VND</TextBlock>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                            <TextBox
+                                     Text="{Binding textDonGiaToiDa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Tối đa"
-                                     FontWeight="Normal"/>
+                                     FontWeight="Normal">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding DongiatoidaChangeCommand}"
+                                                               CommandParameter="{Binding ElementName=ListHangHoa}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
                             <TextBlock Margin="10,0,0,0" VerticalAlignment="Center">VND</TextBlock>
                         </StackPanel>
                     </StackPanel>
@@ -39,26 +60,45 @@
                 <Expander IsExpanded="True" Header="Số lượng tồn kho" FontWeight="Bold" Background="White">
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                         <StackPanel Orientation="Horizontal">
-                            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                            <TextBox 
+                                     Text="{Binding textSoLuongToiThieu, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Số lượng tối thiểu"
-                                     FontWeight="Normal"/>
+                                     FontWeight="Normal">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding SoluongtoithieuChangeCommand}"
+                                                               CommandParameter="{Binding ElementName=ListHangHoa}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                            <TextBox
+                                     Text="{Binding textSoLuongToiDa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                      materialDesign:HintAssist.Hint="Số lượng tối đa"
-                                     FontWeight="Normal"/>
+                                     FontWeight="Normal">
+                                <i:Interaction.Triggers>
+                                    <i:EventTrigger EventName="TextChanged">
+                                        <i:InvokeCommandAction Command="{Binding SoluongtoidaChangeCommand}"
+                                                               CommandParameter="{Binding ElementName=ListHangHoa}" />
+                                    </i:EventTrigger>
+                                </i:Interaction.Triggers>
+                            </TextBox>
                         </StackPanel>
                     </StackPanel>
                 </Expander>
-                <Expander IsExpanded="True" Header="Loại hàng hoá" FontWeight="Bold" Background="White">
+                <!--<Expander x:Name="exLoaiHangHoa" IsExpanded="True" Header="Loại hàng hoá" FontWeight="Bold" Background="White">
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
                         <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="1*"/>
-                                <ColumnDefinition Width="4*" />
+                                <ColumnDefinition Width="56*"/>
+                                <ColumnDefinition Width="201*" />
+                                <ColumnDefinition Width="24*"/>
                             </Grid.ColumnDefinitions>
-                            <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                            <TextBlock Text="Thức ăn"  Grid.Column="1" FontWeight="Normal"/>
+                            <CheckBox  VerticalAlignment="Center" HorizontalAlignment="Center" Margin="19,0,19,-0.8"/>
+                            <TextBlock Text="Thức ăn"  Grid.Column="1" FontWeight="Normal" Grid.ColumnSpan="2" Margin="0,0,-0.2,-0.8"/>
                         </Grid>
                         <Grid Margin="0,0,0,10">
                             <Grid.ColumnDefinitions>
@@ -77,19 +117,71 @@
                             <TextBlock Text="Khác"  Grid.Column="1" FontWeight="Normal"/>
                         </Grid>
                     </StackPanel>
+                </Expander>-->
+                <Expander IsExpanded="True"
+                                  Header="Loại hàng hoá"
+                                  FontWeight="Bold"
+                                  Background="White">
+                    <ListView ItemsSource="{Binding listLoaiHangHoa}"
+                                      Name="LVLoaiHangHoa"
+                                      Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding isSelected }"
+                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Loại hàng hoá "
+                                                        DisplayMemberBinding="{Binding loaiHangHoa}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Expander>
-                <Expander IsExpanded="True" Header="Tình trạng" FontWeight="Bold" Background="White">
+                <!--<Expander IsExpanded="True" Header="Tình trạng" FontWeight="Bold" Background="White">
                     <StackPanel Orientation="Vertical" Margin="10,0,0,0">
-                        <ComboBox Margin="10,0,0,0" Height="30"  Width="200" HorizontalAlignment="Left" 
+                        <ComboBox x:Name="cbTinhTrang"
+                            ItemsSource="{Binding listTinhTrang}"
+                            Margin="10,0,0,0" Height="30"  Width="200" HorizontalAlignment="Left" 
                                   materialDesign:HintAssist.Hint="Tình trạng"  
                                   VerticalAlignment="Center" 
                                   FontWeight="Normal">
-                            <ComboBoxItem>Tốt</ComboBoxItem>
-                            <ComboBoxItem>Đã hết hạn</ComboBoxItem>
-                            <ComboBoxItem>Đã hết hàng</ComboBoxItem>
                         </ComboBox>
                     </StackPanel>
+                </Expander>-->
+                <Expander IsExpanded="True"
+                                  Header="Tình Trạng"
+                                  FontWeight="Bold"
+                                  Background="White">
+                    <ListView ItemsSource="{Binding listTinhTrang}"
+                                      Name="LVTinhTrang"
+                                      Margin="10">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="">
+                                    <GridViewColumn.CellTemplate>
+                                        <DataTemplate>
+                                            <CheckBox IsChecked="{Binding isSelected }"
+                                                              Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor, 
+                                                                                                    AncestorType={x:Type ItemsControl}},
+                                                                                                    Path= DataContext.TextTimKiemChangeCommand }">
+                                            </CheckBox>
+                                        </DataTemplate>
+                                    </GridViewColumn.CellTemplate>
+                                </GridViewColumn>
+                                <GridViewColumn Header="Tình trạng "
+                                                        DisplayMemberBinding="{Binding tinhTrang}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
                 </Expander>
+
             </StackPanel>
         </materialDesign:Card>
 
@@ -110,9 +202,17 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="10,0,10,0">
-                                   
+
                                     <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,10,20,11" />
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,10,20,11" 
+                                             Text="{Binding textTimKiem, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding TextTimKiemChangeCommand}"
+                                                               CommandParameter="{Binding ElementName=ListHangHoa}" />
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>
 
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
@@ -125,8 +225,8 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
-
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding ThemHangHoaCommand}">
                                     </Button>
                                 </StackPanel>
 
@@ -135,27 +235,37 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ListView Margin="25 0" Name="list_HangHoa" >
+                    <ListView Margin="25 0" Name="list_HangHoa" 
+                              ItemsSource="{Binding listHangHoa, Mode=TwoWay}"
+                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="Mã hàng hoá"/>
-                                <GridViewColumn Header="Tên hàng hoá"/>
-                                <GridViewColumn Header="Đơn giá"/>
-                                <GridViewColumn Header="Số lượng tồn kho"/>
-                                <GridViewColumn Header="Tình trạng"/>
-                                <GridViewColumn Header="Loại hàng hoá"/>
+                                <GridViewColumn Header="Mã hàng hoá"
+                                                DisplayMemberBinding="{Binding MaHangHoa}"/>
+                                <GridViewColumn Header="Tên hàng hoá"
+                                                DisplayMemberBinding="{Binding TenHangHoa}" />
+                                <GridViewColumn Header="Đơn giá"
+                                                DisplayMemberBinding="{Binding DonGia}" />
+                                <GridViewColumn Header="Số lượng tồn kho"
+                                                DisplayMemberBinding="{Binding SoLuongTonKho}" />
+                                <GridViewColumn Header="Tình trạng"
+                                                DisplayMemberBinding="{Binding TinhTrang}" />
+                                <GridViewColumn Header="Loại hàng hoá"
+                                                DisplayMemberBinding="{Binding LoaiHangHoa}" />
 
                             </GridView>
                         </ListView.View>
                         <ListView.ContextMenu>
                             <ContextMenu>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Click="Show_Click" >
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" >
                                     <MenuItem.Header>Show</MenuItem.Header>
                                 </MenuItem>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
+                                          Command="{Binding EditCommand}">
                                     <MenuItem.Header>Edit</MenuItem.Header>
                                 </MenuItem>
-                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"
+                                    Command="{Binding DeleteCommand}">
                                     <MenuItem.Header>Delete</MenuItem.Header>
                                 </MenuItem>
                             </ContextMenu>
