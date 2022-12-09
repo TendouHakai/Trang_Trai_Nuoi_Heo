@@ -20,6 +20,6 @@ namespace QuanLyTraiHeo.Model
         public Nullable<int> SoLuongKiemTra { get; set; }
     
         public virtual HANGHOA HANGHOA { get; set; }
-        public virtual PHIEUHANGHOA PHIEUHANGHOA { get; set; }
+        public virtual PHIEUKIEMKHO PHIEUKIEMKHO { get; set; }
     }
 }

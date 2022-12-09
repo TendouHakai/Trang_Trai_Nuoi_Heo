@@ -14,13 +14,16 @@ namespace QuanLyTraiHeo.Model
     
     public partial class LICHCHUONG
     {
-        public string MaLichChuong { get; set; }
         public string MaChuong { get; set; }
-        public Nullable<System.DateTime> NgayLam { get; set; }
+        public System.DateTime NgayLam { get; set; }
         public string TrangThai { get; set; }
         public string TenLich { get; set; }
         public string Mota { get; set; }
+        public string MaNguoiTao { get; set; }
+        public string MaNguoiLam { get; set; }
     
         public virtual CHUONGTRAI CHUONGTRAI { get; set; }
+        public virtual NHANVIEN NHANVIEN { get; set; }
+        public virtual NHANVIEN NHANVIEN1 { get; set; }
     }
 }

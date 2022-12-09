@@ -195,7 +195,7 @@ namespace QuanLyTraiHeo.ViewModel
             Doanhthutrongngay = 0;
             try
             {
-                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
             try
