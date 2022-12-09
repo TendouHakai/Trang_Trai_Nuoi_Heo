@@ -243,6 +243,7 @@
     <Compile Include="Model\ThongBao.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="ViewModel\Account\Account.cs" />
     <Compile Include="Model\TinhTrangHangHoaModel.cs" />
     <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuVM.cs" />
@@ -261,7 +262,9 @@
     <Compile Include="ViewModel\Quản lý kho\ThongTinHangHoaVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\ChuongUC_VM.cs" />
     <Compile Include="ViewModel\Sơ đồ\DSHeoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\DSLichChuongVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\SoDoVM.cs" />
+    <Compile Include="ViewModel\Sơ đồ\ThemLichMoiVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\DoiMatKhauVM.cs" />
@@ -339,6 +342,9 @@
     </Compile>
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml.cs">
       <DependentUpon>ThongTinCanBiet.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Sơ đồ\wThemLichMoi.xaml.cs">
+      <DependentUpon>wThemLichMoi.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Tạo thông báo\ChitTietThongBaoWindow.xaml.cs">
       <DependentUpon>ChitTietThongBaoWindow.xaml</DependentUpon>
@@ -572,6 +578,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Sơ đồ\wThemLichMoi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -832,6 +842,7 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Image\ChuongHeo.png" />
+    <Resource Include="Image\pig-pigsty-icon-237822462.jpg" />
     <Content Include="Model\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model.Context.cs</LastGenOutput>

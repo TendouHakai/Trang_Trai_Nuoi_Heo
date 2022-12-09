@@ -25,7 +25,7 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Row="0"
-              Background="#ffedc1">
+              Background="#c5def3">
             <TextBlock FontSize="20"
                        VerticalAlignment="Center"
                        Text="Chuồng:"></TextBlock>
@@ -45,9 +45,11 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0"
-                  Background="#ffedc1">
+                  Background="White">
                 <TextBlock VerticalAlignment="Center"
                            FontSize="15"
+                           TextAlignment="Center"
+                           FontWeight="Bold"
                            Text="Danh sách heo">
                 </TextBlock>
             </Grid>
@@ -74,7 +76,8 @@
                 </Grid>
             </Border>
 
-            <Grid Grid.Column="2">
+            <Grid Grid.Column="2"
+                  Margin="0, 0, 0 , 20">
 
             </Grid>
 
@@ -88,7 +91,7 @@
             </Grid.ColumnDefinitions>
 
             <Grid Grid.Column="0"
-                  Background="#ffedc1">
+                  Background="White">
                 <ScrollViewer>
                     <StackPanel x:Name="sp_ListHeo">
                         
@@ -105,62 +108,95 @@
             </Grid>
 
             <Border Grid.Column="2"
+                    Margin="0, -20, 0, 0"
                     BorderThickness="1"
                     BorderBrush="#54acf3"
                     Background="Transparent"
                     CornerRadius="10,10,10,10">
                 <Grid>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="20"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition Height="40"></RowDefinition>
                         <RowDefinition></RowDefinition>
                     </Grid.RowDefinitions>
 
-                    <Grid Grid.Row="0">
+                    <Grid Grid.Row="0"
+                          HorizontalAlignment="Right">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Lịch "
-                                       FontSize="15"
-                                       VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="tách chuồng"
-                                       Name="tb_Lich"
-                                       FontSize="15"
-                                       VerticalAlignment="Center"></TextBlock>
+
+                            <Button Name="btn_Tick"
+                                    BorderThickness="0"
+                                    Height="20"
+                                    Width="20"
+                                    Visibility="Hidden"
+                                    Background="Transparent">
+                                <materialDesign:PackIcon Kind="CheckOutline"
+                                                         Foreground="#75e900"
+                                                         Margin="-15,-5,-15, -5"
+                                                         ToolTip="đánh dấu đã làm" />
+                            </Button>
+                            <Button Name="btn_Delete"
+                                    Margin="10,0,10,0"
+                                    BorderThickness="0"
+                                    Height="20"
+                                    Width="20"
+                                    Visibility="Hidden"
+                                    Background="Transparent">
+                                <materialDesign:PackIcon Kind="Delete"
+                                                         ToolTip="xóa lịch"
+                                                         Margin="-15,-5,-15, -5"
+                                                         Foreground="#9965f4" />
+                            </Button>
                         </StackPanel>
                     </Grid>
 
                     <Grid Grid.Row="1">
+                        <TextBlock Text="  "
+                                   Name="tb_Lich"
+                                   FontWeight="Bold"
+                                   FontSize="15"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"></TextBlock>
+                    </Grid>
+
+                    <Grid Grid.Row="2">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Người tạo: "
+                            <TextBlock x:Name="tb_nguoiTao"
+                                       Text="Người tạo: "
                                        FontSize="15"
+                                       Visibility="Hidden"
                                        VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="Vinh"
+                            <TextBlock Text="  "
                                        Name="tb_NguoiTao"
                                        FontSize="15"
                                        VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Grid>
 
-                    <Grid Grid.Row="2">
+                    <Grid Grid.Row="3">
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Thời gian thực hiện: "
+                            <TextBlock x:Name="tb_thoiGian"
+                                       Text="Thời gian thực hiện: "
+                                       Visibility="Hidden"
                                        FontSize="15"
                                        VerticalAlignment="Center"></TextBlock>
-                            <TextBlock Text="12/12/2022"
+                            <TextBlock Text="  "
                                        Name="tb_ThoiGian"
                                        FontSize="15"
                                        VerticalAlignment="Center"></TextBlock>
                         </StackPanel>
                     </Grid>
 
-                    <Grid Grid.Row="3">
+                    <Grid Grid.Row="4">
                         <Border BorderThickness="3"
                                 BorderBrush="AliceBlue"
                                 Background="Transparent"
                                 CornerRadius="10,10,10,10">
                             <RichTextBox x:Name="rtb_ChiTiet"
-                                         >
-                                
+                                         IsReadOnly="True">
+
                             </RichTextBox>
                         </Border>
                     </Grid>

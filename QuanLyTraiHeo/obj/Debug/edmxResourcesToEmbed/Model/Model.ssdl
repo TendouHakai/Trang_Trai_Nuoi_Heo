@@ -110,7 +110,7 @@
     <Property Name="MaLoaiHeo" Type="char" MaxLength="16" />
     <Property Name="MaGiongHeo" Type="char" MaxLength="16" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="6" />
-    <Property Name="NgaySinh" Type="smalldatetime" />
+    <Property Name="NgaySinh" Type="date" />
     <Property Name="TrongLuong" Type="int" />
     <Property Name="MaChuong" Type="char" MaxLength="16" />
     <Property Name="MaHeoCha" Type="char" MaxLength="16" />
@@ -120,14 +120,17 @@
   </EntityType>
   <EntityType Name="LICHCHUONG">
     <Key>
-      <PropertyRef Name="MaLichChuong" />
+      <PropertyRef Name="MaChuong" />
+      <PropertyRef Name="NgayLam" />
+      <PropertyRef Name="TenLich" />
     </Key>
-    <Property Name="MaLichChuong" Type="char" MaxLength="16" Nullable="false" />
-    <Property Name="MaChuong" Type="char" MaxLength="16" />
-    <Property Name="NgayLam" Type="smalldatetime" />
+    <Property Name="MaChuong" Type="char" MaxLength="16" Nullable="false" />
+    <Property Name="NgayLam" Type="smalldatetime" Nullable="false" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
-    <Property Name="TenLich" Type="nvarchar" MaxLength="50" />
+    <Property Name="TenLich" Type="nvarchar" MaxLength="50" Nullable="false" />
     <Property Name="Mota" Type="nvarchar" MaxLength="50" />
+    <Property Name="MaNguoiTao" Type="char" MaxLength="16" />
+    <Property Name="MaNguoiLam" Type="char" MaxLength="16" />
   </EntityType>
   <EntityType Name="LICHPHOIGIONG">
     <Key>
@@ -197,16 +200,14 @@
     </Key>
     <Property Name="MaNhanVien" Type="char" MaxLength="16" Nullable="false" />
     <Property Name="HoTen" Type="nvarchar" MaxLength="255" />
-    <Property Name="ImageLink" Type="char" MaxLength="255" />
-    <Property Name="ImageName" Type="nvarchar" MaxLength="100" />
-    <Property Name="MyImage" Type="varbinary(max)" />
+    <Property Name="BytesImage" Type="varbinary(max)" />
     <Property Name="MaChucVu" Type="char" MaxLength="16" />
     <Property Name="GioiTinh" Type="nvarchar" MaxLength="16" />
-    <Property Name="NgaySinh" Type="smalldatetime" />
+    <Property Name="NgaySinh" Type="date" />
     <Property Name="DiaChi" Type="nvarchar" MaxLength="1024" />
     <Property Name="email" Type="nvarchar" MaxLength="1024" />
     <Property Name="SDT" Type="char" MaxLength="16" />
-    <Property Name="NgayVaoLam" Type="smalldatetime" />
+    <Property Name="NgayVaoLam" Type="date" />
     <Property Name="HeSoLuong" Type="float" />
     <Property Name="_Username" Type="char" MaxLength="64" />
     <Property Name="_PassWord" Type="char" MaxLength="64" />
@@ -399,10 +400,10 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_CT_PKK_SP">
-    <End Role="PHIEUHANGHOA" Type="Self.PHIEUHANGHOA" Multiplicity="1" />
+    <End Role="PHIEUKIEMKHO" Type="Self.PHIEUKIEMKHO" Multiplicity="1" />
     <End Role="CT_PHIEUKIEMKHO" Type="Self.CT_PHIEUKIEMKHO" Multiplicity="*" />
     <ReferentialConstraint>
-      <Principal Role="PHIEUHANGHOA">
+      <Principal Role="PHIEUKIEMKHO">
         <PropertyRef Name="SoPhieu" />
       </Principal>
       <Dependent Role="CT_PHIEUKIEMKHO">
@@ -483,7 +484,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK_LC_MC">
-    <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="0..1" />
+    <End Role="CHUONGTRAI" Type="Self.CHUONGTRAI" Multiplicity="1" />
     <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="CHUONGTRAI">
@@ -491,6 +492,30 @@
       </Principal>
       <Dependent Role="LICHCHUONG">
         <PropertyRef Name="MaChuong" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LC_MNL">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaNguoiLam" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_LC_MNT">
+    <End Role="NHANVIEN" Type="Self.NHANVIEN" Multiplicity="0..1" />
+    <End Role="LICHCHUONG" Type="Self.LICHCHUONG" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NHANVIEN">
+        <PropertyRef Name="MaNhanVien" />
+      </Principal>
+      <Dependent Role="LICHCHUONG">
+        <PropertyRef Name="MaNguoiTao" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -744,7 +769,7 @@
       <End Role="CT_PHIEUKIEMKHO" EntitySet="CT_PHIEUKIEMKHO" />
     </AssociationSet>
     <AssociationSet Name="FK_CT_PKK_SP" Association="Self.FK_CT_PKK_SP">
-      <End Role="PHIEUHANGHOA" EntitySet="PHIEUHANGHOA" />
+      <End Role="PHIEUKIEMKHO" EntitySet="PHIEUKIEMKHO" />
       <End Role="CT_PHIEUKIEMKHO" EntitySet="CT_PHIEUKIEMKHO" />
     </AssociationSet>
     <AssociationSet Name="FK_CT_PSC_MC" Association="Self.FK_CT_PSC_MC">
@@ -773,6 +798,14 @@
     </AssociationSet>
     <AssociationSet Name="FK_LC_MC" Association="Self.FK_LC_MC">
       <End Role="CHUONGTRAI" EntitySet="CHUONGTRAI" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LC_MNL" Association="Self.FK_LC_MNL">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
+      <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
+    </AssociationSet>
+    <AssociationSet Name="FK_LC_MNT" Association="Self.FK_LC_MNT">
+      <End Role="NHANVIEN" EntitySet="NHANVIEN" />
       <End Role="LICHCHUONG" EntitySet="LICHCHUONG" />
     </AssociationSet>
     <AssociationSet Name="FK_LPG_MHC" Association="Self.FK_LPG_MHC">

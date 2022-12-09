@@ -58,6 +58,7 @@
                                    FontSize="15"></TextBlock>
                         <materialDesign:PackIcon Height="30"
                                                  Width="30"
+                                                 ToolTip="Giới tính"
                                                  Foreground="Black"
                                                  Margin="10,0,0,0"
                                                  Kind="GenderMaleFemale"
@@ -73,6 +74,7 @@
 
                         <materialDesign:PackIcon Height="30"
                                                  Width="30"
+                                                 ToolTip="Trọng lượng"
                                                  Foreground="#a5a8ab"
                                                  Kind="WeightKilogram"
                                                  Margin="10,71,0,0" />
@@ -86,10 +88,11 @@
 
                         <materialDesign:PackIcon Height="30"
                                                  Width="30"
+                                                 ToolTip="Ngày sinh: tháng/ngày/năm"
                                                  Foreground="#5cb2fd"
                                                  Kind="Cake"
                                                  Margin="195,36,0,0" />
-                        <TextBlock x:Name="TB_TenHanhKhach"
+                        <TextBlock x:Name="TB_NgaySinh"
                                    Foreground="Black"
                                    Text="20/10/2022"
                                    HorizontalAlignment="Left"
@@ -98,6 +101,7 @@
                                    Grid.ColumnSpan="2" />
                         <materialDesign:PackIcon Height="30"
                                                  Width="30"
+                                                 ToolTip="Loại heo"
                                                  Foreground="#f0645f"
                                                  Kind="PiggyBank"
                                                  Margin="195,71,0,0" />

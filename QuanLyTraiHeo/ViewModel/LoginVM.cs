@@ -53,8 +53,7 @@ namespace QuanLyTraiHeo.ViewModel
             string _pass = MD5Hash(Password);
 
             nhanVien = DataProvider.Ins.DB.NHANVIENs.Where(x => x.C_Username == Username && x.C_PassWord == _pass).SingleOrDefault();
-
-            if(nhanVien == null)
+            if (nhanVien == null)
             {
                 MessageBox.Show("Nhập sai tài khoản hoặc mật khẩu!");
                 return;
@@ -74,6 +73,9 @@ namespace QuanLyTraiHeo.ViewModel
                 Properties.Settings.Default.Save();
             }
             #endregion
+
+
+            Account.TaiKhoan = nhanVien;// Lưu lại tài khoản của người đăng nhập
 
             IsLogin = true;
             p.Close();
