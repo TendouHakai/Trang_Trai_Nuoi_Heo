@@ -59,6 +59,8 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         /// <summary>
         /// Giá trị mặc định
         /// </summary>
+
+        #region chiSoMucTieu
         public static double Tylede_muctieu = 86;
         public static double SoHeoConSinhRa_muctieu = 12.5;
         public static double ODeItCon_muctieu = 12;
@@ -69,7 +71,8 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public static string SoNgayCaiSua_MucTieu = "20-28";
         public static string SoNgayKhongLamViec_MucTieu = "12";
         public static double TrungBnhLua_MucTieu = 2.3;
-        public static double SoHeoTrongNam_MucTieu = 22;
+        public static double SoHeoTrongNam_MucTieu = 22; 
+        #endregion
 
         public double Tylede_muctieuClone = Tylede_muctieu;
         public double SoHeoConSinhRa_muctieuClone = SoHeoConSinhRa_muctieu;
@@ -83,13 +86,16 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public double TrungBnhLua_MucTieuClone = TrungBnhLua_MucTieu;
         public double SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu;
 
+        //Constructer
         public Caymuctieu(int? yearStart, int? yearEnd)
         {
             Heo = DataProvider.Ins.DB.HEOs.ToList();
             LichPhoiGiong = DataProvider.Ins.DB.LICHPHOIGIONGs.ToList();
             InitializeComponent();
             Input(yearStart, yearEnd);
+            AddEvent();
         }
+        //Method
         public void Input(int? yearStart, int? yearEnd)
         {
             if (yearStart == null || yearEnd == null)
@@ -281,14 +287,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Tylede_main.Foreground = Brushes.Red;
                 Tylede_main.FontWeight = FontWeights.Bold;
-                Tylede_icon.Source = imageSource;
+                Tylede_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Tylede_main.Foreground = Brushes.Green;
                 Tylede_main.FontWeight = FontWeights.Bold;
-                Tylede_icon.Source = imageSource;
+                Tylede_button_image.Source = imageSource;
             }
         }
 
@@ -305,14 +311,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Soheoconsinhra_lua.Foreground = Brushes.Red;
                 Soheoconsinhra_lua.FontWeight = FontWeights.Bold;
-                Soheoconsinhra_lua_Icon.Source = imageSource;
+                Soheoconsinhra_lua_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Soheoconsinhra_lua.Foreground = Brushes.Green;
                 Soheoconsinhra_lua.FontWeight = FontWeights.Bold;
-                Soheoconsinhra_lua_Icon.Source = imageSource;
+                Soheoconsinhra_lua_button_image.Source = imageSource;
             }
         }
 
@@ -329,14 +335,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Odeitcon.Foreground = Brushes.Red;
                 Odeitcon.FontWeight = FontWeights.Bold;
-                Odeitcon_Icon.Source = imageSource;
+                Odeitcon_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Odeitcon.Foreground = Brushes.Green;
                 Odeitcon.FontWeight = FontWeights.Bold;
-                Odeitcon_Icon.Source = imageSource;
+                Odeitcon_button_image.Source = imageSource;
             }
         }
 
@@ -357,14 +363,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Soheoconsong.Foreground = Brushes.Red;
                 Soheoconsong.FontWeight = FontWeights.Bold;
-                Soheoconsong_Icon.Source = imageSource;
+                Soheoconsong_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Soheoconsong.Foreground = Brushes.Green;
                 Soheoconsong.FontWeight = FontWeights.Bold;
-                Soheoconsong_Icon.Source = imageSource;
+                Soheoconsong_button_image.Source = imageSource;
             }
         }
 
@@ -381,14 +387,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Soheocaisua.Foreground = Brushes.Red;
                 Soheocaisua.FontWeight = FontWeights.Bold;
-                Soheocaisua_Icon.Source = imageSource;
+                Soheocaisua_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Soheocaisua.Foreground = Brushes.Green;
                 Soheocaisua.FontWeight = FontWeights.Bold;
-                Soheocaisua_Icon.Source = imageSource;
+                Soheocaisua_button_image.Source = imageSource;
             }
 
         }
@@ -407,14 +413,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Tylechet.Foreground = Brushes.Red;
                 Tylechet.FontWeight = FontWeights.Bold;
-                Tylechet_Icon.Source = imageSource;
+                Tylechet_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Tylechet.Foreground = Brushes.Green;
                 Tylechet.FontWeight = FontWeights.Bold;
-                Tylechet_Icon.Source = imageSource;
+                Tylechet_button_image.Source = imageSource;
             }
         }
 
@@ -433,14 +439,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Thoigianmangthai.Foreground = Brushes.Red;
                 Thoigianmangthai.FontWeight = FontWeights.Bold;
-                Thoigianmangthai_Icon.Source = imageSource;
+                Thoigianmangthai_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Thoigianmangthai.Foreground = Brushes.Green;
                 Thoigianmangthai.FontWeight = FontWeights.Bold;
-                Thoigianmangthai_Icon.Source = imageSource;
+                Thoigianmangthai_button_image.Source = imageSource;
             }
         }
 
@@ -457,14 +463,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Songaycaisua.Foreground = Brushes.Red;
                 Songaycaisua.FontWeight = FontWeights.Bold;
-                Songaycaisua_Icon.Source = imageSource;
+                Songaycaisua_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Songaycaisua.Foreground = Brushes.Green;
                 Songaycaisua.FontWeight = FontWeights.Bold;
-                Songaycaisua_Icon.Source = imageSource;
+                Songaycaisua_button_image.Source = imageSource;
             }
         }
 
@@ -481,14 +487,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 SoNgayKhongLamViec.Foreground = Brushes.Red;
                 SoNgayKhongLamViec.FontWeight = FontWeights.Bold;
-                SoNgayKhongLamViec_Icon.Source = imageSource;
+                SoNgayKhongLamViec_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 SoNgayKhongLamViec.Foreground = Brushes.Green;
                 SoNgayKhongLamViec.FontWeight = FontWeights.Bold;
-                SoNgayKhongLamViec_Icon.Source = imageSource;
+                SoNgayKhongLamViec_button_image.Source = imageSource;
             }
         }
 
@@ -505,14 +511,14 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 TrungbinhLua.Foreground = System.Windows.Media.Brushes.Red;
                 TrungbinhLua.FontWeight = FontWeights.Bold;
-                TrungbinhLua_Icon.Source = imageSource;
+                TrungbinhLua_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 TrungbinhLua.Foreground = System.Windows.Media.Brushes.Green;
                 TrungbinhLua.FontWeight = FontWeights.Bold;
-                TrungbinhLua_Icon.Source = imageSource;
+                TrungbinhLua_button_image.Source = imageSource;
             }
         }
 
@@ -526,7 +532,6 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 Soheotrongnam.Foreground = System.Windows.Media.Brushes.Red;
                 Soheotrongnam.FontWeight = FontWeights.Bold;
-                //Soheotrongnam_Icon.Source = imageSource;
                 Soheotrongnam_button_image.Source = imageSource;
             }
             else
@@ -534,7 +539,6 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 Soheotrongnam.Foreground = System.Windows.Media.Brushes.Green;
                 Soheotrongnam.FontWeight = FontWeights.Bold;
-                //Soheotrongnam_Icon.Source = imageSource;
                 Soheotrongnam_button_image.Source = imageSource;
             }
         }
@@ -553,23 +557,81 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-down-solid.png"));
                 DoanhThuUocTinh.Foreground = System.Windows.Media.Brushes.Red;
                 DoanhThuUocTinh.FontWeight = FontWeights.Bold;
-                DoanhThuUocTinh_Icon.Source = imageSource;
+                DoanhThuUocTinh_button_image.Source = imageSource;
             }
             else
             {
                 ImageSource imageSource = new BitmapImage(new Uri("pack://application:,,,/QuanLyTraiHeo;component/Image/thumbs-up-solid.png"));
                 DoanhThuUocTinh.Foreground = System.Windows.Media.Brushes.Green;
                 DoanhThuUocTinh.FontWeight = FontWeights.Bold;
-                DoanhThuUocTinh_Icon.Source = imageSource;
+                DoanhThuUocTinh_button_image.Source = imageSource;
             }
         }
+        
+        void AddEvent()
+        {
+            //the1
+            the1.MouseEnter += MouseEnter_1;
+            the1.MouseLeave += MouseLeave_1;
+            DoanhThuUocTinh_button.Click += WhenClick;
+            //the2
+            the2.MouseEnter += MouseEnter_2;
+            the2.MouseLeave += MouseLeave_2;
+            Soheotrongnam_button.Click += WhenClick;
+            //the3
+            the3.MouseEnter += MouseEnter_3;
+            the3.MouseLeave += MouseLeave_3;
+            Soheocaisua_button.Click += WhenClick;
+            //the4
+            the4.MouseEnter += MouseEnter_4;
+            the4.MouseLeave += MouseLeave_4;
+            TrungbinhLua_button.Click += WhenClick;
+            //the5
+            the5.MouseEnter += MouseEnter_5;
+            the5.MouseLeave += MouseLeave_5;
+            Soheoconsong_button.Click += WhenClick;
+            //the6
+            the6.MouseEnter += MouseEnter_6;
+            the6.MouseLeave += MouseLeave_6;
+            Tylechet_button.Click += WhenClick;
+            //the7
+            the7.MouseEnter += MouseEnter_7;
+            the7.MouseLeave += MouseLeave_7;
+            Soheoconsinhra_lua_button.Click += WhenClick;
+            //the8
+            the8.MouseEnter += MouseEnter_8;
+            the8.MouseLeave += MouseLeave_8;
+            Odeitcon_button.Click += WhenClick;
+            //the9
+            the9.MouseEnter += MouseEnter_9;
+            the9.MouseLeave += MouseLeave_9;
+            SoNgayKhongLamViec_button.Click += WhenClick;
+            //the10
+            the10.MouseEnter += MouseEnter_10;
+            the10.MouseLeave += MouseLeave_10;
+            Thoigianmangthai_button.Click += WhenClick;
+            //the11
+            the11.MouseEnter += MouseEnter_11;
+            the11.MouseLeave += MouseLeave_11;
+            Songaycaisua_button.Click += WhenClick;
+            //the12
+            the12.MouseEnter += MouseEnter_12;
+            the12.MouseLeave += MouseLeave_12;
+            Tylede_button.Click += WhenClick;
+            //the13
+            the13.MouseEnter += MouseEnter_13;
+            the13.MouseLeave += MouseLeave_13;
+        }
 
+        #region Event
+        //Test
         private void _1_MouseDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Doanh số không đạt chỉ tiêu dự kiến, không đủ tiền chi trả cho nhân viên và chi phí vận hành", "Chi tiết", MessageBoxButton.OK, MessageBoxImage.Warning);
         }
 
-        private void zoom_in_Click(object sender, RoutedEventArgs e)
+        //zoom in zoom out button
+        public void zoom_in_Click(object sender, RoutedEventArgs e)
         {
 
             var scaler = Zoomviewbox.LayoutTransform as ScaleTransform;
@@ -605,47 +667,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 }
             }
         }
-
-        void enterCard(ToggleButton toggle, Card c)
-        {
-            toggle.IsChecked = true;
-            toggle.Background = System.Windows.Media.Brushes.Yellow;
-            c.Background = Brushes.WhiteSmoke;
-        }
-
-        void leaveCard(ToggleButton toggle, Card c)
-        {
-            toggle.IsChecked = false;
-            toggle.Background = System.Windows.Media.Brushes.White;
-            c.Background = Brushes.White;
-        }
-        void checkclick(ToggleButton toggle)
-        {
-            if (Soheotrongnam_button.IsChecked == true)
-            {
-                toggle.Background = System.Windows.Media.Brushes.Yellow;
-            }
-            else
-            {
-                toggle.Background = System.Windows.Media.Brushes.White;
-            }
-        }
-        private void the2_MouseEnter(object sender, MouseEventArgs e)
-        {
-            enterCard(Soheotrongnam_button, the2);
-        }
-
-        private void the2_MouseLeave(object sender, MouseEventArgs e)
-        {
-            leaveCard(Soheotrongnam_button, the2);
-        }
-
-        private void Soheotrongnam_button_Click(object sender, RoutedEventArgs e)
-        {
-            checkclick(Soheotrongnam_button);
-        }
-
-        private void zoom_out_Click(object sender, RoutedEventArgs e)
+        public void zoom_out_Click(object sender, RoutedEventArgs e)
         {
             var scaler = Zoomviewbox.LayoutTransform as ScaleTransform;
 
@@ -680,6 +702,157 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 }
             }
         }
+
+        //method when enter card
+        void enterCard(ToggleButton toggle, Card c)
+        {
+            toggle.IsChecked = true;
+            toggle.Background = System.Windows.Media.Brushes.Yellow;
+            c.Background = Brushes.WhiteSmoke;
+        }
+
+        void leaveCard(ToggleButton toggle, Card c)
+        {
+            toggle.IsChecked = false;
+            toggle.Background = System.Windows.Media.Brushes.White;
+            c.Background = Brushes.White;            
+        }
+        void checkclick(ToggleButton toggle)
+        {
+            if (Soheotrongnam_button.IsChecked == true)
+            {
+                toggle.Background = System.Windows.Media.Brushes.Yellow;
+            }
+            else
+            {
+                toggle.Background = System.Windows.Media.Brushes.White;
+            }
+        }
+        #region EventCard
+        //Event for card
+        //2
+        private void MouseEnter_2(object sender, MouseEventArgs e)
+        {
+            enterCard(Soheotrongnam_button, e.Source as Card);
+        }
+        private void MouseLeave_2(object sender, MouseEventArgs e)
+        {
+            leaveCard(Soheotrongnam_button, e.Source as Card);
+        }
+        //1
+        private void MouseEnter_1(object sender, MouseEventArgs e)
+        {
+            enterCard(DoanhThuUocTinh_button, e.Source as Card);
+        }
+        private void MouseLeave_1(object sender, MouseEventArgs e)
+        {
+            leaveCard(DoanhThuUocTinh_button, e.Source as Card);
+        }
+        //3
+        private void MouseEnter_3(object sender, MouseEventArgs e)
+        {
+            enterCard(Soheocaisua_button, e.Source as Card);
+        }
+        private void MouseLeave_3(object sender, MouseEventArgs e)
+        {
+            leaveCard(Soheocaisua_button, e.Source as Card);
+        }
+
+        private void MouseEnter_4(object sender, MouseEventArgs e)
+        {
+            enterCard(TrungbinhLua_button, e.Source as Card);
+        }
+        private void MouseLeave_4(object sender, MouseEventArgs e)
+        {
+            leaveCard(TrungbinhLua_button, e.Source as Card);
+        }
+
+        private void MouseEnter_5(object sender, MouseEventArgs e)
+        {
+            enterCard(Soheoconsong_button, e.Source as Card);
+        }
+        private void MouseLeave_5(object sender, MouseEventArgs e)
+        {
+            leaveCard(Soheoconsong_button, e.Source as Card);
+        }
+
+        private void MouseEnter_6(object sender, MouseEventArgs e)
+        {
+            enterCard(Tylechet_button, e.Source as Card);
+        }
+        private void MouseLeave_6(object sender, MouseEventArgs e)
+        {
+            leaveCard(Tylechet_button, e.Source as Card);
+        }
+
+        private void MouseEnter_7(object sender, MouseEventArgs e)
+        {
+            enterCard(Soheoconsinhra_lua_button, e.Source as Card);
+        }
+        private void MouseLeave_7(object sender, MouseEventArgs e)
+        {
+            leaveCard(Soheoconsinhra_lua_button, e.Source as Card);
+        }
+
+        private void MouseEnter_8(object sender, MouseEventArgs e)
+        {
+            enterCard(Odeitcon_button, e.Source as Card);
+        }
+        private void MouseLeave_8(object sender, MouseEventArgs e)
+        {
+            leaveCard(Odeitcon_button, e.Source as Card);
+        }
+
+        private void MouseEnter_9(object sender, MouseEventArgs e)
+        {
+            enterCard(SoNgayKhongLamViec_button, e.Source as Card);
+        }
+        private void MouseLeave_9(object sender, MouseEventArgs e)
+        {
+            leaveCard(SoNgayKhongLamViec_button, e.Source as Card);
+        }
+
+        private void MouseEnter_10(object sender, MouseEventArgs e)
+        {
+            enterCard(Thoigianmangthai_button, e.Source as Card);
+        }
+        private void MouseLeave_10(object sender, MouseEventArgs e)
+        {
+            leaveCard(Thoigianmangthai_button, e.Source as Card);
+        }
+
+        private void MouseEnter_11(object sender, MouseEventArgs e)
+        {
+            enterCard(Songaycaisua_button, e.Source as Card);
+        }
+        private void MouseLeave_11(object sender, MouseEventArgs e)
+        {
+            leaveCard(Songaycaisua_button, e.Source as Card);
+        }
+
+        private void MouseEnter_12(object sender, MouseEventArgs e)
+        {
+            enterCard(Tylede_button, e.Source as Card);
+        }
+        private void MouseLeave_12(object sender, MouseEventArgs e)
+        {
+            leaveCard(Tylede_button, e.Source as Card);
+        }
+
+        private void MouseEnter_13(object sender, MouseEventArgs e)
+        {
+            enterCard(temp_button, e.Source as Card);
+        }
+        private void MouseLeave_13(object sender, MouseEventArgs e)
+        {
+            leaveCard(temp_button, e.Source as Card);
+        } 
+        #endregion
+        private void WhenClick(object sender, RoutedEventArgs e)
+        {
+            checkclick(e.Source as ToggleButton);
+        } 
+        #endregion
     }
 }
 

@@ -33,7 +33,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public double DoanhThu_muctieu_au = 0;
         public double Tylethaydan_au = 0;
 
-        static int check = 0;
+        public int check = 0;
         public DatMucTieu(double Tylede_muctieu, double SoHeoConSinhRa_muctieu, double ODeItCon_muctieu, double SoHeoConSong_MucTieu, double SoHeoCaiSua_muctieu, double SoConChetTruocKhiCaiSua_MucTieu, string ThoiGianMangThai_MucTieu, string SoNgayCaiSua_MucTieu, string SoNgayKhongLamViec_MucTieu, double TrungBnhLua_MucTieu, double SoHeoTrongNam_MucTieu)
         {
             InitializeComponent();
