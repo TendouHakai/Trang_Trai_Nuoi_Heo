@@ -43,7 +43,6 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Command
         public ICommand AddCommand { get; set; }
-        public ICommand ShowCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand TimKiemTheoMaNVCommand { get; set; }
@@ -62,23 +61,26 @@ namespace QuanLyTraiHeo.ViewModel
                 phieuSuaChua.ShowDialog();
                 ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
             });
-            ShowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
-                phieuSuaChua.ShowDialog();
-                ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
-            });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
                 phieuSuaChua.ShowDialog();
                 ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
             });
-            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            DeleteCommand = new RelayCommand<Window>((p) =>
             {
-                PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
-                phieuSuaChua.ShowDialog();
-                ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
+                if (SelectedItem == null)
+                    return false;
+                else return true;
+            }, p =>
+            {
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Thông báo", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    DataProvider.Ins.DB.PHIEUSUACHUAs.Remove(SelectedItem);
+                    DataProvider.Ins.DB.SaveChanges();
+                    ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
+                }
             });
             #region Tìm kiếm
             TimKiemTheoMaNVCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
@@ -130,7 +132,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 PhieuSuaChuas = PhieuSuaChuas.Where(x => x.NgaySuaChua >= _NgaySuaChua1).ToList();
             }
-            if ( _NgaySuaChua2 != null && _NgaySuaChua2 != DateTime.MinValue)
+            if (_NgaySuaChua2 != null && _NgaySuaChua2 != DateTime.MinValue)
             {
                 PhieuSuaChuas = PhieuSuaChuas.Where(x => x.NgaySuaChua <= _NgaySuaChua2).ToList();
             }
@@ -155,6 +157,6 @@ namespace QuanLyTraiHeo.ViewModel
                     pHIEUSUACHUA = item;
                     _ListPhieuSuaChua.Add(pHIEUSUACHUA);
                 }
-            }
         }
     }
+}

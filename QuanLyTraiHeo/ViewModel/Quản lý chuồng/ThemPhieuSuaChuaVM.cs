@@ -37,6 +37,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region Property
         public List<CT_PHIEUSUACHUA> CT_PHIEUSUACHUAs { get => cT_PHIEUSUACHUAs; set { cT_PHIEUSUACHUAs = value; OnPropertyChanged(); } }
         public ObservableCollection<CTPhieuModel> CTPhieu { get => cTPhieuModels; set { cTPhieuModels = value; OnPropertyChanged(); } }
+        public ObservableCollection<NHANVIEN> ListNhanVien { get; set; }
         public string TenNhanVien { get => _TenNhanVien; set { _TenNhanVien = value; OnPropertyChanged(); } }
         public bool Flag { get => _Flag; set { _Flag = value; OnPropertyChanged(); } }
         public string MaDoiTac { get => _MaDoiTac; set { _MaDoiTac = value; OnPropertyChanged(); } }
@@ -63,6 +64,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ThemPhieuSuaChuaVM()
         {
             cT_PHIEUSUACHUAs = DataProvider.Ins.DB.CT_PHIEUSUACHUA.ToList();
+            ListNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
             _SoPhieu = TaoSoPhieu();
             AddCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
             {

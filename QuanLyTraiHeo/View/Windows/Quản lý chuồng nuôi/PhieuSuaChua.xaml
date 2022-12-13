@@ -132,10 +132,18 @@
                     <Grid>
                         <materialDesign:PackIcon Kind="Account"
                                                  Margin="10 15 0 0 " />
-                        <TextBox materialDesign:HintAssist.Hint="Tên nhân viên"
+                        <!--<TextBox materialDesign:HintAssist.Hint="Tên nhân viên"
                                  Height="30"
                                  Margin="30,10,20,11"
-                                 Text="{Binding TenNhanVien}"/>
+                                 Text="{Binding TenNhanVien}"/>-->
+                        <ComboBox Margin="30,0,20,11"
+                                  materialDesign:HintAssist.Hint="Tên nhân viên"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  ItemsSource="{Binding ListNhanVien, Mode=OneWay}"
+                                  Text="{Binding TenNhanVien, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                  DisplayMemberPath="HoTen">
+                        </ComboBox>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
@@ -200,6 +208,7 @@
                         <materialDesign:PackIcon Kind="Barcode"
                                                  Margin="10 15 0 0 " />
                         <TextBox materialDesign:HintAssist.Hint="Số phiếu"
+                                 IsReadOnly="True"
                                  Height="30"
                                  Margin="30,10,20,11" 
                                  Text="{Binding SoPhieu}"/>

@@ -27,6 +27,7 @@ namespace QuanLyTraiHeo.ViewModel
         #endregion
 
         #region Property
+        public ObservableCollection<LOAICHUONG> ListLoaiChuong { get; set; }
         public List<CHUONGTRAI> CHUONGTRAIs { get => _ChuongTrais; set { _ChuongTrais = value; OnPropertyChanged(); } }
         public string MaChuong { get => _MaChuong; set { _MaChuong = value; OnPropertyChanged(); } }
         public string MaLoaiChuong { get => _MaLoaiChuong; set { _MaLoaiChuong = value; OnPropertyChanged(); } }
@@ -42,6 +43,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ThemChuongVM()
         {
+            ListLoaiChuong = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs);
             MaChuong = LayMa();
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {

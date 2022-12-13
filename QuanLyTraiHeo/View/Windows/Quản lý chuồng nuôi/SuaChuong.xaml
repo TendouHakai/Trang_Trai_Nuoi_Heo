@@ -20,8 +20,16 @@
         <StackPanel VerticalAlignment="Center" Margin="5">
             <materialDesign:Card Margin="5" VerticalAlignment="Center">
                 <StackPanel VerticalAlignment="Center">
-                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã chuồng" Text="{Binding MaChuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox Margin="20 15 20 10" materialDesign:HintAssist.Hint="Mã chuồng" IsReadOnly="True" Text="{Binding MaChuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                     <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Mã loại chuồng" Text="{Binding MaLoaiChuong}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <!--<ComboBox Margin="20 10 20 10"
+                                  materialDesign:HintAssist.Hint="Mã loại chuồng"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  ItemsSource="{Binding ListLoaiChuong, Mode=OneWay}"
+                                  Text="{Binding MaLoaiChuong, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                  DisplayMemberPath="MaLoaiChuong">
+                    </ComboBox>-->
                     <ComboBox Margin="20 10 20 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
                                   VerticalAlignment="Center"

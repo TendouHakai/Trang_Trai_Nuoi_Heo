@@ -84,16 +84,27 @@ namespace QuanLyTraiHeo.ViewModel
                 MaxC();
                 MaxH();
             });
-            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            DeleteCommand = new RelayCommand<Window>((p) =>
             {
-                if (SelectedItem != null)
+                if (SelectedItem == null)
+                    return false;
+                else return true;
+            }, p =>
+            {
+                if (SelectedItem.SoLuongHeo > 0)
+                {
+                    MessageBox.Show("Không thể xóa chuồng này vì vẫn còn heo trong chuồng");
+                    return;
+                }
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Thông báo", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
                 {
                     DataProvider.Ins.DB.CHUONGTRAIs.Remove(SelectedItem);
                     DataProvider.Ins.DB.SaveChanges();
                     ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-                    MessageBox.Show("xóa");
                     MaxC();
                     MaxH();
+
                 }
             });
             #region Tìm kiếm

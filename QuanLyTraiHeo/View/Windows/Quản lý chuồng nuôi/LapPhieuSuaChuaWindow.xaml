@@ -173,7 +173,6 @@
                                         <GridViewColumn.CellTemplate>
                                             <DataTemplate>
                                                 <Menu>
-                                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding ShowCommand}"></MenuItem>
                                                     <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding EditCommand}"></MenuItem>
                                                     <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding DeleteCommand}"></MenuItem>
                                                 </Menu>
