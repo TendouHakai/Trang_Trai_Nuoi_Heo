@@ -13,14 +13,14 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace QuanLyTraiHeo.View.Windows.Quản_lý_chức_vụ
+namespace QuanLyTraiHeo.View.Windows.Quy_Định
 {
     /// <summary>
-    /// Interaction logic for SuaChucVu.xaml
+    /// Interaction logic for EditMDBWindow.xaml
     /// </summary>
-    public partial class SuaChucVu : Window
+    public partial class EditMDBWindow : Window
     {
-        public SuaChucVu()
+        public EditMDBWindow()
         {
             InitializeComponent();
         }

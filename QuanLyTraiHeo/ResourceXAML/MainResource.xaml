@@ -43,6 +43,11 @@
     <viewModel:ThongTinHangHoaVM x:Key="ThongTinHangHoaVM"></viewModel:ThongTinHangHoaVM>
     <viewModel:ThemHangHoaVM x:Key="ThemHangHoaVM"></viewModel:ThemHangHoaVM>
     <viewModel:LapPhieuKhoWindowVM x:Key="LapPhieuKhoWindowVM"></viewModel:LapPhieuKhoWindowVM>
+    <viewModel:SuaNhanVienVM x:Key="SuaNhanVienVM"></viewModel:SuaNhanVienVM>
+    <viewModel:PhanQuyenVM x:Key="PhanQuyenVM"></viewModel:PhanQuyenVM>
+    <viewModel:EditQDTHVM x:Key="EditQDTHVM"></viewModel:EditQDTHVM>
+    <viewModel:EditMDBVM x:Key="EditMDBVM"></viewModel:EditMDBVM>
 
+    
     <viewModel:ThemLichMoiVM x:Key="ThemLichMoiVM"></viewModel:ThemLichMoiVM>
 </ResourceDictionary>

@@ -5,7 +5,6 @@ using System.Text;
 using System.Threading.Tasks;
 using QuanLyTraiHeo.Model;
 using static QuanLyTraiHeo.ViewModel.TrangChuVM;
-using QuanLyTraiHeo.Model;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Controls;
@@ -167,7 +166,7 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuHangHoa()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.PHIEUHANGHOAs
-                               //                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
 
                            select Phieu
 
@@ -175,10 +174,10 @@ namespace QuanLyTraiHeo.ViewModel
 
                            .Select(p => new NhatKy
                            {
-                               icon = "Warehouse",
+                               icon = "bank-transfer",
                                TenNhanVien = p.NHANVIEN.HoTen,
                                MaPhieu = p.SoPhieu,
-                               Ngay = "Ngày" + p.NgayLap.Value.ToString(" dd/MM/yyyy"),
+                               Ngay = "Ngày " + p.NgayLap.Value.ToString("dd/MM/yyyy"),
                                ThoiGian = (DateTime)p.NgayLap,
                                HanhDong = "Vừa tạo 1 phiếu " + p.LoaiPhieu.ToString() + " trị giá " + string.Format("{0:#,##0}", p.TongTien) + " VNĐ"
                            }).ToList();
@@ -188,17 +187,17 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuSuaChua()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.PHIEUSUACHUAs
-                               //where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                           where (Phieu.NgaySuaChua >= TuNgay && Phieu.NgaySuaChua <= DenNgay)
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "Warehouse",
+                               icon = "tools",
                                TenNhanVien = p.NHANVIEN.HoTen,
 
                                MaPhieu = p.SoPhieu,
-                               Ngay = "Ngày" + p.NgaySuaChua.Value.ToString(" dd/MM/yyyy"),
-
+                               Ngay = "Ngày " + p.NgaySuaChua.Value.ToString("dd/MM/yyyy"),
                                ThoiGian = (DateTime)p.NgaySuaChua,
+
                                HanhDong = "Sữa chữa chuồng, chi phí " + string.Format("{0:#,##0}", p.TongTien) + " VNĐ"
 
                            }).ToList();
@@ -208,11 +207,11 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuKiemKho()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.PHIEUKIEMKHOes
-                               //where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                            where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "Warehouse",
+                               icon = "bank-check",
                                TenNhanVien = p.NHANVIEN.HoTen,
 
                                MaPhieu = p.SoPhieu,
@@ -228,16 +227,16 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuHeo()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.PHIEUHEOs
-                               //                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "Warehouse",
+                               icon = "pig-variant-outline",
                                TenNhanVien = p.NHANVIEN.HoTen,
                                Ngay = "Ngày" + p.NgayLap.Value.ToString(" dd/MM/yyyy"),
+                               ThoiGian = (DateTime)p.NgayLap,
 
                                MaPhieu = p.SoPhieu,
-                               ThoiGian = (DateTime)p.NgayLap,
                                HanhDong = "Vừa " + p.LoaiPhieu.ToString() + ", trị giá " + string.Format("{0:#,##0}", p.TongTien) + " VNĐ"
                            }).ToList();
             foreach (var item in Dataset)
@@ -246,15 +245,15 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuTiemHeo()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.LICHTIEMHEOs
-                               //                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                           where (Phieu.NgayTiem >= TuNgay && Phieu.NgayTiem <= DenNgay)
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               //Ngay = "Ngày" + p.NgayLap.Value.ToString(" dd/MM/yyyy"),
-
-                               icon = "Warehouse",
+                               Ngay = "Ngày" + p.NgayTiem.Value.ToString(" dd/MM/yyyy"),
+                               ThoiGian = (DateTime)p.NgayTiem,
+                               icon = "biohazard",
                                MaPhieu = p.MaLichTiem,
-                               HanhDong = "Lên lịch tiêm heo ngày : " + p.NgayTiem.ToString()
+                               HanhDong = "Tiêm heo ngày : " + p.NgayTiem.ToString()
                            }).ToList();
             foreach (var item in Dataset)
                 lstNhatKy.Add(item);
@@ -262,14 +261,14 @@ namespace QuanLyTraiHeo.ViewModel
         private void LoadPhieuPhoiGiong()
         {
             var Dataset = (from Phieu in DataProvider.Ins.DB.LICHPHOIGIONGs
-                               //                           where (Phieu.NgayLap >= TuNgay && Phieu.NgayLap <= DenNgay)
+                           where (Phieu.NgayPhoiGiong >= TuNgay && Phieu.NgayPhoiGiong <= DenNgay)
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "Warehouse",
+                               icon = "pig",
                                MaPhieu = p.MaLichPhoi,
                                HanhDong = "tạo phiếu phối giống",
-                               //Ngay = "Ngày" + p.NgayLap.Value.ToString(" dd/MM/yyyy")
+                               Ngay = "Ngày" + p.NgayPhoiGiong.Value.ToString(" dd/MM/yyyy")
 
                            }).ToList();
             foreach (var item in Dataset)

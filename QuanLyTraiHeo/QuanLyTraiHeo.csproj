@@ -252,6 +252,7 @@
     <Compile Include="ViewModel\Quản lý chuồng\ChiTietPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\LapPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ThemPhieuSuaChuaVM.cs" />
+    <Compile Include="ViewModel\Quản lý chức vụ\PhanQuyenVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
     <Compile Include="ViewModel\Phieu\ChonHeoXuatVM.cs" />
     <Compile Include="ViewModel\Phieu\LapPhieuBanNhapHeoVM.cs" />
@@ -280,8 +281,17 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Quy Định\EditMDBWindow.xaml.cs">
+      <DependentUpon>EditMDBWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quy Định\EditQDTHWindow.xaml.cs">
+      <DependentUpon>EditQDTHWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
       <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml.cs">
+      <DependentUpon>PhanQuyenWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml.cs">
       <DependentUpon>ThemHangHoawindow.xaml</DependentUpon>
@@ -497,7 +507,19 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Quy Định\EditMDBWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quy Định\EditQDTHWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quy Định\QuyDinhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
