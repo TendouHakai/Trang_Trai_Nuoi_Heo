@@ -39,18 +39,23 @@ namespace QuanLyTraiHeo.ViewModel
         #region Command
         public ICommand ThemCommand { get; set; }
         public ICommand XacNhanCommand { get; set; }
+        public ICommand TaoMaChuong { get; set; }
         #endregion
 
         public ThemChuongVM()
         {
             ListLoaiChuong = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs);
-            MaChuong = LayMa();
+            TaoMaChuong = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
+            {
+                MessageBox.Show(MaLoaiChuong);
+                MaChuong = CreatMaChuong(MaLoaiChuong);
+            });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                foreach(var item in _ChuongTrais)
+                foreach (var item in _ChuongTrais)
                 {
                     DataProvider.Ins.DB.CHUONGTRAIs.Add(item);
-                }    
+                }
                 DataProvider.Ins.DB.SaveChanges();
                 _ChuongTrais.Clear();
                 MessageBox.Show("Đã thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
@@ -63,47 +68,87 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Items.Refresh();
             });
         }
-        string CreatMaChuong(int lan)
+        string CreatMaChuong(string maLC)
         {
-            ObservableCollection<CHUONGTRAI> Chuongs = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-            int soChuong;
-            if (_ChuongTrais != null)
-            { soChuong = Chuongs.Count + _ChuongTrais.Count + lan; }
-            else
+            ObservableCollection<CHUONGTRAI> Chuongs = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaLoaiChuong.Equals(maLC)).ToList());
+            int sl = Chuongs.Count + 1;
+            string maChuong = "";
+            if (maLC == "LC03112022000001")
             {
-                soChuong = Chuongs.Count + lan;
-            }
-            string maChuong;
-            if (soChuong == 0)
-            {
-                maChuong = "CHUONG1" + DateTime.Now.ToString("_ddMM");
-            }
-            else
-            {
-                int STT = soChuong;
-                STT++;
-                string strSTT = STT.ToString();
-                for (int i = strSTT.Length; i <= 5; i++)
-                {
-                    strSTT = "0" + strSTT;
+                if (sl < 10)
+                { 
+                    maChuong = "NT00" + sl;
                 }
-
-                maChuong = "CHUONG" + strSTT + DateTime.Now.ToString("_ddMM");
+                else if (sl < 100)
+                {
+                    maChuong = "NT0" + sl;
+                }
+                else if (sl < 1000)
+                {
+                    maChuong = "NT" + sl;
+                }
+            }
+            else if (maLC == "LC03112022000002")
+            {
+                if (sl < 10)
+                {
+                    maChuong = "DT00" + sl;
+                }
+                else if (sl < 100)
+                {
+                    maChuong = "DT0" + sl;
+                }
+                else if (sl < 1000)
+                {
+                    maChuong = "DT" + sl;
+                }
+            }
+            else if (maLC == "LC03112022000003")
+            {
+                if (sl < 10)
+                {
+                    maChuong = "HN00" + sl;
+                }
+                else if (sl < 100)
+                {
+                    maChuong = "HN0" + sl;
+                }
+                else if (sl < 1000)
+                {
+                    maChuong = "HN" + sl;
+                }
+            }
+            else if (maLC == "LC03112022000004")
+            {
+                if (sl < 10)
+                {
+                    maChuong = "HN00" + sl;
+                }
+                else if (sl < 100)
+                {
+                    maChuong = "HN0" + sl;
+                }
+                else if (sl < 1000)
+                {
+                    maChuong = "HN" + sl;
+                }
+            }
+            else
+            {
+                if (sl < 10)
+                {
+                    maChuong = "DG00" + sl;
+                }
+                else if (sl < 100)
+                {
+                    maChuong = "DG0" + sl;
+                }
+                else if (sl < 1000)
+                {
+                    maChuong = "DG" + sl;
+                }
             }
             return maChuong;
-        }
-        string LayMa()
-        {
-            string MaCu = CreatMaChuong(0);
-            int i = 0;
-            var SL = new List<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaChuong == MaCu));
-            while (SL.Count > 0)
-            {
-                i++;
-                MaCu = CreatMaChuong(i);
-                SL = new List<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaChuong == MaCu));
-            }
-            return MaCu;
         }
     }
 }

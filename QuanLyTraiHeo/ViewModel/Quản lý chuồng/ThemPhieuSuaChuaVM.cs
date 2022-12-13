@@ -140,10 +140,34 @@ namespace QuanLyTraiHeo.ViewModel
         }
         string TaoSoPhieu()
         {
-            int soPhieu = 0;
+            string soPhieu = "";
             var List = new List<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
-            soPhieu = List.Count + 1;
-            return soPhieu.ToString();
+            int sl = List.Count + 1;
+            if (sl < 10)
+            {
+                soPhieu = "SC00000" + sl;
+            }
+            else if (sl < 100)
+            {
+                soPhieu = "SC0000" + sl;
+            }
+            else if (sl < 1000)
+            {
+                soPhieu = "SC000" + sl;
+            }
+            else if (sl < 10000)
+            {
+                soPhieu = "SC0" + sl;
+            }
+            else if (sl < 100000)
+            {
+                soPhieu = "SC0" + sl;
+            }
+            else if (sl < 1000000)
+            {
+                soPhieu = "SC" + sl;
+            }
+            return soPhieu;
         }
         void TimKiem()
         {
