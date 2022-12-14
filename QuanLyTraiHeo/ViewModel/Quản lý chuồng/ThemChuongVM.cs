@@ -19,6 +19,8 @@ namespace QuanLyTraiHeo.ViewModel
     {
         #region Attributes
         List<CHUONGTRAI> _ChuongTrais = new List<CHUONGTRAI>();
+        List<string> listLoaiChuong;
+        Themchuong tc;
         string _MaChuong;
         string _MaLoaiChuong;
         string _TinhTrang;
@@ -27,7 +29,7 @@ namespace QuanLyTraiHeo.ViewModel
         #endregion
 
         #region Property
-        public ObservableCollection<LOAICHUONG> ListLoaiChuong { get; set; }
+        public List<string> ListLoaiChuong { get => listLoaiChuong; set { listLoaiChuong = value; OnPropertyChanged(); } }
         public List<CHUONGTRAI> CHUONGTRAIs { get => _ChuongTrais; set { _ChuongTrais = value; OnPropertyChanged(); } }
         public string MaChuong { get => _MaChuong; set { _MaChuong = value; OnPropertyChanged(); } }
         public string MaLoaiChuong { get => _MaLoaiChuong; set { _MaLoaiChuong = value; OnPropertyChanged(); } }
@@ -38,17 +40,17 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Command
         public ICommand ThemCommand { get; set; }
+        public ICommand LoadedWindowCommand { get; set; }
         public ICommand XacNhanCommand { get; set; }
         public ICommand TaoMaChuong { get; set; }
         #endregion
 
         public ThemChuongVM()
         {
-            ListLoaiChuong = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs);
+            LoadedWindowCommand = new RelayCommand<Window>((p) => { return true; }, p => { tc = p as Themchuong; Load(); MaChuong = CreatMaChuong(tc.MaLC.SelectedItem as string); });
             TaoMaChuong = new RelayCommand<ComboBox>((p) => { return true; }, (p) =>
             {
-                MessageBox.Show(MaLoaiChuong);
-                MaChuong = CreatMaChuong(MaLoaiChuong);
+                MaChuong = CreatMaChuong(tc.MaLC.SelectedItem as string);
             });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -68,6 +70,18 @@ namespace QuanLyTraiHeo.ViewModel
                 p.Items.Refresh();
             });
         }
+
+        void Load()
+        {
+            listLoaiChuong = new List<string>();
+            foreach (var item in DataProvider.Ins.DB.LOAICHUONGs)
+            {
+                ListLoaiChuong.Add(item.MaLoaiChuong);
+            }
+            tc.MaLC.ItemsSource = ListLoaiChuong;
+            tc.MaLC.SelectedIndex = 0;
+        }
+
         string CreatMaChuong(string maLC)
         {
             ObservableCollection<CHUONGTRAI> Chuongs = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.MaLoaiChuong.Equals(maLC)).ToList());
@@ -76,7 +90,7 @@ namespace QuanLyTraiHeo.ViewModel
             if (maLC == "LC03112022000001")
             {
                 if (sl < 10)
-                { 
+                {
                     maChuong = "NT00" + sl;
                 }
                 else if (sl < 100)
@@ -122,15 +136,15 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (sl < 10)
                 {
-                    maChuong = "HN00" + sl;
+                    maChuong = "HD00" + sl;
                 }
                 else if (sl < 100)
                 {
-                    maChuong = "HN0" + sl;
+                    maChuong = "HD0" + sl;
                 }
                 else if (sl < 1000)
                 {
-                    maChuong = "HN" + sl;
+                    maChuong = "HD" + sl;
                 }
             }
             else

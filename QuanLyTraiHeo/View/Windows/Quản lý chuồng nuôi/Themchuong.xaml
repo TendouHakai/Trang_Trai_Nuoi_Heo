@@ -12,6 +12,12 @@
         Name="ThemChuongw"
         WindowStartupLocation="CenterScreen">
     <Grid DataContext="{StaticResource ThemChuongVM}">
+        <i:Interaction.Triggers>
+            <i:EventTrigger EventName="Loaded">
+                <i:InvokeCommandAction Command="{Binding LoadedWindowCommand}"
+                                   CommandParameter="{Binding ElementName=ThemChuongw}"></i:InvokeCommandAction>
+            </i:EventTrigger>
+        </i:Interaction.Triggers>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                 <GradientStop Color="#3ab19b" Offset="0.05"/>
@@ -34,8 +40,7 @@
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListLoaiChuong, Mode=OneWay}"
-                                  Text="{Binding MaLoaiChuong, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
-                                  DisplayMemberPath="MaLoaiChuong">
+                                  Text="{Binding MaLoaiChuong, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
                             <i:Interaction.Triggers>
                                 <i:EventTrigger EventName="SelectionChanged">
                                     <i:InvokeCommandAction
