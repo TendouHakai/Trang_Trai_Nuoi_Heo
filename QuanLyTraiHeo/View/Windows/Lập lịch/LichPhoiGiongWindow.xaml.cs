@@ -16,6 +16,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using WPFWindow = System.Windows;
+using System.Collections.ObjectModel;
 
 namespace QuanLyTraiHeo.View.Windows
 {
@@ -24,6 +25,7 @@ namespace QuanLyTraiHeo.View.Windows
     /// </summary>
     public partial class LichPhoiGiongWindow : WPFWindow.Window
     {
+        public ObservableCollection<HEO> HeodaChon { get; set; }
         public List<LICHPHOIGIONG> LichPhoiGiong { get; set; }
         public LICHPHOIGIONG lICHPHOIGIONG { get; set; }
         public LichPhoiGiongWindow()
@@ -183,6 +185,10 @@ namespace QuanLyTraiHeo.View.Windows
         {
             DanhsachHeoDuc duc = new DanhsachHeoDuc();
             duc.ShowDialog();
+            if (duc.check == 0)
+            {
+                return;
+            }
             Pigcode_textd.Text = duc.TranferCode();
         }
 
@@ -190,6 +196,10 @@ namespace QuanLyTraiHeo.View.Windows
         {
             DanhsachHeoCai cai = new DanhsachHeoCai();
             cai.ShowDialog();
+            if (cai.check == 0)
+            {
+                return;
+            }
             Pigcode_textn.Text = cai.TranferCode();
         }
 

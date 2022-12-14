@@ -29,7 +29,7 @@
                     </TransformGroup>
                 </Path.RenderTransform>
             </Path>
-            <materialDesign:Card x:Name="the1" Height="87" Margin="313,21,304,0" VerticalAlignment="Top" Width="176">
+            <materialDesign:Card x:Name="the1" Height="87" Margin="313,21,304,0" VerticalAlignment="Top" Width="176" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="DoanhThuUocTinh" Content="0" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="17" Foreground="#DDF22828"/>
                     <Label x:Name="DoanhThuUocTinh_uoctinh" Content="Mục tiêu: 2.000.000vnd" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -61,7 +61,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the3" Height="70" Margin="514,254,113,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the3" Height="70" Margin="514,254,113,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Soheocaisua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="Soheocaisua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -77,7 +77,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the4" Height="70" Margin="115,254,512,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the4" Height="70" Margin="115,254,512,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="TrungbinhLua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="TrungbinhLua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -93,7 +93,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the5" Height="70" Margin="413,365,214,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the5" Height="70" Margin="413,365,214,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Soheoconsong" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="Soheoconsong_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -109,7 +109,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the6" Height="70" Margin="617,365,-16,0" VerticalAlignment="Top">
+            <materialDesign:Card x:Name="the6" Height="70" Margin="617,365,-16,0" VerticalAlignment="Top" Cursor="Hand">
                 <Grid Margin="0,0,-8,0">
                     <Label x:Name="Tylechet" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="Tylechet_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -125,7 +125,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the7" Height="70" Margin="413,475,214,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the7" Height="70" Margin="413,475,214,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Soheoconsinhra_lua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
                     <Label x:Name="Soheoconsinhra_lua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -141,7 +141,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the8" Height="70" Margin="617,475,10,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the8" Height="70" Margin="617,475,10,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Odeitcon" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
                     <Label x:Name="Odeitcon_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -157,7 +157,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the9" Height="70" Margin="10,365,617,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the9" Height="70" Margin="10,365,617,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="SoNgayKhongLamViec" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="SoNgayKhongLamViec_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -173,7 +173,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the10" Height="70" Margin="219,365,408,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the10" Height="70" Margin="219,365,408,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Thoigianmangthai" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="Thoigianmangthai_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -189,7 +189,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the11" Height="70" Margin="10,475,617,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the11" Height="70" Margin="10,475,617,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Songaycaisua" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DD0CC41B"/>
                     <Label x:Name="Songaycaisua_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -205,7 +205,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the12" Height="70" Margin="413,596,214,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the12" Height="70" Margin="413,596,214,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label x:Name="Tylede_main" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
                     <Label x:Name="Tylede_muctieu_textbox" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
@@ -221,7 +221,7 @@
                     </ToggleButton>
                 </Grid>
             </materialDesign:Card>
-            <materialDesign:Card x:Name="the13" Height="70" Margin="617,596,10,0" VerticalAlignment="Top" Width="166">
+            <materialDesign:Card x:Name="the13" Height="70" Margin="617,596,10,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
                     <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
                     <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>

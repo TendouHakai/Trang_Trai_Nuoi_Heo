@@ -1,4 +1,5 @@
 ﻿using MaterialDesignThemes.Wpf;
+using Microsoft.Win32;
 using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
@@ -61,17 +62,17 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         /// </summary>
 
         #region chiSoMucTieu
-        public static double Tylede_muctieu = 86;
-        public static double SoHeoConSinhRa_muctieu = 12.5;
-        public static double ODeItCon_muctieu = 12;
-        public static double SoHeoConSong_MucTieu = 11;
-        public static double SoHeoCaiSua_muctieu = 9.5;
-        public static double SoConChetTruocKhiCaiSua_MucTieu = 18;
-        public static string ThoiGianMangThai_MucTieu = "110-117";
-        public static string SoNgayCaiSua_MucTieu = "20-28";
-        public static string SoNgayKhongLamViec_MucTieu = "12";
-        public static double TrungBnhLua_MucTieu = 2.3;
-        public static double SoHeoTrongNam_MucTieu = 22; 
+        public static double Tylede_muctieu;
+        public static double SoHeoConSinhRa_muctieu;
+        public static double ODeItCon_muctieu;
+        public static double SoHeoConSong_MucTieu;
+        public static double SoHeoCaiSua_muctieu;
+        public static double SoConChetTruocKhiCaiSua_MucTieu;
+        public static string ThoiGianMangThai_MucTieu;
+        public static string SoNgayCaiSua_MucTieu;
+        public static string SoNgayKhongLamViec_MucTieu;
+        public static double TrungBnhLua_MucTieu;
+        public static double SoHeoTrongNam_MucTieu;
         #endregion
 
         public double Tylede_muctieuClone = Tylede_muctieu;
@@ -91,11 +92,27 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         {
             Heo = DataProvider.Ins.DB.HEOs.ToList();
             LichPhoiGiong = DataProvider.Ins.DB.LICHPHOIGIONGs.ToList();
+            setGiaTriStatic();
             InitializeComponent();
             Input(yearStart, yearEnd);
             AddEvent();
         }
         //Method
+
+        void setGiaTriStatic()
+        {
+            Tylede_muctieu = 86;
+            SoHeoConSinhRa_muctieu = 12.5;
+            ODeItCon_muctieu = 12;
+            SoHeoConSong_MucTieu = 11;
+            SoHeoCaiSua_muctieu = 9.5;
+            SoConChetTruocKhiCaiSua_MucTieu = 18;
+            ThoiGianMangThai_MucTieu = "110-117";
+            SoNgayCaiSua_MucTieu = "20-28";
+            SoNgayKhongLamViec_MucTieu = "12";
+            TrungBnhLua_MucTieu = 2.3;
+            SoHeoTrongNam_MucTieu = 22;
+        }
         public void Input(int? yearStart, int? yearEnd)
         {
             if (yearStart == null || yearEnd == null)
@@ -143,6 +160,20 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
             SoHeoTrongNam_MucTieu = SoHeoTrongNam_MucTieuClone;
             Soheotrongnam_muctieu.Content = "Mục tiêu: " + SoHeoTrongNam_MucTieu + " con";
+        }
+        void setValue(ThamSo thamSo)
+        {
+            Tylede_muctieu = thamSo.Tylede_muctieuClone;
+            SoHeoConSinhRa_muctieu = thamSo.SoHeoConSinhRa_muctieuClone;
+            ODeItCon_muctieu = thamSo.ODeItCon_muctieuClone;
+            SoHeoConSong_MucTieu = thamSo.SoHeoConSong_MucTieuClone;
+            SoHeoCaiSua_muctieu = thamSo.SoHeoCaiSua_muctieuClone;
+            SoConChetTruocKhiCaiSua_MucTieu = thamSo.SoConChetTruocKhiCaiSua_MucTieuClone;
+            ThoiGianMangThai_MucTieu = thamSo.ThoiGianMangThai_MucTieuClone;
+            SoNgayCaiSua_MucTieu = thamSo.SoNgayCaiSua_MucTieuClone;
+            SoNgayKhongLamViec_MucTieu = thamSo.SoNgayKhongLamViec_MucTieuClone;
+            TrungBnhLua_MucTieu = thamSo.TrungBnhLua_MucTieuClone;
+            SoHeoTrongNam_MucTieu = thamSo.SoHeoTrongNam_MucTieuClone;
         }
 
         void hamHienView(int y1, int y2)
@@ -573,54 +604,67 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             //the1
             the1.MouseEnter += MouseEnter_1;
             the1.MouseLeave += MouseLeave_1;
+            the1.MouseDown += ClickOn;
             DoanhThuUocTinh_button.Click += WhenClick;
             //the2
             the2.MouseEnter += MouseEnter_2;
             the2.MouseLeave += MouseLeave_2;
+            the2.MouseDown += ClickOn;
             Soheotrongnam_button.Click += WhenClick;
             //the3
             the3.MouseEnter += MouseEnter_3;
             the3.MouseLeave += MouseLeave_3;
+            the3.MouseDown += ClickOn;
             Soheocaisua_button.Click += WhenClick;
             //the4
             the4.MouseEnter += MouseEnter_4;
             the4.MouseLeave += MouseLeave_4;
+            the4.MouseDown += ClickOn;
             TrungbinhLua_button.Click += WhenClick;
             //the5
             the5.MouseEnter += MouseEnter_5;
             the5.MouseLeave += MouseLeave_5;
+            the5.MouseDown += ClickOn;
             Soheoconsong_button.Click += WhenClick;
             //the6
             the6.MouseEnter += MouseEnter_6;
             the6.MouseLeave += MouseLeave_6;
+            the6.MouseDown += ClickOn;
             Tylechet_button.Click += WhenClick;
             //the7
             the7.MouseEnter += MouseEnter_7;
             the7.MouseLeave += MouseLeave_7;
+            the7.MouseDown += ClickOn;
             Soheoconsinhra_lua_button.Click += WhenClick;
             //the8
             the8.MouseEnter += MouseEnter_8;
             the8.MouseLeave += MouseLeave_8;
+            the8.MouseDown += ClickOn;
             Odeitcon_button.Click += WhenClick;
             //the9
             the9.MouseEnter += MouseEnter_9;
             the9.MouseLeave += MouseLeave_9;
+            the9.MouseDown += ClickOn;
             SoNgayKhongLamViec_button.Click += WhenClick;
             //the10
             the10.MouseEnter += MouseEnter_10;
             the10.MouseLeave += MouseLeave_10;
+            the10.MouseDown += ClickOn;
             Thoigianmangthai_button.Click += WhenClick;
             //the11
             the11.MouseEnter += MouseEnter_11;
             the11.MouseLeave += MouseLeave_11;
+            the11.MouseDown += ClickOn;
             Songaycaisua_button.Click += WhenClick;
             //the12
             the12.MouseEnter += MouseEnter_12;
             the12.MouseLeave += MouseLeave_12;
+            the12.MouseDown += ClickOn;
             Tylede_button.Click += WhenClick;
             //the13
             the13.MouseEnter += MouseEnter_13;
             the13.MouseLeave += MouseLeave_13;
+            the13.MouseDown += ClickOn;
         }
 
         #region Event
@@ -851,7 +895,55 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         private void WhenClick(object sender, RoutedEventArgs e)
         {
             checkclick(e.Source as ToggleButton);
-        } 
+        }
+
+        private void ClickOn(object sender, RoutedEventArgs e)
+        {
+            switch (e.Source as Card)
+            {
+                case var value when value == the1: //nice trick
+                    MessageBox.Show("the1");
+                    break;
+                case var value when value == the2:
+                    MessageBox.Show("the2");
+                    break;
+                case var value when value == the3:
+                    MessageBox.Show("the3");
+                    break;
+                case var value when value == the4:
+                    MessageBox.Show("the4");
+                    break;
+                case var value when value == the5:
+                    MessageBox.Show("the5");
+                    break;
+                case var value when value == the6:
+                    MessageBox.Show("the6");
+                    break;
+                case var value when value == the7:
+                    MessageBox.Show("the7");
+                    break;
+                case var value when value == the8:
+                    MessageBox.Show("the8");
+                    break;
+                case var value when value == the9:
+                    MessageBox.Show("the9");
+                    break;
+                case var value when value == the10:
+                    MessageBox.Show("the10");
+                    break;
+                case var value when value == the11:
+                    MessageBox.Show("the11");
+                    break;
+                case var value when value == the12:
+                    MessageBox.Show("the12");
+                    break;
+                case var value when value == the13:
+                    MessageBox.Show("the13");
+                    break;
+                default:
+                    break;
+            }
+        }
         #endregion
     }
 }
