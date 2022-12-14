@@ -38,179 +38,203 @@
           DataContext="{StaticResource QuyDinhVM}">
         <ScrollViewer HorizontalScrollBarVisibility="Auto">
             <StackPanel>
-                <Expander IsExpanded="False"
+                <Expander IsExpanded="True"
                           Header="Quy định về heo"
                           FontWeight="Bold"
                           Background="DarkGoldenrod"
                           Margin="10">
-                    <StackPanel  Background="#f3f3f9">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Trọng lượng xuất chuồng từ  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_TrongLuongMin"
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.XuatChuongMin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                    <Grid Background="#f3f3f9">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition />
+                            <ColumnDefinition Width="300" />
+                        </Grid.ColumnDefinitions>
+                        <materialDesign:Card Margin="10 "
+                                             Grid.Column="0">
+                            <StackPanel>
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Trọng lượng xuất chuồng từ giới hạn từ  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_TrongLuongMin"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.XuatChuongMin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
 
-                            </TextBox>
-                            <TextBlock Text=" Đến  "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_TrongLuongMax"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.XuatChuongMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" KG  "
-                                       VerticalAlignment="Center" />
+                                    </TextBox>
+                                    <TextBlock Text=" đến  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_TrongLuongMax"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.XuatChuongMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" KG  "
+                                               VerticalAlignment="Center" />
+
+                                </StackPanel>
+
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Tuổi xuất chuồng giới hạn từ  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_MonthMin"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.MonthXuatChuongMin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text="  đến  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_MonthMax"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.MonthXuatChuongMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" ngày tuổi "
+                                               VerticalAlignment="Center" />
+
+                                </StackPanel>
+
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Tuổi nhập đàn tối thiểu cho heo con từ "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_NhapDan"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.TuoiNhapDan, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text="  ngày tuổi  "
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Giao phối cận huyết tối thiểu từ  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_CanHuyet"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.CanHuyet, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text="  thế hệ  "
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Tuổi phổi giống của heo đực phải lớn hơn  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_GiaoPhoiDuc"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.TuoiPhoiGiongDuc, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" tháng tuổi,  ố ngày đề phối giống lại là  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_RePhoiGiongDuc"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.RePhoiGiongDuc, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" ngày  "
+                                               VerticalAlignment="Center" />
+
+                                </StackPanel>
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Tuổi phổi giống của heo cái phải lớn hơn :   "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_GiaoPhoiCai"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.TuoiPhoiGiongCai, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" tháng tuổi, số ngày đề phối giống lại là  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_RePhoiGiongCai"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.RePhoiGiongCai, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text=" ngày "
+                                               VerticalAlignment="Center" />
+
+                                </StackPanel>
+
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Lượng thức ăn trung bình 1 ngày là  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_ThucAnTB"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.ThucAnMotNgay, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text="  KG  "
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <StackPanel Margin="10"
+                                            Orientation="Horizontal">
+                                    <TextBlock Text="Lượng thức ăn tối đa 1 ngày là  "
+                                               VerticalAlignment="Center" />
+                                    <TextBox Name="tb_ThucAnMax"
+                                             PreviewTextInput="CheckIsNumber"
+                                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                                             VerticalAlignment="Top"
+                                             Text="{Binding ThamSo.ThucAnMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
+                                    </TextBox>
+                                    <TextBlock Text="  KG  "
+                                               VerticalAlignment="Center" />
+                                </StackPanel>
+                                <Button Margin="10"
+                                        Content="Lưu thay đổi"
+                                        Height="30"
+                                        Width="200"
+                                        BorderBrush="White"
+                                        FontSize="16"
+                                        Background="#00de1e"
+                                        Command="{Binding LuuThamSoCommand}" />
+                            </StackPanel>
+                        </materialDesign:Card>
+                        <StackPanel Grid.Column="1">
+                            
+                        <materialDesign:Card 
+                                             Margin="10">
+                            
+                            <TextBlock TextWrapping="Wrap" Margin="10" Text="{Binding TextQuyDinh}" MaxWidth="300"
+                                       FontStyle="Italic"
+                                       FontSize="14"
+                                       LineHeight="6"
+                                       FontWeight="Normal"></TextBlock>
+                            
+                        </materialDesign:Card>
+                            <Image Source="/View/Windows/Quy Định/tooltip.png"
+                                   Margin="10"></Image>
 
                         </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tuổi xuất chuồng từ  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_MonthMin"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.MonthXuatChuongMin, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text="  đến  "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_MonthMax"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.MonthXuatChuongMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" ngày  "
-                                       VerticalAlignment="Center" />
-
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tuổi nhập đàn tối thiểu  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_NhapDan"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.TuoiNhapDan, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text="  ngày tuổi  "
-                                       VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Giao phối cận huyết tối thiểu  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_CanHuyet"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.CanHuyet, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text="  thế hệ  "
-                                       VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tuổi phổi giống của heo đực phải lớn hơn :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_GiaoPhoiDuc"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.TuoiPhoiGiongDuc, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" tháng tuổi,    Số ngày đề phối giống lại là  "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_RePhoiGiongDuc"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.RePhoiGiongDuc, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" ngày  "
-                                       VerticalAlignment="Center" />
-
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Tuổi phổi giống của heo cái phải lớn hơn :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_GiaoPhoiCai"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.TuoiPhoiGiongCai, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" tháng tuổi,    Số ngày đề phối giống lại là  "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_RePhoiGiongCai"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.RePhoiGiongCai, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text=" ngày sau khi tách heo con  "
-                                       VerticalAlignment="Center" />
-
-                        </StackPanel>
-
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Lượng thức ăn trung bình 1 ngày  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_ThucAnTB"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.ThucAnMotNgay, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text="  KG  "
-                                       VerticalAlignment="Center" />
-                        </StackPanel>
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Lượng thức ăn tối đa 1 ngày  :   "
-                                       VerticalAlignment="Center" />
-                            <TextBox Name="tb_ThucAnMax"
-                                 
-                                     PreviewTextInput="CheckIsNumber"
-                                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                                     VerticalAlignment="Top"
-                                     Text="{Binding ThamSo.ThucAnMax, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}">
-                            </TextBox>
-                            <TextBlock Text="  KG  "
-                                       VerticalAlignment="Center" />
-                        </StackPanel>
-                        <Button Content="Lưu thay đổi"
-                                Height="30"
-                                Width="200"
-                                BorderBrush="White"
-                                FontSize="16"
-                                Background="#00de1e"
-                                Command="{Binding LuuThamSoCommand}" />
-                    </StackPanel>
+                    </Grid>
                 </Expander>
                 <Expander IsExpanded="False"
                           Header="Quy định về Vacxin"
                           FontWeight="Bold"
                           Background="DarkGoldenrod"
-                          Margin="10" >
+                          Margin="10">
                     <Grid Background="#f3f3f9">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="250" />
                             <ColumnDefinition />
                         </Grid.ColumnDefinitions>
-                        <materialDesign:Card Grid.Column="0" Margin="10">
+                        <materialDesign:Card Grid.Column="0"
+                                             Margin="10">
                             <StackPanel>
                                 <ComboBox Margin="10"
                                           materialDesign:HintAssist.Hint="Mã Vacxin"
@@ -291,7 +315,7 @@
                     </Grid>
 
                 </Expander>
-                <Expander IsExpanded="True"
+                <Expander IsExpanded="False"
                           Header="Mùa dịch bênh trong năm"
                           FontWeight="Bold"
                           Background="DarkGoldenrod"
@@ -311,8 +335,7 @@
                                          Text="{Binding ModifyMDB.TenDichBenh,  StringFormat={}{0:N0} , 
                                     Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
 
-                                <DatePicker 
-                                            Margin="10"
+                                <DatePicker Margin="10"
                                             materialDesign:HintAssist.Hint="Ngày bắt đầu"
                                             materialDesign:HintAssist.HelperText=""
                                             Style="{StaticResource MaterialDesignOutlinedDatePicker}">
@@ -388,9 +411,9 @@
 
                             </StackPanel>
                         </materialDesign:Card>
-                        <materialDesign:Card Grid.Column="1" Margin="10">
-                            <ListView 
-                                      ItemsSource="{Binding listMuaDichBenh}"
+                        <materialDesign:Card Grid.Column="1"
+                                             Margin="10">
+                            <ListView ItemsSource="{Binding listMuaDichBenh}"
                                       ScrollViewer.CanContentScroll="True"
                                       ScrollViewer.HorizontalScrollBarVisibility="Auto"
                                       SelectedIndex="{Binding MDBSelectedIndex, Mode=TwoWay}">
@@ -403,8 +426,7 @@
                                         <GridViewColumn Header="Bắt đầu">
                                             <GridViewColumn.CellTemplate>
                                                 <DataTemplate>
-                                                    <TextBlock
-                                                               MaxWidth="200"
+                                                    <TextBlock MaxWidth="200"
                                                                VerticalAlignment="Center"
                                                                HorizontalAlignment="Center"
                                                                Text="{Binding NgayBatDau,StringFormat= {} {0: dd/MM/yyyy}}" />

@@ -61,7 +61,7 @@
                     <ColumnDefinition />
                     <ColumnDefinition />
                 </Grid.ColumnDefinitions>
-                <Button Content="Xác nhận"
+                <Button Content="Chỉnh sửa"
                         Grid.Column="0"
                         Margin="10"
                             Background="#3ab19b"
@@ -70,7 +70,7 @@
                             Command="{Binding SaveCommand }"
                         CommandParameter="{Binding ElementName=EditQDTHW}" />
                 <Button Grid.Column="1"
-                        Content="Hủy"
+                            Content="Thoát"
                             Height="40"
                             Width="150"
                         Margin="10"

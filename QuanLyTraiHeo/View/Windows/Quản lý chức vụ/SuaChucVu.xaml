@@ -81,13 +81,13 @@
 
                     <Button Command="{Binding SuaCommand}"
                             CommandParameter="{Binding ElementName=SuaTTChucvu}"
-                            Content="Xác nhận"
+                            Content="Chỉnh sửa"
                             Background="#3ab19b"
                             Width="150"
                             Height="40" />
                     <Button Name="btn_Huybo"
                             Margin="20,0,0,0"
-                            Content="Huỷ bỏ"
+                            Content="Thoát"
                             Style="{StaticResource MaterialDesignRaisedButton}"
                             Height="40"
                             Width="150"

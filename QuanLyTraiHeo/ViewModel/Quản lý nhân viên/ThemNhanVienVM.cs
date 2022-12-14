@@ -108,8 +108,8 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập Tên đăng nhập! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            int i = DataProvider.Ins.DB.NHANVIENs.Where(temp => temp.C_Username == newNhanVien.C_Username).Count();
-            if(i >0)
+            int count = DataProvider.Ins.DB.NHANVIENs.Where(temp => temp.C_Username == newNhanVien.C_Username).Count();
+            if(count > 0)
             {
                 MessageBox.Show("Tên đăng nhập bị trùng, vui lòng chọn tên khác! ", "Thông báo!", MessageBoxButton.OK);
                 return;
@@ -126,11 +126,30 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 newNhanVien.HeSoLuong = 0;
             }
-            newNhanVien.HoTen.ToString().Replace(" ", "");
+
+            int val = 0;
+
+            if (DataProvider.Ins.DB.NHANVIENs.Count() > 0)
+            {
+                string id = DataProvider.Ins.DB.NHANVIENs.ToList().Last().MaNhanVien.ToString();
+                string b = "";
+                for (int i = 0; i < id.Length; i++)
+                {
+                    if (Char.IsDigit(id[i]))
+                        b += id[i];
+                }
+
+                if (b.Length > 0)
+                    val = int.Parse(b);
+                val += 1;
+            }
+
+            newNhanVien.MaNhanVien = "NV" + val.ToString("D6");
+
+
             newNhanVien.C_Username.ToString().Replace(" ", "");
             newNhanVien.NgayVaoLam = DateTime.Now;
             newNhanVien.MaChucVu = chucvu.MaChucVu;
-            newNhanVien.MaNhanVien = ("NV" + DataProvider.Ins.DB.NHANVIENs.Count().ToString()).Replace(" ","");
             DataProvider.Ins.DB.NHANVIENs.Add(newNhanVien);
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Thêm nhân viên mới thành công! ", "Thông báo!", MessageBoxButton.OK);

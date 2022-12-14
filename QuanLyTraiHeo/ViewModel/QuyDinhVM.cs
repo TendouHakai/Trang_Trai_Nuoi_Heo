@@ -20,8 +20,7 @@ namespace QuanLyTraiHeo.ViewModel
         private THAMSO thamso;
         private QuyDinhTiemHeo modifyQDTH;
         private MuaDichBenh modifyMDB;
-
-
+        public string TextQuyDinh { get;set; }
         #endregion
         #region Properties
         public THAMSO ThamSo { get => thamso; set { thamso = value; OnPropertyChanged(); } }
@@ -53,6 +52,12 @@ namespace QuanLyTraiHeo.ViewModel
         #endregion
         public QuyDinhVM()
         {
+            TextQuyDinh = "Đây là danh sách các quy định về heo của trang trại, " 
+                + "bao gồm các quy định về việc nhập xuất heo, "
+                +"tách heo con, chăm sóc heo. " +
+                "Cần chú ý khi thay đổi giá trị của các quy định, " +
+                "nếu không có thể phần mềm có thể chạy sai dựa vào " +
+                "số liệu mà bạn thay đổi.";
             listQDTH = new ObservableCollection<QuyDinhTiemHeo>();
             listVacxin = new ObservableCollection<HANGHOA>();
             listMuaDichBenh = new ObservableCollection<MuaDichBenh>();
@@ -114,11 +119,12 @@ namespace QuanLyTraiHeo.ViewModel
                 return;
             }
 
+            int val = 0;
+
             if (listQDTH.Count > 0)
             {
                 string id = listQDTH.Last().MaTiemHeo.ToString();
                 string b = "";
-                int val = 0;
                 for (int i = 0; i < id.Length; i++)
                 {
                     if (Char.IsDigit(id[i]))
@@ -128,10 +134,8 @@ namespace QuanLyTraiHeo.ViewModel
                 if (b.Length > 0)
                     val = int.Parse(b);
                 val += 1;
-                ModifyQDTH.MaTiemHeo = "QDTH" + val.ToString();
             }
-            else
-                ModifyQDTH.MaTiemHeo = "QDTH" + "0";
+            ModifyQDTH.MaTiemHeo = "QDTH" + val.ToString("D6");
 
 
             ModifyQDTH.MaVaxin = ModifyQDTH.HANGHOA.MaHangHoa;
@@ -152,11 +156,12 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập tên bệnh ");
                 return;
             }
+
+            int val = 0;
             if (listMuaDichBenh.Count > 0)
             {
                 string id = listMuaDichBenh.Last().MaDichBenh.ToString();
                 string b = "";
-                int val = 0;
                 for (int i = 3; i < id.Length; i++)
                 {
                     if (Char.IsDigit(id[i]))
@@ -166,10 +171,10 @@ namespace QuanLyTraiHeo.ViewModel
                 if (b.Length > 0)
                     val = int.Parse(b);
                 val += 1;
-                ModifyMDB.MaDichBenh = "MDB" + val.ToString();
             }
-            else
-            ModifyMDB.MaDichBenh = "MDB" +"0";
+
+                ModifyMDB.MaDichBenh = "MDB" + val.ToString("D4");
+
 
             DataProvider.Ins.DB.MuaDichBenhs.Add(modifyMDB);
             DataProvider.Ins.DB.SaveChanges();

@@ -97,14 +97,32 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng đúng thông tin! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-            NewChucVu.MaChucVu = ("CV" + DataProvider.Ins.DB.CHUCVUs.Count().ToString()).Replace(" ", "");
+
+            int val = 0;
+
+            if (DataProvider.Ins.DB.CHUCVUs.Count() >0)
+            {
+                string id = DataProvider.Ins.DB.CHUCVUs.ToList().Last().MaChucVu.ToString();
+                string b = "";
+                for (int i = 0; i < id.Length; i++)
+                {
+                    if (Char.IsDigit(id[i]))
+                        b += id[i];
+                }
+
+                if (b.Length > 0)
+                    val = int.Parse(b);
+                val += 1;
+            }
+
+            NewChucVu.MaChucVu = "CV" + val.ToString("D6");
+
             NewChucVu.ID_Permision = NewChucVu.PERMISION.ID_Permision;
             DataProvider.Ins.DB.CHUCVUs.Add(NewChucVu);
             DataProvider.Ins.DB.SaveChanges();
             MessageBox.Show("Thêm nhân viên mới thành công! ", "Thông báo!", MessageBoxButton.OK);
 
             NewChucVu = new CHUCVU();
-            NewChucVu.MaChucVu = "";
             NewChucVu.TenChucVu = "";
             NewChucVu.LuongCoBan = 0;
             NewChucVu.PERMISION = null;

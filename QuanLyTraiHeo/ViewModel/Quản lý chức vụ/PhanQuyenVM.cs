@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 using System.Windows.Input;
 using QuanLyTraiHeo.Model;
@@ -73,8 +74,8 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng điền tên chức vụ!");
                 return;
             }
-            int i = DataProvider.Ins.DB.PERMISIONs.Where(p => (p.Name_Permision == PermissionName && ModifyPermission.ID_Permision != p.ID_Permision)).Count();
-            if(i > 0)
+            int count = DataProvider.Ins.DB.PERMISIONs.Where(p => (p.Name_Permision == PermissionName && ModifyPermission.ID_Permision != p.ID_Permision)).Count();
+            if(count > 0)
             {
                 MessageBox.Show("Tên chức vụ bị trùng, vui lòng chọn tên khác!");
                 return;
@@ -82,15 +83,32 @@ namespace QuanLyTraiHeo.ViewModel
 
             DataProvider.Ins.DB.PERMISION_DETAIL.RemoveRange(DataProvider.Ins.DB.PERMISION_DETAIL.Where(x => x.ID_Permision == ModifyPermission.ID_Permision));
             DataProvider.Ins.DB.SaveChanges();
+           
+            int val = 0;
+
+            if (DataProvider.Ins.DB.PERMISION_DETAIL.Count() > 0)
+            {
+                string id = DataProvider.Ins.DB.PERMISION_DETAIL.ToList().Last().ID_PermisionDetail.ToString();
+                string b = "";
+                for (int i = 0; i < id.Length; i++)
+                {
+                    if (Char.IsDigit(id[i]))
+                        b += id[i];
+                }
+                if (b.Length > 0)
+                    val = int.Parse(b);
+                val += 1;
+            }
 
             foreach (var item in permissionModels)
                 if (item.isSelected)
                 {
                     PERMISION_DETAIL pERMISION_DETAIL = new PERMISION_DETAIL();
-                    pERMISION_DETAIL.ID_PermisionDetail = ("PD" + ModifyPermission.ID_Permision + item.number.ToString()).ToString().Replace(" ", "");
+                    pERMISION_DETAIL.ID_PermisionDetail = "PD" + val.ToString("D6");
                     pERMISION_DETAIL.ActionDetail = item.ActionDetail;
                     pERMISION_DETAIL.ID_Permision = ModifyPermission.ID_Permision;
                     DataProvider.Ins.DB.PERMISION_DETAIL.Add(pERMISION_DETAIL);
+                    val++;
                 }
                 DataProvider.Ins.DB.SaveChanges();
             
@@ -126,17 +144,36 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng điền tên chức vụ!");
                 return;
             }
-            int i = DataProvider.Ins.DB.PERMISIONs.Where(p => (p.Name_Permision == PermissionName)).Count();
-            if (i > 0)
+            int count = DataProvider.Ins.DB.PERMISIONs.Where(p => (p.Name_Permision == PermissionName)).Count();
+            if (count > 0)
             {
                 System.Windows.MessageBox.Show("Tên chức vụ bị trùng, vui lòng chọn tên khác!");
                 return;
             }
 
-            ModifyPermission = new PERMISION();
-            ModifyPermission.ID_Permision = "Per" + lstPermission.Count.ToString();
-            ModifyPermission.Name_Permision = PermissionName;
-            DataProvider.Ins.DB.PERMISIONs.Add(ModifyPermission);
+            int val = 0;
+
+            if (DataProvider.Ins.DB.PERMISIONs.Count() > 0)
+            {
+                string id = DataProvider.Ins.DB.PERMISIONs.ToList().Last().ID_Permision.ToString();
+                string b = "";
+                for (int i = 0; i < id.Length; i++)
+                {
+                    if (Char.IsDigit(id[i]))
+                        b += id[i];
+                }
+
+                if (b.Length > 0)
+                    val = int.Parse(b);
+                val += 1;
+            }
+
+            PERMISION temp = new PERMISION();
+
+            temp.ID_Permision = "Per" + val.ToString("D2");
+
+            temp.Name_Permision = PermissionName;
+            DataProvider.Ins.DB.PERMISIONs.Add(temp);
             DataProvider.Ins.DB.SaveChanges();
 
             LoadlstPermission();
@@ -161,7 +198,5 @@ namespace QuanLyTraiHeo.ViewModel
                         item2.isSelected = true;
                     }
         }
-
-
     }
 }
