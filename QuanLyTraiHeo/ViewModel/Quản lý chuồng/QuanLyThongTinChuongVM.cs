@@ -25,6 +25,7 @@ namespace QuanLyTraiHeo.ViewModel
         int _SoHeoCanTim = 0;
         private ObservableCollection<CHUONGTRAI> _ListChuongTrai;
         private ObservableCollection<LOAICHUONG> _ListLoaiChuong;
+
         List<string> _ListTenLoaiChuongCanTim = new List<string>();
         #endregion                                                                                                                                                                                                              
 
@@ -35,6 +36,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ObservableCollection<CHUONGTRAI> ListChuongTrai { get => _ListChuongTrai; set { _ListChuongTrai = value; OnPropertyChanged(); } }
         public ObservableCollection<LOAICHUONG> ListLoaiChuong { get => _ListLoaiChuong; set { _ListLoaiChuong = value; OnPropertyChanged(); } }
         public List<string> ListTenLoaiChuongCanTim { get => _ListTenLoaiChuongCanTim; set { _ListTenLoaiChuongCanTim = value; OnPropertyChanged(); } }
+        public int listviewSelectedIndex { get; set; }
         public CHUONGTRAI SelectedItem
         {
             get => _SelectedItem;
@@ -60,6 +62,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public QuanLyThongTinChuongVM()
         {
+            listviewSelectedIndex = 0;
             _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
             _ListLoaiChuong = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs);
             AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
@@ -76,14 +79,15 @@ namespace QuanLyTraiHeo.ViewModel
                 thongTinChuong.DataContext = SelectedItem;
                 thongTinChuong.ShowDialog();
             });
-            EditCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                SuaChuong suaChuong = new SuaChuong();
-                suaChuong.DataContext = SelectedItem;
-                suaChuong.ShowDialog();
-                MaxC();
-                MaxH();
-            });
+            //EditCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            //{
+            //    SuaChuong suaChuong = new SuaChuong();
+            //    suaChuong.DataContext = SelectedItem;
+            //    suaChuong.ShowDialog();
+            //    MaxC();
+            //    MaxH();
+            //});
+            EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
             DeleteCommand = new RelayCommand<Window>((p) =>
             {
                 if (SelectedItem == null)
@@ -136,6 +140,18 @@ namespace QuanLyTraiHeo.ViewModel
                 TimKiem();
             });
             #endregion
+            MaxC();
+            MaxH();
+        }
+
+        private void Edit(Window p)
+        {
+            if (listviewSelectedIndex < 0)
+                return;
+            SuaChuongVM suaChuongVM = new SuaChuongVM(ListChuongTrai[listviewSelectedIndex]);
+            SuaChuong suaChuong = new SuaChuong();
+            suaChuong.DataContext = suaChuongVM;
+            suaChuong.ShowDialog();
             MaxC();
             MaxH();
         }

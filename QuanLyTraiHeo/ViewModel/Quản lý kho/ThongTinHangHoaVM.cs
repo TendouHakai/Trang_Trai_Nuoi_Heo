@@ -16,7 +16,6 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ThongTinHangHoaVM()
         {
-            System.Windows.MessageBox.Show("Khởi tạo không tham số, BUG !!!!");
         }
         public ThongTinHangHoaVM(HANGHOA hangHoa)
         {

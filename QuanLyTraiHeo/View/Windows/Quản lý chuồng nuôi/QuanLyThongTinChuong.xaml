@@ -129,39 +129,27 @@
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
-                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                        <Grid Height="700">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="82*"/>
-                                <ColumnDefinition Width="391*"/>
-                                <ColumnDefinition Width="473*"/>
-                            </Grid.ColumnDefinitions>
-                            <ListView Margin="25,0,25,0" x:Name="listviewk"
+                    <ScrollViewer Height="600" Width="auto">
+                        <ListView Margin="25,0,25,0" x:Name="listviewk"
                                       ItemsSource="{Binding ListChuongTrai}" 
-                                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" 
+                                      SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}"
                                       Grid.ColumnSpan="3">
-                                <ListView.View>
-                                    <GridView>
-                                        <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
-                                        <GridViewColumn Header="Mã loại chuồng" DisplayMemberBinding="{Binding MaLoaiChuong}"></GridViewColumn>
-                                        <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"></GridViewColumn>
-                                        <GridViewColumn Header="Sức chứa tối đa" DisplayMemberBinding="{Binding SuaChuaToiDa}"></GridViewColumn>
-                                        <GridViewColumn Header="Số heo hiện có" DisplayMemberBinding="{Binding SoLuongHeo}"></GridViewColumn>
-                                        <GridViewColumn Header="Thao tác" Width="160">
-                                            <GridViewColumn.CellTemplate>
-                                                <DataTemplate>
-                                                    <Menu>
-                                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48" DataContext="{StaticResource QuanLyThongTinChuongVM}" Command="{Binding ShowCommand}"></MenuItem>
-                                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" DataContext="{StaticResource QuanLyThongTinChuongVM}" Command="{Binding EditCommand}"></MenuItem>
-                                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" DataContext="{StaticResource QuanLyThongTinChuongVM}" Command="{Binding DeleteCommand}"></MenuItem>
-                                                    </Menu>
-                                                </DataTemplate>
-                                            </GridViewColumn.CellTemplate>
-                                        </GridViewColumn>
-                                    </GridView>
-                                </ListView.View>
-                            </ListView>
-                        </Grid>
+                            <ListView.View>
+                                <GridView>
+                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên loại chuồng" DisplayMemberBinding="{Binding LOAICHUONG.TenLoai}"></GridViewColumn>
+                                    <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang}"></GridViewColumn>
+                                    <GridViewColumn Header="Sức chứa tối đa" DisplayMemberBinding="{Binding SuaChuaToiDa}"></GridViewColumn>
+                                    <GridViewColumn Header="Số heo hiện có" DisplayMemberBinding="{Binding SoLuongHeo}"></GridViewColumn>
+                                </GridView>
+                            </ListView.View>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Sửa" DataContext="{StaticResource QuanLyThongTinChuongVM}" Command="{Binding EditCommand}"></MenuItem>
+                                    <!--<MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Xóa" DataContext="{StaticResource QuanLyThongTinChuongVM}" Command="{Binding DeleteCommand}"></MenuItem>-->
+                                </ContextMenu>
+                            </ListView.ContextMenu>
+                        </ListView>
                     </ScrollViewer>
                 </StackPanel>
             </materialDesign:Card>

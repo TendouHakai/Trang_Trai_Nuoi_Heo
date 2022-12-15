@@ -60,8 +60,8 @@
                             <ComboBoxItem>Đang sửa chữa</ComboBoxItem>
                             <ComboBoxItem>Không sử dụng</ComboBoxItem>
                         </ComboBox>
-                        <TextBox Margin="20 10 20 10" materialDesign:HintAssist.Hint="Sức chứa tối đa" Text="{Binding SucChuaToiDa, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
-                        <TextBox Margin="20 10 20 15" materialDesign:HintAssist.Hint="Số heo hiện có" Text="{Binding SoLuongHeo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 10" PreviewTextInput="IsNumberic_only" materialDesign:HintAssist.Hint="Sức chứa tối đa" Text="{Binding SucChuaToiDa, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                        <TextBox Margin="20 10 20 15" IsReadOnly="True" materialDesign:HintAssist.Hint="Số heo hiện có" Text="{Binding SoLuongHeo, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                     </StackPanel>
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
@@ -99,7 +99,9 @@
         <Grid Grid.Column="1">
             <materialDesign:Card Margin="5">
                 <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
-                    <ListView x:Name="listVieww" ItemsSource="{Binding CHUONGTRAIs}" HorizontalAlignment="Stretch">
+                    <ListView x:Name="listVieww" 
+                              SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}"
+                              ItemsSource="{Binding CHUONGTRAIs}" HorizontalAlignment="Stretch">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
@@ -109,6 +111,16 @@
                                 <GridViewColumn Header="Số heo hiện có" DisplayMemberBinding="{Binding SoLuongHeo}"></GridViewColumn>
                             </GridView>
                         </ListView.View>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <Menu>
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  
+                                              Header="Xóa"
+                                              Command="{Binding DeleteCommand}" 
+                                              CommandParameter="{Binding ElementName=listVieww}"></MenuItem>
+                                </Menu>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
                     </ListView>
                 </ScrollViewer>
             </materialDesign:Card>
