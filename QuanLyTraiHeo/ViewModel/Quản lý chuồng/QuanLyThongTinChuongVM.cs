@@ -21,8 +21,10 @@ namespace QuanLyTraiHeo.ViewModel
         int MaxHeo = 0;
         CHUONGTRAI _SelectedItem;
         string _MaChuongCanTim = "";
-        int _SucChuaCanTim = 0;
-        int _SoHeoCanTim = 0;
+        int _SucChuaCanTim1 = 0;
+        int _SucChuaCanTim2 = 0;
+        int _SoHeoCanTim1 = 0;
+        int _SoHeoCanTim2 = 0;
         private ObservableCollection<CHUONGTRAI> _ListChuongTrai;
         private ObservableCollection<LOAICHUONG> _ListLoaiChuong;
 
@@ -31,8 +33,10 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Property
         public string MaChuongCanTim { get => _MaChuongCanTim; set { _MaChuongCanTim = value; OnPropertyChanged(); } }
-        public int SucChuaCanTim { get => _SucChuaCanTim; set { _SucChuaCanTim = value; OnPropertyChanged(); } }
-        public int SoHeoCanTim { get => _SoHeoCanTim; set { _SoHeoCanTim = value; OnPropertyChanged(); } }
+        public int SucChuaCanTim1 { get => _SucChuaCanTim1; set { _SucChuaCanTim1 = value; OnPropertyChanged(); } }
+        public int SucChuaCanTim2 { get => _SucChuaCanTim2; set { _SucChuaCanTim2 = value; OnPropertyChanged(); } }
+        public int SoHeoCanTim1 { get => _SoHeoCanTim1; set { _SoHeoCanTim1 = value; OnPropertyChanged(); } }
+        public int SoHeoCanTim2 { get => _SoHeoCanTim2; set { _SoHeoCanTim2 = value; OnPropertyChanged(); } }
         public ObservableCollection<CHUONGTRAI> ListChuongTrai { get => _ListChuongTrai; set { _ListChuongTrai = value; OnPropertyChanged(); } }
         public ObservableCollection<LOAICHUONG> ListLoaiChuong { get => _ListLoaiChuong; set { _ListLoaiChuong = value; OnPropertyChanged(); } }
         public List<string> ListTenLoaiChuongCanTim { get => _ListTenLoaiChuongCanTim; set { _ListTenLoaiChuongCanTim = value; OnPropertyChanged(); } }
@@ -45,8 +49,8 @@ namespace QuanLyTraiHeo.ViewModel
                 _SelectedItem = value; OnPropertyChanged();
             }
         }
-        public int MaxSC { get => MaxSucChua; set { MaxSucChua = value; OnPropertyChanged(); } }
-        public int MaxSH { get => MaxHeo; set { MaxHeo = value; OnPropertyChanged(); } }
+        //public int MaxSC { get => MaxSucChua; set { MaxSucChua = value; OnPropertyChanged(); } }
+        //public int MaxSH { get => MaxHeo; set { MaxHeo = value; OnPropertyChanged(); } }
         #endregion
 
         #region Command
@@ -55,8 +59,10 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand TimKiemTheoMaChuongCommand { get; set; }
-        public ICommand TimKiemTheoSucChuaCommand { get; set; }
-        public ICommand TimKiemTheoSoHeoCommand { get; set; }
+        public ICommand TimKiemTheoSucChua1Command { get; set; }
+        public ICommand TimKiemTheoSucChua2Command { get; set; }
+        public ICommand TimKiemTheoSoHeo1Command { get; set; }
+        public ICommand TimKiemTheoSoHeo2Command { get; set; }
         public ICommand TimKiemTheoLoaiChuongCommand { get; set; }
         #endregion
 
@@ -70,8 +76,8 @@ namespace QuanLyTraiHeo.ViewModel
                 Themchuong themChuong = new Themchuong();
                 themChuong.ShowDialog();
                 ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-                MaxC();
-                MaxH();
+                //MaxC();
+                //MaxH();
             });
             ShowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -106,9 +112,8 @@ namespace QuanLyTraiHeo.ViewModel
                     DataProvider.Ins.DB.CHUONGTRAIs.Remove(SelectedItem);
                     DataProvider.Ins.DB.SaveChanges();
                     ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-                    MaxC();
-                    MaxH();
-
+                    //MaxC();
+                    //MaxH();
                 }
             });
             #region Tìm kiếm
@@ -117,15 +122,57 @@ namespace QuanLyTraiHeo.ViewModel
                 _MaChuongCanTim = p.Text;
                 TimKiem();
             });
-            TimKiemTheoSucChuaCommand = new RelayCommand<Slider>((p) => { return true; }, p =>
+            TimKiemTheoSucChua1Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                _SucChuaCanTim = (int)p.Value;
-                TimKiem();
+                try
+                {
+                    if(p.Text != "")
+                        _SucChuaCanTim1 = Convert.ToInt32(p.Text);
+                    TimKiem();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                }
             });
-            TimKiemTheoSoHeoCommand = new RelayCommand<Slider>((p) => { return true; }, p =>
+            TimKiemTheoSucChua2Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                _SoHeoCanTim = (int)p.Value;
-                TimKiem();
+                try
+                {
+                    if (p.Text != "")
+                        _SucChuaCanTim2 = Convert.ToInt32(p.Text);
+                    TimKiem();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                }
+            });
+            TimKiemTheoSoHeo1Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
+            {
+                try
+                {
+                    if (p.Text != "")
+                        _SoHeoCanTim1 = Convert.ToInt32(p.Text);
+                    TimKiem();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                }
+            });
+            TimKiemTheoSoHeo2Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
+            {
+                try
+                {
+                    if (p.Text != "")
+                        _SoHeoCanTim2 = Convert.ToInt32(p.Text);
+                    TimKiem();
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                }
             });
             TimKiemTheoLoaiChuongCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
@@ -140,8 +187,8 @@ namespace QuanLyTraiHeo.ViewModel
                 TimKiem();
             });
             #endregion
-            MaxC();
-            MaxH();
+            //MaxC();
+            //MaxH();
         }
 
         private void Edit(Window p)
@@ -152,49 +199,57 @@ namespace QuanLyTraiHeo.ViewModel
             SuaChuong suaChuong = new SuaChuong();
             suaChuong.DataContext = suaChuongVM;
             suaChuong.ShowDialog();
-            MaxC();
-            MaxH();
+            //MaxC();
+            //MaxH();
         }
 
-        void MaxC()
-        {
-            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-            foreach (var item in _ListChuongTrai)
-            {
-                if ((int)(item.SoLuongHeo) > MaxHeo)
-                {
-                    MaxHeo = (int)item.SoLuongHeo;
-                }
-            }
-        }
+        //void MaxC()
+        //{
+        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+        //    foreach (var item in _ListChuongTrai)
+        //    {
+        //        if ((int)(item.SoLuongHeo) > MaxHeo)
+        //        {
+        //            MaxHeo = (int)item.SoLuongHeo;
+        //        }
+        //    }
+        //}
 
-        void MaxH()
-        {
-            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-            foreach (var item in _ListChuongTrai)
-            {
-                if ((int)(item.SuaChuaToiDa) > MaxSucChua)
-                {
-                    MaxSucChua = (int)item.SuaChuaToiDa;
-                }
-            }
-        }
+        //void MaxH()
+        //{
+        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+        //    foreach (var item in _ListChuongTrai)
+        //    {
+        //        if ((int)(item.SuaChuaToiDa) > MaxSucChua)
+        //        {
+        //            MaxSucChua = (int)item.SuaChuaToiDa;
+        //        }
+        //    }
+        //}
 
         void TimKiem()
         {
             _ListChuongTrai.Clear();
-            var ChuongTrais = DataProvider.Ins.DB.CHUONGTRAIs.ToList();;
+            var ChuongTrais = DataProvider.Ins.DB.CHUONGTRAIs.ToList(); ;
             if (_MaChuongCanTim != "")
             {
                 ChuongTrais = ChuongTrais.Where(x => x.MaChuong.Contains(_MaChuongCanTim)).ToList();
             }
-            if (_SucChuaCanTim != 0)
+            if (_SucChuaCanTim1 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa.Equals(_SucChuaCanTim)).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa > _SucChuaCanTim1).ToList();
             }
-            if (_SoHeoCanTim != 0)
+            if (_SucChuaCanTim2 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo.Equals(_SoHeoCanTim)).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa < _SucChuaCanTim2).ToList();
+            }
+            if (_SoHeoCanTim1 != 0)
+            {
+                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo > _SoHeoCanTim1).ToList();
+            }
+            if (_SoHeoCanTim2 != 0)
+            {
+                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo < _SoHeoCanTim2).ToList();
             }
             if (_ListTenLoaiChuongCanTim.Count > 0)
             {
