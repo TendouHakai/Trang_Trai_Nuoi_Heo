@@ -251,6 +251,7 @@
     <Compile Include="ViewModel\QuyDinhVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ChiTietPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\LapPhieuSuaChuaVM.cs" />
+    <Compile Include="ViewModel\Quản lý chuồng\SuaTrangThaiVM.cs" />
     <Compile Include="ViewModel\Quản lý chuồng\ThemPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Quản lý giống heo\QuanlygiongheoVM.cs" />
     <Compile Include="ViewModel\Phieu\ChonHeoXuatVM.cs" />
@@ -282,6 +283,9 @@
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
     <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
       <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\SuaTrangThai.xaml.cs">
+      <DependentUpon>SuaTrangThai.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý kho\ThemHangHoawindow.xaml.cs">
       <DependentUpon>ThemHangHoawindow.xaml</DependentUpon>
@@ -498,6 +502,10 @@
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
     <Page Include="View\Windows\Quy Định\QuyDinhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\SuaTrangThai.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

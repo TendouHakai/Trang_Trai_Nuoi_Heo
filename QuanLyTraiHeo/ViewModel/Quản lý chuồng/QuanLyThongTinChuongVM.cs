@@ -124,55 +124,75 @@ namespace QuanLyTraiHeo.ViewModel
             });
             TimKiemTheoSucChua1Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                try
+                if (p.Text != "")
                 {
-                    if(p.Text != "")
+                    try
+                    {
                         _SucChuaCanTim1 = Convert.ToInt32(p.Text);
-                    TimKiem();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    _SucChuaCanTim1 = 0;
                 }
+                TimKiem();
             });
             TimKiemTheoSucChua2Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                try
+                if (p.Text != "")
                 {
-                    if (p.Text != "")
+                    try
+                    {
                         _SucChuaCanTim2 = Convert.ToInt32(p.Text);
-                    TimKiem();
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    }
                 }
-                catch (Exception)
+                else
                 {
-                    MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    _SucChuaCanTim2 = MaxC();
                 }
+                TimKiem();
             });
             TimKiemTheoSoHeo1Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                try
-                {
-                    if (p.Text != "")
+                if (p.Text != "")
+                    try
+                    {
                         _SoHeoCanTim1 = Convert.ToInt32(p.Text);
-                    TimKiem();
-                }
-                catch (Exception)
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    }
+                else
                 {
-                    MessageBox.Show("Giá trị nhập phải là số nguyên");
-                }
+                    _SoHeoCanTim1 = 0;
+                } 
+                TimKiem();
             });
             TimKiemTheoSoHeo2Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
-                try
-                {
-                    if (p.Text != "")
+                if (p.Text != "")
+                    try
+                    {
                         _SoHeoCanTim2 = Convert.ToInt32(p.Text);
-                    TimKiem();
-                }
-                catch (Exception)
+                    }
+                    catch (Exception)
+                    {
+                        MessageBox.Show("Giá trị nhập phải là số nguyên");
+                    }
+                else
                 {
-                    MessageBox.Show("Giá trị nhập phải là số nguyên");
-                }
+                    _SoHeoCanTim2 = MaxH();
+                }    
+                TimKiem();
             });
             TimKiemTheoLoaiChuongCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
@@ -203,29 +223,31 @@ namespace QuanLyTraiHeo.ViewModel
             //MaxH();
         }
 
-        //void MaxC()
-        //{
-        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-        //    foreach (var item in _ListChuongTrai)
-        //    {
-        //        if ((int)(item.SoLuongHeo) > MaxHeo)
-        //        {
-        //            MaxHeo = (int)item.SoLuongHeo;
-        //        }
-        //    }
-        //}
+        int MaxH()
+        {
+            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            foreach (var item in _ListChuongTrai)
+            {
+                if ((int)(item.SoLuongHeo) > MaxHeo)
+                {
+                    MaxHeo = (int)item.SoLuongHeo;
+                }
+            }
+            return MaxHeo;
+        }
 
-        //void MaxH()
-        //{
-        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-        //    foreach (var item in _ListChuongTrai)
-        //    {
-        //        if ((int)(item.SuaChuaToiDa) > MaxSucChua)
-        //        {
-        //            MaxSucChua = (int)item.SuaChuaToiDa;
-        //        }
-        //    }
-        //}
+        int MaxC()
+        {
+            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            foreach (var item in _ListChuongTrai)
+            {
+                if ((int)(item.SuaChuaToiDa) > MaxSucChua)
+                {
+                    MaxSucChua = (int)item.SuaChuaToiDa;
+                }
+            }
+            return MaxSucChua;
+        }
 
         void TimKiem()
         {
@@ -237,19 +259,19 @@ namespace QuanLyTraiHeo.ViewModel
             }
             if (_SucChuaCanTim1 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa > _SucChuaCanTim1).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa >= _SucChuaCanTim1).ToList();
             }
             if (_SucChuaCanTim2 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa < _SucChuaCanTim2).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa <= _SucChuaCanTim2).ToList();
             }
             if (_SoHeoCanTim1 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo > _SoHeoCanTim1).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo >= _SoHeoCanTim1).ToList();
             }
             if (_SoHeoCanTim2 != 0)
             {
-                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo < _SoHeoCanTim2).ToList();
+                ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo <= _SoHeoCanTim2).ToList();
             }
             if (_ListTenLoaiChuongCanTim.Count > 0)
             {
