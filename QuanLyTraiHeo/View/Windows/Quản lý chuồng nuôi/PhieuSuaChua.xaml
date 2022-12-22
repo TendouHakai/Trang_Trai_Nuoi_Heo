@@ -98,7 +98,7 @@
                                         <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  
                                               Header="Xóa"
                                               Command="{Binding DeleteCommand}" 
-                                              CommandParameter="{Binding ElementName=listVieww}"></MenuItem>
+                                              CommandParameter="{Binding ElementName=Listview}"></MenuItem>
                                     </Menu>
                                 </ContextMenu>
                             </ListView.ContextMenu>
