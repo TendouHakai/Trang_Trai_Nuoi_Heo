@@ -20,7 +20,7 @@
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
                                                 <Condition Binding="{Binding tb.TinhTrang}" Value="Chưa đọc"></Condition>
-                                                <Condition Binding="{Binding isTBGui}" Value="1"></Condition>
+                                                <Condition Binding="{Binding isTBGui}" Value="0"></Condition>
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="Foreground" Value="#2596be"></Setter>
                                         </MultiDataTrigger>

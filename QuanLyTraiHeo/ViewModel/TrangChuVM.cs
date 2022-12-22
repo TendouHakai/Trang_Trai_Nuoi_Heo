@@ -193,14 +193,16 @@ namespace QuanLyTraiHeo.ViewModel
         void LoadDoanhThuTrongNgay()
         {
             Doanhthutrongngay = 0;
+            DateTime d1 = DateTime.Today;
+            DateTime d2 = DateTime.Today.AddDays(1);
             try
             {
-                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Doanhthutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
             try
             {
-                Doanhthutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Doanhthutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
             DoanhThuTrongNgay = String.Format("{0:#,##0}", Doanhthutrongngay);
@@ -209,14 +211,16 @@ namespace QuanLyTraiHeo.ViewModel
         {
             DateTime homqua = DateTime.Today.AddDays(-1);
             int DoanhThuHomQua = 0;
+            DateTime d1 = homqua;
+            DateTime d2 = homqua.AddDays(1);
             try
             {
-                DoanhThuHomQua = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                DoanhThuHomQua = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
             try
             {
-                DoanhThuHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                DoanhThuHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             if (DoanhThuHomQua > Doanhthutrongngay) IsTangDoanhThu = false;
@@ -228,19 +232,21 @@ namespace QuanLyTraiHeo.ViewModel
         void loadChiPhiTrongNgay()
         {
             Chitieutrongngay = 0;
+            DateTime d1 = DateTime.Today;
+            DateTime d2 = DateTime.Today.AddDays(1);
             try
             {
-                Chitieutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu nhập heo" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).GetValueOrDefault().ToString());
+                Chitieutrongngay = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu nhập heo" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).GetValueOrDefault().ToString());
             }
             catch(Exception e) { }
             try
             {
-                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu nhập kho" && x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu nhập kho" && d1<=x.NgayLap && x.NgayLap<d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             try
             {
-                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x =>x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                Chitieutrongngay += int.Parse(DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => d1 <= x.NgaySuaChua && x.NgaySuaChua < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             ChiTieuTrongNgay = String.Format("{0:#,##0}", Chitieutrongngay);
@@ -248,15 +254,17 @@ namespace QuanLyTraiHeo.ViewModel
         void loadSuyGiamChiPhi()
         {
             DateTime homqua = DateTime.Today.AddDays(-1);
+            DateTime d1 = homqua;
+            DateTime d2 = homqua.AddDays(1);
             int ChiPhiHomQua = 0;
             try
             {
-                ChiPhiHomQua = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                ChiPhiHomQua = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch (Exception e) { }
             try
             {
-                ChiPhiHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && x.NgayLap == homqua && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+                ChiPhiHomQua += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
             }
             catch(Exception e) { }
             if (ChiPhiHomQua < Chitieutrongngay) IsGiamChiPhi = false;
@@ -382,7 +390,9 @@ namespace QuanLyTraiHeo.ViewModel
         void loadDSHoatDong()
         {
             lstHoatDong.Clear();
-            var lstHDHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            DateTime d1 = DateTime.Today;
+            DateTime d2 = DateTime.Today.AddDays(1);
+            var lstHDHeo = DataProvider.Ins.DB.PHIEUHEOs.Where(x => d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").ToList();
             foreach (var item in lstHDHeo)
             {
                 var hoatdong = new HoatDong();
@@ -393,7 +403,7 @@ namespace QuanLyTraiHeo.ViewModel
                 lstHoatDong.Add(hoatdong);
             }
 
-            var lstHDSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => x.NgaySuaChua == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            var lstHDSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Where(x => d1 <= x.NgaySuaChua && x.NgaySuaChua < d2 && x.TrangThai == "Đã hoàn thành").ToList();
             foreach (var item in lstHDSuaChua)
             {
                 var hoatdong = new HoatDong();
@@ -404,7 +414,7 @@ namespace QuanLyTraiHeo.ViewModel
                 lstHoatDong.Add(hoatdong);
             }
 
-            var lstHDKho = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.NgayLap == DateTime.Today && x.TrangThai == "Đã hoàn thành").ToList();
+            var lstHDKho = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => d1 <= x.NgayLap && x.NgayLap < d2 && x.TrangThai == "Đã hoàn thành").ToList();
             foreach(var item in lstHDKho)
             {
                 var hoatdong = new HoatDong();
