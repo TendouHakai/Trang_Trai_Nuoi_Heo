@@ -41,10 +41,8 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show("Vui lòng nhập sức chứa tối đa! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
-
             DataProvider.Ins.DB.SaveChanges();
             System.Windows.MessageBox.Show("Sửa thành công");
-
             p.Close();
         }
     }

@@ -142,7 +142,7 @@ namespace QuanLyTraiHeo.ViewModel
                 TimKiem();
             });
             TimKiemTheoSucChua2Command = new RelayCommand<TextBox>((p) => { return true; }, p =>
-            {
+            {    
                 if (p.Text != "")
                 {
                     try
@@ -156,7 +156,7 @@ namespace QuanLyTraiHeo.ViewModel
                 }
                 else
                 {
-                    _SucChuaCanTim2 = MaxC();
+                    _SucChuaCanTim2 = -1;
                 }
                 TimKiem();
             });
@@ -190,7 +190,7 @@ namespace QuanLyTraiHeo.ViewModel
                     }
                 else
                 {
-                    _SoHeoCanTim2 = MaxH();
+                    _SoHeoCanTim2 = -1;
                 }    
                 TimKiem();
             });
@@ -223,53 +223,53 @@ namespace QuanLyTraiHeo.ViewModel
             //MaxH();
         }
 
-        int MaxH()
-        {
-            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-            foreach (var item in _ListChuongTrai)
-            {
-                if ((int)(item.SoLuongHeo) > MaxHeo)
-                {
-                    MaxHeo = (int)item.SoLuongHeo;
-                }
-            }
-            return MaxHeo;
-        }
+        //int MaxH()
+        //{
+        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+        //    foreach (var item in _ListChuongTrai)
+        //    {
+        //        if ((int)(item.SoLuongHeo) > MaxHeo)
+        //        {
+        //            MaxHeo = (int)item.SoLuongHeo;
+        //        }
+        //    }
+        //    return MaxHeo;
+        //}
 
-        int MaxC()
-        {
-            _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
-            foreach (var item in _ListChuongTrai)
-            {
-                if ((int)(item.SuaChuaToiDa) > MaxSucChua)
-                {
-                    MaxSucChua = (int)item.SuaChuaToiDa;
-                }
-            }
-            return MaxSucChua;
-        }
+        //int MaxC()
+        //{
+        //    _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+        //    foreach (var item in _ListChuongTrai)
+        //    {
+        //        if ((int)(item.SuaChuaToiDa) > MaxSucChua)
+        //        {
+        //            MaxSucChua = (int)item.SuaChuaToiDa;
+        //        }
+        //    }
+        //    return MaxSucChua;
+        //}
 
         void TimKiem()
         {
-            _ListChuongTrai.Clear();
+            ListChuongTrai.Clear();
             var ChuongTrais = DataProvider.Ins.DB.CHUONGTRAIs.ToList(); ;
             if (_MaChuongCanTim != "")
             {
                 ChuongTrais = ChuongTrais.Where(x => x.MaChuong.Contains(_MaChuongCanTim)).ToList();
             }
-            if (_SucChuaCanTim1 != 0)
+            if (_SucChuaCanTim1 > 0)
             {
                 ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa >= _SucChuaCanTim1).ToList();
             }
-            if (_SucChuaCanTim2 != 0)
+            if (_SucChuaCanTim2 > 0)
             {
                 ChuongTrais = ChuongTrais.Where(x => x.SuaChuaToiDa <= _SucChuaCanTim2).ToList();
             }
-            if (_SoHeoCanTim1 != 0)
+            if (_SoHeoCanTim1 > 0)
             {
                 ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo >= _SoHeoCanTim1).ToList();
             }
-            if (_SoHeoCanTim2 != 0)
+            if (_SoHeoCanTim2 > 0)
             {
                 ChuongTrais = ChuongTrais.Where(x => x.SoLuongHeo <= _SoHeoCanTim2).ToList();
             }
@@ -293,7 +293,7 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
                     cHUONGTRAI = item;
-                    _ListChuongTrai.Add(cHUONGTRAI);
+                    ListChuongTrai.Add(cHUONGTRAI);
                 }
             }
         }

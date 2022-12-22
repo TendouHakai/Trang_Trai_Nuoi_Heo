@@ -25,7 +25,7 @@
                     <ComboBox Margin="20 10 20 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
                                   VerticalAlignment="Center"
-                                  Text="{Binding cHUONGTRAI.TinhTrang, Mode=TwoWay}"
+                                  Text="{Binding cHUONGTRAI.TinhTrang, Mode=OneWayToSource}"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   SelectedIndex="0">
                         <ComboBoxItem>Bình thường</ComboBoxItem>
