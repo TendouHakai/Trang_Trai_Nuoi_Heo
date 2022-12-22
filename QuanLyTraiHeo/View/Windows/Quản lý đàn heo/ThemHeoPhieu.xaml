@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
         Name="ThemHeoPhieuW"
-        Title="ThemHeoPhieu" Height="750" Width="350" WindowStartupLocation="Manual" Left = "920" Top = "35">
+        Title="ThemHeoPhieu" Height="860" Width="355" WindowStartupLocation="Manual" Left = "920" Top = "35">
     <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
@@ -22,7 +22,7 @@
             </Grid.ColumnDefinitions>
             <Image Source="/Image/bachground.jpg" Stretch="UniformToFill" Opacity="0.2" Grid.ColumnSpan="2"></Image>
             <StackPanel Margin="5,0,5,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
-                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Center">
+                <materialDesign:Card Grid.Row="0" Margin="5" Height="675">
                     <StackPanel VerticalAlignment="Center">
                         <TextBox x:Name="txt_MaHeo" Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeo}" IsReadOnly="True"/>
                         <ComboBox Margin="10 5 10 10"
@@ -36,7 +36,7 @@
                             <ComboBoxItem>Cái</ComboBoxItem>
                         </ComboBox>
                         <DatePicker Margin="10 5 10 10" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding NgaySinh}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}"/>
+                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}" PreviewTextInput="NumberValidationTextBox"/>
 
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBLoaiHeo"
@@ -88,7 +88,14 @@
                                   >
                             <ComboBoxItem>Nhập ngoài</ComboBoxItem>
                         </ComboBox>
+                        <Grid>
+                            <TextBox materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="50" Margin="10,0,10,0" PreviewTextInput="NumberValidationTextBox"
+                                 Text="{Binding DonGia}" x:Name="txt_DonGia">
+                            </TextBox>
+
+                        </Grid>
                     </StackPanel>
+
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
                     <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">

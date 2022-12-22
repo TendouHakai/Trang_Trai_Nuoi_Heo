@@ -37,6 +37,7 @@
                                 Width="250"
                                 materialDesign:HintAssist.Hint="Từ ngày"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
+                                            DisplayDate="{Binding mindate}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectedDateChanged">
@@ -54,6 +55,7 @@
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Đến ngày"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
+                                            DisplayDate="{Binding maxdate}"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SelectedDateChanged">
@@ -71,7 +73,9 @@
                                              Name="tb_TLMin"
                                              materialDesign:HintAssist.Hint="Trọng lượng tối thiểu"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             FontWeight="Normal">
+                                             FontWeight="Normal" PreviewTextInput="NumberValidationTextBox"
+                                             MaxLength="9"
+                                            >
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction Command="{Binding TimKiemTheoTrongLuongMinCommand}"
@@ -81,11 +85,12 @@
                                     </TextBox>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <TextBox HorizontalAlignment="Left" Margin="10,0,0,0" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
+                                    <TextBox HorizontalAlignment="Left" Margin="10,0,0,15" TextWrapping="Wrap" VerticalAlignment="Center" Width="200" 
                                              Name="tb_TLMax"
                                              materialDesign:HintAssist.Hint="Trọng lượng tối đa"
                                              Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                             FontWeight="Normal">
+                                             FontWeight="Normal" PreviewTextInput="NumberValidationTextBox"
+                                             MaxLength="9">
                                         <i:Interaction.Triggers>
                                             <i:EventTrigger EventName="TextChanged">
                                                 <i:InvokeCommandAction Command="{Binding TimKiemTheoTrongLuongMaxCommand}"

@@ -173,6 +173,7 @@
     <Compile Include="Model\HEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\HEONHAP.cs" />
     <Compile Include="Model\HEOXUAT.cs" />
     <Compile Include="Model\LICHCHUONG.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -312,6 +313,9 @@
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml.cs">
       <DependentUpon>ChonHeoXuat.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý đàn heo\DonGia.xaml.cs">
+      <DependentUpon>DonGia.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý đàn heo\ThemHeoPhieu.xaml.cs">
       <DependentUpon>ThemHeoPhieu.xaml</DependentUpon>
@@ -538,6 +542,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quản lý đàn heo\ChonHeoXuat.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý đàn heo\DonGia.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -7,17 +7,15 @@ using System.Threading.Tasks;
 
 namespace QuanLyTraiHeo.Model
 {
-    public class HEOXUAT : BaseViewModel
+    public class HEONHAP : BaseViewModel
     {
-        private bool _IsChecked;
         private int _DonGia;
-        public bool IsChecked { get => _IsChecked; set { _IsChecked = value; OnPropertyChanged(); } }
         public HEO heo { get; set; }
 
         public int DonGia { get => _DonGia; set { _DonGia = value; OnPropertyChanged(); } }
-        public HEOXUAT()
+        public HEONHAP()
         {
-
+            heo=new HEO();  
         }
     }
 }

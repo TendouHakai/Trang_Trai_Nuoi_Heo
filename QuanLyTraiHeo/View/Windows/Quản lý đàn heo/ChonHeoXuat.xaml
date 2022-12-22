@@ -7,7 +7,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
         mc:Ignorable="d"
         Name="ChonHeoXuatW"
-        Title="ChonHeoXuat" Height="764" Width="1024"
+        Title="ChonHeoXuat" Height="764" Width="1224"
         WindowStartupLocation="CenterScreen"
         
         >
@@ -195,12 +195,13 @@
                             </Grid>
                         </Grid>
                     </materialDesign:Card>
-                    <DataGrid Grid.Row="1"
+                    <!--<DataGrid Grid.Row="1"
                               ItemsSource="{Binding ListHeoX}"
                               CanUserAddRows="False"
                               AutoGenerateColumns="False"
                               HeadersVisibility="All"
                               ScrollViewer.CanContentScroll="True"
+                              
                               SelectionUnit="{Binding ElementName=selectionUnitComboBox, Path=SelectedValue}">
                         <DataGrid.Resources>
                         </DataGrid.Resources>
@@ -254,11 +255,39 @@
                                     Binding="{Binding heo.NguonGoc}"
                                     Header="Nguồn gốc">
                             </DataGridTextColumn>
-
+                            <DataGridTextColumn
+                                    Header="Đơn giá"
+                                    
+                                >
+                            </DataGridTextColumn>
 
                         </DataGrid.Columns>
-                    </DataGrid>
+                    </DataGrid>-->
 
+                    <ListView Grid.Row="1" x:Name="listviewHeo" HorizontalAlignment="Left" SelectionMode="Single"
+                                  ItemsSource="{Binding ListHeoX}" SelectedItem="{Binding SelectedHeo, Mode=OneWayToSource}" 
+                                  ScrollViewer.CanContentScroll="True">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding IsSelected}" />
+                                <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding heo.MaHeo}" />
+                                <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding heo.GioiTinh}" />
+                                <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding heo.NgaySinh, StringFormat= {} {0: dd/MM/yyyy}}"/>
+                                <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding heo.TrongLuong}"/>
+                                <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding heo.LOAIHEO.TenLoaiHeo}"/>
+                                <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding heo.GIONGHEO.TenGiongHeo}"/>
+                                <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding heo.MaChuong}"/>
+                                <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding heo.TinhTrang}"/>
+                                <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding heo.NguonGoc}"/>
+                            </GridView>
+                        </ListView.View>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Chọn" Command="{Binding EditCommand}" CommandParameter="{Binding ElementName=listviewHeo}" />
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}" Header="Bỏ chọn" Command="{Binding DeleteCommand}" CommandParameter="{Binding ElementName=listviewHeo}"/>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                    </ListView>
                     <StackPanel Orientation="Vertical" Grid.Row="2">
                         <Button     Margin="0,10,0,0"
                                     Style="{StaticResource MaterialDesignRaisedButton}"

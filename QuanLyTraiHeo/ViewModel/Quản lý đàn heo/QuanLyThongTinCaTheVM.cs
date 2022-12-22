@@ -16,8 +16,10 @@ using Microsoft.Expression.Interactivity.Media;
 namespace QuanLyTraiHeo.ViewModel
 {
     public class QuanLyThongTinCaTheVM : BaseViewModel
-    {
-        public ObservableCollection<HEO> ListHeo { get; set; }
+    {       
+        private ObservableCollection<HEO> _ListHeo;
+
+        public ObservableCollection<HEO> ListHeo { get => _ListHeo; set{ _ListHeo = value; OnPropertyChanged(); } }
         public ObservableCollection<LOAIHEO> ListLoai { get; set; }
         public ObservableCollection<GIONGHEO> ListGiong { get; set; }
 
@@ -47,12 +49,16 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand NGCheck { get; set; }
 
         string matim;
-        DateTime? mindate;
-        DateTime? maxdate;
-        int minTL=0;
-        int maxTL=0;
+        public DateTime? mindate;
+        public DateTime? maxdate;
+        public int minTL=0;
+        public int maxTL =0;
+
         public QuanLyThongTinCaTheVM()
         {
+            DateTime Now = DateTime.Now;
+            mindate = new DateTime(Now.Year, Now.Month, 1);
+            maxdate = new DateTime(Now.Year, Now.Month, Now.Day+1);
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
@@ -60,21 +66,27 @@ namespace QuanLyTraiHeo.ViewModel
             ListTenGiong = new List<string>();  
             ListTinhTrang = new List<string>();
             ListNguonGoc = new List<string>();
-
+            TimKiem();
 
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
                 ThemTTHeo themTTHeo = new ThemTTHeo();
+                ThemTTHeoVM vm = new ThemTTHeoVM();
+                themTTHeo.DataContext = vm;
                 themTTHeo.ShowDialog();
+                vm = null;
                 ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
-
+                TimKiem();
             });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
                 SuaTTHeoVM suaTTHeoVM = new SuaTTHeoVM(SelectedHeo);
-                SuaTTHeo suaTTHeo = new SuaTTHeo();
-                suaTTHeo.DataContext = suaTTHeoVM;
+                SuaTTHeo suaTTHeo = new SuaTTHeo
+                {
+                    DataContext = suaTTHeoVM
+                };
                 suaTTHeo.ShowDialog();
+                suaTTHeoVM = null;
             });
             DeleteCommand = new RelayCommand<Window>((p) =>
             {
@@ -102,43 +114,50 @@ namespace QuanLyTraiHeo.ViewModel
             TimKiemTheoMa_TenCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
                 matim = p.Text;
+                TimKiem();
             });
             TimKiemTheoNgaySinhMinCommand = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
-                if (p.SelectedDate != DateTime.Today && p.SelectedDate != null)
+                if ( p.Text.Count()>0)
                 {
                     mindate = p.SelectedDate;
-                    TimKiem();
-                }         
+                }
+                else mindate = new DateTime(Now.Year, Now.Month, 1);
+                TimKiem();
+
             });
             TimKiemTheoNgaySinhMaxCommand = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
-                if (p.SelectedDate != DateTime.Today && p.SelectedDate != null)
+                if(p.SelectedDate < mindate)
+                {
+                    MessageBox.Show("Ngày đến phải sau ngày từ");
+                    return;
+                }
+                if (p.Text.Count() > 0)
                 {
                     maxdate = p.SelectedDate;
-                    TimKiem();
                 }
+                else maxdate = new DateTime(Now.Year, Now.Month, Now.Day + 1);
+                TimKiem();
+
             });
             TimKiemTheoTrongLuongMinCommand = new RelayCommand<TextBox>((p) => {
-
-                if (int.TryParse(p.Text, out int n) && n > 0)
-                    return true;
-                return false;
+                return true;
             }, p =>
             {
-              minTL = int.Parse(p.Text);
+                if (p.Text.Count() > 0)
+                    minTL = int.Parse(p.Text);
+                else minTL = 0;
                 TimKiem();
             });
             TimKiemTheoTrongLuongMaxCommand = new RelayCommand<TextBox>((p) => {
-
-                if (int.TryParse(p.Text, out int n) && n > 0)
-                    return true;
-                return false;
+                return true;
             }, p =>
             {
-                maxTL=int.Parse(p.Text);
+                if(p.Text.Count()>0)
+                     maxTL=int.Parse(p.Text);
+                else maxTL = 0;
                 TimKiem();
-
             });
             TimKiemTheoLoaiCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
             {
@@ -273,7 +292,7 @@ namespace QuanLyTraiHeo.ViewModel
                                    on a.MaHeo equals h.MaHeo
                                    join HEO j in hEOs8
                                    on a.MaHeo equals j.MaHeo
-                                   select a;
+                                   orderby a.MaHeo descending select a   ;
 
             foreach (HEO h in heo)
             {

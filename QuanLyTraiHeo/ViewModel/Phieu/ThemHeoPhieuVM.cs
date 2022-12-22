@@ -13,14 +13,14 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class ThemHeoPhieuVM : BaseViewModel
     {
-        public ObservableCollection<HEO> ListHeoAdd { get; set; }
+        public ObservableCollection<HEONHAP> ListHeoAdd { get; set; }
         public ObservableCollection<LOAIHEO> ListLoai { get; set; }
         public ObservableCollection<GIONGHEO> ListGiong { get; set; }
         public ObservableCollection<CHUONGTRAI> ListChuong { get; set; }
 
 
 
-        public HEO HeoAdd { get; set; }
+        public HEONHAP HeoAdd { get; set; }
 
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
@@ -38,45 +38,88 @@ namespace QuanLyTraiHeo.ViewModel
         public string NguonGoc { get; set; }
         public string TinhTrang { get; set; }
 
-
+        public int DonGia { get; set; }
 
         public ICommand AddCommand { get; set; }
         public ICommand HTCommand { get; set; }
 
 
-        public ThemHeoPhieuVM(ObservableCollection <HEO> a)
+        public ThemHeoPhieuVM(ObservableCollection <HEONHAP> a)
         {
-            ListHeoAdd = new ObservableCollection<HEO>();
+            
+            ListHeoAdd = new ObservableCollection<HEONHAP>();
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
-            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.SuaChuaToiDa > x.SoLuongHeo).ToList());
             ListHeoAdd = a;
             MaHeo = LayMa();
 
-            AddCommand = new RelayCommand<Window>((p) => {
-                if (SelectedChuong == null || SelectedGiong == null || SelectedLoai == null)
-                    return false;
-
-                if (GioiTinh == null || TinhTrang == null || NguonGoc == null || NgaySinh == null || TrongLuong == 0 || NgaySinh > DateTime.Today)
-                    return false;
-
-                return true;
-            }, p =>
+            AddCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
-                HeoAdd = new HEO();
+                if (GioiTinh == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giới tính");
+                    return; 
+                }
+                if (NgaySinh == null)
+                {
+                    MessageBox.Show("Vui lòng chọn ngày sinh");
+                    return;
+                }
+                if (TrongLuong == null || TrongLuong < 0)
+                {
+                    MessageBox.Show("Vui lòng nhập đúng trọng lượng");
+                    return;
+                }
+                if (SelectedLoai == null)
+                {
+                    MessageBox.Show("Vui lòng chọn loại heo");
+                    return;
+                }
+                if (SelectedGiong == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giống heo");
+                    return;
+                }
+                if (SelectedChuong == null)
+                {
+                    MessageBox.Show("Vui lòng chọn mã chuồng");
+                    return;
+                }
+                if (TinhTrang == null)
+                {
+                    MessageBox.Show("Vui lòng chọn tình trạng");
+                    return;
+                }
+                if (NguonGoc == null)
+                {
+                    MessageBox.Show("Vui lòng chọn nguồn gốc");
+                    return;
+                }
+
+                HeoAdd = new HEONHAP();
                 MaHeo = LayMa();
-                HeoAdd.MaHeo = MaHeo;
-                HeoAdd.GioiTinh = GioiTinh;
-                HeoAdd.NgaySinh = NgaySinh;
-                HeoAdd.TrongLuong = TrongLuong;
-                HeoAdd.MaLoaiHeo = SelectedLoai.MaLoaiHeo;
-                HeoAdd.MaGiongHeo = SelectedGiong.MaGiongHeo;
-                HeoAdd.MaHeoMe = MaHeoMe;
-                HeoAdd.MaHeoCha = MaHeoCha;
-                HeoAdd.MaChuong = SelectedChuong.MaChuong;
-                HeoAdd.NguonGoc = NguonGoc;
-                HeoAdd.TinhTrang = TinhTrang;
+                HeoAdd.heo.MaHeo = MaHeo;
+                HeoAdd.heo.GioiTinh = GioiTinh;
+                HeoAdd.heo.NgaySinh = NgaySinh;
+                HeoAdd.heo.TrongLuong = TrongLuong;
+                HeoAdd.heo.MaLoaiHeo = SelectedLoai.MaLoaiHeo;
+                HeoAdd.heo.MaGiongHeo = SelectedGiong.MaGiongHeo;
+                HeoAdd.heo.MaHeoMe = MaHeoMe;
+                HeoAdd.heo.MaHeoCha = MaHeoCha;
+                HeoAdd.heo.MaChuong = SelectedChuong.MaChuong;
+                HeoAdd.heo.NguonGoc = NguonGoc;
+                HeoAdd.heo.TinhTrang = TinhTrang;
+                HeoAdd.DonGia = DonGia;
                 a.Add(HeoAdd);
+                GioiTinh = "";
+                NgaySinh = null;
+                TrongLuong = 0;
+                MaLoaiHeo = "";
+                MaGiongHeo = "";
+                MaChuong = "";
+                TinhTrang = "";
+                NguonGoc = "";
                 p.Close();
             });
 
