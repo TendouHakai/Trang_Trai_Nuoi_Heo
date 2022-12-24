@@ -48,8 +48,9 @@ namespace QuanLyTraiHeo.View.Windows
 
         private void tb_SDT_PreviewTextInput(object sender, TextCompositionEventArgs e)
         {
-            Regex regex = new Regex("[^0-9]+");
+            Regex regex = new Regex("[^0-9]+|\\s");
             e.Handled = regex.IsMatch(e.Text);
+
         }
         #endregion
 
