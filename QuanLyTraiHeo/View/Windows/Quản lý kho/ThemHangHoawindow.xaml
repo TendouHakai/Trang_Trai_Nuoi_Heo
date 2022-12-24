@@ -5,7 +5,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_kho"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/netfx/2009/xaml/presentation" xmlns:i1="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{ StaticResource ThemHangHoaVM}"
         mc:Ignorable="d"
         Title="ThemHangHoawindow" Height="450" Width="800">
@@ -39,14 +39,17 @@
                  Margin="10,8.4,10,12.2"
                  Text="{Binding newHangHoa.DonGia, Mode=TwoWay}" 
                  materialDesign:HintAssist.Hint="Đơn giá"
+                 PreviewTextInput="NumberValidationTextBox"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center" Grid.ColumnSpan="4" />
         <TextBox Grid.Row="3"
                  Margin="10,7.8,10,12.8"
+                 PreviewTextInput="NumberValidationTextBox"
                  Text="{Binding newHangHoa.SoLuongTonKho, Mode=TwoWay}" 
                  materialDesign:HintAssist.Hint="Số lượng tồn kho"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center" Grid.ColumnSpan="4" />
+
         <TextBox Grid.Row="4"
                  Margin="10,8.2,10,12.4"
                  Text="{Binding newHangHoa.TinhTrang, Mode=TwoWay}" 

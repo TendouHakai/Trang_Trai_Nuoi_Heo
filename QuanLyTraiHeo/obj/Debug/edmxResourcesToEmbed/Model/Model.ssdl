@@ -209,6 +209,7 @@
     <Property Name="SDT" Type="char" MaxLength="16" />
     <Property Name="NgayVaoLam" Type="date" />
     <Property Name="HeSoLuong" Type="float" />
+    <Property Name="TrangThai" Type="nvarchar" MaxLength="50" />
     <Property Name="_Username" Type="char" MaxLength="64" />
     <Property Name="_PassWord" Type="char" MaxLength="64" />
   </EntityType>
