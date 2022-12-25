@@ -84,8 +84,8 @@
                         <ListView 
                             Name="Listview"
                             Margin="20,15,20,15"
-                            ItemsSource="{Binding CTPhieu}" Grid.ColumnSpan="3" >
-                            <!--SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}" Grid.ColumnSpan="2"-->
+                            ItemsSource="{Binding CTPhieu}" Grid.ColumnSpan="3" 
+                            SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
@@ -94,15 +94,12 @@
                             </ListView.View>
                             <ListView.ContextMenu>
                                 <ContextMenu>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}">
-                                        <MenuItem.Header>Show</MenuItem.Header>
-                                    </MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}">
-                                        <MenuItem.Header>Edit</MenuItem.Header>
-                                    </MenuItem>
-                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}">
-                                        <MenuItem.Header>Delete</MenuItem.Header>
-                                    </MenuItem>
+                                    <Menu>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  
+                                              Header="Xóa"
+                                              Command="{Binding DeleteCommand}" 
+                                              CommandParameter="{Binding ElementName=Listview}"></MenuItem>
+                                    </Menu>
                                 </ContextMenu>
                             </ListView.ContextMenu>
                         </ListView>
@@ -132,10 +129,18 @@
                     <Grid>
                         <materialDesign:PackIcon Kind="Account"
                                                  Margin="10 15 0 0 " />
-                        <TextBox materialDesign:HintAssist.Hint="Tên nhân viên"
+                        <!--<TextBox materialDesign:HintAssist.Hint="Tên nhân viên"
                                  Height="30"
                                  Margin="30,10,20,11"
-                                 Text="{Binding TenNhanVien}"/>
+                                 Text="{Binding TenNhanVien}"/>-->
+                        <ComboBox Margin="30,0,20,11"
+                                  materialDesign:HintAssist.Hint="Tên nhân viên"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  ItemsSource="{Binding ListNhanVien, Mode=OneWay}"
+                                  Text="{Binding TenNhanVien, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"
+                                  DisplayMemberPath="HoTen">
+                        </ComboBox>
                     </Grid>
                 </StackPanel>
             </materialDesign:Card>
@@ -200,6 +205,7 @@
                         <materialDesign:PackIcon Kind="Barcode"
                                                  Margin="10 15 0 0 " />
                         <TextBox materialDesign:HintAssist.Hint="Số phiếu"
+                                 IsReadOnly="True"
                                  Height="30"
                                  Margin="30,10,20,11" 
                                  Text="{Binding SoPhieu}"/>

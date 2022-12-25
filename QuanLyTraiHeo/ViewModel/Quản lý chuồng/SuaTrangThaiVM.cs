@@ -1,24 +1,22 @@
 ﻿using QuanLyTraiHeo.Model;
-using QuanLyTraiHeo.View.Windows;
 using System;
 using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
+using System.Windows;
 
 namespace QuanLyTraiHeo.ViewModel
 {
-    public class SuaChuongVM : BaseViewModel
+    public class SuaTrangThaiVM
     {
         #region Command
         public ICommand XacNhanCommand { get; set; }
-        public CHUONGTRAI cHUONGTRAI { get; set; }
+        public PHIEUSUACHUA pHIEUSUACHUA { get; set; }
         #endregion
 
-        public SuaChuongVM()
+        public SuaTrangThaiVM()
         {
             //XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             //{
@@ -28,21 +26,17 @@ namespace QuanLyTraiHeo.ViewModel
             //});
         }
 
-        public SuaChuongVM(CHUONGTRAI ChuongTrai)
+        public SuaTrangThaiVM(PHIEUSUACHUA X)
         {
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, p => { Sua(p); });
-            cHUONGTRAI = ChuongTrai;
+            pHIEUSUACHUA = X;
         }
 
         private void Sua(Window p)
-        {
-            if (cHUONGTRAI.SuaChuaToiDa == null)
-            {
-                MessageBox.Show("Vui lòng nhập sức chứa tối đa! ", "Thông báo!", MessageBoxButton.OK);
-                return;
-            }
+        { 
             DataProvider.Ins.DB.SaveChanges();
             System.Windows.MessageBox.Show("Sửa thành công");
+
             p.Close();
         }
     }

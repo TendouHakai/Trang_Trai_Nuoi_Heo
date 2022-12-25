@@ -21,12 +21,15 @@ namespace QuanLyTraiHeo.ViewModel
         private DateTime? _NgaySuaChua1 = new DateTime();
         private DateTime? _NgaySuaChua2 = new DateTime();
         private string _TenDoiTac = "";
+        private string _TrangThai = "";
         private List<string> _ListTrangThai = new List<string>();
         #endregion
 
         #region Property
+        public int listviewSelectedIndex { get; set; }
         public ObservableCollection<PHIEUSUACHUA> ListPhieuSuaChua { get => _ListPhieuSuaChua; set { _ListPhieuSuaChua = value; OnPropertyChanged(); } }
         public string MaNhanVien { get => _MaNhanVien; set { _MaNhanVien = value; OnPropertyChanged(); } }
+        public string TrangThai { get => _TrangThai; set { _TrangThai = value; OnPropertyChanged(); } }
         public DateTime? NgaySuaChua1 { get => _NgaySuaChua1; set { _NgaySuaChua1 = value; OnPropertyChanged(); } }
         public DateTime? NgaySuaChua2 { get => _NgaySuaChua2; set { _NgaySuaChua2 = value; OnPropertyChanged(); } }
         public string TenDoiTac { get => _TenDoiTac; set { _TenDoiTac = value; OnPropertyChanged(); } }
@@ -43,7 +46,6 @@ namespace QuanLyTraiHeo.ViewModel
 
         #region Command
         public ICommand AddCommand { get; set; }
-        public ICommand ShowCommand { get; set; }
         public ICommand EditCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
         public ICommand TimKiemTheoMaNVCommand { get; set; }
@@ -55,6 +57,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public LapPhieuSuaChuaVM()
         {
+            listviewSelectedIndex = 0;
             _ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
             AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -62,23 +65,21 @@ namespace QuanLyTraiHeo.ViewModel
                 phieuSuaChua.ShowDialog();
                 ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
             });
-            ShowCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+            EditCommand = new RelayCommand<Window>((p) => { return true; }, p => { Edit(p); });
+            DeleteCommand = new RelayCommand<Window>((p) =>
             {
-                PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
-                phieuSuaChua.ShowDialog();
-                ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
-            });
-            EditCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
+                if (SelectedItem == null)
+                    return false;
+                else return true;
+            }, p =>
             {
-                PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
-                phieuSuaChua.ShowDialog();
-                ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
-            });
-            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
-            {
-                PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
-                phieuSuaChua.ShowDialog();
-                ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
+                MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Thông báo", MessageBoxButton.OKCancel);
+                if (result == MessageBoxResult.OK)
+                {
+                    DataProvider.Ins.DB.PHIEUSUACHUAs.Remove(SelectedItem);
+                    DataProvider.Ins.DB.SaveChanges();
+                    ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
+                }
             });
             #region Tìm kiếm
             TimKiemTheoMaNVCommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
@@ -114,6 +115,16 @@ namespace QuanLyTraiHeo.ViewModel
             #endregion
         }
 
+        private void Edit(Window p)
+        {
+            if (listviewSelectedIndex < 0)
+                return;
+            SuaTrangThaiVM suaTrangThaiVM = new SuaTrangThaiVM(ListPhieuSuaChua[listviewSelectedIndex]);
+            SuaTrangThai suaTrangThai = new SuaTrangThai();
+            suaTrangThai.DataContext = suaTrangThaiVM;
+            suaTrangThai.ShowDialog();
+        }
+
         void TimKiem()
         {
             _ListPhieuSuaChua.Clear();
@@ -130,7 +141,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 PhieuSuaChuas = PhieuSuaChuas.Where(x => x.NgaySuaChua >= _NgaySuaChua1).ToList();
             }
-            if ( _NgaySuaChua2 != null && _NgaySuaChua2 != DateTime.MinValue)
+            if (_NgaySuaChua2 != null && _NgaySuaChua2 != DateTime.MinValue)
             {
                 PhieuSuaChuas = PhieuSuaChuas.Where(x => x.NgaySuaChua <= _NgaySuaChua2).ToList();
             }
@@ -155,6 +166,6 @@ namespace QuanLyTraiHeo.ViewModel
                     pHIEUSUACHUA = item;
                     _ListPhieuSuaChua.Add(pHIEUSUACHUA);
                 }
-            }
         }
     }
+}

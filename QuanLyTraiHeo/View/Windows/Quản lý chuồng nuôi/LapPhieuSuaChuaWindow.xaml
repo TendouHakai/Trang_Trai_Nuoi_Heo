@@ -159,7 +159,7 @@
                         <ListView AllowDrop="True"
                                       x:Name="Listviewk"
                                       ItemsSource="{Binding ListPhieuSuaChua}"
-                                      SelectedItem="{Binding SelectedItem, Mode=OneWayToSource}">
+                                      SelectedIndex="{Binding listviewSelectedIndex, Mode=TwoWay}">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"></GridViewColumn>
@@ -169,21 +169,14 @@
                                     <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding GhiChu}"></GridViewColumn>
                                     <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"></GridViewColumn>
                                     <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
-                                    <GridViewColumn Header="Thao tác" Width="160">
-                                        <GridViewColumn.CellTemplate>
-                                            <DataTemplate>
-                                                <Menu>
-                                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding ShowCommand}"></MenuItem>
-                                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"  Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding EditCommand}"></MenuItem>
-                                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" DataContext="{StaticResource LapPhieuSuaChuaVM}" Command="{Binding DeleteCommand}"></MenuItem>
-                                                </Menu>
-                                            </DataTemplate>
-                                        </GridViewColumn.CellTemplate>
-                                    </GridViewColumn>
                                 </GridView>
                             </ListView.View>
+                            <ListView.ContextMenu>
+                                <ContextMenu>
+                                    <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}" Header="Sửa" Command="{Binding EditCommand}"></MenuItem>
+                                </ContextMenu>
+                            </ListView.ContextMenu>
                         </ListView>
-
                     </materialDesign:Card>
 
                 </StackPanel>

@@ -29,7 +29,7 @@ namespace QuanLyTraiHeo.ViewModel
         private DateTime _NgayLapPhieu = DateTime.Now;
         private string _GhiChu = "";
         private int _TongTien = 0;
-        private string _TrangThai = "";
+        private string _TrangThai = "Đang sửa chữa";
         private string _MaChuongCanTim = "";
         private bool _Flag = false;
         #endregion
@@ -37,6 +37,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region Property
         public List<CT_PHIEUSUACHUA> CT_PHIEUSUACHUAs { get => cT_PHIEUSUACHUAs; set { cT_PHIEUSUACHUAs = value; OnPropertyChanged(); } }
         public ObservableCollection<CTPhieuModel> CTPhieu { get => cTPhieuModels; set { cTPhieuModels = value; OnPropertyChanged(); } }
+        public ObservableCollection<NHANVIEN> ListNhanVien { get; set; }
         public string TenNhanVien { get => _TenNhanVien; set { _TenNhanVien = value; OnPropertyChanged(); } }
         public bool Flag { get => _Flag; set { _Flag = value; OnPropertyChanged(); } }
         public string MaDoiTac { get => _MaDoiTac; set { _MaDoiTac = value; OnPropertyChanged(); } }
@@ -50,10 +51,12 @@ namespace QuanLyTraiHeo.ViewModel
         public int TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
         public string TrangThai { get => _TrangThai; set { _TrangThai = value; OnPropertyChanged(); } }
         public string MaChuongCanTim { get => _MaChuongCanTim; set { _MaChuongCanTim = value; OnPropertyChanged(); } }
+        public int listviewSelectedIndex { get; set; }
         #endregion
 
         #region Command
         public ICommand AddCommand { get; set; }
+        public ICommand DeleteCommand { get; set; }
         public ICommand HuyCommand { get; set; }
         public ICommand XacNhanCommand { get; set; }
         public ICommand TimKiemTheoMaChuongCommand { get; set; }
@@ -62,7 +65,9 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ThemPhieuSuaChuaVM()
         {
+            listviewSelectedIndex = 0;
             cT_PHIEUSUACHUAs = DataProvider.Ins.DB.CT_PHIEUSUACHUA.ToList();
+            ListNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
             _SoPhieu = TaoSoPhieu();
             AddCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
             {
@@ -89,6 +94,13 @@ namespace QuanLyTraiHeo.ViewModel
                 }
                 MessageBox.Show("Đã thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 p.Close();
+            });
+            DeleteCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
+            {
+                if (listviewSelectedIndex < 0)
+                    return;
+                var x = cTPhieuModels[listviewSelectedIndex];
+                cTPhieuModels.Remove(x);
             });
             HuyCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
@@ -138,10 +150,34 @@ namespace QuanLyTraiHeo.ViewModel
         }
         string TaoSoPhieu()
         {
-            int soPhieu = 0;
+            string soPhieu = "";
             var List = new List<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
-            soPhieu = List.Count + 1;
-            return soPhieu.ToString();
+            int sl = List.Count + 1;
+            if (sl < 10)
+            {
+                soPhieu = "SC00000" + sl;
+            }
+            else if (sl < 100)
+            {
+                soPhieu = "SC0000" + sl;
+            }
+            else if (sl < 1000)
+            {
+                soPhieu = "SC000" + sl;
+            }
+            else if (sl < 10000)
+            {
+                soPhieu = "SC0" + sl;
+            }
+            else if (sl < 100000)
+            {
+                soPhieu = "SC0" + sl;
+            }
+            else if (sl < 1000000)
+            {
+                soPhieu = "SC" + sl;
+            }
+            return soPhieu;
         }
         void TimKiem()
         {

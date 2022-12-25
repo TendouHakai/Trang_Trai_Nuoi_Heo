@@ -239,7 +239,6 @@
                             </ListView.ContextMenu>
                         </ListView>
                     </ScrollViewer>
-
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

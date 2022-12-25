@@ -22,6 +22,7 @@ namespace QuanLyTraiHeo.ViewModel
         #region Property
         public string MaChuong { get => _MaChuong; set { _MaChuong = value; OnPropertyChanged(); } }
         public string MoTa { get => _MoTa; set { _MoTa = value; OnPropertyChanged(); } }
+        public ObservableCollection<CHUONGTRAI> ListChuongTrai { get; set; }
         //public string SoPhieu { get => _SoPhieu; set { _SoPhieu = value; OnPropertyChanged(); } }
         #endregion
 
@@ -32,6 +33,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public ChiTietPhieuSuaChuaVM(ObservableCollection<CTPhieuModel> vm)
         {
+            ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 CTPhieuModel temp = new CTPhieuModel(MaChuong, MoTa);

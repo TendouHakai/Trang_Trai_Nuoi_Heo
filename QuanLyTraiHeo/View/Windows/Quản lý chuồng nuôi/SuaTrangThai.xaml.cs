@@ -15,21 +15,13 @@ using System.Windows.Shapes;
 namespace QuanLyTraiHeo.View.Windows
 {
     /// <summary>
-    /// Interaction logic for SuaChuong.xaml
+    /// Interaction logic for SuaTrangThai.xaml
     /// </summary>
-    public partial class SuaChuong : Window
+    public partial class SuaTrangThai : Window
     {
-        public SuaChuong()
+        public SuaTrangThai()
         {
             InitializeComponent();
-        }
-
-        private void IsNumberic_only(object sender, TextCompositionEventArgs e)
-        {
-            var textBox = sender as TextBox;
-            var fullText = textBox.Text.Insert(textBox.SelectionStart, e.Text);
-            double val;
-            e.Handled = !double.TryParse(fullText, out val);
         }
     }
 }
