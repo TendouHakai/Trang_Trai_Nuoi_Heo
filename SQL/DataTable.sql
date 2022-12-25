@@ -122,7 +122,6 @@ create table HANGHOA
 	CONSTRAINT PK_HH PRIMARY KEY (MaHangHoa)
 )
 
-
 Go 
 create table NHANVIEN 
 (

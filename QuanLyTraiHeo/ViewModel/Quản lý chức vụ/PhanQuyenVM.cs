@@ -52,7 +52,6 @@ namespace QuanLyTraiHeo.ViewModel
             permissionModels.Add(new PermissionModel(false, "Quản lý tài chính", 4));
             permissionModels.Add(new PermissionModel(false, "Quản lý cây mục tiêu", 5));
             permissionModels.Add(new PermissionModel(false, "Quản lý nhật ký", 6));
-
         }
         private void LoadlstPermission()
         {
