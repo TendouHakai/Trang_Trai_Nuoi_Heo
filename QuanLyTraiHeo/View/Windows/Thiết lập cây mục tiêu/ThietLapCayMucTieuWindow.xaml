@@ -16,7 +16,7 @@
             <RowDefinition Height="80"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
-        <Grid Grid.Row="0" Margin="0,13,0.333,0" >
+        <Grid Grid.Row="0" Margin="0,13,0.333,0" Background="White" >
             <Grid.ColumnDefinitions>
                 <ColumnDefinition x:Name="cot1" Width="23*"/>
                 <ColumnDefinition Width="243*"/>
@@ -46,8 +46,12 @@
             <Button x:Name="Boloc" Grid.Column="3" Background="#3ab19b" Content="Bộ Lọc" Margin="20,19,20,16" Click="BoLoc"/>
             <Button x:Name="Muctieu_button_1" Grid.Column="4" Background="#3ab19b" Content="Đặt mục tiêu" Margin="8,18,10,17" Click="Muctieu_button"/>
         </Grid>
-        <ScrollViewer Margin="0,0,0.333,-0.333" Grid.Row="1" HorizontalScrollBarVisibility="Auto">
-            <Grid x:Name="showmake" RenderTransformOrigin="0.5,0.5" Background="#FFF8F6F6" ScrollViewer.CanContentScroll="True" Margin="10,0,10,10"/>
-        </ScrollViewer>
+        <Grid Grid.Row="1">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto">
+                <Grid x:Name="showmake" RenderTransformOrigin="0.5,0.5" Background="#FFF8F6F6" ScrollViewer.CanContentScroll="True" Margin="10,0,10,10"/>
+            </ScrollViewer>
+            <Button x:Name="zoomIn" Content="+" HorizontalAlignment="Left" Margin="49,0,0,97" Width="50" Height="50" VerticalAlignment="Bottom" FontSize="30"/>
+            <Button x:Name="zoomOut" Content="-" HorizontalAlignment="Left" Margin="49,0,0,28" Width="50" Height="50" VerticalAlignment="Bottom" FontSize="30"/>
+        </Grid>
     </Grid>
 </Window>

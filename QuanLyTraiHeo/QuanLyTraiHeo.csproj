@@ -140,6 +140,7 @@
     <Compile Include="Model\BAOCAOTONKHO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\ChonHeo.cs" />
     <Compile Include="Model\CHUCVU.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -184,6 +185,7 @@
     <Compile Include="Model\LICHTIEMHEO.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Model\LichTiem_TenThuoc.cs" />
     <Compile Include="Model\ListActionDetail.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
@@ -368,6 +370,7 @@
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\DatMucTieu.xaml.cs">
       <DependentUpon>DatMucTieu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThamSo.cs" />
     <Compile Include="View\Windows\Thiết lập cây mục tiêu\ThongTinCanBiet.xaml.cs">
       <DependentUpon>ThongTinCanBiet.xaml</DependentUpon>
     </Compile>
