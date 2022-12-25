@@ -67,9 +67,11 @@ namespace QuanLyTraiHeo.ViewModel
             foreach(var item in Thongbaotrongngay)
             {
                 THONGBAOCHITIET tb = new THONGBAOCHITIET();
-                if(vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
+                if (vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
                 {
                     tb.isTBGui = 1;
+                    if (checkTB(item))
+                        continue;
                 }
                 tb.tb = item;
                 thongbaotrongngay.Add(tb);  
@@ -84,6 +86,20 @@ namespace QuanLyTraiHeo.ViewModel
                 IsActive = true;
             }
         }
+
+        bool checkTB(ThongBao tb)
+        {
+            
+            foreach(var item in thongbaotrongngay)
+            {
+                if(item.tb.ThoiGian == tb.ThoiGian)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
         public void TimKiem(string txtTieuDe, string tinhtrang)
         {
             thongbaotrongngay.Clear();
@@ -111,6 +127,8 @@ namespace QuanLyTraiHeo.ViewModel
                 if(vmCTThongBao.cbTinhTrang.Content.ToString() == "Đã gửi")
                 {
                     tb.isTBGui = 1;
+                    if (!checkTB(thongbao))
+                        continue;
                 }
                 tb.tb = thongbao;
                 thongbaotrongngay.Add(tb);

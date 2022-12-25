@@ -24,7 +24,13 @@ namespace QuanLyTraiHeo.ViewModel
         //public ObservableCollection<ThongBao> listTHONGBAOs { get => _listTHONGBAOs; set { _listTHONGBAOs = value; OnPropertyChanged(); } }
 
         private ThongBao _SelectedItem;
-        public ThongBao SelectedItem { get => _SelectedItem; set { _SelectedItem = value; OnPropertyChanged(); } }
+        public ThongBao SelectedItem { get => _SelectedItem; set { 
+                _SelectedItem = value; OnPropertyChanged();
+                LoadNguoiNhan();
+            } }
+
+        private string _selectedNguoiNhan;
+        public string SelectedNguoiNhan { get => _selectedNguoiNhan; set { _selectedNguoiNhan = value; OnPropertyChanged(); } }
 
         private listThongBaoTrongNgayVM _selectedNgay;
         public listThongBaoTrongNgayVM selectedNgay { get => _selectedNgay; set { _selectedNgay = value; OnPropertyChanged(); } }
@@ -146,6 +152,22 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 listThongBaoTrongNgay.TimKiem(txtTieuDe, cbTinhTrang.Content.ToString());
 
+            }
+        }
+        void LoadNguoiNhan()
+        {
+            SelectedNguoiNhan = "";
+            if(SelectedItem == null)
+            {
+                SelectedNguoiNhan = null;
+            }
+            else
+            {
+                var Thongbaos = DataProvider.Ins.DB.ThongBaos.Where(x => x.ThoiGian == SelectedItem.ThoiGian && x.C_MaNguoiGui == SelectedItem.C_MaNguoiGui).ToList();
+                foreach(var item in Thongbaos)
+                {
+                    SelectedNguoiNhan += item.NHANVIEN1.HoTen + ", ";
+                }
             }
         }
     }

@@ -76,6 +76,7 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand LoadedWindowCommand { get; set; }
         public ICommand OpenCTThongBaoCommand { get; set; }
         public ICommand OpenTaoThongBaoCommand { get; set; }
+        public ICommand XemthemTHONGBAOcommand { get; set; }
         #endregion]
 
         public MainWindowVM()   
@@ -100,7 +101,8 @@ namespace QuanLyTraiHeo.ViewModel
                     NhanVien = loginWD.NhanVien;
                     MyImage = CapNhatTaiKhoanVM.BytesToBitmapImage(NhanVien.BytesImage);
 
-                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien));
+                    listTHONGBAO = new ObservableCollection<ThongBao>(DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(3));
+
 
                     loadCountThongBao();
                 }
@@ -112,6 +114,25 @@ namespace QuanLyTraiHeo.ViewModel
             });
 
             CodeCommandOpenWindow();
+
+            #region command xem thêm thông báo
+            XemthemTHONGBAOcommand = new RelayCommand<Grid>((p) => { return true; }, p => {
+                var listthongbaocount = listTHONGBAO.Count;
+                listthongbaocount += 3;
+                var thongbaos = DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(listthongbaocount).ToList();
+                if(thongbaos.Count() == listTHONGBAO.Count)
+                {
+                    MessageBox.Show("Đã hiện toàn bộ thông báo hiện có");
+                }
+                else
+                {
+                    listTHONGBAO.Clear();
+                    foreach (var thongbao in thongbaos)
+                        listTHONGBAO.Add(thongbao);
+                }
+
+            });
+            #endregion
         }
 
         #region Method
@@ -119,6 +140,11 @@ namespace QuanLyTraiHeo.ViewModel
         {
             OnPropertyChanged("NhanVien");
             OnPropertyChanged("MyImage");
+        }
+
+        void loadTHONGBAO()
+        {
+
         }
 
         public void loadCountThongBao()

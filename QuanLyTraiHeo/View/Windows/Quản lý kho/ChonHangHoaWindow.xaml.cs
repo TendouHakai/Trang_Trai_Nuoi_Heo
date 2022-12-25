@@ -16,11 +16,11 @@ using System.Text.RegularExpressions;
 namespace QuanLyTraiHeo.View.Windows.Quản_lý_kho
 {
     /// <summary>
-    /// Interaction logic for TaoPhieuKho.xaml
+    /// Interaction logic for ChonHangHoa.xaml
     /// </summary>
-    public partial class TaoPhieuKho : Window
+    public partial class ChonHangHoaWindow : Window
     {
-        public TaoPhieuKho()
+        public ChonHangHoaWindow()
         {
             InitializeComponent();
         }
@@ -29,11 +29,6 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_kho
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
-        }
-
-        private void txtDonGia_ContextMenuClosing(object sender, ContextMenuEventArgs e)
-        {
-
         }
     }
 }
