@@ -20,7 +20,7 @@
         Height="768"
         Width="1024"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid Margin="20,0,20,0">
+    <Grid DataContext="{StaticResource LapLichPhoiGiongVM}" Margin="20,0,20,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="300"></ColumnDefinition>
             <ColumnDefinition></ColumnDefinition>
@@ -47,7 +47,8 @@
                             FontSize="16"
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="ListHeon_button_Click"/>
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" 
+                            Command = "{Binding ListHeoCai}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal" Height="50" Margin="9,15,0,0">
                             <TextBox x:Name="Pigcode_textd" Width="190"
@@ -63,7 +64,7 @@
                             FontSize="16"
                             Background="#00de1e"
                             materialDesign:ButtonAssist.CornerRadius="5"
-                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="ListHeod_button_Click"/>
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
                         </StackPanel>
                         <DatePicker x:Name="Datepicker_Ngayphoigiong"
                           Width="200"
@@ -90,7 +91,7 @@
                         FontSize="16"
                         Background="#00de1e"
                         materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" Click="add_Button_Click" Height="32" Width="250" Margin="0,20,0,0" VerticalAlignment="Top"/>
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"  Height="32" Width="250" Margin="0,20,0,0" VerticalAlignment="Top"/>
                         <Expander Margin="0,15,0,0" Header="Thông tin chi tiết" Width="281" Background="White" Height="500">
                             <StackPanel Background="White" Height="450">
                                 <DatePicker x:Name="Datepicker_ngayde"
@@ -173,7 +174,7 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="FindButton_Click">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
 
                                     </Button>
 
@@ -188,7 +189,7 @@
                                     materialDesign:ButtonAssist.CornerRadius="5"
                                     Foreground="#00de1e"
                                     Background="#dcf7e0"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" Click="Output_excel_Click">
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}" >
 
                                     </Button>
                                 </StackPanel>
@@ -220,11 +221,11 @@
                                     <MenuItem.Header>Xem</MenuItem.Header>
                                 </MenuItem>
                                 <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
-                                          Click="btnFix_Click">
+                                          >
                                     <MenuItem.Header>Sửa</MenuItem.Header>
                                 </MenuItem>
                                 <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"
-                                    Click="btnDelete_Click">
+                                    >
                                     <MenuItem.Header>Xóa</MenuItem.Header>
                                 </MenuItem>
                             </ContextMenu>

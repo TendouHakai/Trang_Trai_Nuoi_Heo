@@ -25,6 +25,9 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         LICHPHOIGIONG phoigiong;
         LapLichPhoiGiongVM lapLichPhoiGiongVM;
         public bool OK { get; set; }
+        string temp { get; set; }
+        static int check = 0;
+
 
         public SuaLichPhoiGiong(LICHPHOIGIONG LPG, LapLichPhoiGiongVM _lapLichPhoiGiongVM)
         {
@@ -50,7 +53,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
                 SetUp(LPG.Trangthai);
 
-                if(LPG.Trangthai == "Đã đẻ")
+                if (LPG.Trangthai == "Đã đẻ")
                 {
                     TrangThai.IsEnabled = false;
                 }
@@ -65,10 +68,54 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 Soconchon.IsEnabled = false;
                 Sochet.IsEnabled = false;
             }
-            
+
 
         }
+        public LICHPHOIGIONG returnValue()
+        {
+            if (check == 1)
+            {
+                LICHPHOIGIONG phoigiong = new LICHPHOIGIONG();
+                phoigiong.MaLichPhoi = temp;
+                phoigiong.MaHeoDuc = Pigcode_textd.Text;
+                phoigiong.MaHeoCai = Pigcode_textn.Text;
+                phoigiong.NgayPhoiGiong = Datepicker_Ngayphoigiong.SelectedDate;
+                phoigiong.Trangthai = TrangThai.Text;
+                phoigiong.NgayDuKienDe = Datepicker_ngayde.SelectedDate;
+                phoigiong.NgayCaiSua = Ngaycaisua.SelectedDate;
+                phoigiong.NgayDeThucTe = Ngaydethucte.SelectedDate;
+                phoigiong.NgayPhoiGiongLaiDuKien = NgayPhoiGiongLai.SelectedDate;
+                if (Socon.Text == "")
+                {
+                    phoigiong.SoCon = null;
+                }
+                else
+                {
+                    phoigiong.SoCon = int.Parse(Socon.Text);
+                }
 
+                if (Soconchon.Text == "")
+                {
+                    phoigiong.SoConChon = null;
+                }
+                else
+                {
+                    phoigiong.SoConChon = Convert.ToInt16(Soconchon.Text);
+                }
+
+                if (Sochet.Text == "")
+                {
+                    phoigiong.SoConChet = null;
+                }
+                else
+                {
+                    phoigiong.SoConChet = Convert.ToInt16(Sochet.Text);
+                }
+
+                return phoigiong;
+            }
+            return null;
+        }
         private void ListHeod_button_Click(object sender, RoutedEventArgs e)
         {
             ShowListHeod();
@@ -96,14 +143,14 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void Confirm_button_Click(object sender, RoutedEventArgs e)
         {
-            if(Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
+            if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
             {
                 MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
                 return;
             }
 
 
-            if(phoigiong == null)
+            if (phoigiong == null)
             {
                 LICHPHOIGIONG lpg = DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoCai == Pigcode_textn.Text && x.Trangthai == "Chưa phối giống").SingleOrDefault();
                 if (lpg != null)
@@ -188,7 +235,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void Huy_button_Click(object sender, RoutedEventArgs e)
         {
-            if(MessageBox.Show("Bạn có chăc muốn hủy bỏ mọi thay đổi?", "Chú ý!", MessageBoxButton.YesNoCancel) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Bạn có chăc muốn hủy bỏ mọi thay đổi?", "Chú ý!", MessageBoxButton.YesNoCancel) == MessageBoxResult.Yes)
             {
                 this.Close();
             }
@@ -255,3 +302,5 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         }
     }
 }
+
+
