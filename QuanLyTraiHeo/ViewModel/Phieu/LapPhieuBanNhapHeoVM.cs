@@ -28,8 +28,8 @@ namespace QuanLyTraiHeo.ViewModel
         public List<string> ListTrangThai { get; set; }
         public string TenNV { get; set; }
         public string TenKH { get; set; }
-        DateTime? mindate;
-        DateTime? maxdate;
+        public DateTime? mindate;
+        public DateTime? maxdate;
 
         public ICommand TaoPhieuCommand { get; set; }
         public ICommand TimKiemTheoTenNVCommand { get; set; }
@@ -48,8 +48,10 @@ namespace QuanLyTraiHeo.ViewModel
             TaoPhieuCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 PhieuNhapBanHeo PhieuNhapBanHeo = new PhieuNhapBanHeo();
-
+                PhieuBanNhapHeoVM Ph = new PhieuBanNhapHeoVM();
+                PhieuNhapBanHeo.DataContext = Ph;
                 PhieuNhapBanHeo.ShowDialog();
+                
             });
             TimKiemTheoNgayMinCommand = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {

@@ -33,7 +33,8 @@
                         <ComboBoxItem>Cái</ComboBoxItem>
                     </ComboBox>
                     <DatePicker Margin="10 5 10 10" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding SelectedHeo.NgaySinh}"/>
-                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedHeo.TrongLuong}"/>
+                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding SelectedHeo.TrongLuong}" PreviewTextInput="NumberValidationTextBox"
+                                             MaxLength="9"/>
 
                     <ComboBox Margin="10 5 10 10"
                                   Name="CBLoaiHeo"

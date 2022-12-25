@@ -36,7 +36,7 @@ namespace QuanLyTraiHeo.ViewModel
             SelectedGiong = SelectedHeo.GIONGHEO;
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
-            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
+            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.SuaChuaToiDa > x.SoLuongHeo).ToList());
 
 
             XacNhanCommand = new RelayCommand<Window>((p) =>

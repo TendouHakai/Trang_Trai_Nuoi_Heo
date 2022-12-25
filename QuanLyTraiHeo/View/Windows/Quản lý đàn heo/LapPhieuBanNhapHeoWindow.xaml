@@ -173,7 +173,7 @@
                     </materialDesign:Card>
 
                     <materialDesign:Card Margin="0,20">
-                        <Expander IsExpanded="False" Header="Danh sách phiếu xuất heo" FontWeight="Bold" Background="White">
+                        <Expander IsExpanded="True" Header="Danh sách phiếu xuất heo" FontWeight="Bold" Background="White">
                             <ListView AllowDrop="True" ScrollViewer.HorizontalScrollBarVisibility="Auto" ScrollViewer.VerticalScrollBarVisibility="Auto" ItemsSource="{Binding ListPhieuXuat}" SelectedItem="{Binding SelectedPhieu}">
                                 <ListView.View>
                                     <GridView>

@@ -181,21 +181,6 @@
                     </Grid>
                     <Grid>
                         <materialDesign:PackIcon Kind="CurrencyUsd" Margin="10 5 0 0 "/>
-                        <TextBox materialDesign:HintAssist.Hint="Đơn giá" Height="30" Margin="30,0,20,11"
-                                 Text="{Binding DonGia}" x:Name="txt_DonGia"
-                         >
-                            <i:Interaction.Triggers>
-                                <i:EventTrigger EventName="TextChanged">
-                                    <i:InvokeCommandAction Command="{Binding DonGiaChanged}"
-                                                                       CommandParameter="{Binding ElementName=txt_DonGia}"></i:InvokeCommandAction>
-                                </i:EventTrigger>
-                            </i:Interaction.Triggers>
-                        </TextBox>
-
-                    </Grid>
-
-                    <Grid>
-                        <materialDesign:PackIcon Kind="CurrencyUsd" Margin="10 5 0 0 "/>
                         <TextBox materialDesign:HintAssist.Hint="Tổng tiền" Height="30" Margin="30,0,20,11" IsReadOnly="True"
                                  Text="{Binding TongTien}"/>
                     </Grid>

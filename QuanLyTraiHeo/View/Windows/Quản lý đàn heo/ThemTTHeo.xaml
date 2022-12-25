@@ -3,12 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel" d:DataContext="{d:DesignInstance Type=viewmodel:ThemTTHeoVM}"
+        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" d:DataContext="{d:DesignInstance Type=viewmodel:ThemTTHeoVM}"
         mc:Ignorable="d"
         Title="Thêm cá thể heo" Height="750" Width="1124"  
         Name="ThemTTHeoW"
         WindowStartupLocation="CenterScreen" >
-    <Grid DataContext="{StaticResource ThemTTHeoVM}">
+    <Grid>
         <Grid.Background>
             <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
                 <GradientStop Color="#3ab19b" Offset="0.05"/>
@@ -36,7 +37,7 @@
                             <ComboBoxItem>Cái</ComboBoxItem>
                         </ComboBox>
                         <DatePicker Margin="10 5 10 10" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding NgaySinh}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}"/>
+                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}" PreviewTextInput="NumberValidationTextBox" MaxLength="9"/>
 
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBLoaiHeo"
@@ -54,10 +55,29 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListGiong, Mode=OneWay}"
                                   DisplayMemberPath="TenGiongHeo"
-                                  SelectedItem="{Binding SelectedGiong, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedGiong, Mode=TwoWay}"
+                                  >
                         </ComboBox>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo mẹ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoMe}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo cha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoCha}"/>
+                        <ComboBox Margin="10 5 10 10"
+                                  materialDesign:HintAssist.Hint="Mã heo mẹ"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  materialDesign:ComboBoxAssist.MaxLength="16"
+                                  ItemsSource="{Binding ListMe, Mode=OneWay}"
+                                  DisplayMemberPath="MaHeo"
+                                  SelectedItem="{Binding SelectedMe, Mode=TwoWay}">
+                        </ComboBox>
+
+                        <ComboBox Margin="10 5 10 10"
+                                  materialDesign:HintAssist.Hint="Mã heo cha"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  materialDesign:ComboBoxAssist.MaxLength="16"
+                                  ItemsSource="{Binding ListCha, Mode=OneWay}"
+                                  DisplayMemberPath="MaHeo"
+                                  SelectedItem="{Binding SelectedCha, Mode=TwoWay}">
+                        </ComboBox>
+
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Mã chuồng"
                                   VerticalAlignment="Center"
@@ -139,8 +159,15 @@
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
                                 <Grid Grid.Column="0" Margin="10,0,10,0">
-                                    <materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
-                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Height="30" Margin="30,10,20,11" />
+                                    <!--<materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
+                                    <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimMaTen" Height="30" Margin="30,10,20,11">
+                                        <i:Interaction.Triggers>
+                                            <i:EventTrigger EventName="TextChanged">
+                                                <i:InvokeCommandAction Command="{Binding TimKiemTheoMa_TenCommand}"
+                                                                       CommandParameter="{Binding ElementName=Txt_TimMaTen}"></i:InvokeCommandAction>
+                                            </i:EventTrigger>
+                                        </i:Interaction.Triggers>
+                                    </TextBox>-->
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                                     <Button
@@ -152,6 +179,7 @@
                                     FontSize="16"
                                     Background="#00de1e"
                                     materialDesign:ButtonAssist.CornerRadius="5"
+                                    Command="{Binding ExcelCommand}"
                                     IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                     </Button>
                                 </StackPanel>

@@ -16,8 +16,12 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class PhieuBanNhapHeoVM : BaseViewModel
     {
-        public ObservableCollection<HEO> ListHeo { get; set; }
-    
+        private ObservableCollection<HEO> _ListHeo;
+
+        public ObservableCollection<HEO> ListHeo { get => _ListHeo; set { _ListHeo = value; OnPropertyChanged(); } }
+        public ObservableCollection<HEONHAP> ListHeoN { get; set; }
+        public ObservableCollection<HEOXUAT> ListHeoX { get; set; }
+
         public PHIEUHEO PhieuHeo { get; set; }
         private string _MaPhieu;
         public string MaPhieu { get => _MaPhieu; set { _MaPhieu = value; OnPropertyChanged(); } }
@@ -25,8 +29,8 @@ namespace QuanLyTraiHeo.ViewModel
         public DateTime? NgayLap { get; set; }
         public int DonGia { get; set; }
 
-        private int _TongTien=0;
-        public int TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
+        private int? _TongTien = 0;
+        public int? TongTien { get => _TongTien; set { _TongTien = value; OnPropertyChanged(); } }
 
 
         public DOITAC KhachHang { get; set; }
@@ -38,7 +42,7 @@ namespace QuanLyTraiHeo.ViewModel
         public string Ten { get => _Ten; set { _Ten = value; OnPropertyChanged(); } }
 
         private string _Mail;
-        public string Mail { get => _Mail; set { _Mail = value;OnPropertyChanged(); } }
+        public string Mail { get => _Mail; set { _Mail = value; OnPropertyChanged(); } }
         private string _SDT;
         public string SDT { get => _SDT; set { _SDT = value; OnPropertyChanged(); } }
 
@@ -46,7 +50,7 @@ namespace QuanLyTraiHeo.ViewModel
         public string DiaChi { get => _DiaChi; set { _DiaChi = value; OnPropertyChanged(); } }
 
         public NHANVIEN NhanVien { get; set; }
-        public string TenNV {get;set;}
+        public string TenNV { get; set; }
         public ICommand SelectedLoaiPhieu { get; set; }
         public ICommand ThemHeo { get; set; }
         public ICommand DonGiaChanged { get; set; }
@@ -56,7 +60,9 @@ namespace QuanLyTraiHeo.ViewModel
 
         public PhieuBanNhapHeoVM()
         {
-            
+            ListHeoN = new ObservableCollection<HEONHAP>();
+            ListHeoX = new ObservableCollection<HEOXUAT>();
+
             ListHeo = new ObservableCollection<HEO>();
             PhieuHeo = new PHIEUHEO();
             KhachHang = new DOITAC();
@@ -74,18 +80,28 @@ namespace QuanLyTraiHeo.ViewModel
             ThemHeo = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 if (loaiPhieu == null)
-                { 
+                {
                     MessageBox.Show("Vui lòng chọn loại phiếu trước");
+                    return;
+                }
+                else if(ListHeo.Count>0 && loaiPhieu== "Phiếu xuất heo")
+                {
+                    MessageBox.Show("Chỉ được thêm heo vào một lần mỗi phiếu");
                     return;
                 }
                 if (loaiPhieu == "Phiếu nhập heo")
                 {
                     ThemHeoPhieu them = new ThemHeoPhieu
                     {
-                        DataContext = new ThemHeoPhieuVM(ListHeo)
+                        DataContext = new ThemHeoPhieuVM(ListHeoN)
                     };
-
                     them.ShowDialog();
+                    foreach(HEONHAP h in ListHeoN)
+                    {
+                        ListHeo.Add(h.heo);
+                        TongTien += h.DonGia * h.heo.TrongLuong;
+
+                    }
                 }
                 if (loaiPhieu == "Phiếu xuất heo")
                 {
@@ -94,50 +110,46 @@ namespace QuanLyTraiHeo.ViewModel
                     {
                         DataContext = vm
                     };
-                    chon.ShowDialog();          
-                }
-            });
-            DonGiaChanged = new RelayCommand <TextBox>((p) => { return true; }, p =>
-            {
-                int.TryParse(p.Text, out int DonGia);
-                if(ListHeo.Count > 0)
-                    foreach (HEO x in ListHeo)
+                    chon.ShowDialog();
+                    foreach (HEOXUAT h in ListHeoX)
                     {
-                        TongTien += (int)x.TrongLuong * DonGia;
+                        ListHeo.Add(h.heo);
+                        TongTien += h.DonGia * h.heo.TrongLuong;
                     }
+                }
             });
             ThayDoiMaHK = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
                 var ListKH = DataProvider.Ins.DB.DOITACs.Where(x => x.MaDoiTac == p.Text).ToList();
-                if(ListKH.Count>0)
+                if (ListKH.Count > 0)
                 {
                     KhachHang = ListKH.First();
                     MaKH = KhachHang.MaDoiTac;
                     Ten = KhachHang.TenDoiTac;
                     SDT = KhachHang.SDT;
                     Mail = KhachHang.Email;
-                    DiaChi= KhachHang.DiaChi;
-                }   
+                    DiaChi = KhachHang.DiaChi;
+                }
                 else
                 {
                     Ten = "";
                     SDT = "";
                     Mail = "";
                     DiaChi = "";
-                }    
+                }
             });
 
-            HoanTatCommand= new RelayCommand<Window>((p) => 
-            { 
+            HoanTatCommand = new RelayCommand<Window>((p) =>
+            {
                 return true;
             }, (p) =>
             {
-               if (DataProvider.Ins.DB.DOITACs.Where(x=>x.MaDoiTac==KhachHang.MaDoiTac).Count()!=1)
+                if (DataProvider.Ins.DB.DOITACs.Where(x => x.MaDoiTac == KhachHang.MaDoiTac).Count() != 1)
                 {
                     KhachHang.MaDoiTac = MaKH;
                     KhachHang.LoaiDoiTac = "Khách hàng";
                     KhachHang.TenDoiTac = Ten;
-                    KhachHang.SDT= SDT;
+                    KhachHang.SDT = SDT;
                     KhachHang.Email = Mail;
                     KhachHang.SDT = SDT;
                     KhachHang.DiaChi = DiaChi;
@@ -149,30 +161,50 @@ namespace QuanLyTraiHeo.ViewModel
                 PhieuHeo.MaDoiTac = KhachHang.MaDoiTac;
                 PhieuHeo.NgayLap = NgayLap;
                 PhieuHeo.TrangThai = "Chưa hoàn thành";
-
-                foreach (HEO x in ListHeo)
+                if (loaiPhieu == "Phiếu nhập heo")
                 {
-                    if (loaiPhieu == "Phiếu nhập heo")
-                        DataProvider.Ins.DB.HEOs.Add(x);
-                    CT_PHIEUHEO CT = new CT_PHIEUHEO
+                    foreach (HEONHAP x in ListHeoN)
                     {
-                        MaHeo = x.MaHeo,
-                        SoPhieu = MaPhieu,
-                        DonGia = DonGia,
-                        TrongLuong = x.TrongLuong
-                    };
-                    TongTien += (int)x.TrongLuong * DonGia;
-                    DataProvider.Ins.DB.CT_PHIEUHEO.Add(CT);
-                    if (loaiPhieu == "Phiếu xuất heo")
+                        DataProvider.Ins.DB.HEOs.Add(x.heo);
+                        CT_PHIEUHEO CT = new CT_PHIEUHEO
+                        {
+                            MaHeo = x.heo.MaHeo,
+                            SoPhieu = MaPhieu,
+                            DonGia = x.DonGia,
+                            TrongLuong = x.heo.TrongLuong
+                        };
+                        DataProvider.Ins.DB.CT_PHIEUHEO.Add(CT);
+                    }
+                }
+                if (loaiPhieu == "Phiếu xuất heo")
+                {
+                    foreach (HEOXUAT x in ListHeoX)
                     {
-                        x.TinhTrang = "Đã xuất";
+                        x.heo.TinhTrang = "Đã xuất";
+                        CT_PHIEUHEO CT = new CT_PHIEUHEO
+                        {
+                            MaHeo = x.heo.MaHeo,
+                            SoPhieu = MaPhieu,
+                            DonGia = x.DonGia,
+                            TrongLuong = x.heo.TrongLuong
+                        };
+                        DataProvider.Ins.DB.CT_PHIEUHEO.Add(CT);
                     }
                 }
 
+
                 PhieuHeo.TongTien = TongTien;
                 DataProvider.Ins.DB.PHIEUHEOs.Add(PhieuHeo);
-                DataProvider.Ins.DB.SaveChanges();
-                MessageBox.Show("Thêm thành công");
+                try
+                {
+                    DataProvider.Ins.DB.SaveChanges();
+                    MessageBox.Show("Thêm thành công");
+                }
+                catch
+                {
+                    MessageBox.Show("LOI");
+
+                }
                 p.Close();
                 p.DataContext = null;
             });
@@ -185,22 +217,22 @@ namespace QuanLyTraiHeo.ViewModel
                 p.DataContext = null;
             }
             );
-            }
+        }
         string CreatPhieuHeo(int lan)
         {
             ObservableCollection<PHIEUHEO> PhieuHeos = new ObservableCollection<PHIEUHEO>(DataProvider.Ins.DB.PHIEUHEOs);
             int soPhieu;
-            soPhieu = PhieuHeos.Count + lan;        
-            string maPhieuHeo="";
+            soPhieu = PhieuHeos.Count + lan;
+            string maPhieuHeo = "";
             if (soPhieu == 0)
             {
                 if (loaiPhieu == "Phiếu nhập heo")
                 {
-                    maPhieuHeo = "PN000001";
+                    maPhieuHeo = "NHEO000001";
                 }
                 if (loaiPhieu == "Phiếu xuất heo")
                 {
-                    maPhieuHeo = "PX000001";
+                    maPhieuHeo = "XHEO000001";
                 }
 
             }
@@ -216,11 +248,11 @@ namespace QuanLyTraiHeo.ViewModel
 
                 if (loaiPhieu == "Phiếu nhập heo")
                 {
-                    maPhieuHeo = "PN" + strSTT ;
+                    maPhieuHeo = "NHEO" + strSTT;
                 }
                 if (loaiPhieu == "Phiếu xuất heo")
                 {
-                    maPhieuHeo = "PX" + strSTT ;
+                    maPhieuHeo = "XHEO" + strSTT;
                 }
             }
             return maPhieuHeo;
