@@ -71,7 +71,7 @@
                             Chưa hoàn thành
                         </CheckBox>
                         <CheckBox x:Name="cb_TT3" IsChecked="True" Margin="0 5" Command="{Binding TTCheckCommand}" CommandParameter="{Binding ElementName=cb_TT3}">
-                            Đã huỷ
+                            Đã hủy
                         </CheckBox>
                     </StackPanel>
                 </Expander>

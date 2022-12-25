@@ -59,6 +59,8 @@ namespace QuanLyTraiHeo.ViewModel
             #region command btn hoàn tất
             btnHoanTatcommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
+                if (vm.selectedLoaiPhieu != "Phiếu kiểm kho" && !checkListChon())
+                    return;
                 foreach(var item in ListHangHoa)
                 {
                     if(item.IsChecked == true)
@@ -168,6 +170,19 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (item.MaHangHoa == ct.MaHangHoa)
                 {
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        bool checkListChon()
+        {
+            foreach (var item in ListHangHoa)
+            {
+                if (item.IsChecked == true && item.HangHoa.SoLuongTonKho == 0)
+                {
+                    MessageBox.Show("Mặt hàng " + item.HangHoa.MaHangHoa + " hiện đã hết");
                     return false;
                 }
             }

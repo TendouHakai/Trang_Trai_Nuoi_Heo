@@ -122,6 +122,11 @@ namespace QuanLyTraiHeo.ViewModel
             #region command sửa số lượng
             editSoLuongcommand = new RelayCommand<TextBox>((p) => { return true; }, p =>
             {
+                if(int.Parse(soluong) > selectCTHH.HANGHOA.SoLuongTonKho)
+                {
+                    MessageBox.Show("Số lượng của mặt hàng này không đủ!");
+                    return;
+                }
                 if (soluong != null && soluong != "" && selectCTHH != null)
                 {
                     selectCTHH._soLuong = int.Parse(soluong);

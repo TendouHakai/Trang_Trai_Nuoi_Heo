@@ -199,8 +199,8 @@ namespace QuanLyTraiHeo.ViewModel
             expdsKiem.IsExpanded = false;
             expdsXuat.IsExpanded = true;
             expdsNhap.IsExpanded = false;
-            listViewdsXuat.SelectedIndex = listViewdsNhap.Items.Count - 1;
-            listViewdsXuat.ScrollIntoView(listViewdsNhap.SelectedItem);
+            listViewdsXuat.SelectedIndex = listViewdsXuat.Items.Count - 1;
+            listViewdsXuat.ScrollIntoView(listViewdsXuat.SelectedItem);
         }
 
         public void ForcusdsKiem()
@@ -208,8 +208,8 @@ namespace QuanLyTraiHeo.ViewModel
             expdsKiem.IsExpanded = true;
             expdsXuat.IsExpanded = false;
             expdsNhap.IsExpanded = false;
-            listViewdsKiem.SelectedIndex = listViewdsNhap.Items.Count - 1;
-            listViewdsKiem.ScrollIntoView(listViewdsNhap.SelectedItem);
+            listViewdsKiem.SelectedIndex = listViewdsKiem.Items.Count - 1;
+            listViewdsKiem.ScrollIntoView(listViewdsKiem.SelectedItem);
         }
 
         void LoadDSPhieuNhapKho()
@@ -230,7 +230,8 @@ namespace QuanLyTraiHeo.ViewModel
         void LoadDSPhieuXuatKho()
         {
             dsPhieuXuat.Clear();
-            var phieuXuats = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu != "Phiếu nhập kho" && x.NgayLap >= _dateMin && x.NgayLap <= _dateMax).ToList();
+            DateTime max = _dateMax.AddDays(1);
+            var phieuXuats = DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu != "Phiếu nhập kho" && x.NgayLap >= _dateMin && x.NgayLap <= max).ToList();
             phieuXuats = phieuXuats.Where(x=>listTrangThai.Contains(x.TrangThai)).ToList();
             phieuXuats = phieuXuats.Where(x=>x.NHANVIEN.HoTen.Contains(_NhanVienLapPhieu)).ToList();
             phieuXuats = phieuXuats.Where(x=>x.NHANVIEN1==null || (x.NHANVIEN1!=null && x.NHANVIEN1.HoTen.Contains(_Khachhang))).ToList();

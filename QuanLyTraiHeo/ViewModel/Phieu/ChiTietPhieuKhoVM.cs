@@ -211,7 +211,7 @@ namespace QuanLyTraiHeo.ViewModel
                         item.HANGHOA.SoLuongTonKho -= item._soLuong;
                         BAOCAOTONKHO bctk = DataProvider.Ins.DB.BAOCAOTONKHOes.Where(x => x.Thang == phieuxuat.NgayLap.Value.Month && x.Nam == phieuxuat.NgayLap.Value.Year && x.MaHH == item.MaHangHoa).SingleOrDefault();
                         bctk.TonCuoi = item.HANGHOA.SoLuongTonKho;
-                        bctk.SoLuongXuatRa -= item._soLuong;
+                        bctk.SoLuongXuatRa += item._soLuong;
                     }
                 }
             }
