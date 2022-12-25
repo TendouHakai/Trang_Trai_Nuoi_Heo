@@ -313,10 +313,11 @@ CREATE TABLE THAMSO
 	RePhoiGiongDuc int,
 	RePhoiGiongCai int,
 	ThucAnMotNgay int,
-	ThucAnMax int
+	ThucAnMax int,
+	SoNgayMangThai int,
 )
 
-insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0)
+insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0,0)
 
 Go 
 Create Table QuyDinhTiemHeo

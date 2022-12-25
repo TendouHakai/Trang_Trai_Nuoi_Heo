@@ -54,4 +54,5 @@
     <viewModel:ChiTietPhieuKhoVM x:Key="ChiTietPhieuKhoVM"></viewModel:ChiTietPhieuKhoVM>
 
     <viewModel:ThemLichMoiVM x:Key="ThemLichMoiVM"></viewModel:ThemLichMoiVM>
+    <viewModel:LapLichPhoiGiongVM x:Key="LapLichPhoiGiongVM"></viewModel:LapLichPhoiGiongVM>
 </ResourceDictionary>

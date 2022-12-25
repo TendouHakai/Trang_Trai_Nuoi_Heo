@@ -247,6 +247,7 @@
     <Compile Include="ViewModel\Account\Account.cs" />
     <Compile Include="Model\TinhTrangHangHoaModel.cs" />
     <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
+    <Compile Include="ViewModel\Lập lịch\LapLichPhoiGiongVM.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuKhoVM.cs" />
     <Compile Include="ViewModel\ChonHangHoaVM.cs" />
     <Compile Include="ViewModel\Phieu\LapPhieuKhoVM.cs" />

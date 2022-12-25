@@ -38,7 +38,7 @@
                            Foreground="White"
                            Text="F100"
                            HorizontalAlignment="Left"
-                           Margin="18,56,0,57"></TextBlock>
+                           Margin="10,56,0,57"></TextBlock>
                 <TextBlock FontSize="30"
                            Name="tb_SoLuongHeo"
                            Text="0"
@@ -65,13 +65,14 @@
             </materialDesign:PackIcon>
         </Button>
 
-        <materialDesign:PackIcon Height="30"
-                                 Width="30"
+        <materialDesign:PackIcon Height="50"
+                                 Width="50"
                                  Visibility="Hidden"
                                  Foreground="#F57C00"
                                  Name="IconChamThan"
                                  Kind="ExclamationThick"
-                                 Margin="110,0,0,0" />
+                                 Margin="210,0,0,0">
+        </materialDesign:PackIcon>
 
     </Grid>
 </UserControl>
