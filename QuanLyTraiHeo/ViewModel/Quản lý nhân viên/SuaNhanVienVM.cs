@@ -21,7 +21,7 @@ namespace QuanLyTraiHeo.ViewModel
 
         public SuaNhanVienVM()
         {
-            System.Windows.MessageBox.Show("Khởi tạo không tham số, BUG !!!!");
+
         }
 
         public SuaNhanVienVM(NHANVIEN nhanVien)

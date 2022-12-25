@@ -50,6 +50,8 @@
                                             Binding="{Binding heo.MaHeo}" />
                         <DataGridTextColumn x:Name="ListTenHeo" Header="Loại heo" 
                                             Binding="{Binding heo.LOAIHEO.TenLoaiHeo}" />
+                        <DataGridTextColumn x:Name="Tuoi" Header="Tuổi" 
+                                            Binding="{Binding ShowTuoi}" />
                         <!--GridViewColumn Header="" Width="160">
                                 <GridViewColumn.CellTemplate>
                                     <DataTemplate>

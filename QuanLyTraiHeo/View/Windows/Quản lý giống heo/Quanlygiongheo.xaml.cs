@@ -73,9 +73,10 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
         {
             //create a function to generate random string
             Random random = new Random();
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string result = new string(Enumerable.Repeat(chars, 10)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            string chars = "0123456789";
+            string result = "GH";
+            result += (new string(Enumerable.Repeat(chars, 14)
+              .Select(s => s[random.Next(s.Length)]).ToArray()));
             return result;
         }
         
@@ -172,7 +173,7 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
 
         private void Timkiem(string a)
         {
-            var t = DataProvider.Ins.DB.GIONGHEOs.Where(s => s.MaGiongHeo.Contains(a)).ToList();
+            var t = DataProvider.Ins.DB.GIONGHEOs.Where(s => s.TenGiongHeo.Contains(a)).ToList();
             if (t != null)
             {
                 Basegiongheo.Clear();
@@ -209,6 +210,9 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_giống_heo
             listviewHeo.ItemsSource = Basegiongheo;
         }
 
-
+        private void Find_textbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Timkiem(Find_textbox.Text);
+        }
     }
 }

@@ -12,6 +12,9 @@ namespace QuanLyTraiHeo.Model
         public bool _IsChecked;
         public bool IsChecked { get => _IsChecked; set { _IsChecked = value; OnPropertyChanged(); } }
         public HEO heo { get; set; }
+        public int _Tuoi;
+        public int Tuoi { get => _Tuoi; set { _Tuoi = value; OnPropertyChanged(); } }
+        public string ShowTuoi { get; set; }
         public ChonHeo()
         {
 
