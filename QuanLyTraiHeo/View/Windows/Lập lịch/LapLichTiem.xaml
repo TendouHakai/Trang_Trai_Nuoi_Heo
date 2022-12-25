@@ -186,24 +186,25 @@
                                 <GridViewColumn Header="Loại thuốc" DisplayMemberBinding="{Binding hanghoa.TenHangHoa}" />
                                 <GridViewColumn Header="Liều lượng" DisplayMemberBinding="{Binding lichtiem.LieuLuong}" />
                                 <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding lichtiem.TrangThai}" />
-                                <GridViewColumn Header="" Width="160">
-                                    <GridViewColumn.CellTemplate>
-                                        <DataTemplate>
-                                            <Menu>
-                                                <MenuItem x:Name="fixB" Icon="{materialDesign:PackIcon Kind=Pen}"  Width="48" Click="btnFix_Click"></MenuItem>
-                                                <MenuItem x:Name="deleteB" Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Click="btnDelete_Click"></MenuItem>
-                                            </Menu>
-                                        </DataTemplate>
-                                    </GridViewColumn.CellTemplate>
-                                </GridViewColumn>
+                                
                             </GridView>
                         </ListView.View>
-                        <ListView.ItemContainerStyle>
-                            <Style TargetType="ListViewItem">
-                                <EventSetter Event="PreviewMouseLeftButtonDown" Handler="ListViewItem_PreviewMouseLeftButtonDown" />
-                                <EventSetter Event="PreviewMouseLeftButtonUp" Handler="ListViewItem_PreviewMouseLeftButtonUp" />
-                            </Style>
-                        </ListView.ItemContainerStyle>
+                        <ListView.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Show}" >
+                                    <MenuItem.Header>Xem</MenuItem.Header>
+                                </MenuItem>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Edit}"
+                                          Click="btnFix_Click">
+                                    <MenuItem.Header>Sửa</MenuItem.Header>
+                                </MenuItem>
+                                <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"
+                                    Click="btnDelete_Click">
+                                    <MenuItem.Header>Xóa</MenuItem.Header>
+                                </MenuItem>
+                            </ContextMenu>
+                        </ListView.ContextMenu>
+                        
                     </ListView>
                 </StackPanel>
 

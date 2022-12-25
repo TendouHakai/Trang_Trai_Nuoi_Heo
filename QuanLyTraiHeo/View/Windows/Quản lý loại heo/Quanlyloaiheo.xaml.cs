@@ -71,9 +71,10 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
         {
             //create a function to generate random string
             Random random = new Random();
-            string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            string result = new string(Enumerable.Repeat(chars, 10)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            string chars = "0123456789";
+            string result = "LH";
+            result += (new string(Enumerable.Repeat(chars, 14)
+              .Select(s => s[random.Next(s.Length)]).ToArray()));
             return result;
         }
 
@@ -99,7 +100,10 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
                 updating(sua.tranferCode());
             }
         }
-
+        private void Find_textbox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Timkiem(Find_textbox.Text);
+        }
 
         /// <summary>
         /// Thêm entity
@@ -184,7 +188,7 @@ namespace QuanLyTraiHeo.View.Windows.Quản_lý_loại_heo
         private void Timkiem(string a)
         {
 
-            var BaseLoaiHeotemp = DataProvider.Ins.DB.LOAIHEOs.Where(s => s.MaLoaiHeo.Contains(a)).ToList();
+            var BaseLoaiHeotemp = DataProvider.Ins.DB.LOAIHEOs.Where(s => s.TenLoaiHeo.Contains(a)).ToList();
             if (BaseLoaiHeotemp != null)
             {
                 BaseLoaiHeo.Clear();

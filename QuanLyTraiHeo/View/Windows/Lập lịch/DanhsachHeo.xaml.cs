@@ -53,6 +53,19 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 ChonHeo chonheo = new ChonHeo();
                 chonheo.heo = Heo;
                 chonheo.IsChecked = false;
+                chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                if (chonheo.Tuoi < 30)
+                {
+                    chonheo.ShowTuoi = chonheo.Tuoi.ToString() + " ngày";
+                }
+                if (chonheo.Tuoi >= 30)
+                {
+                    chonheo.ShowTuoi = (chonheo.Tuoi / 30).ToString() + " tháng " + (chonheo.Tuoi % 30).ToString() + " ngày";
+                }
+                if (chonheo.Tuoi >= 365)
+                {
+                    chonheo.ShowTuoi = ((chonheo.Tuoi / 30) / 12).ToString() + " năm " + (chonheo.Tuoi % 365).ToString() + " ngày";
+                }
                 _listChonHeo.Add(chonheo);
             }
             ListMaHeo_.ItemsSource = _listChonHeo;

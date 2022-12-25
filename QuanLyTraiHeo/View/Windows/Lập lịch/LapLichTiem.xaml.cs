@@ -65,7 +65,7 @@ namespace QuanLyTraiHeo
         //Function
         void Add_LichTiem()
         {
-            if (HeodaChon.Count < 1)
+            if (HeodaChon == null)
             {
                 MessageBox.Show("Chưa chọn heo");
                 return;
