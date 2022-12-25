@@ -18,7 +18,7 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class LapLichPhoiGiongVM: BaseViewModel
     {
-        #region Atributes
+        /*#region Atributes
 
         SnackbarMessageQueue myCustomMessageQueue;
         Brush messageQueueColor;
@@ -189,7 +189,7 @@ namespace QuanLyTraiHeo.ViewModel
                     System.Windows.MessageBox.Show("Dữ liệu đã được lưu thành công", "", MessageBoxButton.OK);
                 }
             }
-        }
+        }*/
 
 
     }
