@@ -67,6 +67,7 @@ namespace QuanLyTraiHeo.ViewModel
 
             CloseChiTietThongBaoW = new RelayCommand<Window>((p) => { return true; }, p => {
                 vmMainW.selectedItem = null;
+                vmMainW.loadTHONGBAO();
                 vmMainW.loadCountThongBao();
             });
             TimKiemTheoTieuDeCommand = new RelayCommand<TextBox>((p) => { return true; }, p => {
@@ -111,9 +112,10 @@ namespace QuanLyTraiHeo.ViewModel
                     {
                         if (listThongBao[i].MaThongBao == deleteTB.MaThongBao)
                         {
-                            DataProvider.Ins.DB.ThongBaos.Remove(deleteTB);
+                            //DataProvider.Ins.DB.ThongBaos.Remove(deleteTB);
+                            delThongBao(deleteTB);
                             DataProvider.Ins.DB.SaveChanges();
-                            if (listThongBao.Count > 1)
+                            if (listThongBao.Count > 2)
                             {
                                 SelectedItem = listThongBao[i + 1];
                             }
@@ -132,6 +134,20 @@ namespace QuanLyTraiHeo.ViewModel
 
 
                 });
+        }
+
+        void delThongBao(ThongBao deleteTB)
+        {
+            DateTime thoigian = deleteTB.ThoiGian.Value;
+            string manguoiGui = deleteTB.C_MaNguoiGui;
+            var thongbaos = DataProvider.Ins.DB.ThongBaos.ToList();
+            foreach(var thongbao in thongbaos)
+            {
+                if(thongbao.C_MaNguoiGui == manguoiGui && thongbao.ThoiGian.Value == thoigian)
+                {
+                    DataProvider.Ins.DB.ThongBaos.Remove(thongbao);
+                }
+            }
         }
         void LoadDSThongBao()
         {

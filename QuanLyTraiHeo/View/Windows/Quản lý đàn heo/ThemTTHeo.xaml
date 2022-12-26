@@ -134,7 +134,7 @@
                         Foreground="#00de1e"
                         Background="#dcf7e0"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding HuyCommand}">
+                        Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=ThemTTHeoW}">
 
                             </Button>
                         </StackPanel>

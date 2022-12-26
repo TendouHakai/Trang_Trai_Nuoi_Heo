@@ -269,6 +269,7 @@ namespace QuanLyTraiHeo.ViewModel
                 foreach (var item in ListHeoAdd)
                 {
                     DataProvider.Ins.DB.HEOs.Add(item);
+                    item.CHUONGTRAI.SoLuongHeo += 1;
                 }
                 DataProvider.Ins.DB.SaveChanges();
                 p.Close();

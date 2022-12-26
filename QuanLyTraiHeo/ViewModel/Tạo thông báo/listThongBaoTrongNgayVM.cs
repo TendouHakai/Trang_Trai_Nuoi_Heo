@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -53,7 +54,8 @@ namespace QuanLyTraiHeo.ViewModel
                         return;
                     }    
                     vmCTThongBao.SelectedItem = selectedThongBao.tb;
-                    selectedThongBao.tb.TinhTrang = "Đã đọc";
+                    selectedThongBao.tb._TinhTrang = "Đã đọc";
+                    OnPropertyChanged("selectedThongBao");
                     DataProvider.Ins.DB.SaveChanges();
                 }
                 selectedThongBao = null;
@@ -92,7 +94,7 @@ namespace QuanLyTraiHeo.ViewModel
             
             foreach(var item in thongbaotrongngay)
             {
-                if(item.tb.ThoiGian == tb.ThoiGian)
+                if(item.tb.ThoiGian.Value == tb.ThoiGian.Value)
                 {
                     return false;
                 }
@@ -144,10 +146,11 @@ namespace QuanLyTraiHeo.ViewModel
             }
 
         }
-        public class THONGBAOCHITIET
+        public class THONGBAOCHITIET: BaseViewModel
         {
             public int isTBGui { get; set; }
-            public ThongBao tb { get; set; }
+            private ThongBao _tb;
+            public ThongBao tb { get=>_tb; set { _tb = value; OnPropertyChanged(); } }
             public THONGBAOCHITIET()
             {
                 isTBGui = 0;

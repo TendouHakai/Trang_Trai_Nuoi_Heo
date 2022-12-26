@@ -13,15 +13,15 @@ namespace QuanLyTraiHeo.Model
     using System;
     using System.Collections.Generic;
     
-    public partial class CT_PHIEUHANGHOA:BaseViewModel
+    public partial class CT_PHIEUHANGHOA: BaseViewModel
     {
         public string SoPhieu { get; set; }
         public string MaHangHoa { get; set; }
         private Nullable<int> SoLuong { get; set; }
-        public Nullable<int> _soLuong { get=>SoLuong; set { SoLuong = value; OnPropertyChanged(); } }
+        public Nullable<int> _soLuong { get => SoLuong; set { SoLuong = value; OnPropertyChanged(); } }
         private Nullable<int> DonGia { get; set; }
-        public Nullable<int> _donGia { get=>DonGia; set { DonGia = value; OnPropertyChanged(); } }
-    
+        public Nullable<int> _donGia { get => DonGia; set { DonGia = value; OnPropertyChanged(); } }
+
         public virtual HANGHOA HANGHOA { get; set; }
         public virtual PHIEUHANGHOA PHIEUHANGHOA { get; set; }
     }
