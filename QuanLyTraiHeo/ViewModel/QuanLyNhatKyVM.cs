@@ -174,7 +174,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            .Select(p => new NhatKy
                            {
-                               icon = "bank-transfer",
+                               icon = "BankTransfer",
                                TenNhanVien = p.NHANVIEN.HoTen,
                                MaPhieu = p.SoPhieu,
                                Ngay = "Ngày " + p.NgayLap.Value.ToString("dd/MM/yyyy"),
@@ -191,7 +191,7 @@ namespace QuanLyTraiHeo.ViewModel
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "tools",
+                               icon = "Tools",
                                TenNhanVien = p.NHANVIEN.HoTen,
 
                                MaPhieu = p.SoPhieu,
@@ -202,7 +202,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            }).ToList();
             foreach (var item in Dataset)
-                lstNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
         }
         private void LoadPhieuKiemKho()
         {
@@ -211,7 +211,7 @@ namespace QuanLyTraiHeo.ViewModel
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "bank-check",
+                               icon = "BankCheck",
                                TenNhanVien = p.NHANVIEN.HoTen,
 
                                MaPhieu = p.SoPhieu,
@@ -222,7 +222,7 @@ namespace QuanLyTraiHeo.ViewModel
 
                            }).ToList();
             foreach (var item in Dataset)
-                lstNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
         }
         private void LoadPhieuHeo()
         {
@@ -231,7 +231,7 @@ namespace QuanLyTraiHeo.ViewModel
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "pig-variant-outline",
+                               icon = "PigVariantOutline",
                                TenNhanVien = p.NHANVIEN.HoTen,
                                Ngay = "Ngày" + p.NgayLap.Value.ToString(" dd/MM/yyyy"),
                                ThoiGian = (DateTime)p.NgayLap,
@@ -240,7 +240,7 @@ namespace QuanLyTraiHeo.ViewModel
                                HanhDong = "Vừa " + p.LoaiPhieu.ToString() + ", trị giá " + string.Format("{0:#,##0}", p.TongTien) + " VNĐ"
                            }).ToList();
             foreach (var item in Dataset)
-                lstNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
         }
         private void LoadPhieuTiemHeo()
         {
@@ -251,12 +251,12 @@ namespace QuanLyTraiHeo.ViewModel
                            {
                                Ngay = "Ngày" + p.NgayTiem.Value.ToString(" dd/MM/yyyy"),
                                ThoiGian = (DateTime)p.NgayTiem,
-                               icon = "biohazard",
+                               icon = "Biohazard",
                                MaPhieu = p.MaLichTiem,
                                HanhDong = "Tiêm heo ngày : " + p.NgayTiem.ToString()
                            }).ToList();
             foreach (var item in Dataset)
-                lstNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
         }
         private void LoadPhieuPhoiGiong()
         {
@@ -265,14 +265,14 @@ namespace QuanLyTraiHeo.ViewModel
                            select Phieu).AsEnumerable()
                            .Select(p => new NhatKy
                            {
-                               icon = "pig",
+                               icon = "Pig",
                                MaPhieu = p.MaLichPhoi,
                                HanhDong = "tạo phiếu phối giống",
                                Ngay = "Ngày" + p.NgayPhoiGiong.Value.ToString(" dd/MM/yyyy")
 
                            }).ToList();
             foreach (var item in Dataset)
-                lstNhatKy.Add(item);
+                tempLstNhatKy.Add(item);
 
         }
         #endregion
