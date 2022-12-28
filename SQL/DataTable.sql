@@ -223,6 +223,7 @@ create table CT_PHIEUSUACHUA
 	SoPhieu char(16),
 	MaChuong char(16),
 	MoTa ntext,
+	ThanhTien int,
 	constraint PK_CT_PSC PRIMARY KEY (SoPhieu, MaChuong)
 )
 

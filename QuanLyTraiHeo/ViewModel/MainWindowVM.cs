@@ -142,9 +142,13 @@ namespace QuanLyTraiHeo.ViewModel
             OnPropertyChanged("MyImage");
         }
 
-        void loadTHONGBAO()
+        public void loadTHONGBAO()
         {
-
+            var listthongbaocount = listTHONGBAO.Count;
+            listTHONGBAO.Clear();
+            var thongbaos = DataProvider.Ins.DB.ThongBaos.Where(x => x.C_MaNguoiNhan == NhanVien.MaNhanVien).Take(listthongbaocount).ToList();
+            foreach (var thongbao in thongbaos)
+                listTHONGBAO.Add(thongbao);
         }
 
         public void loadCountThongBao()

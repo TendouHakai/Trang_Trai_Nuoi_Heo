@@ -24,6 +24,7 @@ namespace QuanLyTraiHeo.ViewModel
         public LOAIHEO SelectedLoai { get; set; }
         public GIONGHEO SelectedGiong { get; set; }
         public CHUONGTRAI SelectedChuong { get; set; }
+        public CHUONGTRAI chuongBanDau { get; set; }
 
         public ICommand XacNhanCommand { get; set; }
 
@@ -38,6 +39,7 @@ namespace QuanLyTraiHeo.ViewModel
             SelectedHeo = selectedHeo;
             SelectedLoai = SelectedHeo.LOAIHEO;
             SelectedChuong = SelectedHeo.CHUONGTRAI;
+            chuongBanDau = SelectedHeo.CHUONGTRAI;
             SelectedGiong = SelectedHeo.GIONGHEO;
             if(SelectedHeo.MaHeoCha!=null && SelectedHeo.MaHeoMe!=null)
             {

@@ -19,7 +19,7 @@
                                     <Style.Triggers>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding tb.TinhTrang}" Value="Chưa đọc"></Condition>
+                                                <Condition Binding="{Binding tb._TinhTrang}" Value="Chưa đọc"></Condition>
                                                 <Condition Binding="{Binding isTBGui}" Value="0"></Condition>
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="Foreground" Value="#2596be"></Setter>
@@ -34,7 +34,7 @@
                                     <Style.Triggers>
                                         <MultiDataTrigger>
                                             <MultiDataTrigger.Conditions>
-                                                <Condition Binding="{Binding tb.TinhTrang}" Value="Chưa đọc"></Condition>
+                                                <Condition Binding="{Binding tb._TinhTrang}" Value="Chưa đọc"></Condition>
                                                 <Condition Binding="{Binding isTBGui}" Value="0"></Condition>
                                             </MultiDataTrigger.Conditions>
                                             <Setter Property="Foreground" Value="#2596be"></Setter>

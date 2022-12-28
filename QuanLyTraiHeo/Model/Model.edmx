@@ -76,6 +76,7 @@
           <Property Name="SoPhieu" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="MaChuong" Type="char" MaxLength="16" Nullable="false" />
           <Property Name="MoTa" Type="ntext" />
+          <Property Name="ThanhTien" Type="int" />
         </EntityType>
         <EntityType Name="DOITAC">
           <Key>
@@ -1129,6 +1130,7 @@
           <Property Name="SoPhieu" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="MaChuong" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="MoTa" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ThanhTien" Type="Int32" />
           <NavigationProperty Name="CHUONGTRAI" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PSC_MC" FromRole="CT_PHIEUSUACHUA" ToRole="CHUONGTRAI" />
           <NavigationProperty Name="PHIEUSUACHUA" Relationship="TRANGTRAINUOIHEOModel.FK_CT_PSC_SP" FromRole="CT_PHIEUSUACHUA" ToRole="PHIEUSUACHUA" />
         </EntityType>
@@ -1823,7 +1825,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1898,6 +1900,7 @@
           <EntitySetMapping Name="CT_PHIEUSUACHUA">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.CT_PHIEUSUACHUA">
               <MappingFragment StoreEntitySet="CT_PHIEUSUACHUA">
+                <ScalarProperty Name="ThanhTien" ColumnName="ThanhTien" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="MaChuong" ColumnName="MaChuong" />
                 <ScalarProperty Name="SoPhieu" ColumnName="SoPhieu" />
