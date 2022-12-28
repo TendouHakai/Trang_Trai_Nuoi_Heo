@@ -19,6 +19,7 @@ using QuanLyTraiHeo.View.Windows;
 using System.Data;
 using System.Drawing;
 using ServiceStack.Text;
+using QuanLyTraiHeo.ViewModel;
 
 namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 {
@@ -29,14 +30,17 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
     {
         #region Attributes
         
-        private ObservableCollection<ChonHeo> _listChonHeo = new ObservableCollection<ChonHeo>();
-        public ObservableCollection<HEO> _listHEO = new ObservableCollection<HEO>();
+        private List<ChonHeo> _listChonHeo = new List<ChonHeo>();
+        public List<HEO> _listHEO = new List<HEO>();
         #endregion
-        public ObservableCollection<LichTiem_TenThuoc> Thuoc_Tiem = new ObservableCollection<LichTiem_TenThuoc>();
+        List<HANGHOA> _listVacxin = new List<HANGHOA>();
+        public List<LichTiem_TenThuoc> Thuoc_Tiem = new List<LichTiem_TenThuoc>();
         List<LICHTIEMHEO> ListLichTiem = new List<LICHTIEMHEO>();
         List<string> ListMaChuong = new List<string>() { "All"};
         List<string> ListLichSuTiem = new List<string>() { };
+        List<string> ListThuoc = new List<string>();
         List<HEO> Listheo { get; set;}
+        List<LICHTIEMHEO> listTiemHeo { get; set;}
         List<ChonHeo> ListChonHeo { get; set; }
         public HEO heo { get; set; }
 
@@ -45,21 +49,13 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         public DanhsachHeo()
         {
             InitializeComponent();
-            ListLichTiem = DataProvider.Ins.DB.LICHTIEMHEOs.ToList();
-            foreach (var lichtiem in ListLichTiem)
-            {
-                LichTiem_TenThuoc lichTiem_TenThuoc = new LichTiem_TenThuoc
-                {
-                    lichtiem = lichtiem,
-                    hanghoa = DataProvider.Ins.DB.HANGHOAs.FirstOrDefault(s => s.MaHangHoa.Contains(lichtiem.MaThuoc))
-                };
-                Thuoc_Tiem.Add(lichTiem_TenThuoc);
-            }
             //pre-check
             Listheo = DataProvider.Ins.DB.HEOs.ToList();
             //load
+            GetListTenThuoc();
             loadMaChuong();
             loadDatagrid("All");
+            TiemVacxin_CB.ItemsSource = ListThuoc;
         }
 
         /*        private void check_click(object sender, RoutedEventArgs e)
@@ -161,10 +157,31 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         {
             _listChonHeo.Clear();
         }
+        //lay danh sach ten thuoc instant
+        void GetListTenThuoc()
+        {
+            Thuoc_Tiem.Clear();
+            ListLichTiem = DataProvider.Ins.DB.LICHTIEMHEOs.ToList();
+            foreach (var lichtiem in ListLichTiem)
+            {
+                LichTiem_TenThuoc lichTiem_TenThuoc = new LichTiem_TenThuoc
+                {
+                    lichtiem = lichtiem,
+                    hanghoa = DataProvider.Ins.DB.HANGHOAs.FirstOrDefault(s => s.MaHangHoa.Contains(lichtiem.MaThuoc))
+                };
+                Thuoc_Tiem.Add(lichTiem_TenThuoc);
+            }
+            _listVacxin = DataProvider.Ins.DB.HANGHOAs.Where(s => s.LoaiHangHoa == "Thuốc" || s.LoaiHangHoa == "Vacxin").ToList();
+            foreach (HANGHOA h in _listVacxin)
+            {
+                ListThuoc.Add(h.TenHangHoa);
+            }
+            TiemVacxin_CB.ItemsSource = ListThuoc;
+        }
+        //Event khi click row in datagrid
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             ListMaHeo_.SelectedItems.Clear();
-
             var item = sender as DataGridRow;
             if (item != null)
             {
@@ -172,18 +189,24 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 ListMaHeo_.SelectedItem = item;
             }
         }
-
+        //Event click row part 2
         private void ListViewItem_PreviewMouseLeftButtonUp(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             DataGridRow item = sender as DataGridRow;
             if (item != null && item.IsSelected)
             {
+                GetListTenThuoc();
                 LichSuTiem_TB.Clear();
                 ListLichSuTiem.Clear();
                 ChonHeo CH = ListMaHeo_.SelectedItem as ChonHeo;
                 foreach(LICHTIEMHEO TH in CH.heo.LICHTIEMHEOs)
-                {                    
-                    ListLichSuTiem.Add(Thuoc_Tiem.FirstOrDefault(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem)).hanghoa.TenHangHoa + " vào ngày " + Thuoc_Tiem.FirstOrDefault(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem)).lichtiem.NgayTiem);
+                {
+                    //MessageBox.Show("pass");
+                    if (TH.TrangThai == "Đã tiêm")
+                    {
+                        HANGHOA hanghoa = Thuoc_Tiem.First(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem) && s.lichtiem.TrangThai.Equals("Đã tiêm")).hanghoa;
+                        ListLichSuTiem.Add(hanghoa.TenHangHoa + " vào ngày " + Thuoc_Tiem.First(s => s.lichtiem.MaLichTiem.Equals(TH.MaLichTiem)).lichtiem.NgayTiem);
+                    }
                 }   
                 if(ListLichSuTiem.IsNullOrEmpty())
                 {
@@ -193,12 +216,23 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 {
                     foreach (var a in ListLichSuTiem)
                     {
+
                         LichSuTiem_TB.Text += "Đã tiêm " + a + "\n";
                     }
                 }    
             }
         }
 
+        /*//lay danh sach vacxin
+        void GetVacxin()
+        {
+            foreach (var test in Thuoc_Tiem)
+            {
+                ListThuoc.Add(test.)
+                 Thuoc_Tiem.Where(s => s.hanghoa.TenHangHoa.)
+            }
+            TiemVacxin_CB.ItemsSource =
+        }*/
         public string TranferCode()
         {
             heo = (HEO)ListMaHeo_.SelectedItem;
@@ -220,7 +254,83 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void MaChuong_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            ReloadDatagrid();
             loadDatagrid(MaChuong_CB.SelectedItem as string);
         }
+
+        private void TrangThai_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ReloadDatagrid();
+            
+            foreach (var Heo in Listheo)
+            {
+                
+                if (TrangThai_CB.SelectedItem.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
+                {
+                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+                    if (ListLichTiem != null)
+                    {
+                        ChonHeo chonheo = new ChonHeo();
+                        chonheo.heo = Heo;
+                        chonheo.IsChecked = false;
+                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                        TuoiHeo(chonheo);
+                        _listChonHeo.Add(chonheo);
+                    }
+                }
+                else
+                {
+                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+                    if (ListLichTiem == null)
+                    {
+                        ChonHeo chonheo = new ChonHeo();
+                        chonheo.heo = Heo;
+                        chonheo.IsChecked = false;
+                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                        TuoiHeo(chonheo);
+                        _listChonHeo.Add(chonheo);
+                    }
+                }
+            }
+            ListMaHeo_.ItemsSource = _listChonHeo;
+        }
+
+        private void TiemVacxin_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            ReloadDatagrid();
+
+            foreach (var Heo in Listheo)
+            {
+
+                if (TrangThai_CB.SelectedItem.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
+                {
+                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+                    if (ListLichTiem != null)
+                    {
+                        ChonHeo chonheo = new ChonHeo();
+                        chonheo.heo = Heo;
+                        chonheo.IsChecked = false;
+                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                        TuoiHeo(chonheo);
+                        _listChonHeo.Add(chonheo);
+                    }
+                }
+                else
+                {
+                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+                    if (ListLichTiem == null)
+                    {
+                        ChonHeo chonheo = new ChonHeo();
+                        chonheo.heo = Heo;
+                        chonheo.IsChecked = false;
+                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                        TuoiHeo(chonheo);
+                        _listChonHeo.Add(chonheo);
+                    }
+                }
+            }
+            ListMaHeo_.ItemsSource = _listChonHeo;
+        }
     }
-}
+    }
+

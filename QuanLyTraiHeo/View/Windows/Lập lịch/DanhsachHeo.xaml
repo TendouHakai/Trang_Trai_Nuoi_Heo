@@ -56,13 +56,16 @@
                     </materialDesign:Card>
                     <Grid>
                         <materialDesign:PackIcon Kind="QuestionAnswer" Margin="10 15 0 0 "/>
-                        <ComboBox x:Name="TrangThai_CB" materialDesign:HintAssist.Hint="Đã tiêm/Chưa tiêm" Height="30" Margin="30,10,20,11" IsReadOnly="True"/>
+                        <ComboBox x:Name="TrangThai_CB" materialDesign:HintAssist.Hint="Đã tiêm/Chưa tiêm" Text="" Height="30" Margin="30,10,20,11" IsReadOnly="True" SelectionChanged="TrangThai_CB_SelectionChanged">
+                            <ComboBoxItem x:Name="cbi1">Đã tiêm</ComboBoxItem>
+                            <ComboBoxItem x:Name="cbi2">Chưa tiêm</ComboBoxItem>
+                        </ComboBox>
                     </Grid>
                     <Grid>
                         <materialDesign:PackIcon Kind="Needle" Margin="10 5 0 0 "/>
                         <ComboBox x:Name="TiemVacxin_CB" Height="30" Margin="30,0,20,11"
                                 materialDesign:HintAssist.Hint="Thuốc/Vacxin"
-                                  IsReadOnly="True">
+                                  IsReadOnly="True" SelectionChanged="TiemVacxin_CB_SelectionChanged">
                         </ComboBox>
                     </Grid>
                     <Button Margin="20,20,20,0"
