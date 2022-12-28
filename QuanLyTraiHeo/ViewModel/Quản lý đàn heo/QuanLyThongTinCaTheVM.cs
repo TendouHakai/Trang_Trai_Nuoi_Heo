@@ -49,10 +49,16 @@ namespace QuanLyTraiHeo.ViewModel
         public ICommand NGCheck { get; set; }
 
         string matim;
-        public DateTime? mindate;
-        public DateTime? maxdate;
-        public int minTL=0;
-        public int maxTL =0;
+        public DateTime? mindate { get => _mindate; set { _mindate = value; OnPropertyChanged(); } }
+        public DateTime? maxdate { get => _maxdate; set { _maxdate = value; OnPropertyChanged(); } }
+        public int minTL { get => _minTL; set { _minTL = value; OnPropertyChanged(); } }
+        public int maxTL { get => _maxTL; set { _maxTL = value; OnPropertyChanged(); } }
+
+        private DateTime? _maxdate;
+        private DateTime? _mindate;
+
+        private int _maxTL;
+        private int _minTL;
 
         public QuanLyThongTinCaTheVM()
         {
@@ -60,12 +66,32 @@ namespace QuanLyTraiHeo.ViewModel
             mindate = new DateTime(Now.Year, Now.Month, 1);
             maxdate = new DateTime(Now.Year, Now.Month, Now.Day+1);
             ListHeo = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs);
+            minTL= (int)ListHeo.Min(x => x.TrongLuong);
+            maxTL = (int)ListHeo.Max(x => x.TrongLuong);
+
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
-            ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
             ListTenLoai = new List<string>();
-            ListTenGiong = new List<string>();  
+            foreach (LOAIHEO l in ListLoai)
+            {
+                ListTenLoai.Add(l.TenLoaiHeo);
+            }    
+            ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
+            ListTenGiong = new List<string>();
+            foreach (GIONGHEO l in ListGiong)
+            {
+                ListTenGiong.Add(l.TenGiongHeo);
+            }
             ListTinhTrang = new List<string>();
+            ListTinhTrang.Add("Sức khoẻ tốt");
+            ListTinhTrang.Add("Đang mang thai");
+            ListTinhTrang.Add("Đang bị bệnh");
+            ListTinhTrang.Add("Đã xuất");
+            ListTinhTrang.Add("Đã đào thải");
+
             ListNguonGoc = new List<string>();
+            ListNguonGoc.Add("Nhập ngoài");
+            ListNguonGoc.Add("Sinh trong trang trại");
+
             TimKiem();
 
             AddCommand = new RelayCommand<Window>((p) => { return true; }, p =>
@@ -80,7 +106,7 @@ namespace QuanLyTraiHeo.ViewModel
             });
             EditCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
-                SuaTTHeoVM suaTTHeoVM = new SuaTTHeoVM(SelectedHeo);
+                SuaTTHeoVM suaTTHeoVM = new SuaTTHeoVM(this);
                 SuaTTHeo suaTTHeo = new SuaTTHeo
                 {
                     DataContext = suaTTHeoVM
@@ -103,6 +129,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBoxResult result = MessageBox.Show("Bạn có chắc chắn xoá ?", "Cảnh báo", MessageBoxButton.OKCancel);
                 if (result == MessageBoxResult.OK)
                 {
+                    SelectedHeo.CHUONGTRAI.SoLuongHeo -= 1;
                     DataProvider.Ins.DB.HEOs.Remove(SelectedHeo);
                     ListHeo.Remove(SelectedHeo);
                     DataProvider.Ins.DB.SaveChanges();
@@ -292,7 +319,7 @@ namespace QuanLyTraiHeo.ViewModel
                                    on a.MaHeo equals h.MaHeo
                                    join HEO j in hEOs8
                                    on a.MaHeo equals j.MaHeo
-                                   orderby a.MaHeo descending select a   ;
+                                   orderby a.MaHeo descending select a;
 
             foreach (HEO h in heo)
             {

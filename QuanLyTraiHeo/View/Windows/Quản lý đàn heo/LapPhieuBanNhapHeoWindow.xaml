@@ -35,6 +35,7 @@
                         <DatePicker Grid.Column="0"
                         HorizontalAlignment="Left"
                         Width="250"
+                                    SelectedDate="{Binding mindate}"
                                     Name="dtp_DateMin"
                         materialDesign:HintAssist.Hint="Từ ngày"
                         materialDesign:TextFieldAssist.HasClearButton="True"
@@ -49,7 +50,7 @@
                         </DatePicker>
 
                         <DatePicker Grid.Column="1"
-                        Width="250"
+                        Width="250" SelectedDate="{Binding maxdate}"
                                     x:Name="dtp_DateMax"
                         HorizontalAlignment="Left"
                         materialDesign:HintAssist.Hint="Đến ngày"

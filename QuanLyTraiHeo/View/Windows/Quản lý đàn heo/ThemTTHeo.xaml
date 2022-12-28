@@ -46,7 +46,8 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListLoai, Mode=OneWay}"
                                   DisplayMemberPath="TenLoaiHeo"
-                                  SelectedItem="{Binding SelectedLoai, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedLoai, Mode=TwoWay}"
+                                  Text="{Binding MaLoaiHeo}">
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBGiongHeo"
@@ -56,6 +57,7 @@
                                   ItemsSource="{Binding ListGiong, Mode=OneWay}"
                                   DisplayMemberPath="TenGiongHeo"
                                   SelectedItem="{Binding SelectedGiong, Mode=TwoWay}"
+                                  Text="{Binding MaGiongHeo}"
                                   >
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
@@ -84,7 +86,9 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListChuong, Mode=OneWay}"
                                   DisplayMemberPath="MaChuong"
-                                  SelectedItem="{Binding SelectedChuong, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedChuong, Mode=TwoWay}"
+                                  Text="{Binding MaChuong}"
+                                  >
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
@@ -193,13 +197,14 @@
                                 <GridView>
                                     <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã loại heo" DisplayMemberBinding="{Binding MaLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã giống heo" DisplayMemberBinding="{Binding MaGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Mã heo mẹ" DisplayMemberBinding="{Binding MaHeoMe,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Mã heo cha" DisplayMemberBinding="{Binding MaHeoCha,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding CHUONGTRAI.MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên loại chuồng" DisplayMemberBinding="{Binding CHUONGTRAI.LOAICHUONG.TenLoai,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                     <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                 </GridView>

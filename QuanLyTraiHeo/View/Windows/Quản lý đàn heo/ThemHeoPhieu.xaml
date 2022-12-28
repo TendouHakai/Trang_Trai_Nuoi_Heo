@@ -22,8 +22,8 @@
             </Grid.ColumnDefinitions>
             <Image Source="/Image/bachground.jpg" Stretch="UniformToFill" Opacity="0.2" Grid.ColumnSpan="2"></Image>
             <StackPanel Margin="5,0,5,0" VerticalAlignment="Center" Grid.ColumnSpan="2">
-                <materialDesign:Card Grid.Row="0" Margin="5" Height="675">
-                    <StackPanel VerticalAlignment="Center">
+                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Center">
+                    <StackPanel VerticalAlignment="Center" Height="646">
                         <TextBox x:Name="txt_MaHeo" Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeo}" IsReadOnly="True"/>
                         <ComboBox Margin="10 5 10 10"
                                   Text="{Binding GioiTinh}"
@@ -36,7 +36,7 @@
                             <ComboBoxItem>Cái</ComboBoxItem>
                         </ComboBox>
                         <DatePicker Margin="10 5 10 10" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding NgaySinh}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}" PreviewTextInput="NumberValidationTextBox"/>
+                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}" PreviewTextInput="NumberValidationTextBox" MaxLength="9"/>
 
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBLoaiHeo"
@@ -45,7 +45,8 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListLoai, Mode=OneWay}"
                                   DisplayMemberPath="TenLoaiHeo"
-                                  SelectedItem="{Binding SelectedLoai, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedLoai, Mode=TwoWay}"
+                                  Text="{Binding MaLoaiHeo}">
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBGiongHeo"
@@ -54,21 +55,43 @@
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListGiong, Mode=OneWay}"
                                   DisplayMemberPath="TenGiongHeo"
-                                  SelectedItem="{Binding SelectedGiong, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedGiong, Mode=TwoWay}"
+                                  Text="{Binding MaGiongHeo}"
+                                  >
                         </ComboBox>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo mẹ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoMe}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo cha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoCha}"/>
+                        <ComboBox Margin="10 5 10 10"
+                                  materialDesign:HintAssist.Hint="Mã heo mẹ"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  materialDesign:ComboBoxAssist.MaxLength="16"
+                                  ItemsSource="{Binding ListMe, Mode=OneWay}"
+                                  DisplayMemberPath="MaHeo"
+                                  SelectedItem="{Binding SelectedMe, Mode=TwoWay}">
+                        </ComboBox>
+
+                        <ComboBox Margin="10 5 10 10"
+                                  materialDesign:HintAssist.Hint="Mã heo cha"
+                                  VerticalAlignment="Center"
+                                  Style="{StaticResource MaterialDesignFloatingHintComboBox}"
+                                  materialDesign:ComboBoxAssist.MaxLength="16"
+                                  ItemsSource="{Binding ListCha, Mode=OneWay}"
+                                  DisplayMemberPath="MaHeo"
+                                  SelectedItem="{Binding SelectedCha, Mode=TwoWay}">
+                        </ComboBox>
+
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Mã chuồng"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListChuong, Mode=OneWay}"
                                   DisplayMemberPath="MaChuong"
-                                  SelectedItem="{Binding SelectedChuong, Mode=TwoWay}">
+                                  SelectedItem="{Binding SelectedChuong, Mode=TwoWay}"
+                                  Text="{Binding MaChuong}"
+                                  >
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
-                                                                    Text="{Binding TinhTrang}"
+                                  Text="{Binding TinhTrang}"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   SelectedItem="{Binding TinhTrang}"
@@ -83,19 +106,13 @@
                                   Text="{Binding NguonGoc}"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                  SelectedItem="{Binding NguonGoc}"
-                                  SelectedIndex="0"
-                                  >
+                                  SelectedItem="{Binding NguonGoc}">
                             <ComboBoxItem>Nhập ngoài</ComboBoxItem>
+                            <ComboBoxItem>Sinh trong trang trại</ComboBoxItem>
                         </ComboBox>
-                        <Grid>
-                            <TextBox materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Height="50" Margin="10,0,10,0" PreviewTextInput="NumberValidationTextBox"
-                                 Text="{Binding DonGia}" x:Name="txt_DonGia">
-                            </TextBox>
+                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Đơn giá" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding DonGia}" PreviewTextInput="NumberValidationTextBox" MaxLength="9"/>
 
-                        </Grid>
                     </StackPanel>
-
                 </materialDesign:Card>
                 <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
                     <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
@@ -110,22 +127,19 @@
                         materialDesign:ButtonAssist.CornerRadius="5"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
                         Command="{Binding AddCommand}" 
-                        CommandParameter="{Binding ElementName=ThemHeoPhieuW}">
+                        CommandParameter="{Binding ElementName=txt_MaHeo}">
                             </Button>
                             <Button Margin="20,10,20,0"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Height="30"
                         BorderBrush="White"
-                        Content="Hoàn tất"
+                        Content="Huỷ bỏ"
                         FontSize="16"
                         materialDesign:ButtonAssist.CornerRadius="5"
                         Foreground="#00de1e"
                         Background="#dcf7e0"
                         IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding HTCommand}"
-                                    CommandParameter="{Binding ElementName=ThemHeoPhieuW}"
-                                    
-                                    >
+                        Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=ThemHeoPhieuW}">
 
                             </Button>
                         </StackPanel>
