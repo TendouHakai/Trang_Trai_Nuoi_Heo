@@ -164,11 +164,11 @@
                                 <GridView>
                                     <GridViewColumn Header="Số phiếu" DisplayMemberBinding="{Binding SoPhieu}"></GridViewColumn>
                                     <GridViewColumn Header="Ngày sửa chữa" DisplayMemberBinding="{Binding NgaySuaChua}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã nhân viên" DisplayMemberBinding="{Binding MaNhanVien}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên nhân viên" DisplayMemberBinding="{Binding NHANVIEN.HoTen}"></GridViewColumn>
                                     <GridViewColumn Header="Tên đối tác" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"></GridViewColumn>
                                     <GridViewColumn Header="Ghi chú" DisplayMemberBinding="{Binding GhiChu}"></GridViewColumn>
                                     <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"></GridViewColumn>
-                                    <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"></GridViewColumn>
+                                    <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien,StringFormat={}{0:#,##0}}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <ListView.ContextMenu>
