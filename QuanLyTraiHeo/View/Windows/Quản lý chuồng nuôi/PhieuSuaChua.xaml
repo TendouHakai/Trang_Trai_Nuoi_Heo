@@ -239,15 +239,19 @@
                         <TextBox materialDesign:HintAssist.Hint="Trạng thái"
                                  Height="30"
                                  Margin="30,0,20,11" 
-                                 Text="{Binding TongTien}"/>
+                                 Text="{Binding TongTien, StringFormat={}{0:#,##0}}"/>
                     </Grid>
                     <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="11*"/>
+                        </Grid.ColumnDefinitions>
                         <materialDesign:PackIcon Kind="CurrencyUsd"
                                                  Margin="10 5 0 0 " />
                         <TextBox materialDesign:HintAssist.Hint="Tổng tiền"
                                  Height="30"
                                  Margin="30,0,20,11" 
-                                 Text="{Binding TongTien}"/>
+                                 Text="{Binding TongTien, StringFormat={}{0:#,##0}}" Grid.ColumnSpan="2"/>
                     </Grid>
                     <Button Margin="20,0,20,0"
                             Style="{StaticResource MaterialDesignRaisedButton}"
