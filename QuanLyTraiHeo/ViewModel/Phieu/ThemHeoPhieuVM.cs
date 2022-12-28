@@ -231,7 +231,7 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }
             TimeSpan tuoiheo = (TimeSpan)(DateTime.Now.Date - HeoAdd.heo.NgaySinh);
-            if (tuoiheo.Days < thamso.TuoiNhapDan)
+            if (tuoiheo.Days < thamso.TuoiNhapDan && HeoAdd.heo.LOAIHEO.TenLoaiHeo != "Heo con")
             {
                 msg = "Heo còn quá nhỏ, chưa thể nhập đàn";
                 MessageBox.Show(msg);

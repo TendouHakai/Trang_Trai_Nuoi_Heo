@@ -33,12 +33,13 @@ namespace QuanLyTraiHeo.ViewModel
         public HEOPHIEU SelectedHeo { get => _SelectedHeo; set { _SelectedHeo = value;
                 if (_SelectedHeo != null)
                 {
-                    if(!KiemTra())
+                    dongia = _SelectedHeo.DonGia;
+                    if (!KiemTra())
                     {
                         _SelectedHeo.IsChecked = false;
-                    }    
-                    dongia = _SelectedHeo.DonGia; 
-                } }
+                    }
+                }
+            }
         }
         public ICommand TimKiemTheoMa_TenCommand { get; set; }
         public ICommand TimKiemTheoNgaySinhMinCommand { get; set; }
@@ -343,13 +344,13 @@ namespace QuanLyTraiHeo.ViewModel
             string msg;
            
             TimeSpan tuoiheo = (TimeSpan)(DateTime.Now.Date - SelectedHeo.heo.NgaySinh);
-            if (tuoiheo.Days < thamso.MonthXuatChuongMin*30)
+            if (tuoiheo.Days < thamso.MonthXuatChuongMin)
             {
                 msg = "Heo chưa đến tuổi xuất chuồng";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (tuoiheo.Days > thamso.MonthXuatChuongMax * 30)
+            if (tuoiheo.Days > thamso.MonthXuatChuongMax)
             {
                 msg = "Heo đã quá tuổi xuất chuồng";
                 MessageBox.Show(msg);
@@ -361,7 +362,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedHeo.heo.TrongLuong < thamso.XuatChuongMax)
+            if (SelectedHeo.heo.TrongLuong > thamso.XuatChuongMax)
             {
                 msg = "Heo đã quá cân nặng xuất chuồng";
                 MessageBox.Show(msg);

@@ -71,10 +71,17 @@ namespace QuanLyTraiHeo.ViewModel
             listviewSelectedIndex = 0;
             _ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
             _ListLoaiChuong = new ObservableCollection<LOAICHUONG>(DataProvider.Ins.DB.LOAICHUONGs);
+            foreach(var loaichuong in _ListLoaiChuong)
+            {
+                ListTenLoaiChuongCanTim.Add(loaichuong.TenLoai.ToString());
+            }
             AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 Themchuong themChuong = new Themchuong();
+                ThemChuongVM vm = new ThemChuongVM();
+                themChuong.DataContext = vm;
                 themChuong.ShowDialog();
+                
                 ListChuongTrai = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
                 //MaxC();
                 //MaxH();
@@ -287,15 +294,15 @@ namespace QuanLyTraiHeo.ViewModel
                     }
                 }
             }
-            else
-            {
-                foreach (var item in ChuongTrais)
-                {
-                    CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
-                    cHUONGTRAI = item;
-                    ListChuongTrai.Add(cHUONGTRAI);
-                }
-            }
+            //else
+            //{
+            //    foreach (var item in ChuongTrais)
+            //    {
+            //        CHUONGTRAI cHUONGTRAI = new CHUONGTRAI();
+            //        cHUONGTRAI = item;
+            //        ListChuongTrai.Add(cHUONGTRAI);
+            //    }
+            //}
         }
     }
 }

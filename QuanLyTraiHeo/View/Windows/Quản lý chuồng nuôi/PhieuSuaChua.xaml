@@ -236,14 +236,6 @@
                                  Text="{Binding GhiChu, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
                     <Grid>
-                        <materialDesign:PackIcon Kind="CurrencyUsd"
-                                                 Margin="10 5 0 0 " />
-                        <TextBox materialDesign:HintAssist.Hint="Trạng thái"
-                                 Height="30"
-                                 Margin="30,0,20,11" 
-                                 Text="{Binding TongTien, StringFormat={}{0:#,##0}}"/>
-                    </Grid>
-                    <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="6*"/>
                             <ColumnDefinition Width="11*"/>

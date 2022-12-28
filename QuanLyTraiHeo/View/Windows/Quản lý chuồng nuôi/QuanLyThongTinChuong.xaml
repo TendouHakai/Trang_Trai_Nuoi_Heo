@@ -32,7 +32,7 @@
                             <ListBox ItemsSource="{Binding ListLoaiChuong}" Grid.ColumnSpan="3">
                                 <ListBox.ItemTemplate>
                                     <DataTemplate>
-                                        <CheckBox x:Name="Check_LoaiChuong" Content="{Binding TenLoai}" 
+                                        <CheckBox IsChecked="True" x:Name="Check_LoaiChuong" Content="{Binding TenLoai}" 
                                                   Command="{Binding RelativeSource={RelativeSource Mode=FindAncestor,
                                                                                                     AncestorType={x:Type ItemsControl}},
                                                                                                     Path= DataContext.TimKiemTheoLoaiChuongCommand }"

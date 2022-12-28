@@ -128,19 +128,6 @@
                         Command="{Binding AddCommand}" 
                         CommandParameter="{Binding ElementName=txt_MaHeo}">
                             </Button>
-                            <Button Margin="20,10,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Huỷ bỏ"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Foreground="#00de1e"
-                        Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=ThemTTHeoW}">
-
-                            </Button>
                         </StackPanel>
                     </Border>
                 </materialDesign:Card>
@@ -175,6 +162,7 @@
                                 </Grid>
                                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
                                     <Button
+                                        Margin="0,0,0,5"
                                     Style="{StaticResource MaterialDesignRaisedButton}"
                                     Height="30"
                                     Width="200"
@@ -191,8 +179,8 @@
                         </Grid>
 
                     </materialDesign:Card>
-                    <ScrollViewer Height="600" Width="auto">
-                        <ListView ItemsSource="{Binding ListHeoAdd}" SelectedItem="{Binding SelectedHeo}" HorizontalAlignment="Stretch">
+                    <ScrollViewer Height="580" Width="auto">
+                        <ListView  ItemsSource="{Binding ListHeoAdd}" SelectedItem="{Binding SelectedHeo}" HorizontalAlignment="Stretch">
                             <ListView.View>
                                 <GridView>
                                     <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
@@ -235,6 +223,20 @@
                         Foreground="#dcf7e0" 
                         Command="{Binding XacNhanCommand}"
                             CommandParameter="{Binding ElementName=ThemTTHeoW}"></Button>
+                    <Button Margin="20,0,20,10"
+                        Style="{StaticResource MaterialDesignRaisedButton}"
+                        Height="30"
+                            Width="250"
+                        BorderBrush="White"
+                        Content="Huỷ bỏ"
+                        FontSize="16"
+                        materialDesign:ButtonAssist.CornerRadius="5"
+                        Foreground="#00de1e"
+                        Background="#dcf7e0"
+                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                        Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=ThemTTHeoW}">
+
+                    </Button>
                 </StackPanel>
             </materialDesign:Card>
         </Grid>

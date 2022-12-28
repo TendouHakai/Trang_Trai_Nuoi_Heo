@@ -184,11 +184,11 @@ namespace QuanLyTraiHeo.ViewModel
             ExcelCommand = new RelayCommand<Window>((p) => { return true; }, p =>
             {
 
-                if(ListHeoAdd.Count>0)
-                {
-                    MessageBox.Show("Vui lòng chỉ import heo từ excel khi danh sách còn trống");
-                    return;
-                }
+                //if(ListHeoAdd.Count>0)
+                //{
+                //    MessageBox.Show("Vui lòng chỉ import heo từ excel khi danh sách còn trống");
+                //    return;
+                //}
                 string filePath = "";
                 OpenFileDialog dialog = new OpenFileDialog();
                 dialog.Filter = "Excel | *.xlsx";
@@ -255,6 +255,10 @@ namespace QuanLyTraiHeo.ViewModel
                         }
                         HeoAdd.TinhTrang = worksheet.Cells[i, j++].Value.ToString();
                         HeoAdd.NguonGoc = worksheet.Cells[i, j++].Value.ToString();
+                        if(HeoAdd.CHUONGTRAI.MaChuong == null) {
+                            MessageBox.Show("Chuồng nuôi " + mchuong + " đã đầy!");
+                            return;
+                        }
                         if (!KiemTra())
                             return;
                         ListHeoAdd.Add(HeoAdd);
@@ -345,7 +349,7 @@ namespace QuanLyTraiHeo.ViewModel
                 return false;
             }
             TimeSpan tuoiheo = (TimeSpan)(DateTime.Now.Date - HeoAdd.NgaySinh);
-            if(tuoiheo.Days < thamso.TuoiNhapDan)
+            if(tuoiheo.Days < thamso.TuoiNhapDan && HeoAdd.LOAIHEO.TenLoaiHeo != "Heo con")
             {
                 msg = "Heo còn quá nhỏ, chưa thể nhập đàn";
                 MessageBox.Show(msg);
@@ -367,25 +371,26 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             }
 
+
             if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("nái") && (!HeoAdd.CHUONGTRAI.MaChuong.Contains("HN") && !HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
             {
                 msg = "Chuồng hiện tại không phù hợp với loại heo nái";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("con") && HeoAdd.CHUONGTRAI.MaChuong.Contains("DG"))
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("con") && HeoAdd.CHUONGTRAI.MaChuong.Contains("DG"))
             {
                 msg = "Heo con không thể ở chuồng đực giống";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực") && (HeoAdd.CHUONGTRAI.MaChuong.Contains("N")||HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("đực") && (HeoAdd.CHUONGTRAI.MaChuong.Contains("N")||HeoAdd.CHUONGTRAI.MaChuong.Contains("HD")))
             {
                 msg = "Heo đực không thể ở chuồng heo nái khác";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("thịt") && !HeoAdd.CHUONGTRAI.MaChuong.Contains("T"))
+            else if (HeoAdd.LOAIHEO.TenLoaiHeo.Contains("thịt") && !HeoAdd.CHUONGTRAI.MaChuong.Contains("T"))
             {
                 msg = "Heo thịt chỉ có thể ở chuồng heo thịt";
                 MessageBox.Show(msg);

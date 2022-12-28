@@ -136,11 +136,15 @@ namespace QuanLyTraiHeo.ViewModel
         {
             OpenTrangChuWindow = new RelayCommand<Grid>((p) => { return true; }, p => {
                 TrangChuWindow wc = new TrangChuWindow();
+                TrangChuVM vm = new TrangChuVM();
+                (wc as TrangChuWindow).grb_TrangChu.DataContext = vm;
                 wc.Close();
                 Object content = wc.Content;
                 wc.Content = null;
                 p.Children.Clear();
                 p.Children.Add(content as UIElement);
+                
+
                 currentWindow = "Trang chủ";
             });
             OpenQuanLyThongTinCaTheWindow = new RelayCommand<Grid>((p) => { return true; }, p => {

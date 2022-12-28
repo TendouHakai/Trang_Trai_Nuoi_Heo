@@ -154,6 +154,48 @@ namespace QuanLyTraiHeo.ViewModel
             });
             #endregion
         }
+        public void LoadTrangChu()
+        {
+            PointLabel = chartPoint =>
+               string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            SeriesCoCauHeo = new SeriesCollection();
+            SeriesCoCauChuong = new SeriesCollection();
+            SeriesCollectionDSCPChart = new SeriesCollection();
+            SeriesCollectionNVChart = new SeriesCollection();
+            listNamColumnChartDoanhThuChiTieu = new List<int>();
+            lstHoatDong = new List<HoatDong>();
+            IsTangDoanhThu = true;
+            IsGiamChiPhi = true;
+            selectedNamChartDoanhthuChiTieu = DateTime.Today.Year;
+
+            #region Khởi tạo list năm cho ColumnChart Doanh thu chi tiêu
+            var listNamColumnChartDoanhThuChiTieuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Select(x => x.NgayLap.Value.Year).Distinct().ToList();
+            var listNamColumnChartDoanhThuChiTieuTheoPhieuSuaChua = DataProvider.Ins.DB.PHIEUSUACHUAs.Select(x => x.NgaySuaChua.Value.Year).Distinct().ToList();
+            var listNamColumnChartDoanhThuChiTieuTheoPhieuHangHoa = DataProvider.Ins.DB.PHIEUHANGHOAs.Select(x => x.NgayLap.Value.Year).Distinct().ToList();
+
+            foreach (var item in listNamColumnChartDoanhThuChiTieuTheoPhieuHeo)
+            {
+                listNamColumnChartDoanhThuChiTieu.Add(item);
+            }
+            foreach (var item in listNamColumnChartDoanhThuChiTieuTheoPhieuSuaChua)
+            {
+                listNamColumnChartDoanhThuChiTieu.Add(item);
+            }
+            foreach (var item in listNamColumnChartDoanhThuChiTieuTheoPhieuHangHoa)
+            {
+                listNamColumnChartDoanhThuChiTieu.Add(item);
+            }
+
+            listNamColumnChartDoanhThuChiTieu = listNamColumnChartDoanhThuChiTieu.Distinct().ToList();
+
+            #endregion
+            LoadDSThongSo();
+            loadPieChartCoCauHeo();
+            loadPieChartCoCauChuong();
+            loadLineChartDoanhThuChiTieu();
+            loadColumnChartNhanVien();
+        }
 
         void loadSoLuongHeoTot()
         {

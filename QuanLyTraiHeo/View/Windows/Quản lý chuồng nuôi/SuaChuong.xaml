@@ -25,7 +25,7 @@
                     <ComboBox Margin="20 10 20 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
                                   VerticalAlignment="Center"
-                                  Text="{Binding cHUONGTRAI.TinhTrang, Mode=OneWayToSource}"
+                                  Text="{Binding _TinhTrang, Mode=TwoWay}"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   SelectedIndex="0">
                         <ComboBoxItem>Bình thường</ComboBoxItem>
@@ -33,7 +33,7 @@
                         <ComboBoxItem>Không sử dụng</ComboBoxItem>
                         <ComboBoxItem>Đã hư</ComboBoxItem>
                     </ComboBox>
-                    <TextBox Margin="20 10 20 10" PreviewTextInput="IsNumberic_only" materialDesign:HintAssist.Hint="Sức chứa tối đa" Text="{Binding cHUONGTRAI.SuaChuaToiDa, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
+                    <TextBox Margin="20 10 20 10" PreviewTextInput="IsNumberic_only" materialDesign:HintAssist.Hint="Sức chứa tối đa" Text="{Binding _suchuaTD, Mode=TwoWay}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                     <TextBox Margin="20 10 20 15" IsReadOnly="True" materialDesign:HintAssist.Hint="Số heo hiện có" Text="{Binding cHUONGTRAI.SoLuongHeo}" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center"/>
                 </StackPanel>
             </materialDesign:Card>

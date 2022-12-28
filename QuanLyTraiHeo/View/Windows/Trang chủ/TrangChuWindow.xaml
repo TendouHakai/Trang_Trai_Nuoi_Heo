@@ -22,7 +22,7 @@
         Width="1024"
         Name="TrangChuW"
         xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity">
-    <Grid Background="#f3f3f9" DataContext="{StaticResource TrangChuVM}">
+    <Grid x:Name="grb_TrangChu" Background="#f3f3f9" DataContext="{StaticResource TrangChuVM}">
         <Grid.RowDefinitions>
             <RowDefinition Height="50"></RowDefinition>
             <RowDefinition Height="*"></RowDefinition>

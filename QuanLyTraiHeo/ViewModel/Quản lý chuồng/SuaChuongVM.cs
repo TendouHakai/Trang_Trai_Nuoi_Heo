@@ -13,6 +13,8 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class SuaChuongVM : BaseViewModel
     {
+        public string _TinhTrang { get; set; }
+        public int? _suchuaTD { get; set; }
         #region Command
         public ICommand XacNhanCommand { get; set; }
         public CHUONGTRAI cHUONGTRAI { get; set; }
@@ -30,17 +32,21 @@ namespace QuanLyTraiHeo.ViewModel
 
         public SuaChuongVM(CHUONGTRAI ChuongTrai)
         {
-            XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, p => { Sua(p); });
             cHUONGTRAI = ChuongTrai;
+            _TinhTrang = ChuongTrai.TinhTrang;
+            _suchuaTD = ChuongTrai.SuaChuaToiDa;
+            XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, p => { Sua(p); });
         }
 
         private void Sua(Window p)
         {
-            if (cHUONGTRAI.SuaChuaToiDa == null)
+            if (_suchuaTD == null)
             {
                 MessageBox.Show("Vui lòng nhập sức chứa tối đa! ", "Thông báo!", MessageBoxButton.OK);
                 return;
             }
+            cHUONGTRAI.TinhTrang = _TinhTrang;
+            cHUONGTRAI.SuaChuaToiDa = _suchuaTD;
             DataProvider.Ins.DB.SaveChanges();
             System.Windows.MessageBox.Show("Sửa thành công");
             p.Close();

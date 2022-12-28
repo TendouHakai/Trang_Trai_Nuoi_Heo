@@ -26,6 +26,16 @@ namespace QuanLyTraiHeo.ViewModel
         public CHUONGTRAI SelectedChuong { get; set; }
         public CHUONGTRAI chuongBanDau { get; set; }
 
+        public string _MaHeo;
+        public string _MaLoaiHeo { get; set; }  
+        public string _MaGiongHeo { get; set; }
+        public string _GioiTinh { get; set; }
+        public int? _TrongLuong { get; set; }
+        public DateTime? _NgaySinh { get; set; }
+        public string _MaChuong { get; set; }
+        public string _NguonGoc { get; set; }
+        public string _TinhTrang { get; set; }
+
         public ICommand XacNhanCommand { get; set; }
 
         public SuaTTHeoVM()
@@ -34,9 +44,14 @@ namespace QuanLyTraiHeo.ViewModel
         }
         public SuaTTHeoVM(QuanLyThongTinCaTheVM vm)
         {
-            HEO selectedHeo = vm.SelectedHeo;
-            CHUONGTRAI cu = selectedHeo.CHUONGTRAI;
-            SelectedHeo = selectedHeo;
+            SelectedHeo = vm.SelectedHeo;
+            _MaHeo = SelectedHeo.MaHeo;
+            _GioiTinh = SelectedHeo.GioiTinh;
+            _TrongLuong = SelectedHeo.TrongLuong;
+            _NgaySinh = SelectedHeo.NgaySinh;
+            _NguonGoc = SelectedHeo.NguonGoc;
+            _TinhTrang = SelectedHeo.TinhTrang;
+            CHUONGTRAI cu = SelectedHeo.CHUONGTRAI;
             SelectedLoai = SelectedHeo.LOAIHEO;
             SelectedChuong = SelectedHeo.CHUONGTRAI;
             chuongBanDau = SelectedHeo.CHUONGTRAI;
@@ -48,27 +63,27 @@ namespace QuanLyTraiHeo.ViewModel
             }    
             ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
             ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
-            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.Where(x => x.SuaChuaToiDa > x.SoLuongHeo).ToList());
+            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs);
 
 
             XacNhanCommand = new RelayCommand<Window>((p) =>
             {
                 if (SelectedChuong == null || SelectedGiong == null || SelectedLoai == null)
                     return false;
-                SelectedHeo.GIONGHEO = SelectedGiong;
-                SelectedHeo.LOAIHEO = SelectedLoai;
-                SelectedHeo.CHUONGTRAI = SelectedChuong;
-                if (selectedHeo.GioiTinh == null || selectedHeo.TinhTrang == null || selectedHeo.NguonGoc == null || selectedHeo.NgaySinh == null || selectedHeo.TrongLuong == null)
+                if (_GioiTinh == null || _TinhTrang == null || _NguonGoc == null || _NgaySinh == null || _TrongLuong == null)
                     return false;
                 return true;
             }, p =>
             {
-                
+
                 if (!KiemTra())
-                    return;
-                if (SelectedHeo.CHUONGTRAI.SoLuongHeo < SelectedHeo.CHUONGTRAI.SuaChuaToiDa)
                 {
-                    SelectedHeo.CHUONGTRAI.SoLuongHeo += 1;
+                    return;
+                }
+
+                if (SelectedChuong.SoLuongHeo < SelectedChuong.SuaChuaToiDa && SelectedHeo.MaChuong != SelectedChuong.MaChuong)
+                {
+                    SelectedChuong.SoLuongHeo += 1;
                     cu.SoLuongHeo -= 1;
                 }
                 else
@@ -76,6 +91,15 @@ namespace QuanLyTraiHeo.ViewModel
                     MessageBox.Show("Sức chứa của chuồng không đủ. Heo" + SelectedHeo.MaHeo + " chưa được sửa");
                     return;
                 }
+                SelectedHeo.GioiTinh = _GioiTinh;
+                SelectedHeo.TinhTrang = _TinhTrang;
+                SelectedHeo.NguonGoc = _NguonGoc;
+                SelectedHeo.NgaySinh = _NgaySinh;
+                SelectedHeo.TrongLuong = _TrongLuong;
+
+                SelectedHeo.GIONGHEO = SelectedGiong;
+                SelectedHeo.LOAIHEO = SelectedLoai;
+                SelectedHeo.CHUONGTRAI = SelectedChuong;
                 DataProvider.Ins.DB.SaveChanges();
                 vm.SelectedHeo = SelectedHeo; 
                 p.Close();
@@ -84,22 +108,22 @@ namespace QuanLyTraiHeo.ViewModel
         bool KiemTra()
         {
             string msg;
-            if (SelectedHeo.GioiTinh == "Cái" && SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("đực"))
+            if (_GioiTinh == "Cái" && SelectedLoai.TenLoaiHeo.Contains("đực"))
             {
                 msg = "Chọn sai giới tính hoặc loại heo";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedHeo.GioiTinh == "Đực" && SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("nái"))
+            if (_GioiTinh == "Đực" && SelectedLoai.TenLoaiHeo.Contains("nái"))
             {
                 msg = "Chọn sai giới tính hoặc loại heo";
                 MessageBox.Show(msg);
                 return false;
             }
 
-            if (SelectedHeo.MaHeoMe != null && SelectedHeo.MaHeoCha != null)
+            if (MaHeoMe != null && MaHeoCha != null)
             {
-                if (!(SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("con")) && (SelectedHeo.MaHeoMe != "Không chọn" || SelectedHeo.MaHeoCha != "Không chọn"))
+                if (!(SelectedLoai.TenLoaiHeo.Contains("con")) && (MaHeoMe != "Không chọn" || MaHeoCha != "Không chọn"))
                 {
                     msg = "Chỉ chọn heo cha, heo mẹ cho heo thuộc loại heo con";
                     MessageBox.Show(msg);
@@ -107,26 +131,26 @@ namespace QuanLyTraiHeo.ViewModel
                 }
             }
 
-            if (SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("nái"))
-                if (!SelectedHeo.CHUONGTRAI.MaChuong.Contains("HN") && !SelectedHeo.CHUONGTRAI.MaChuong.Contains("HD"))
+            if (SelectedLoai.TenLoaiHeo.Contains("nái"))
+                if (!SelectedChuong.MaChuong.Contains("HN") && !SelectedChuong.MaChuong.Contains("HD"))
                 {
                     msg = "Chuồng hiện tại không phù hợp với loại heo nái";
                     MessageBox.Show(msg);
                     return false;
                 }
-            if (SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("con") && SelectedHeo.CHUONGTRAI.MaChuong.Contains("DG"))
+            if (SelectedLoai.TenLoaiHeo.Contains("con") && SelectedChuong.MaChuong.Contains("DG"))
             {
                 msg = "Heo con không thể ở chuồng đực giống";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("đực") && (SelectedHeo.CHUONGTRAI.MaChuong.Contains("N") && SelectedHeo.CHUONGTRAI.MaChuong.Contains("HD")))
+            if (SelectedLoai.TenLoaiHeo.Contains("đực") && (SelectedChuong.MaChuong.Contains("N") && SelectedChuong.MaChuong.Contains("HD")))
             {
                 msg = "Heo đực không thể ở chuồng heo nái khác";
                 MessageBox.Show(msg);
                 return false;
             }
-            if (SelectedHeo.LOAIHEO.TenLoaiHeo.Contains("thịt") && !SelectedHeo.CHUONGTRAI.MaChuong.Contains("T"))
+            if (SelectedLoai.TenLoaiHeo.Contains("thịt") && !SelectedChuong.MaChuong.Contains("T"))
             {
                 msg = "Heo thịt chỉ có thể ở chuồng heo thịt";
                 MessageBox.Show(msg);
