@@ -404,6 +404,11 @@
                                                     CommandParameter="{Binding ElementName=MainWindow}">
                                                 Đổi mật khẩu
                                             </Button>
+                                            <Button Name="btn_DangXuat"
+                                                    Command="{Binding LogoutCommand}"
+                                                    CommandParameter="{Binding ElementName=MainWindow}">
+                                                Đăng xuất
+                                            </Button>
                                         </StackPanel>
                                     </materialDesign:PopupBox>
                                 </StackPanel>
