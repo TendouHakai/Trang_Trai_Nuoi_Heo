@@ -69,6 +69,7 @@ namespace QuanLyTraiHeo.ViewModel
             cT_PHIEUSUACHUAs = DataProvider.Ins.DB.CT_PHIEUSUACHUA.ToList();
             ListNhanVien = new ObservableCollection<NHANVIEN>(DataProvider.Ins.DB.NHANVIENs);
             _SoPhieu = TaoSoPhieu();
+            TenNhanVien = Account.TaiKhoan.HoTen;
             AddCommand = new RelayCommand<ListView>((p) => { return true; }, (p) =>
             {
                 ChiTietPhieuSuaChua ctphieuSuaChua = new ChiTietPhieuSuaChua
@@ -81,7 +82,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email, LoaiDoiTac = "Đối tác sửa chữa" };
                 DataProvider.Ins.DB.DOITACs.Add(temp);
-                DataProvider.Ins.DB.SaveChanges();
+                DataProvider.Ins.DB.SaveChanges();                
                 var item = new PHIEUSUACHUA() { MaNhanVien = LayMaNhanVien(TenNhanVien), MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = TrangThai };
                 DataProvider.Ins.DB.PHIEUSUACHUAs.Add(item);
                 DataProvider.Ins.DB.SaveChanges();
