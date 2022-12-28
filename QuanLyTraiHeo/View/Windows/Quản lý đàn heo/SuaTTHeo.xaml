@@ -54,8 +54,8 @@
                                   DisplayMemberPath="TenGiongHeo"
                                   SelectedItem="{Binding SelectedGiong, Mode=TwoWay}">
                     </ComboBox>
-                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo mẹ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoMe}"/>
-                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo cha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoCha}"/>
+                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo mẹ" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoMe}" IsReadOnly="True"/>
+                    <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo cha" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeoCha}" IsReadOnly="True"/>
                     <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Mã chuồng"
                                   VerticalAlignment="Center"

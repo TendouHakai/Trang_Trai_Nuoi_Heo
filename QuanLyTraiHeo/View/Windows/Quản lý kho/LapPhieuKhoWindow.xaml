@@ -163,7 +163,7 @@
                                                 <GridViewColumn Header="Khách hàng" 
                                                                 DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
                                                 <GridViewColumn Header="Tổng tiền" 
-                                                                DisplayMemberBinding="{Binding TongTien,  StringFormat={}{0:#,#}}"/>
+                                                                DisplayMemberBinding="{Binding TongTien}"/>
                                                 <GridViewColumn Header="Trạng thái"
                                                                 DisplayMemberBinding="{Binding TrangThai}"/>
                                             </GridView>
@@ -199,7 +199,7 @@
                                                 <GridViewColumn Header="Khách hàng" 
                                                                 DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
                                                 <GridViewColumn Header="Tổng tiền" 
-                                                                DisplayMemberBinding="{Binding TongTien,  StringFormat={}{0:#,#}}"/>
+                                                                DisplayMemberBinding="{Binding TongTien}"/>
                                                 <GridViewColumn Header="Trạng thái"
                                                                 DisplayMemberBinding="{Binding TrangThai}"/>
                                             </GridView>
