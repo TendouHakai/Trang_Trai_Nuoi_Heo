@@ -66,8 +66,9 @@ namespace QuanLyTraiHeo.ViewModel
 
         private void ChinhSuaPermission()
         {
-            if (ModifyPermission == null)
+            if (lstPermissionIndex < 0 || lstPermissionIndex >= lstPermission.Count())
                 return;
+            ModifyPermission = lstPermission[lstPermissionIndex];
             if (PermissionName == String.Empty)
             {
                 MessageBox.Show("Vui lòng điền tên chức vụ!");
@@ -80,7 +81,13 @@ namespace QuanLyTraiHeo.ViewModel
                 return;
             }
 
-            DataProvider.Ins.DB.PERMISION_DETAIL.RemoveRange(DataProvider.Ins.DB.PERMISION_DETAIL.Where(x => x.ID_Permision == ModifyPermission.ID_Permision));
+            List<PERMISION_DETAIL> tasdasda = ModifyPermission.PERMISION_DETAIL.ToList();
+
+            foreach(var item in tasdasda)
+            {
+                DataProvider.Ins.DB.PERMISION_DETAIL.Remove(item);
+            }
+            //DataProvider.Ins.DB.PERMISION_DETAIL.RemoveRange(DataProvider.Ins.DB.PERMISION_DETAIL.Where(x => x.ID_Permision == ModifyPermission.ID_Permision));
             DataProvider.Ins.DB.SaveChanges();
            
             int val = 0;
@@ -109,11 +116,11 @@ namespace QuanLyTraiHeo.ViewModel
                     DataProvider.Ins.DB.PERMISION_DETAIL.Add(pERMISION_DETAIL);
                     val++;
                 }
-                DataProvider.Ins.DB.SaveChanges();
-            
-            MessageBox.Show("Chỉnh sửa thành công!");
+            var aaaaaaaaaaaaaaa = DataProvider.Ins.DB.PERMISION_DETAIL.Where(x => x.ID_Permision == ModifyPermission.ID_Permision);
 
+            DataProvider.Ins.DB.SaveChanges();
             ModifyPermission = lstPermission[lstPermissionIndex];
+            MessageBox.Show("Chỉnh sửa thành công!");
         }
 
         private void DeletePermission()
@@ -181,7 +188,18 @@ namespace QuanLyTraiHeo.ViewModel
         private void PermissionSelectionChanged()
         {
             if (ModifyPermission == null)
+            {
+                PermissionName = "";
+                permissionModels.Clear();
+                permissionModels.Add(new PermissionModel(false, "Quản lý nhân viên", 1));
+                permissionModels.Add(new PermissionModel(false, "Quản lý đàn heo", 2));
+                permissionModels.Add(new PermissionModel(false, "Quản lý kho", 3));
+                permissionModels.Add(new PermissionModel(false, "Quản lý tài chính", 4));
+                permissionModels.Add(new PermissionModel(false, "Quản lý cây mục tiêu", 5));
+                permissionModels.Add(new PermissionModel(false, "Quản lý nhật ký", 6));
+
                 return;
+            }
             PermissionName = ModifyPermission.Name_Permision;
             permissionModels.Clear();
             permissionModels.Add(new PermissionModel(false, "Quản lý nhân viên", 1));
