@@ -90,6 +90,7 @@
                                 <GridView>
                                     <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
                                     <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding MoTa}"></GridViewColumn>
+                                    <GridViewColumn Header="Tiền sửa chữa" DisplayMemberBinding="{Binding TienSuaChua, StringFormat={}{0:#,##0}}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <ListView.ContextMenu>
