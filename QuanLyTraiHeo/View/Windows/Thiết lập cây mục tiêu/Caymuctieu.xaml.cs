@@ -31,6 +31,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public List<LICHPHOIGIONG> LichPhoiGiong { get; set; }
         public List<CT_PHIEUHEO> BanHeo { get; set; }
 
+        List<string> GiaTriMucTieuList = new List<string>();
         #region Tính toán
         public static int SoHeo = 0;
         public static int SoHeoDe = 0;
@@ -951,18 +952,20 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         }
         #endregion
 
-        private void Window_Loaded()
+        public void Window_Loaded()
         {
             string applicationPath = Path.GetFullPath(System.AppDomain.CurrentDomain.BaseDirectory); // the directory that your program is installed in
             string saveFilePath = Path.Combine(applicationPath, "1.txt");
             if (File.Exists(saveFilePath))
             {
-                string text = File.ReadAllLines(saveFilePath).LastOrDefault();
+                GiaTriMucTieuList = File.ReadAllLines(saveFilePath).ToList();
+                Tylede_muctieu = double.Parse(File.ReadLines(saveFilePath).First());
             }
             else
             {                
                 setGiaTriStatic();
             }
+            MessageBox.Show(File.ReadAllLines(saveFilePath).LastOrDefault());
         }
     }
 }

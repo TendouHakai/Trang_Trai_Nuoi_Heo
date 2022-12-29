@@ -65,7 +65,9 @@ namespace QuanLyTraiHeo
             ThamSo thamso = new ThamSo();
             DatMucTieu datMucTieu = new DatMucTieu(cmt.Tylede_muctieu, cmt.SoHeoConSinhRa_muctieu, cmt.ODeItCon_muctieu, cmt.SoHeoConSong_MucTieu, cmt.SoHeoCaiSua_muctieu, cmt.SoConChetTruocKhiCaiSua_MucTieu, cmt.ThoiGianMangThai_MucTieu, cmt.SoNgayCaiSua_MucTieu, cmt.SoNgayKhongLamViec_MucTieu, cmt.TrungBnhLua_MucTieu, cmt.SoHeoTrongNam_MucTieu);
             datMucTieu.ShowDialog();
-            if(datMucTieu.ReturnValue(thamso) != null)
+            cmt.Window_Loaded();
+            changeView();
+            if (datMucTieu.ReturnValue(thamso) != null)
             {
                 /*cmt.Tylede_muctieu = thamso.Tylede_muctieu;
                 cmt.SoHeoConSinhRa_muctieu = thamso.SoHeoConSinhRa_muctieu;

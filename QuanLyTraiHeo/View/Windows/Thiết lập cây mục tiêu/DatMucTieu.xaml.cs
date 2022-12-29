@@ -116,9 +116,20 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         private void Window_Closed(object sender, EventArgs e)
         {
             string applicationPath = Path.GetFullPath(System.AppDomain.CurrentDomain.BaseDirectory); // the directory that your program is installed in
-            string saveFilePath = Path.Combine(applicationPath, "1.txt");
+            string saveFilePath = System.IO.Path.Combine(applicationPath, "1.txt");
+            File.WriteAllText(saveFilePath, String.Empty);
             StreamWriter w = new StreamWriter(saveFilePath, true);
-            w.WriteLine();
+            w.WriteLine(Tylede_muctieu_au);
+            w.WriteLine(SoHeoConSinhRa_muctieu_au);
+            w.WriteLine(ODeItCon_muctieu_au);
+            w.WriteLine(SoHeoConSong_MucTieu_au);
+            w.WriteLine(SoHeoCaiSua_muctieu_au);
+            w.WriteLine(SoConChetTruocKhiCaiSua_MucTieu_au);
+            w.WriteLine(ThoiGianMangThai_MucTieu_au);
+            w.WriteLine(SoNgayCaiSua_MucTieu_au);
+            w.WriteLine(SoNgayKhongLamViec_MucTieu_au);
+            w.WriteLine(TrungBnhLua_MucTieu_au);
+            w.WriteLine(SoHeoTrongNam_MucTieu_au);
             w.Close();
         }
     }
