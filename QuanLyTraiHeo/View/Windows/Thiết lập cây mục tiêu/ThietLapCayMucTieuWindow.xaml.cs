@@ -63,21 +63,21 @@ namespace QuanLyTraiHeo
         private void Muctieu_button(object sender, RoutedEventArgs e)
         {
             ThamSo thamso = new ThamSo();
-            DatMucTieu datMucTieu = new DatMucTieu(cmt.Tylede_muctieuClone, cmt.SoHeoConSinhRa_muctieuClone, cmt.ODeItCon_muctieuClone, cmt.SoHeoConSong_MucTieuClone, cmt.SoHeoCaiSua_muctieuClone, cmt.SoConChetTruocKhiCaiSua_MucTieuClone, cmt.ThoiGianMangThai_MucTieuClone, cmt.SoNgayCaiSua_MucTieuClone, cmt.SoNgayKhongLamViec_MucTieuClone, cmt.TrungBnhLua_MucTieuClone, cmt.SoHeoTrongNam_MucTieuClone);
+            DatMucTieu datMucTieu = new DatMucTieu(cmt.Tylede_muctieu, cmt.SoHeoConSinhRa_muctieu, cmt.ODeItCon_muctieu, cmt.SoHeoConSong_MucTieu, cmt.SoHeoCaiSua_muctieu, cmt.SoConChetTruocKhiCaiSua_MucTieu, cmt.ThoiGianMangThai_MucTieu, cmt.SoNgayCaiSua_MucTieu, cmt.SoNgayKhongLamViec_MucTieu, cmt.TrungBnhLua_MucTieu, cmt.SoHeoTrongNam_MucTieu);
             datMucTieu.ShowDialog();
             if(datMucTieu.ReturnValue(thamso) != null)
             {
-                cmt.Tylede_muctieuClone = thamso.Tylede_muctieuClone;
-                cmt.SoHeoConSinhRa_muctieuClone = thamso.SoHeoConSinhRa_muctieuClone;
-                cmt.ODeItCon_muctieuClone = thamso.ODeItCon_muctieuClone;
-                cmt.SoHeoConSong_MucTieuClone = thamso.SoHeoConSong_MucTieuClone;
-                cmt.SoHeoCaiSua_muctieuClone = thamso.SoHeoCaiSua_muctieuClone;
-                cmt.SoConChetTruocKhiCaiSua_MucTieuClone = thamso.SoConChetTruocKhiCaiSua_MucTieuClone;
-                cmt.ThoiGianMangThai_MucTieuClone = thamso.ThoiGianMangThai_MucTieuClone;
-                cmt.SoNgayCaiSua_MucTieuClone = thamso.SoNgayCaiSua_MucTieuClone;
-                cmt.SoNgayKhongLamViec_MucTieuClone = thamso.SoNgayKhongLamViec_MucTieuClone;
-                cmt.TrungBnhLua_MucTieuClone = thamso.TrungBnhLua_MucTieuClone;
-                cmt.SoHeoTrongNam_MucTieuClone = thamso.SoHeoTrongNam_MucTieuClone;
+                /*cmt.Tylede_muctieu = thamso.Tylede_muctieu;
+                cmt.SoHeoConSinhRa_muctieu = thamso.SoHeoConSinhRa_muctieu;
+                cmt.ODeItCon_muctieu = thamso.ODeItCon_muctieu;
+                cmt.SoHeoConSong_MucTieu = thamso.SoHeoConSong_MucTieu;
+                cmt.SoHeoCaiSua_muctieu = thamso.SoHeoCaiSua_muctieu;
+                cmt.SoConChetTruocKhiCaiSua_MucTieu = thamso.SoConChetTruocKhiCaiSua_MucTieu;
+                cmt.ThoiGianMangThai_MucTieu = thamso.ThoiGianMangThai_MucTieu;
+                cmt.SoNgayCaiSua_MucTieu = thamso.SoNgayCaiSua_MucTieu;
+                cmt.SoNgayKhongLamViec_MucTieu = thamso.SoNgayKhongLamViec_MucTieu;
+                cmt.TrungBnhLua_MucTieu = thamso.TrungBnhLua_MucTieu;
+                cmt.SoHeoTrongNam_MucTieu = thamso.SoHeoTrongNam_MucTieu;*/
                 changeView();
             }
 /*            if (datMucTieu.check == 1)

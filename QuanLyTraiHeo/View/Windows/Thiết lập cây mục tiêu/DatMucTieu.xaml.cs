@@ -1,6 +1,7 @@
 ﻿using Org.BouncyCastle.Utilities;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +12,6 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 {
@@ -39,7 +39,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public DatMucTieu(double Tylede_muctieu, double SoHeoConSinhRa_muctieu, double ODeItCon_muctieu, double SoHeoConSong_MucTieu, double SoHeoCaiSua_muctieu, double SoConChetTruocKhiCaiSua_MucTieu, string ThoiGianMangThai_MucTieu, string SoNgayCaiSua_MucTieu, string SoNgayKhongLamViec_MucTieu, double TrungBnhLua_MucTieu, double SoHeoTrongNam_MucTieu)
         {
             InitializeComponent();
-            Tylede_muctieu_au = Tylede_muctieu;
+            /*Tylede_muctieu_au = Tylede_muctieu;
             SoHeoConSinhRa_muctieu_au = SoHeoConSinhRa_muctieu;
             ODeItCon_muctieu_au = ODeItCon_muctieu;
             SoHeoConSong_MucTieu_au = SoHeoConSong_MucTieu;
@@ -49,16 +49,16 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             SoNgayCaiSua_MucTieu_au = SoNgayCaiSua_MucTieu.ToString();
             SoNgayKhongLamViec_MucTieu_au = SoNgayKhongLamViec_MucTieu.ToString();
             TrungBnhLua_MucTieu_au = TrungBnhLua_MucTieu;
-            SoHeoTrongNam_MucTieu_au = SoHeoTrongNam_MucTieu;
+            SoHeoTrongNam_MucTieu_au = SoHeoTrongNam_MucTieu;*/
             muctieu12.Text = Tylede_muctieu.ToString();
             muctieu2.Text = SoHeoConSinhRa_muctieu.ToString();
             muctieu1.Text = ODeItCon_muctieu.ToString();
             muctieu.Text = SoHeoConSong_MucTieu.ToString();
             muctieu5.Text = SoHeoCaiSua_muctieu.ToString();
             muctieu4.Text = SoConChetTruocKhiCaiSua_MucTieu.ToString();
-            muctieu8.Text = ThoiGianMangThai_MucTieu.ToString();
-            muctieu7.Text = SoNgayCaiSua_MucTieu.ToString();
-            muctieu9.Text = SoNgayKhongLamViec_MucTieu.ToString();
+            muctieu8.Text = ThoiGianMangThai_MucTieu;
+            muctieu7.Text = SoNgayCaiSua_MucTieu;
+            muctieu9.Text = SoNgayKhongLamViec_MucTieu;
             muctieu6.Text = TrungBnhLua_MucTieu.ToString();
             muctieu10.Text = SoHeoTrongNam_MucTieu.ToString();
             muctieu3.Text = Tylethaydan_au.ToString();
@@ -111,6 +111,15 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         {
             check = 0;
             this.Close();
+        }
+
+        private void Window_Closed(object sender, EventArgs e)
+        {
+            string applicationPath = Path.GetFullPath(System.AppDomain.CurrentDomain.BaseDirectory); // the directory that your program is installed in
+            string saveFilePath = Path.Combine(applicationPath, "1.txt");
+            StreamWriter w = new StreamWriter(saveFilePath, true);
+            w.WriteLine();
+            w.Close();
         }
     }
 }

@@ -4,6 +4,7 @@ using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using Path = System.IO.Path;
 
 namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
 {
@@ -29,6 +31,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public List<LICHPHOIGIONG> LichPhoiGiong { get; set; }
         public List<CT_PHIEUHEO> BanHeo { get; set; }
 
+        #region Tính toán
         public static int SoHeo = 0;
         public static int SoHeoDe = 0;
         public static int SoHeoNai = 0;
@@ -56,26 +59,27 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public static double SoLuaDeTrongMotNam = 0;
         public static double SoConHeoSuaTrongMotNam = 0;
 
-        public static int SoHeoDuocban = 0;
+        public static int SoHeoDuocban = 0; 
+        #endregion
         /// <summary>
         /// Giá trị mặc định
         /// </summary>
 
         #region chiSoMucTieu
-        public static double Tylede_muctieu;
-        public static double SoHeoConSinhRa_muctieu;
-        public static double ODeItCon_muctieu;
-        public static double SoHeoConSong_MucTieu;
-        public static double SoHeoCaiSua_muctieu;
-        public static double SoConChetTruocKhiCaiSua_MucTieu;
-        public static string ThoiGianMangThai_MucTieu;
-        public static string SoNgayCaiSua_MucTieu;
-        public static string SoNgayKhongLamViec_MucTieu;
-        public static double TrungBnhLua_MucTieu;
-        public static double SoHeoTrongNam_MucTieu;
+        public double Tylede_muctieu;
+        public double SoHeoConSinhRa_muctieu;
+        public double ODeItCon_muctieu;
+        public double SoHeoConSong_MucTieu;
+        public double SoHeoCaiSua_muctieu;
+        public double SoConChetTruocKhiCaiSua_MucTieu;
+        public string ThoiGianMangThai_MucTieu;
+        public string SoNgayCaiSua_MucTieu;
+        public string SoNgayKhongLamViec_MucTieu;
+        public double TrungBnhLua_MucTieu;
+        public double SoHeoTrongNam_MucTieu;
         #endregion
 
-        public double Tylede_muctieuClone = Tylede_muctieu;
+        /*public double Tylede_muctieuClone = Tylede_muctieu;
         public double SoHeoConSinhRa_muctieuClone = SoHeoConSinhRa_muctieu;
         public double ODeItCon_muctieuClone = ODeItCon_muctieu;
         public double SoHeoConSong_MucTieuClone = SoHeoConSong_MucTieu;
@@ -85,20 +89,21 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public string SoNgayCaiSua_MucTieuClone = SoNgayCaiSua_MucTieu;
         public string SoNgayKhongLamViec_MucTieuClone = SoNgayKhongLamViec_MucTieu;
         public double TrungBnhLua_MucTieuClone = TrungBnhLua_MucTieu;
-        public double SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu;
+        public double SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu;*/
 
         //Constructer
         public Caymuctieu(int? yearStart, int? yearEnd)
         {
             Heo = DataProvider.Ins.DB.HEOs.ToList();
             LichPhoiGiong = DataProvider.Ins.DB.LICHPHOIGIONGs.ToList();
-            setGiaTriStatic();
+            Window_Loaded();
+            //setGiaTriStatic();
             InitializeComponent();
             Input(yearStart, yearEnd);
             AddEvent();
         }
         //Method
-
+        
         void setGiaTriStatic()
         {
             Tylede_muctieu = 86;
@@ -136,7 +141,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 ResetView();
             }
         }
-        public void clone()
+        /*public void clone()
         {
             Tylede_muctieu = Tylede_muctieuClone;
             Tylede_muctieu_textbox.Content = "Mục tiêu: " + Tylede_muctieu + "%";
@@ -160,7 +165,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             Songaycaisua_muctieu.Content = "Mục tiêu: " + SoNgayCaiSua_MucTieu + " ngày";
             SoHeoTrongNam_MucTieu = SoHeoTrongNam_MucTieuClone;
             Soheotrongnam_muctieu.Content = "Mục tiêu: " + SoHeoTrongNam_MucTieu + " con";
-        }
+        }*/
         void setValue(ThamSo thamSo)
         {
             Tylede_muctieu = thamSo.Tylede_muctieuClone;
@@ -945,6 +950,20 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             }
         }
         #endregion
+
+        private void Window_Loaded()
+        {
+            string applicationPath = Path.GetFullPath(System.AppDomain.CurrentDomain.BaseDirectory); // the directory that your program is installed in
+            string saveFilePath = Path.Combine(applicationPath, "1.txt");
+            if (File.Exists(saveFilePath))
+            {
+                string text = File.ReadAllLines(saveFilePath).LastOrDefault();
+            }
+            else
+            {                
+                setGiaTriStatic();
+            }
+        }
     }
 }
 
