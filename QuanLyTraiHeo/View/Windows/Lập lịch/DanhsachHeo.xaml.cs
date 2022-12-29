@@ -133,6 +133,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 }
             }
             ListMaHeo_.ItemsSource = _listChonHeo;
+            ListMaHeo_.Items.Refresh();
         }
 
         //Ham Tinh Tuoi Heo
@@ -254,83 +255,179 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void MaChuong_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ReloadDatagrid();
-            loadDatagrid(MaChuong_CB.SelectedItem as string);
+            //ReloadDatagrid();
+            //loadDatagrid(MaChuong_CB.SelectedItem as string);
+            Timkiem();
         }
 
         private void TrangThai_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            ReloadDatagrid();
-            
-            foreach (var Heo in Listheo)
-            {
-                
-                if (TrangThai_CB.SelectedItem.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
-                {
-                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
-                    if (ListLichTiem != null)
-                    {
-                        ChonHeo chonheo = new ChonHeo();
-                        chonheo.heo = Heo;
-                        chonheo.IsChecked = false;
-                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
-                        TuoiHeo(chonheo);
-                        _listChonHeo.Add(chonheo);
-                    }
-                }
-                else
-                {
-                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
-                    if (ListLichTiem == null)
-                    {
-                        ChonHeo chonheo = new ChonHeo();
-                        chonheo.heo = Heo;
-                        chonheo.IsChecked = false;
-                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
-                        TuoiHeo(chonheo);
-                        _listChonHeo.Add(chonheo);
-                    }
-                }
-            }
-            ListMaHeo_.ItemsSource = _listChonHeo;
+            //ReloadDatagrid();
+            ////loadDatagrid(MaChuong_CB.SelectedItem as string);
+            ////List<HEO> Listheos = new List<HEO>();
+            ////foreach(var heo in _listChonHeo)
+            ////{
+            ////    Listheos.Add(heo.heo);
+            ////}
+            ////_listChonHeo.Clear();
+            //string trangthai = TrangThai_CB.SelectedValue.ToString();
+
+
+            //foreach (var Heo in Listheo)
+            //{
+            //    HANGHOA Vacxin;
+            //    if (TiemVacxin_CB.SelectedValue != null)
+            //        Vacxin = DataProvider.Ins.DB.HANGHOAs.Where(x => x.TenHangHoa == TiemVacxin_CB.SelectedValue.ToString()).SingleOrDefault();
+            //    else Vacxin = null;
+
+            //    if (TrangThai_CB.SelectedValue.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
+            //    {
+            //        if(Vacxin != null)
+            //            ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(Vacxin.MaHangHoa)) as List<LICHTIEMHEO>;
+            //        else ListLichTiem = Heo.LICHTIEMHEOs as List<LICHTIEMHEO>;
+            //        if (ListLichTiem != null)
+            //        {
+            //            ChonHeo chonheo = new ChonHeo();
+            //            chonheo.heo = Heo;
+            //            chonheo.IsChecked = false;
+            //            chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+            //            TuoiHeo(chonheo);
+            //            _listChonHeo.Add(chonheo);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(Vacxin.MaHangHoa)) as List<LICHTIEMHEO>;
+            //        if (ListLichTiem == null)
+            //        {
+            //            ChonHeo chonheo = new ChonHeo();
+            //            chonheo.heo = Heo;
+            //            chonheo.IsChecked = false;
+            //            chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+            //            TuoiHeo(chonheo);
+            //            _listChonHeo.Add(chonheo);
+            //        }
+            //    }
+            //}
+            //ListMaHeo_.ItemsSource = _listChonHeo;
+            //ListMaHeo_.Items.Refresh();
+            Timkiem();
         }
 
         private void TiemVacxin_CB_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //ReloadDatagrid();
+
+            //foreach (var Heo in Listheo)
+            //{
+
+            //    if (TrangThai_CB.SelectedItem.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
+            //    {
+            //        ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+            //        if (ListLichTiem != null)
+            //        {
+            //            ChonHeo chonheo = new ChonHeo();
+            //            chonheo.heo = Heo;
+            //            chonheo.IsChecked = false;
+            //            chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+            //            TuoiHeo(chonheo);
+            //            _listChonHeo.Add(chonheo);
+            //        }
+            //    }
+            //    else
+            //    {
+            //        ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
+            //        if (ListLichTiem == null)
+            //        {
+            //            ChonHeo chonheo = new ChonHeo();
+            //            chonheo.heo = Heo;
+            //            chonheo.IsChecked = false;
+            //            chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+            //            TuoiHeo(chonheo);
+            //            _listChonHeo.Add(chonheo);
+            //        }
+            //    }
+            //}
+            //ListMaHeo_.ItemsSource = _listChonHeo;
+            //ListMaHeo_.Items.Refresh();
+            Timkiem();
+        }
+
+        bool checktuoimin(DateTime date)
+        {
+            int tuoimin = int.Parse(tb_TuoiMin.Text);
+            return (DateTime.Now - date).TotalDays >= tuoimin;
+        }
+        bool checktuoimax(DateTime date)
+        {
+            int tuoimax = int.Parse(tb_TuoiMax.Text);
+            return (DateTime.Now - date).TotalDays <= tuoimax;
+        }
+
+        void Timkiem()
+        {
             ReloadDatagrid();
-
-            foreach (var Heo in Listheo)
+            var newlist = DataProvider.Ins.DB.HEOs.ToList();
+            if (MaChuong_CB.SelectedItem != null && MaChuong_CB.SelectedItem.ToString() != "All")
+                newlist = newlist.Where(x => x.MaChuong == MaChuong_CB.SelectedItem.ToString()).ToList();
+            if(tb_TuoiMin.Text!= null && tb_TuoiMin.Text != "")
             {
+                newlist = newlist.Where(x => checktuoimin(x.NgaySinh.Value)).ToList();
+            }
 
-                if (TrangThai_CB.SelectedItem.ToString() == "Đã tiêm" /*&& (Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString()).CompareTo(null)*/)
+            if(tb_TuoiMax.Text!= null && tb_TuoiMax.Text != "")
+            {
+                newlist = newlist.Where(x => checktuoimax(x.NgaySinh.Value)).ToList();
+            }
+
+            if (TrangThai_CB.SelectedValue != null)
+            {
+                if (TrangThai_CB.SelectedValue.ToString() == "Đã tiêm")
                 {
-                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
-                    if (ListLichTiem != null)
+                    newlist = newlist.Where(x => x.LICHTIEMHEOs.Where(s => s.TrangThai == TrangThai_CB.SelectedValue.ToString()).Count() > 0).ToList();
+                    string MaVacxin = "";
+                    if (TiemVacxin_CB.SelectedItem != null)
                     {
-                        ChonHeo chonheo = new ChonHeo();
-                        chonheo.heo = Heo;
-                        chonheo.IsChecked = false;
-                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
-                        TuoiHeo(chonheo);
-                        _listChonHeo.Add(chonheo);
+                        MaVacxin = DataProvider.Ins.DB.HANGHOAs.Where(x => x.TenHangHoa == TiemVacxin_CB.SelectedItem.ToString()).SingleOrDefault().MaHangHoa;
+                        newlist = newlist.Where(x => x.LICHTIEMHEOs.Where(s => s.MaThuoc == MaVacxin).Count() > 0).ToList();
                     }
                 }
                 else
                 {
-                    ListLichTiem = Heo.LICHTIEMHEOs.Where(s => s.MaThuoc.Equals(TiemVacxin_CB.SelectedItem.ToString())) as List<LICHTIEMHEO>;
-                    if (ListLichTiem == null)
+                    string MaVacxin = "";
+                    if (TiemVacxin_CB.SelectedItem != null)
                     {
-                        ChonHeo chonheo = new ChonHeo();
-                        chonheo.heo = Heo;
-                        chonheo.IsChecked = false;
-                        chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
-                        TuoiHeo(chonheo);
-                        _listChonHeo.Add(chonheo);
+                        MaVacxin = DataProvider.Ins.DB.HANGHOAs.Where(x => x.TenHangHoa == TiemVacxin_CB.SelectedItem.ToString()).SingleOrDefault().MaHangHoa;
+                        newlist = newlist.Where(x => x.LICHTIEMHEOs.Where(s => s.MaThuoc == MaVacxin).Count() == 0).ToList();
                     }
                 }
             }
+
+            
+
+            foreach (var Heo in newlist)
+            {
+                
+                ChonHeo chonheo = new ChonHeo();
+                chonheo.heo = Heo;
+                chonheo.IsChecked = false;
+                chonheo.Tuoi = (int)(DateTime.Now - (DateTime)Heo.NgaySinh).TotalDays;
+                TuoiHeo(chonheo);
+                _listChonHeo.Add(chonheo);
+            }
             ListMaHeo_.ItemsSource = _listChonHeo;
+            ListMaHeo_.Items.Refresh();
+        }
+
+        private void TbTuoiMin_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Timkiem();
+        }
+
+        private void TuoiMax_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            Timkiem();
         }
     }
-    }
+}
 

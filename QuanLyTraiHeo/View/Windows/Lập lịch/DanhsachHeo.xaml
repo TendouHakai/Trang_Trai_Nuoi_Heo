@@ -15,7 +15,7 @@
         <Grid Grid.Column="0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="80"></RowDefinition>
-                <RowDefinition Height="315"></RowDefinition>
+                <RowDefinition Height="270"></RowDefinition>
                 <RowDefinition></RowDefinition>
             </Grid.RowDefinitions>
             <materialDesign:Card Grid.Row="0" Margin="0,0,10,0">
@@ -39,7 +39,7 @@
                         <TextBox x:Name="LichSuTiem_TB" Margin="30,0,20,11"
                             Style="{StaticResource MaterialDesignOutlinedTextBox}"
                             VerticalAlignment="Top"
-                            Height="80"
+                            Height="210"
                             AcceptsReturn="True"
                             TextWrapping="Wrap"
                             VerticalScrollBarVisibility="Auto"
@@ -56,7 +56,7 @@
                     </materialDesign:Card>
                     <Grid>
                         <materialDesign:PackIcon Kind="QuestionAnswer" Margin="10 15 0 0 "/>
-                        <ComboBox x:Name="TrangThai_CB" materialDesign:HintAssist.Hint="Đã tiêm/Chưa tiêm" Text="" Height="30" Margin="30,10,20,11" IsReadOnly="True" SelectionChanged="TrangThai_CB_SelectionChanged">
+                        <ComboBox x:Name="TrangThai_CB" materialDesign:HintAssist.Hint="Đã tiêm/Chưa tiêm" Text="" Height="30" Margin="30,10,20,11" IsReadOnly="True" SelectedValuePath="Content" SelectionChanged="TrangThai_CB_SelectionChanged">
                             <ComboBoxItem x:Name="cbi1">Đã tiêm</ComboBoxItem>
                             <ComboBoxItem x:Name="cbi2">Chưa tiêm</ComboBoxItem>
                         </ComboBox>
@@ -65,9 +65,20 @@
                         <materialDesign:PackIcon Kind="Needle" Margin="10 5 0 0 "/>
                         <ComboBox x:Name="TiemVacxin_CB" Height="30" Margin="30,0,20,11"
                                 materialDesign:HintAssist.Hint="Thuốc/Vacxin"
+                                  SelectedValuePath="Content"
                                   IsReadOnly="True" SelectionChanged="TiemVacxin_CB_SelectionChanged">
                         </ComboBox>
                     </Grid>
+                    <Grid>
+                        <materialDesign:PackIcon Kind="DateRange" Margin="10 5 0 0 "/>
+                        <TextBox x:Name="tb_TuoiMin" materialDesign:HintAssist.Hint="Ngày tuổi tối thiểu" Height="30" Margin="30,0,20,11" TextChanged="TbTuoiMin_TextChanged" />
+                    </Grid>
+
+                    <Grid>
+                        <materialDesign:PackIcon Kind="DateRange" Margin="10 5 0 0 "/>
+                        <TextBox x:Name="tb_TuoiMax" materialDesign:HintAssist.Hint="Ngày tuổi tối đa" Height="30" Margin="30,0,20,11" TextChanged="TuoiMax_TextChanged" />
+                    </Grid>
+
                     <Button Margin="20,20,20,0"
                         Style="{StaticResource MaterialDesignRaisedButton}"
                         Height="30"
