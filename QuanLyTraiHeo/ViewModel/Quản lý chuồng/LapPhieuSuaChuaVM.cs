@@ -1,5 +1,6 @@
 ﻿using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.View.Windows;
+using QuanLyTraiHeo.View.Windows.Quản_lý_chuồng_nuôi;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -59,6 +60,15 @@ namespace QuanLyTraiHeo.ViewModel
         {
             listviewSelectedIndex = 0;
             _ListPhieuSuaChua = new ObservableCollection<PHIEUSUACHUA>(DataProvider.Ins.DB.PHIEUSUACHUAs);
+
+            ListTrangThai = new List<string>();
+            ListTrangThai.Add("Đã hoàn thành");
+            ListTrangThai.Add("Chưa hoàn thành");
+            ListTrangThai.Add("Đã hủy");
+
+            DateTime Now = DateTime.Now;
+            _NgaySuaChua1 = new DateTime(Now.Year, Now.Month, 1);
+            _NgaySuaChua2 = new DateTime(Now.Year, Now.Month, Now.Day + 1);
             AddCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
                 PhieuSuaChua phieuSuaChua = new PhieuSuaChua();
@@ -94,12 +104,12 @@ namespace QuanLyTraiHeo.ViewModel
             });
             TimKiemTheoNgaySC1Command = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
-                _NgaySuaChua1 = p.SelectedDate;
+                //_NgaySuaChua1 = p.SelectedDate;
                 TimKiem();
             });
             TimKiemTheoNgaySC2Command = new RelayCommand<DatePicker>((p) => { return true; }, p =>
             {
-                _NgaySuaChua2 = p.SelectedDate;
+                //_NgaySuaChua2 = p.SelectedDate;
                 TimKiem();
             });
             TimKiemTheoTrangThaiCommand = new RelayCommand<CheckBox>((p) => { return true; }, p =>
@@ -119,10 +129,14 @@ namespace QuanLyTraiHeo.ViewModel
         {
             if (listviewSelectedIndex < 0)
                 return;
-            SuaTrangThaiVM suaTrangThaiVM = new SuaTrangThaiVM(ListPhieuSuaChua[listviewSelectedIndex]);
-            SuaTrangThai suaTrangThai = new SuaTrangThai();
-            suaTrangThai.DataContext = suaTrangThaiVM;
-            suaTrangThai.ShowDialog();
+            CTPhieuSuaChuaWindow wc = new CTPhieuSuaChuaWindow();
+            CTPhieuSuaChuaVM vm = new CTPhieuSuaChuaVM(ListPhieuSuaChua[listviewSelectedIndex]);
+            wc.DataContext = vm;
+            wc.ShowDialog();
+            //SuaTrangThaiVM suaTrangThaiVM = new SuaTrangThaiVM(ListPhieuSuaChua[listviewSelectedIndex]);
+            //SuaTrangThai suaTrangThai = new SuaTrangThai();
+            //suaTrangThai.DataContext = suaTrangThaiVM;
+            //suaTrangThai.ShowDialog();
         }
 
         void TimKiem()
@@ -159,13 +173,13 @@ namespace QuanLyTraiHeo.ViewModel
                     }
                 }
             }
-            else
-                foreach (var item in PhieuSuaChuas)
-                {
-                    PHIEUSUACHUA pHIEUSUACHUA = new PHIEUSUACHUA();
-                    pHIEUSUACHUA = item;
-                    _ListPhieuSuaChua.Add(pHIEUSUACHUA);
-                }
+            //else
+            //    foreach (var item in PhieuSuaChuas)
+            //    {
+            //        PHIEUSUACHUA pHIEUSUACHUA = new PHIEUSUACHUA();
+            //        pHIEUSUACHUA = item;
+            //        _ListPhieuSuaChua.Add(pHIEUSUACHUA);
+            //    }
         }
     }
 }

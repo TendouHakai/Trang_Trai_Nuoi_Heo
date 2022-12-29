@@ -40,6 +40,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 CTPhieuModel temp = new CTPhieuModel(MaChuong, MoTa, TienSuaChua);
                 vm.Add(temp);
+                
                 MessageBox.Show("Đã thêm thành công!", "Thông báo", MessageBoxButton.OK, MessageBoxImage.Information);
                 p.Close();
             });

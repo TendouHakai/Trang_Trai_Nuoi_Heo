@@ -55,6 +55,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void check_click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             this.Close();
         }
 

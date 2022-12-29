@@ -76,20 +76,27 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     DataContext = new ChiTietPhieuSuaChuaVM(CTPhieu)
                 };
+                
                 ctphieuSuaChua.ShowDialog();
+                if (CTPhieu.LastOrDefault() != null)
+                    TongTien += int.Parse(CTPhieu.LastOrDefault().TienSuaChua);
+
             });
             XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>
             {
-                var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email, LoaiDoiTac = "Đối tác sửa chữa" };
-                DataProvider.Ins.DB.DOITACs.Add(temp);
-                DataProvider.Ins.DB.SaveChanges();                
-                var item = new PHIEUSUACHUA() { MaNhanVien = LayMaNhanVien(TenNhanVien), MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = TrangThai };
+                if (DataProvider.Ins.DB.DOITACs.Where(x => x.MaDoiTac == MaDoiTac).Count() == 0)
+                {
+                    var temp = new DOITAC() { MaDoiTac = MaDoiTac, TenDoiTac = TenDoiTac, SDT = SDT, DiaChi = DiaChiLienLac, Email = Email, LoaiDoiTac = "Đối tác sửa chữa" };
+                    DataProvider.Ins.DB.DOITACs.Add(temp);
+                    DataProvider.Ins.DB.SaveChanges();
+                }
+                var item = new PHIEUSUACHUA() { MaNhanVien = LayMaNhanVien(TenNhanVien), MaDoiTac = MaDoiTac, NgaySuaChua = NgayLapPhieu, SoPhieu = SoPhieu, GhiChu = GhiChu, TongTien = TongTien, TrangThai = "Chưa hoàn thành" };
                 DataProvider.Ins.DB.PHIEUSUACHUAs.Add(item);
                 DataProvider.Ins.DB.SaveChanges();
                 cT_PHIEUSUACHUAs.Clear();
                 foreach (var x in CTPhieu)
                 {
-                    var y = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = x.MaChuong, MoTa = x.MoTa };
+                    var y = new CT_PHIEUSUACHUA() { SoPhieu = SoPhieu, MaChuong = x.MaChuong, MoTa = x.MoTa, ThanhTien = int.Parse(x.TienSuaChua) };
                     DataProvider.Ins.DB.CT_PHIEUSUACHUA.Add(y);
                     DataProvider.Ins.DB.SaveChanges();
                 }
@@ -101,6 +108,7 @@ namespace QuanLyTraiHeo.ViewModel
                 if (listviewSelectedIndex < 0)
                     return;
                 var x = cTPhieuModels[listviewSelectedIndex];
+                TongTien -= int.Parse(x.TienSuaChua);
                 cTPhieuModels.Remove(x);
             });
             HuyCommand = new RelayCommand<Window>((p) => { return true; }, (p) =>

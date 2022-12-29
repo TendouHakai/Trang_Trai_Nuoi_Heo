@@ -248,6 +248,7 @@
     <Compile Include="ViewModel\Account\Account.cs" />
     <Compile Include="Model\TinhTrangHangHoaModel.cs" />
     <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
+    <Compile Include="ViewModel\CTPhieuSuaChuaVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LapLichPhoiGiongVM.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuKhoVM.cs" />
     <Compile Include="ViewModel\ChonHangHoaVM.cs" />
@@ -296,6 +297,9 @@
     </Compile>
     <Compile Include="View\Windows\Quy Định\QuyDinhWindow.xaml.cs">
       <DependentUpon>QuyDinhWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Windows\Quản lý chuồng nuôi\CTPhieuSuaChuaWindow.xaml.cs">
+      <DependentUpon>CTPhieuSuaChuaWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Windows\Quản lý chức vụ\PhanQuyenWindow.xaml.cs">
       <DependentUpon>PhanQuyenWindow.xaml</DependentUpon>
@@ -533,6 +537,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\Windows\Quy Định\QuyDinhWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Windows\Quản lý chuồng nuôi\CTPhieuSuaChuaWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

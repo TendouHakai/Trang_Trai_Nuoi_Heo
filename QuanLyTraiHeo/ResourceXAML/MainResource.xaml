@@ -37,6 +37,7 @@
     <viewModel:QuanlygiongheoVM x:Key="QuanlygiongheoVVM"></viewModel:QuanlygiongheoVM>
     <viewModel:LapPhieuSuaChuaVM x:Key="LapPhieuSuaChuaVM"></viewModel:LapPhieuSuaChuaVM>
     <viewModel:ChiTietPhieuSuaChuaVM x:Key="ChiTietPhieuSuaChuaVM"></viewModel:ChiTietPhieuSuaChuaVM>
+    <viewModel:CTPhieuSuaChuaVM x:Key="CTPhieuSuaChuaVM"></viewModel:CTPhieuSuaChuaVM>
     <viewModel:ThemPhieuSuaChuaVM x:Key="ThemPhieuSuaChuaVM"></viewModel:ThemPhieuSuaChuaVM>
     <viewModel:QuyDinhVM x:Key="QuyDinhVM"></viewModel:QuyDinhVM>
     <viewModel:QuanLyHangHoaWindowVM x:Key="QuanLyHangHoaWindowVM"></viewModel:QuanLyHangHoaWindowVM>

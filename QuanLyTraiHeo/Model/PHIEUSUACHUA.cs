@@ -9,10 +9,11 @@
 
 namespace QuanLyTraiHeo.Model
 {
+    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class PHIEUSUACHUA
+    public partial class PHIEUSUACHUA:BaseViewModel
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public PHIEUSUACHUA()
@@ -24,7 +25,8 @@ namespace QuanLyTraiHeo.Model
         public Nullable<System.DateTime> NgaySuaChua { get; set; }
         public string MaNhanVien { get; set; }
         public string GhiChu { get; set; }
-        public string TrangThai { get; set; }
+        private string _TrangThai;
+        public string TrangThai { get=>_TrangThai; set { _TrangThai = value; OnPropertyChanged(); } }
         public string MaDoiTac { get; set; }
         public Nullable<int> TongTien { get; set; }
     
