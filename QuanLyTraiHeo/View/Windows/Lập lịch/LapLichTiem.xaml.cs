@@ -29,8 +29,8 @@ namespace QuanLyTraiHeo
     /// </summary>
     public partial class LapLichTiem : WPFWindow.Window
     {
-        public ObservableCollection<HEO> HeodaChon { get; set;}
-        public ObservableCollection<LichTiem_TenThuoc> Thuoc_Tiem = new ObservableCollection<LichTiem_TenThuoc>();
+        public List<HEO> HeodaChon { get; set;}
+        public List<LichTiem_TenThuoc> Thuoc_Tiem = new List<LichTiem_TenThuoc>();
         public List<LICHTIEMHEO> Lichtiem { get; set; }
         public LICHTIEMHEO lICHTIEMHEO { get; set; }
         public LapLichTiem()
@@ -55,6 +55,10 @@ namespace QuanLyTraiHeo
         private void add_Button_Click(object sender, RoutedEventArgs e)
         {
             Add_LichTiem();
+            Drugcode_text.Clear();
+            Pigcode_text.Clear();
+            Lieuluong_text.Clear();
+            Datepicker_Ngaytiem.Text = "";
         }
 
         private void ListHeo_button_Click(object sender, RoutedEventArgs e)
@@ -93,6 +97,7 @@ namespace QuanLyTraiHeo
                 {
 
                     MessageBox.Show("Hãy nhập liều lượng là giá trị số", "", MessageBoxButton.OK);
+                    return;
                 }
                 lichtiem.TrangThai = "Chưa tiêm";
                 try
@@ -103,7 +108,8 @@ namespace QuanLyTraiHeo
                 catch (Exception)
                 {
 
-                    MessageBox.Show("Có thông tin nhập bị lỗi, yêu cầu nhập lại.", "", MessageBoxButton.OK);
+                    //MessageBox.Show("Có thông tin nhập bị lỗi, yêu cầu nhập lại.", "", MessageBoxButton.OK);
+                    //return;
                 }  
             }
             reloadWithData();
@@ -122,6 +128,7 @@ namespace QuanLyTraiHeo
 
         void reloadWithData()
         {
+            Listtiemheo.ItemsSource = null;
             Lichtiem.Clear();
             Thuoc_Tiem.Clear();
             Lichtiem = DataProvider.Ins.DB.LICHTIEMHEOs.ToList();
@@ -164,7 +171,8 @@ namespace QuanLyTraiHeo
         {
             DanhSachThuoc ds = new DanhSachThuoc();
             ds.ShowDialog();
-            Drugcode_text.Text = ds.TranferCode();
+            if(ds.check != 0)
+                Drugcode_text.Text = ds.TranferCode();
         }
 
         private void ListThuoc_button_Click(object sender, RoutedEventArgs e)
@@ -252,35 +260,6 @@ namespace QuanLyTraiHeo
 
                 MessageBox.Show("Gặp lỗi khi xóa.", "", MessageBoxButton.OK);
             }
-        }
-        private int FindingCase()
-        {
-            int isMoreFieldCheck = 1;
-            int takepartin = 0;
-            
-            if (Find_date.SelectedDate.HasValue != false)
-            {
-                isMoreFieldCheck++;
-                takepartin += 1;
-            }
-            if (Find_loaiheo.Text != "")
-            {
-                if (isMoreFieldCheck != 1)
-                {
-                    isMoreFieldCheck++;
-                }
-                takepartin += 2;
-            }
-            if (Find_giongheo.Text != "")
-            {
-                if (isMoreFieldCheck != 1)
-                {
-                    isMoreFieldCheck++;                 
-                }
-                takepartin += 3;
-            }
-                return 0;
-
         }
 
         void setCombobox()
@@ -400,7 +379,7 @@ namespace QuanLyTraiHeo
 
         private void FindButton_Click(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show(Find_date.Text + "/" + Find_loaiheo.Text + "/" + Find_giongheo.Text);
+            //MessageBox.Show(Find_date.Text + "/" + Find_loaiheo.Text + "/" + Find_giongheo.Text);
             Timkiem();
         }
 
