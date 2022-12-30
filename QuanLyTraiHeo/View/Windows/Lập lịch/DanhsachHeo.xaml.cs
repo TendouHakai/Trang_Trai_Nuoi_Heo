@@ -236,7 +236,8 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         }*/
         public string TranferCode()
         {
-            heo = (HEO)ListMaHeo_.SelectedItem;
+            ChonHeo chonHeo = (ChonHeo)ListMaHeo_.SelectedItem;
+            heo = chonHeo.heo;
             return heo.MaHeo;
         }
 
