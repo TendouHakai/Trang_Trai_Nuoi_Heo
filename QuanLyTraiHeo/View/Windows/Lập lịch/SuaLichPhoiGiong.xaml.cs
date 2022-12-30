@@ -149,16 +149,16 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void Confirm_button_Click(object sender, RoutedEventArgs e)
         {
-            if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
-            {
-                MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
-                return;
-            }
-
-
+            
             if (phoigiong == null)
             {
                 //Tạo lịch mới 
+
+                if (Datepicker_Ngayphoigiong.SelectedDate.Value < DateTime.Today)
+                {
+                    MessageBox.Show("Ngày giao phối phải từ hôm nay trở đi");
+                    return;
+                }
 
                 LICHPHOIGIONG lpg = DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoCai == Pigcode_textn.Text && x.Trangthai == "Chưa phối giống").SingleOrDefault();
                 if (lpg != null)

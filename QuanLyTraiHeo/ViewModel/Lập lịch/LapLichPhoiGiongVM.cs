@@ -162,7 +162,7 @@ namespace QuanLyTraiHeo.ViewModel
             }
             
 
-            Load();
+            TimKiem();
         }
         #endregion
 
@@ -181,7 +181,7 @@ namespace QuanLyTraiHeo.ViewModel
                 MyCustomMessageQueue = new SnackbarMessageQueue(TimeSpan.FromMilliseconds(2000));
                 MyCustomMessageQueue.Enqueue("Xóa thành công");
 
-                Load();
+                TimKiem();
             }
             catch (Exception)
             {
