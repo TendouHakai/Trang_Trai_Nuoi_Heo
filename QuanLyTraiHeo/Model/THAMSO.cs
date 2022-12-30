@@ -15,17 +15,19 @@ namespace QuanLyTraiHeo.Model
     public partial class THAMSO
     {
         public int id { get; set; }
-        public Nullable<int> XuatChuongMin { get; set; }
-        public Nullable<int> XuatChuongMax { get; set; }
-        public Nullable<int> MonthXuatChuongMin { get; set; }
-        public Nullable<int> MonthXuatChuongMax { get; set; }
-        public Nullable<int> TuoiNhapDan { get; set; }
-        public Nullable<int> CanHuyet { get; set; }
-        public Nullable<int> TuoiPhoiGiongDuc { get; set; }
-        public Nullable<int> TuoiPhoiGiongCai { get; set; }
-        public Nullable<int> RePhoiGiongDuc { get; set; }
-        public Nullable<int> RePhoiGiongCai { get; set; }
-        public Nullable<int> ThucAnMotNgay { get; set; }
-        public Nullable<int> ThucAnMax { get; set; }
+        public int XuatChuongMin { get; set; }
+        public int XuatChuongMax { get; set; }
+        public int MonthXuatChuongMin { get; set; }
+        public int MonthXuatChuongMax { get; set; }
+        public int TuoiNhapDan { get; set; }
+        public int CanHuyet { get; set; }
+        public int TuoiPhoiGiongDuc { get; set; }
+        public int TuoiPhoiGiongCai { get; set; }
+        public int RePhoiGiongDuc { get; set; }
+        public int RePhoiGiongCai { get; set; }
+        public int ThucAnMotNgay { get; set; }
+        public int ThucAnMax { get; set; }
+        public int SoNgayMangThai { get; set; }
+        public int SoNgayCaiSua { get; set; }
     }
 }

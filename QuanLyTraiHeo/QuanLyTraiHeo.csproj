@@ -288,6 +288,9 @@
     <Compile Include="ViewModel\Quản lý báo cáo\BaoCaoTinhTrangHeoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\CapNhatTaiKhoanVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\TaoThongBaoVM.cs" />
+    <Compile Include="View\Windows\Lập lịch\ThemDanhSachHeoMoi.xaml.cs">
+      <DependentUpon>ThemDanhSachHeoMoi.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\Windows\Quy Định\EditMDBWindow.xaml.cs">
       <DependentUpon>EditMDBWindow.xaml</DependentUpon>
     </Compile>
@@ -524,6 +527,10 @@
     <Compile Include="View\Windows\wLogin.xaml.cs">
       <DependentUpon>wLogin.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Windows\Lập lịch\ThemDanhSachHeoMoi.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Windows\Quy Định\EditMDBWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

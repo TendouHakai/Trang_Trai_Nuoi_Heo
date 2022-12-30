@@ -80,9 +80,9 @@ namespace QuanLyTraiHeo.ViewModel
                         {
                             CT_PHIEUHANGHOA cthh = new CT_PHIEUHANGHOA();
                             cthh.MaHangHoa = item.HangHoa.MaHangHoa;
-                            cthh._donGia = item.HangHoa.DonGia;
+                            cthh.DonGia = item.HangHoa.DonGia;
                             cthh.HANGHOA = item.HangHoa;
-                            cthh._soLuong = 1;
+                            cthh.SoLuong = 1;
                             if (CheckListHangHoa(cthh))
                             {
                                 vm.CTHHs.Add(cthh);

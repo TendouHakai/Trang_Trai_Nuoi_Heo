@@ -418,6 +418,275 @@ namespace QuanLyTraiHeo.ViewModel
             NguonGoc = "Sinh trong trang trại";
             TinhTrang = "Sức khoẻ tốt";
         }
+
+        /// <summary>
+        /// Hàm khởi tạo thêm danh sách heo con từ lịch phối giống
+        /// </summary>
+        /// <param name="wd"></param>
+        /// <param name="maHeoCha"></param>
+        /// <param name="maHeoMe"></param>
+        /// <param name="maChuong"></param>
+        /// <param name="maGiongHeo"></param>
+        /// <param name="ngaySinh"></param>
+        public ThemTTHeoVM(ThemTTHeo wd , string maHeoCha, string maHeoMe, string maChuong, string maGiongHeo, DateTime ngaySinh, int soLuongHeoChon)
+        {
+            //Không được sửa một số thuộc tính sau
+            wd.WindowStyle = WindowStyle.None;
+            wd.btn_Huy.Visibility = Visibility.Hidden;
+            wd.btn_ThemTuExel.Visibility = Visibility.Hidden;
+
+            wd.Dp_NgaySinh.IsEnabled = false;
+            wd.CBLoaiHeo.IsEnabled = false;
+            wd.CBGiongHeo.IsEnabled = false;
+            wd.cbb_MaHeoCha.IsEnabled = false;
+            wd.cbb_MaHeoMe.IsEnabled = false;
+            wd.cbb_MaChuong.IsEnabled = false;
+            wd.cbb_NguonGoc.IsEnabled = false;
+
+
+
+
+            thamso = DataProvider.Ins.DB.THAMSOes.First();
+            HEO X = new HEO();
+            X.MaHeo = "Không chọn";
+            SelectedMe = SelectedCha = X;
+            NguonGoc = "Sinh trong trang trại";
+            TinhTrang = "Sức khoẻ tốt";
+            ListHeoAdd = new ObservableCollection<HEO>();
+            ListMe = new ObservableCollection<HEO>().ToList();
+            ListCha = new ObservableCollection<HEO>().ToList();
+            ListLoai = new ObservableCollection<LOAIHEO>(DataProvider.Ins.DB.LOAIHEOs);
+            ListCha.Add(X);
+            var Cha = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs.Where(x => x.GioiTinh == "Đực")).ToList();
+
+            foreach (HEO x in Cha)
+            {
+                ListCha.Add(x);
+            }
+            ListMe.Add(X);
+            var Me = new ObservableCollection<HEO>(DataProvider.Ins.DB.HEOs.Where(x => x.GioiTinh == "Cái")).ToList();
+            foreach (HEO x in Me)
+            {
+                ListMe.Add(x);
+            }
+            ListGiong = new ObservableCollection<GIONGHEO>(DataProvider.Ins.DB.GIONGHEOs);
+            ListChuong = new ObservableCollection<CHUONGTRAI>(DataProvider.Ins.DB.CHUONGTRAIs.ToList());
+
+
+            //Thiết lập trước cho heo con những thuộc tính sau
+            SelectedCha = Cha.Where(x => x.MaHeo == maHeoCha).SingleOrDefault();
+            SelectedMe = Me.Where(x => x.MaHeo == maHeoMe).SingleOrDefault();
+            SelectedChuong = ListChuong.Where(x => x.MaChuong == maChuong).SingleOrDefault(); MaChuong = maChuong;
+            SelectedGiong = ListGiong.Where(x => x.MaGiongHeo == maGiongHeo).SingleOrDefault(); MaGiongHeo = ListGiong.Where(x => x.MaGiongHeo == maGiongHeo).SingleOrDefault().TenGiongHeo;
+            SelectedLoai = ListLoai.Where(x => x.MaLoaiHeo == "LH02112022000003").SingleOrDefault(); MaLoaiHeo = ListLoai.Where(x => x.MaLoaiHeo == "LH02112022000003").SingleOrDefault().TenLoaiHeo;
+            wd.Dp_NgaySinh.SelectedDate = ngaySinh;
+            NgaySinh = ngaySinh;
+            
+
+            MaHeo = LayMa();
+
+            AddCommand = new RelayCommand<TextBox>((p) => {
+                return true;
+            }, p =>
+            {
+                if (GioiTinh == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giới tính");
+                    return;
+                }
+                if (NgaySinh == null || NgaySinh > DateTime.Today)
+                {
+                    MessageBox.Show("Vui lòng chọn lại ngày sinh");
+                    return;
+                }
+                if (TrongLuong == null || TrongLuong <= 0)
+                {
+                    MessageBox.Show("Vui lòng nhập đúng trọng lượng");
+                    return;
+                }
+                if (SelectedLoai == null)
+                {
+                    MessageBox.Show("Vui lòng chọn loại heo");
+                    return;
+                }
+                if (SelectedGiong == null)
+                {
+                    MessageBox.Show("Vui lòng chọn giống heo");
+                    return;
+                }
+                if (SelectedChuong == null)
+                {
+                    MessageBox.Show("Vui lòng chọn mã chuồng");
+                    return;
+                }
+                if (TinhTrang == null)
+                {
+                    MessageBox.Show("Vui lòng chọn tình trạng");
+                    return;
+                }
+                if (NguonGoc == null)
+                {
+                    MessageBox.Show("Vui lòng chọn nguồn gốc");
+                    return;
+                }
+                HeoAdd = new HEO();
+                MaHeo = LayMa();
+                HeoAdd.MaHeo = MaHeo;
+
+                if (GioiTinh == "Đực")
+                {
+                    HeoAdd.GioiTinh = "Đực";
+                }
+                else
+                {
+                    HeoAdd.GioiTinh = "Cái";
+                }
+
+                HeoAdd.NgaySinh = NgaySinh;
+                HeoAdd.TrongLuong = TrongLuong;
+                HeoAdd.LOAIHEO = new LOAIHEO();
+                HeoAdd.LOAIHEO = SelectedLoai;
+                HeoAdd.GIONGHEO = new GIONGHEO();
+                HeoAdd.GIONGHEO = SelectedGiong;
+                if (SelectedMe.MaHeo != "Không chọn")
+                    HeoAdd.MaHeoMe = SelectedMe.MaHeo;
+                if (SelectedCha.MaHeo != "Không chọn")
+                    HeoAdd.MaHeoCha = SelectedCha.MaHeo; ;
+                HeoAdd.CHUONGTRAI = new CHUONGTRAI();
+                HeoAdd.CHUONGTRAI = SelectedChuong;
+                HeoAdd.NguonGoc = NguonGoc;
+                HeoAdd.TinhTrang = TinhTrang;
+                if (!KiemTra())
+                    return;
+                ListHeoAdd.Add(HeoAdd);
+
+                ////////////Reset lại các trường thông tin để nhập heo mới
+                TrongLuong = 0;
+                MaHeo = LayMa();
+            });
+
+            HuyCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {
+                p.Close();
+                ListHeoAdd = null;
+            });
+
+            DeleteCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {
+                ListHeoAdd.Remove(HeoAdd);
+                MessageBox.Show(ListHeoAdd.Count().ToString());
+            });
+
+            ExcelCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {
+
+                //if(ListHeoAdd.Count>0)
+                //{
+                //    MessageBox.Show("Vui lòng chỉ import heo từ excel khi danh sách còn trống");
+                //    return;
+                //}
+                string filePath = "";
+                OpenFileDialog dialog = new OpenFileDialog();
+                dialog.Filter = "Excel | *.xlsx";
+                if (dialog.ShowDialog() == DialogResult.OK)
+                {
+                    filePath = dialog.FileName;
+                }
+                if (string.IsNullOrEmpty(filePath))
+                {
+                    MessageBox.Show("Đường dẫn không hợp lệ!");
+                    return;
+                }
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                try
+                {
+
+                    var package = new ExcelPackage(dialog.FileName);
+                    ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    for (int i = worksheet.Dimension.Start.Row + 1; i <= worksheet.Dimension.End.Row; i++)
+                    {
+                        int j = 1;
+                        HeoAdd = new HEO();
+                        HeoAdd.MaHeo = LayMa();
+                        HeoAdd.GioiTinh = worksheet.Cells[i, j++].Value.ToString();
+                        HeoAdd.NgaySinh = DateTime.Parse(worksheet.Cells[i, j++].Value.ToString());
+
+                        HeoAdd.TrongLuong = int.Parse(worksheet.Cells[i, j++].Value.ToString());
+
+                        var tenloai = worksheet.Cells[i, j++].Value.ToString();
+                        HeoAdd.LOAIHEO = new LOAIHEO();
+                        foreach (LOAIHEO loai in ListLoai)
+                        {
+                            if (tenloai == loai.TenLoaiHeo)
+                            {
+                                HeoAdd.LOAIHEO = loai;
+                                break;
+                            }
+
+                        }
+                        var tengiong = worksheet.Cells[i, j++].Value.ToString();
+                        HeoAdd.GIONGHEO = new GIONGHEO();
+                        foreach (GIONGHEO giong in ListGiong)
+                        {
+                            if (tengiong == giong.TenGiongHeo)
+                            {
+                                HeoAdd.GIONGHEO = giong;
+                                break;
+                            }
+                        }
+                        if (worksheet.Cells[i, j++].Value != null)
+                            HeoAdd.MaHeoMe = worksheet.Cells[i, j].Value.ToString();
+
+                        if (worksheet.Cells[i, j++].Value != null)
+                            HeoAdd.MaHeoCha = worksheet.Cells[i, j].Value.ToString();
+                        var mchuong = worksheet.Cells[i, j++].Value.ToString();
+                        HeoAdd.CHUONGTRAI = new CHUONGTRAI();
+                        foreach (CHUONGTRAI chuong in ListChuong)
+                        {
+                            if (chuong.MaChuong.Contains(mchuong))
+                            {
+                                HeoAdd.CHUONGTRAI = chuong;
+                                break;
+                            }
+                        }
+                        HeoAdd.TinhTrang = worksheet.Cells[i, j++].Value.ToString();
+                        HeoAdd.NguonGoc = worksheet.Cells[i, j++].Value.ToString();
+                        if (HeoAdd.CHUONGTRAI.MaChuong == null)
+                        {
+                            MessageBox.Show("Chuồng nuôi " + mchuong + " đã đầy!");
+                            return;
+                        }
+                        if (!KiemTra())
+                            return;
+                        ListHeoAdd.Add(HeoAdd);
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Lỗi import từ excel");
+                }
+            });
+
+
+            XacNhanCommand = new RelayCommand<Window>((p) => { return true; }, p =>
+            {
+                if(ListHeoAdd.Count < soLuongHeoChon)
+                {
+                    MessageBox.Show(String.Format("Hãy nhập hết thông tin {0} con được chọn", soLuongHeoChon));
+                    return;
+                }
+
+                foreach (var item in ListHeoAdd)
+                {
+                    item.CHUONGTRAI.SoLuongHeo += 1;
+                    DataProvider.Ins.DB.HEOs.Add(item);
+                }
+                DataProvider.Ins.DB.SaveChanges();
+                MessageBox.Show("Thêm thành công");
+                p.Close();
+            });
+
+        }
     }
 
 }

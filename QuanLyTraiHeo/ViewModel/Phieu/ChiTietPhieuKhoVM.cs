@@ -178,17 +178,17 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     foreach (var item in phieunhap.CT_PHIEUHANGHOA)
                     {
-                        item.HANGHOA.SoLuongTonKho -= item._soLuong;
+                        item.HANGHOA.SoLuongTonKho -= item.SoLuong;
                     }
                 }
                 else if(phieunhap.TrangThai != "Đã hoàn thành" && selectedTrangThai == "Đã hoàn thành")
                 {
                     foreach (var item in phieunhap.CT_PHIEUHANGHOA)
                     {
-                        item.HANGHOA.SoLuongTonKho += item._soLuong;
+                        item.HANGHOA.SoLuongTonKho += item.SoLuong;
                         BAOCAOTONKHO bctk = DataProvider.Ins.DB.BAOCAOTONKHOes.Where(x => x.Thang == phieunhap.NgayLap.Value.Month && x.Nam == phieunhap.NgayLap.Value.Year && x.MaHH == item.MaHangHoa).SingleOrDefault();
                         bctk.TonCuoi = item.HANGHOA.SoLuongTonKho;
-                        bctk.SoLuongNhapThem += item._soLuong;
+                        bctk.SoLuongNhapThem += item.SoLuong;
                     }
                 }
             }
@@ -201,17 +201,17 @@ namespace QuanLyTraiHeo.ViewModel
                 {
                     foreach (var item in phieuxuat.CT_PHIEUHANGHOA)
                     {
-                        item.HANGHOA.SoLuongTonKho += item._soLuong;
+                        item.HANGHOA.SoLuongTonKho += item.SoLuong;
                     }
                 }
                 else if (phieuxuat.TrangThai != "Đã hoàn thành" && selectedTrangThai == "Đã hoàn thành")
                 {
                     foreach (var item in phieuxuat.CT_PHIEUHANGHOA)
                     {
-                        item.HANGHOA.SoLuongTonKho -= item._soLuong;
+                        item.HANGHOA.SoLuongTonKho -= item.SoLuong;
                         BAOCAOTONKHO bctk = DataProvider.Ins.DB.BAOCAOTONKHOes.Where(x => x.Thang == phieuxuat.NgayLap.Value.Month && x.Nam == phieuxuat.NgayLap.Value.Year && x.MaHH == item.MaHangHoa).SingleOrDefault();
                         bctk.TonCuoi = item.HANGHOA.SoLuongTonKho;
-                        bctk.SoLuongXuatRa += item._soLuong;
+                        bctk.SoLuongXuatRa += item.SoLuong; 
                     }
                 }
             }

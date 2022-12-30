@@ -54,7 +54,7 @@ namespace QuanLyTraiHeo.ViewModel
                         return;
                     }    
                     vmCTThongBao.SelectedItem = selectedThongBao.tb;
-                    selectedThongBao.tb._TinhTrang = "Đã đọc";
+                    selectedThongBao.tb.TinhTrang = "Đã đọc";
                     OnPropertyChanged("selectedThongBao");
                     DataProvider.Ins.DB.SaveChanges();
                 }

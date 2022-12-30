@@ -9,11 +9,10 @@
 
 namespace QuanLyTraiHeo.Model
 {
-    using QuanLyTraiHeo.ViewModel;
     using System;
     using System.Collections.Generic;
     
-    public partial class CHUONGTRAI: BaseViewModel
+    public partial class CHUONGTRAI
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CHUONGTRAI()
@@ -25,10 +24,8 @@ namespace QuanLyTraiHeo.Model
     
         public string MaChuong { get; set; }
         public string MaLoaiChuong { get; set; }
-        private string _TinhTrang;
-        public string TinhTrang { get=> _TinhTrang; set { _TinhTrang = value;  OnPropertyChanged(); } }
-        private Nullable<int> _SuaChuaToiDa;
-        public Nullable<int> SuaChuaToiDa { get=> _SuaChuaToiDa; set { _SuaChuaToiDa = value; OnPropertyChanged(); } }
+        public string TinhTrang { get; set; }
+        public Nullable<int> SuaChuaToiDa { get; set; }
         public Nullable<int> SoLuongHeo { get; set; }
     
         public virtual LOAICHUONG LOAICHUONG { get; set; }

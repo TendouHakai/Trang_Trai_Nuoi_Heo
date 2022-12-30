@@ -30,7 +30,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         public DanhsachHeoCai()
         {
             InitializeComponent();
-            Listheo = DataProvider.Ins.DB.HEOs.Where(h => h.GioiTinh.Contains("ái")).ToList();
+            Listheo = DataProvider.Ins.DB.HEOs.Where(h => h.MaLoaiHeo == "LH02112022000002").ToList();
             ListMaHeo_.ItemsSource = Listheo;
         }
 

@@ -91,7 +91,7 @@ CREATE TABLE LICHTIEMHEO
 GO
 CREATE TABLE LICHPHOIGIONG
 (
-	MaLichPhoi char(16),
+	MaLichPhoi  INT IDENTITY primary key,
 	MaHeoDuc char(16),
 	MaHeoCai char(16),
 	NgayPhoiGiong smalldatetime,
@@ -105,8 +105,7 @@ CREATE TABLE LICHPHOIGIONG
 	NgayCaiSua smalldatetime,
 
 	SoConChon int,
-	NgayPhoiGiongLaiDuKien smalldatetime,
-	CONSTRAINT PK_LPG PRIMARY KEY (MaLichPhoi)
+	NgayPhoiGiongLaiDuKien smalldatetime
 )
 
 Go 
@@ -303,22 +302,23 @@ GO
 CREATE TABLE THAMSO
 (
 	id INT IDENTITY primary key,
-	XuatChuongMin	int,
-	XuatChuongMax	int,
-	MonthXuatChuongMin	int,
-	MonthXuatChuongMax int,
-	TuoiNhapDan		int,
-	CanHuyet	int,
-	TuoiPhoiGiongDuc int,
-	TuoiPhoiGiongCai int,
-	RePhoiGiongDuc int,
-	RePhoiGiongCai int,
-	ThucAnMotNgay int,
-	ThucAnMax int,
-	SoNgayMangThai int,
+	XuatChuongMin	 int NOT NULL,	
+	XuatChuongMax	 int NOT NULL,
+	MonthXuatChuongMin	 int NOT NULL,
+	MonthXuatChuongMax  int NOT NULL,
+	TuoiNhapDan		 int NOT NULL,
+	CanHuyet	 int NOT NULL,
+	TuoiPhoiGiongDuc  int NOT NULL,
+	TuoiPhoiGiongCai  int NOT NULL,
+	RePhoiGiongDuc  int NOT NULL,
+	RePhoiGiongCai  int NOT NULL,
+	ThucAnMotNgay  int NOT NULL,
+	ThucAnMax  int NOT NULL,
+	SoNgayMangThai int NOT NULL,
+	SoNgayCaiSua int NOT NULL
 )
 
-insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0,0)
+insert into THAMSO values (0,0,0,0,0,0,0,0,0,0,0,0,110,24)
 
 Go 
 Create Table QuyDinhTiemHeo

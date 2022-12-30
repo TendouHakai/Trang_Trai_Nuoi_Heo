@@ -26,7 +26,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         {
             InitializeComponent();
 
-            Listheo = DataProvider.Ins.DB.HEOs.Where(h => h.LOAIHEO.TenLoaiHeo.Contains("ực")).ToList();
+            Listheo = DataProvider.Ins.DB.HEOs.Where(h => h.LOAIHEO.MaLoaiHeo == "LH02112022000001").ToList();
             ListMaHeo_.ItemsSource = Listheo;
         }
 

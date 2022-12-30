@@ -266,7 +266,7 @@ namespace QuanLyTraiHeo.ViewModel
                            .Select(p => new NhatKy
                            {
                                icon = "Pig",
-                               MaPhieu = p.MaLichPhoi,
+                               MaPhieu = p.MaLichPhoi.ToString(),
                                HanhDong = "tạo phiếu phối giống",
                                Ngay = "Ngày" + p.NgayPhoiGiong.Value.ToString(" dd/MM/yyyy")
 

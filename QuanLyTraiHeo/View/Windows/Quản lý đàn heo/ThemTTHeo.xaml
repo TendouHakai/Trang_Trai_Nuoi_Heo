@@ -3,17 +3,25 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo" 
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel" xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" d:DataContext="{d:DesignInstance Type=viewmodel:ThemTTHeoVM}"
+        xmlns:local="clr-namespace:QuanLyTraiHeo.View.Windows.Quản_lý_đàn_heo"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        xmlns:viewmodel="clr-namespace:QuanLyTraiHeo.ViewModel"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        d:DataContext="{d:DesignInstance Type=viewmodel:ThemTTHeoVM}"
         mc:Ignorable="d"
-        Title="Thêm cá thể heo" Height="750" Width="1124"  
+        Title="Thêm cá thể heo"
+        Height="750"
+        Width="1124"
         Name="ThemTTHeoW"
-        WindowStartupLocation="CenterScreen" >
+        WindowStartupLocation="CenterScreen">
     <Grid>
         <Grid.Background>
-            <LinearGradientBrush EndPoint="1,0.5" StartPoint="0,0.5">
-                <GradientStop Color="#3ab19b" Offset="0.05"/>
-                <GradientStop Color="#2d708c" Offset="0.25"/>
+            <LinearGradientBrush EndPoint="1,0.5"
+                                 StartPoint="0,0.5">
+                <GradientStop Color="#3ab19b"
+                              Offset="0.05" />
+                <GradientStop Color="#2d708c"
+                              Offset="0.25" />
             </LinearGradientBrush>
         </Grid.Background>
         <Grid.ColumnDefinitions>
@@ -21,23 +29,44 @@
             <ColumnDefinition Width="3*"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid Grid.Column="0">
-            <Image Source="/Image/bachground.jpg" Stretch="UniformToFill" Opacity="0.2"></Image>
-            <StackPanel Margin="5" VerticalAlignment="Center">
-                <materialDesign:Card Grid.Row="0" Margin="5" VerticalAlignment="Center">
+            <Image Source="/Image/bachground.jpg"
+                   Stretch="UniformToFill"
+                   Opacity="0.2"></Image>
+            <StackPanel Margin="5"
+                        VerticalAlignment="Center">
+                <materialDesign:Card Grid.Row="0"
+                                     Margin="5"
+                                     VerticalAlignment="Center">
                     <StackPanel VerticalAlignment="Center">
-                        <TextBox x:Name="txt_MaHeo" Margin="10 5 10 10" materialDesign:HintAssist.Hint="Mã heo" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding MaHeo}" IsReadOnly="True"/>
+                        <TextBox x:Name="txt_MaHeo"
+                                 Margin="10 5 10 10"
+                                 materialDesign:HintAssist.Hint="Mã heo"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding MaHeo}"
+                                 IsReadOnly="True" />
                         <ComboBox Margin="10 5 10 10"
                                   Text="{Binding GioiTinh}"
                                   materialDesign:HintAssist.Hint="Giới tính"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                  SelectedItem="{Binding GioiTinh}"
                                   >
                             <ComboBoxItem>Đực</ComboBoxItem>
                             <ComboBoxItem>Cái</ComboBoxItem>
                         </ComboBox>
-                        <DatePicker Margin="10 5 10 10" materialDesign:HintAssist.Hint="Ngày sinh" materialDesign:TextFieldAssist.HasClearButton="True" Style="{StaticResource MaterialDesignFloatingHintDatePicker}" SelectedDate="{Binding NgaySinh}"/>
-                        <TextBox Margin="10 5 10 10" materialDesign:HintAssist.Hint="Trọng lượng" Style="{StaticResource MaterialDesignFloatingHintTextBox}" VerticalAlignment="Center" Text="{Binding TrongLuong}" PreviewTextInput="NumberValidationTextBox" MaxLength="9"/>
+                        <DatePicker Margin="10 5 10 10"
+                                    Name="Dp_NgaySinh"
+                                    materialDesign:HintAssist.Hint="Ngày sinh"
+                                    materialDesign:TextFieldAssist.HasClearButton="True"
+                                    Style="{StaticResource MaterialDesignFloatingHintDatePicker}"
+                                    SelectedDate="{Binding NgaySinh}" />
+                        <TextBox Margin="10 5 10 10"
+                                 materialDesign:HintAssist.Hint="Trọng lượng"
+                                 Style="{StaticResource MaterialDesignFloatingHintTextBox}"
+                                 VerticalAlignment="Center"
+                                 Text="{Binding TrongLuong}"
+                                 PreviewTextInput="NumberValidationTextBox"
+                                 MaxLength="9" />
 
                         <ComboBox Margin="10 5 10 10"
                                   Name="CBLoaiHeo"
@@ -57,10 +86,10 @@
                                   ItemsSource="{Binding ListGiong, Mode=OneWay}"
                                   DisplayMemberPath="TenGiongHeo"
                                   SelectedItem="{Binding SelectedGiong, Mode=TwoWay}"
-                                  Text="{Binding MaGiongHeo}"
-                                  >
+                                  Text="{Binding MaGiongHeo}">
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
+                                  Name="cbb_MaHeoMe"
                                   materialDesign:HintAssist.Hint="Mã heo mẹ"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -71,6 +100,7 @@
                         </ComboBox>
 
                         <ComboBox Margin="10 5 10 10"
+                                  Name="cbb_MaHeoCha"
                                   materialDesign:HintAssist.Hint="Mã heo cha"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
@@ -81,28 +111,28 @@
                         </ComboBox>
 
                         <ComboBox Margin="10 5 10 10"
+                                  Name="cbb_MaChuong"
                                   materialDesign:HintAssist.Hint="Mã chuồng"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                   ItemsSource="{Binding ListChuong, Mode=OneWay}"
                                   DisplayMemberPath="MaChuong"
                                   SelectedItem="{Binding SelectedChuong, Mode=TwoWay}"
-                                  Text="{Binding MaChuong}"
-                                  >
+                                  Text="{Binding MaChuong}">
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
                                   materialDesign:HintAssist.Hint="Tình trạng"
                                   Text="{Binding TinhTrang}"
                                   VerticalAlignment="Center"
                                   Style="{StaticResource MaterialDesignFloatingHintComboBox}"
-                                  SelectedItem="{Binding TinhTrang}"
-                                  >
+                                  SelectedItem="{Binding TinhTrang}">
                             <ComboBoxItem>Sức khoẻ tốt</ComboBoxItem>
                             <ComboBoxItem>Đang mang thai</ComboBoxItem>
                             <ComboBoxItem>Đang bị bệnh</ComboBoxItem>
                             <ComboBoxItem>Đã đào thải</ComboBoxItem>
                         </ComboBox>
                         <ComboBox Margin="10 5 10 10"
+                                  Name="cbb_NguonGoc"
                                   materialDesign:HintAssist.Hint="Nguồn gốc"
                                   Text="{Binding NguonGoc}"
                                   VerticalAlignment="Center"
@@ -113,20 +143,27 @@
                         </ComboBox>
                     </StackPanel>
                 </materialDesign:Card>
-                <materialDesign:Card Grid.Row="1" Margin="5" VerticalAlignment="Center">
-                    <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
-                        <StackPanel Width="250" HorizontalAlignment="Center">
+                <materialDesign:Card Grid.Row="1"
+                                     Margin="5"
+                                     VerticalAlignment="Center">
+                    <Border Margin="20"
+                            BorderBrush="#3ab19b"
+                            CornerRadius="5"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Bottom">
+                        <StackPanel Width="250"
+                                    HorizontalAlignment="Center">
                             <Button Margin="20,20,20,0"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        BorderBrush="White"
-                        Content="Thêm"
-                        FontSize="16"
-                        Background="#00de1e"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding AddCommand}" 
-                        CommandParameter="{Binding ElementName=txt_MaHeo}">
+                                    Style="{StaticResource MaterialDesignRaisedButton}"
+                                    Height="30"
+                                    BorderBrush="White"
+                                    Content="Thêm"
+                                    FontSize="16"
+                                    Background="#00de1e"
+                                    materialDesign:ButtonAssist.CornerRadius="5"
+                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                                    Command="{Binding AddCommand}"
+                                    CommandParameter="{Binding ElementName=txt_MaHeo}">
                             </Button>
                         </StackPanel>
                     </Border>
@@ -142,14 +179,19 @@
                                 <RowDefinition></RowDefinition>
                                 <RowDefinition></RowDefinition>
                             </Grid.RowDefinitions>
-                            <TextBlock Grid.Row="0" FontWeight="Bold" FontSize="16" VerticalAlignment="Center" Margin="10,5,0,5">Thông tin chi tiết các cá thể heo</TextBlock>
+                            <TextBlock Grid.Row="0"
+                                       FontWeight="Bold"
+                                       FontSize="16"
+                                       VerticalAlignment="Center"
+                                       Margin="10,5,0,5">Thông tin chi tiết các cá thể heo</TextBlock>
 
                             <Grid Grid.Row="1">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"></ColumnDefinition>
                                     <ColumnDefinition></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
-                                <Grid Grid.Column="0" Margin="10,0,10,0">
+                                <Grid Grid.Column="0"
+                                      Margin="10,0,10,0">
                                     <!--<materialDesign:PackIcon Kind="Search" Margin="0 15 0 0 "/>
                                     <TextBox materialDesign:HintAssist.Hint="Tìm kiếm" Name="Txt_TimMaTen" Height="30" Margin="30,10,20,11">
                                         <i:Interaction.Triggers>
@@ -160,47 +202,68 @@
                                         </i:Interaction.Triggers>
                                     </TextBox>-->
                                 </Grid>
-                                <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,10,0">
-                                    <Button
-                                        Margin="0,0,0,5"
-                                    Style="{StaticResource MaterialDesignRaisedButton}"
-                                    Height="30"
-                                    Width="200"
-                                    BorderBrush="White"
-                                    Content="Thêm từ excel"
-                                    FontSize="16"
-                                    Background="#00de1e"
-                                    materialDesign:ButtonAssist.CornerRadius="5"
-                                    Command="{Binding ExcelCommand}"
-                                    IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
+                                <StackPanel Grid.Column="1"
+                                            Orientation="Horizontal"
+                                            HorizontalAlignment="Right"
+                                            Margin="0,0,10,0">
+                                    <Button Margin="0,0,0,5"
+                                            Name="btn_ThemTuExel"
+                                            Style="{StaticResource MaterialDesignRaisedButton}"
+                                            Height="30"
+                                            Width="200"
+                                            BorderBrush="White"
+                                            Content="Thêm từ excel"
+                                            FontSize="16"
+                                            Background="#00de1e"
+                                            materialDesign:ButtonAssist.CornerRadius="5"
+                                            Command="{Binding ExcelCommand}"
+                                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}">
                                     </Button>
                                 </StackPanel>
                             </Grid>
                         </Grid>
 
                     </materialDesign:Card>
-                    <ScrollViewer Height="580" Width="auto">
-                        <ListView  ItemsSource="{Binding ListHeoAdd}" SelectedItem="{Binding SelectedHeo}" HorizontalAlignment="Stretch">
+                    <ScrollViewer Height="580"
+                                  Width="auto">
+                        <ListView  ItemsSource="{Binding ListHeoAdd}"
+                                   SelectedItem="{Binding SelectedHeo}"
+                                   HorizontalAlignment="Stretch">
                             <ListView.View>
                                 <GridView>
-                                    <GridViewColumn Header="Mã heo" DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding GioiTinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding TrongLuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Tên loại heo" DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Tên giống heo" DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã heo mẹ" DisplayMemberBinding="{Binding MaHeoMe,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã heo cha" DisplayMemberBinding="{Binding MaHeoCha,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding CHUONGTRAI.MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Tên loại chuồng" DisplayMemberBinding="{Binding CHUONGTRAI.LOAICHUONG.TenLoai,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
-                                    <GridViewColumn Header="Nguồn gốc" DisplayMemberBinding="{Binding NguonGoc,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã heo"
+                                                    DisplayMemberBinding="{Binding MaHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Giới tính"
+                                                    DisplayMemberBinding="{Binding GioiTinh,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Ngày sinh"
+                                                    DisplayMemberBinding="{Binding NgaySinh, StringFormat= {} {0: dd/MM/yyyy}, UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Trọng lượng"
+                                                    DisplayMemberBinding="{Binding TrongLuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên loại heo"
+                                                    DisplayMemberBinding="{Binding LOAIHEO.TenLoaiHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên giống heo"
+                                                    DisplayMemberBinding="{Binding GIONGHEO.TenGiongHeo,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã heo mẹ"
+                                                    DisplayMemberBinding="{Binding MaHeoMe,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã heo cha"
+                                                    DisplayMemberBinding="{Binding MaHeoCha,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Mã chuồng"
+                                                    DisplayMemberBinding="{Binding CHUONGTRAI.MaChuong,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tên loại chuồng"
+                                                    DisplayMemberBinding="{Binding CHUONGTRAI.LOAICHUONG.TenLoai,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Tình trạng"
+                                                    DisplayMemberBinding="{Binding TinhTrang,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
+                                    <GridViewColumn Header="Nguồn gốc"
+                                                    DisplayMemberBinding="{Binding NguonGoc,UpdateSourceTrigger=PropertyChanged}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <ListView.ContextMenu>
                                 <ContextMenu>
                                     <Menu>
-                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"  Width="48" Height="37" Command="{Binding DeleteCommand}"></MenuItem>
+                                        <MenuItem Icon="{materialDesign:PackIcon Kind=Delete}"
+                                                  Width="48"
+                                                  Height="37"
+                                                  Command="{Binding DeleteCommand}"></MenuItem>
                                     </Menu>
                                 </ContextMenu>
                             </ListView.ContextMenu>
@@ -209,32 +272,35 @@
                 </StackPanel>
             </materialDesign:Card>
 
-            <materialDesign:Card Margin="5" VerticalAlignment="Bottom">
+            <materialDesign:Card Margin="5"
+                                 VerticalAlignment="Bottom">
                 <StackPanel Orientation="Vertical">
                     <Button Margin="20,10,20,10"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
-                        Width="250"
-                        BorderBrush="White"
-                        Content="Xác nhận"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Background="#00de1e"
-                        Foreground="#dcf7e0" 
-                        Command="{Binding XacNhanCommand}"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Height="30"
+                            Width="250"
+                            BorderBrush="White"
+                            Content="Xác nhận"
+                            FontSize="16"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Background="#00de1e"
+                            Foreground="#dcf7e0"
+                            Command="{Binding XacNhanCommand}"
                             CommandParameter="{Binding ElementName=ThemTTHeoW}"></Button>
                     <Button Margin="20,0,20,10"
-                        Style="{StaticResource MaterialDesignRaisedButton}"
-                        Height="30"
+                            Name="btn_Huy"
+                            Style="{StaticResource MaterialDesignRaisedButton}"
+                            Height="30"
                             Width="250"
-                        BorderBrush="White"
-                        Content="Huỷ bỏ"
-                        FontSize="16"
-                        materialDesign:ButtonAssist.CornerRadius="5"
-                        Foreground="#00de1e"
-                        Background="#dcf7e0"
-                        IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
-                        Command="{Binding HuyCommand}" CommandParameter="{Binding ElementName=ThemTTHeoW}">
+                            BorderBrush="White"
+                            Content="Huỷ bỏ"
+                            FontSize="16"
+                            materialDesign:ButtonAssist.CornerRadius="5"
+                            Foreground="#00de1e"
+                            Background="#dcf7e0"
+                            IsEnabled="{Binding DataContext.ControlsEnabled, RelativeSource={RelativeSource FindAncestor, AncestorType=Window}}"
+                            Command="{Binding HuyCommand}"
+                            CommandParameter="{Binding ElementName=ThemTTHeoW}">
 
                     </Button>
                 </StackPanel>

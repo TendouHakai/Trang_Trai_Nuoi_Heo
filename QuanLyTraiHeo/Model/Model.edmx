@@ -142,7 +142,7 @@
           <Key>
             <PropertyRef Name="MaLichPhoi" />
           </Key>
-          <Property Name="MaLichPhoi" Type="char" MaxLength="16" Nullable="false" />
+          <Property Name="MaLichPhoi" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="MaHeoDuc" Type="char" MaxLength="16" />
           <Property Name="MaHeoCai" Type="char" MaxLength="16" />
           <Property Name="NgayPhoiGiong" Type="smalldatetime" />
@@ -297,18 +297,20 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="XuatChuongMin" Type="int" />
-          <Property Name="XuatChuongMax" Type="int" />
-          <Property Name="MonthXuatChuongMin" Type="int" />
-          <Property Name="MonthXuatChuongMax" Type="int" />
-          <Property Name="TuoiNhapDan" Type="int" />
-          <Property Name="CanHuyet" Type="int" />
-          <Property Name="TuoiPhoiGiongDuc" Type="int" />
-          <Property Name="TuoiPhoiGiongCai" Type="int" />
-          <Property Name="RePhoiGiongDuc" Type="int" />
-          <Property Name="RePhoiGiongCai" Type="int" />
-          <Property Name="ThucAnMotNgay" Type="int" />
-          <Property Name="ThucAnMax" Type="int" />
+          <Property Name="XuatChuongMin" Type="int" Nullable="false" />
+          <Property Name="XuatChuongMax" Type="int" Nullable="false" />
+          <Property Name="MonthXuatChuongMin" Type="int" Nullable="false" />
+          <Property Name="MonthXuatChuongMax" Type="int" Nullable="false" />
+          <Property Name="TuoiNhapDan" Type="int" Nullable="false" />
+          <Property Name="CanHuyet" Type="int" Nullable="false" />
+          <Property Name="TuoiPhoiGiongDuc" Type="int" Nullable="false" />
+          <Property Name="TuoiPhoiGiongCai" Type="int" Nullable="false" />
+          <Property Name="RePhoiGiongDuc" Type="int" Nullable="false" />
+          <Property Name="RePhoiGiongCai" Type="int" Nullable="false" />
+          <Property Name="ThucAnMotNgay" Type="int" Nullable="false" />
+          <Property Name="ThucAnMax" Type="int" Nullable="false" />
+          <Property Name="SoNgayMangThai" Type="int" Nullable="false" />
+          <Property Name="SoNgayCaiSua" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="ThongBao">
           <Key>
@@ -1216,7 +1218,7 @@
           <Key>
             <PropertyRef Name="MaLichPhoi" />
           </Key>
-          <Property Name="MaLichPhoi" Type="String" Nullable="false" MaxLength="16" FixedLength="true" Unicode="false" />
+          <Property Name="MaLichPhoi" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="MaHeoDuc" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="MaHeoCai" Type="String" MaxLength="16" FixedLength="true" Unicode="false" />
           <Property Name="NgayPhoiGiong" Type="DateTime" Precision="0" />
@@ -1402,18 +1404,20 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="XuatChuongMin" Type="Int32" />
-          <Property Name="XuatChuongMax" Type="Int32" />
-          <Property Name="MonthXuatChuongMin" Type="Int32" />
-          <Property Name="MonthXuatChuongMax" Type="Int32" />
-          <Property Name="TuoiNhapDan" Type="Int32" />
-          <Property Name="CanHuyet" Type="Int32" />
-          <Property Name="TuoiPhoiGiongDuc" Type="Int32" />
-          <Property Name="TuoiPhoiGiongCai" Type="Int32" />
-          <Property Name="RePhoiGiongDuc" Type="Int32" />
-          <Property Name="RePhoiGiongCai" Type="Int32" />
-          <Property Name="ThucAnMotNgay" Type="Int32" />
-          <Property Name="ThucAnMax" Type="Int32" />
+          <Property Name="XuatChuongMin" Type="Int32" Nullable="false" />
+          <Property Name="XuatChuongMax" Type="Int32" Nullable="false" />
+          <Property Name="MonthXuatChuongMin" Type="Int32" Nullable="false" />
+          <Property Name="MonthXuatChuongMax" Type="Int32" Nullable="false" />
+          <Property Name="TuoiNhapDan" Type="Int32" Nullable="false" />
+          <Property Name="CanHuyet" Type="Int32" Nullable="false" />
+          <Property Name="TuoiPhoiGiongDuc" Type="Int32" Nullable="false" />
+          <Property Name="TuoiPhoiGiongCai" Type="Int32" Nullable="false" />
+          <Property Name="RePhoiGiongDuc" Type="Int32" Nullable="false" />
+          <Property Name="RePhoiGiongCai" Type="Int32" Nullable="false" />
+          <Property Name="ThucAnMotNgay" Type="Int32" Nullable="false" />
+          <Property Name="ThucAnMax" Type="Int32" Nullable="false" />
+          <Property Name="SoNgayMangThai" Type="Int32" Nullable="false" />
+          <Property Name="SoNgayCaiSua" Type="Int32" Nullable="false" />
         </EntityType>
         <EntityType Name="ThongBao">
           <Key>
@@ -2141,6 +2145,8 @@
           <EntitySetMapping Name="THAMSOes">
             <EntityTypeMapping TypeName="TRANGTRAINUOIHEOModel.THAMSO">
               <MappingFragment StoreEntitySet="THAMSO">
+                <ScalarProperty Name="SoNgayCaiSua" ColumnName="SoNgayCaiSua" />
+                <ScalarProperty Name="SoNgayMangThai" ColumnName="SoNgayMangThai" />
                 <ScalarProperty Name="ThucAnMax" ColumnName="ThucAnMax" />
                 <ScalarProperty Name="ThucAnMotNgay" ColumnName="ThucAnMotNgay" />
                 <ScalarProperty Name="RePhoiGiongCai" ColumnName="RePhoiGiongCai" />

@@ -14,7 +14,7 @@ namespace QuanLyTraiHeo.Model
     
     public partial class LICHPHOIGIONG
     {
-        public string MaLichPhoi { get; set; }
+        public int MaLichPhoi { get; set; }
         public string MaHeoDuc { get; set; }
         public string MaHeoCai { get; set; }
         public Nullable<System.DateTime> NgayPhoiGiong { get; set; }

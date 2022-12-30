@@ -37,8 +37,14 @@
             <materialDesign:Card Margin="5,308,5,0" Height="80" VerticalAlignment="Top">
                 <Border Margin="20" BorderBrush="#3ab19b" CornerRadius="5" HorizontalAlignment="Center" VerticalAlignment="Bottom">
                     <Grid Width="270">
-                        <Button x:Name="Confirm_button_Copy" Background="#3ab19b" Content="Xác nhận" Height="40" VerticalAlignment="Center" Click="Confirm_button_Click" Margin="0,0,140,0"/>
-                        <Button x:Name="huy_button"  Background="#FFB13A3A" Content="Hủy" Height="40" VerticalAlignment="Center" Click="Huy_button_Click" Margin="140,0,0,0" Width="130"/>
+                        <Button x:Name="Confirm_button_Copy"
+                                Background="#3ab19b"
+                                Content="Xác nhận"
+                                Height="40"
+                                VerticalAlignment="Center"
+                                Click="Confirm_button_Click"
+                                Margin="70,0,70,0" />
+                        <!--<Button x:Name="huy_button"  Background="#FFB13A3A" Content="Hủy" Height="40" VerticalAlignment="Center" Click="Huy_button_Click" Margin="140,0,0,0" Width="130"/>-->
                     </Grid>
                 </Border>
             </materialDesign:Card>

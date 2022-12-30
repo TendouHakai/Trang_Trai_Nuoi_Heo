@@ -79,15 +79,17 @@
                                 HorizontalAlignment="Left"
                                 materialDesign:HintAssist.Hint="Nhập ngày phối giống"
                                 materialDesign:TextFieldAssist.HasClearButton="True"
+                                SelectedDateChanged="Datepicker_Ngayphoigiong_SelectedDateChanged"
                                 Style="{StaticResource MaterialDesignFloatingHintDatePicker}"/>
                                 <!--SelectedDateChanged="Datepicker_Ngayphoigiong_SelectedDateChanged" -->
                     <ComboBox x:Name="TrangThai"
                               Height="35"
                               VerticalContentAlignment="Bottom"
                               Width="200"
+                              SelectionChanged="TrangThai_SelectionChanged"
                               HorizontalAlignment="Left"
                               materialDesign:HintAssist.Hint="Trạng thái">
-                        <!--SelectionChanged="TrangThai_SelectionChanged"-->
+                        
                         <ComboBoxItem IsSelected="True"
                                       Content="Chưa phối giống" />
                         <ComboBoxItem Content="Đã phối giống" />

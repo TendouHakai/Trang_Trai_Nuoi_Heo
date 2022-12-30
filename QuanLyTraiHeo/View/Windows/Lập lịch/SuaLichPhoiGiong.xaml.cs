@@ -1,4 +1,4 @@
-﻿/*using MaterialDesignThemes.Wpf;
+﻿using MaterialDesignThemes.Wpf;
 using QuanLyTraiHeo.Model;
 using QuanLyTraiHeo.ViewModel;
 using System;
@@ -25,9 +25,10 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         LICHPHOIGIONG phoigiong;
         LapLichPhoiGiongVM lapLichPhoiGiongVM;
         public bool OK { get; set; }
-        string temp { get; set; }
+        int temp { get; set; }
         static int check = 0;
 
+        int? NhapSoCon;
 
         public SuaLichPhoiGiong(LICHPHOIGIONG LPG, LapLichPhoiGiongVM _lapLichPhoiGiongVM)
         {
@@ -51,17 +52,22 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 Soconchon.Text = LPG.SoConChon.ToString();
                 Sochet.Text = LPG.SoConChet.ToString();
 
+                NhapSoCon = LPG.SoConChon;
+
                 SetUp(LPG.Trangthai);
 
                 if (LPG.Trangthai == "Đã đẻ")
                 {
                     TrangThai.IsEnabled = false;
+                    Socon.IsEnabled = false;
+                    Soconchon.IsEnabled = false;
+                    Sochet.IsEnabled = false;
                 }
             }
             else
             {
                 Datepicker_Ngayphoigiong.SelectedDate = DateTime.Today; Datepicker_ngayde.IsEnabled = false;
-                Ngaycaisua.IsEnabled = true;
+                Ngaycaisua.IsEnabled = false;
                 Ngaydethucte.IsEnabled = false;
                 NgayPhoiGiongLai.IsEnabled = false;
                 Socon.IsEnabled = false;
@@ -152,10 +158,20 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
             if (phoigiong == null)
             {
+                //Tạo lịch mới 
+
                 LICHPHOIGIONG lpg = DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.MaHeoCai == Pigcode_textn.Text && x.Trangthai == "Chưa phối giống").SingleOrDefault();
                 if (lpg != null)
                 {
                     MessageBox.Show(String.Format("Heo cái này đang có một lịch phối giống khác vào ngày {0} chưa được thực hiện", lpg.NgayPhoiGiong));
+                    return;
+                }
+
+                THAMSO thamso = DataProvider.Ins.DB.THAMSOes.SingleOrDefault();
+                if (BiCanHuyet(Pigcode_textd.Text, Pigcode_textn.Text, thamso.CanHuyet) == true)
+                {
+
+                    MessageBox.Show("Hệ thống phát hiện lịch phối sẽ sảy ra cận huyết, xin hãy kiểm tra lại");
                     return;
                 }
 
@@ -164,7 +180,6 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 {
                     LICHPHOIGIONG lich = new LICHPHOIGIONG();
 
-                    lich.MaLichPhoi = Lichphoigiongcode_generate();
                     lich.MaHeoDuc = Pigcode_textd.Text;
                     lich.MaHeoCai = Pigcode_textn.Text;
                     lich.NgayPhoiGiong = Datepicker_Ngayphoigiong.SelectedDate;
@@ -173,9 +188,9 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                     lich.NgayCaiSua = Ngaycaisua.SelectedDate;
                     lich.NgayDeThucTe = Ngaydethucte.SelectedDate;
                     lich.NgayPhoiGiongLaiDuKien = NgayPhoiGiongLai.SelectedDate;
-                    lich.SoCon = 0;
-                    lich.SoConChon = 0;
-                    lich.SoConChet = 0;
+                    lich.SoCon = null;
+                    lich.SoConChon = null;
+                    lich.SoConChet = null;
 
                     DataProvider.Ins.DB.LICHPHOIGIONGs.Add(lich);
 
@@ -191,6 +206,8 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
             }
             else
             {
+                //Sửa lịch  
+
                 phoigiong.MaHeoDuc = Pigcode_textd.Text;
                 phoigiong.MaHeoCai = Pigcode_textn.Text;
                 phoigiong.NgayPhoiGiong = Datepicker_Ngayphoigiong.SelectedDate;
@@ -199,31 +216,41 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 phoigiong.NgayCaiSua = Ngaycaisua.SelectedDate;
                 phoigiong.NgayDeThucTe = Ngaydethucte.SelectedDate;
                 phoigiong.NgayPhoiGiongLaiDuKien = NgayPhoiGiongLai.SelectedDate;
-                if (Socon.Text == "")
+
+                if(phoigiong.Trangthai != "Đã đẻ")
                 {
                     phoigiong.SoCon = null;
-                }
-                else
-                {
-                    phoigiong.SoCon = int.Parse(Socon.Text);
-                }
-
-                if (Soconchon.Text == "")
-                {
                     phoigiong.SoConChon = null;
-                }
-                else
-                {
-                    phoigiong.SoConChon = Convert.ToInt16(Soconchon.Text);
-                }
-
-                if (Sochet.Text == "")
-                {
                     phoigiong.SoConChet = null;
+
                 }
                 else
                 {
-                    phoigiong.SoConChet = Convert.ToInt16(Sochet.Text);
+                    phoigiong.NgayCaiSua = Ngaycaisua.SelectedDate;
+
+                    if(NhapSoCon != phoigiong.SoConChon || NhapSoCon == null)
+                    {
+                        //nếu lịch phối giống chưa thêm danh sách heo con thì sẽ thực hiện thêm
+                        phoigiong.SoCon = int.Parse(Socon.Text);
+                        phoigiong.SoConChet = Convert.ToInt16(Sochet.Text);
+
+                        phoigiong.SoConChon = Convert.ToInt16(Soconchon.Text);
+
+                        string maChuongHeoMe = DataProvider.Ins.DB.HEOs.Where(x => x.MaHeo == phoigiong.MaHeoCai).SingleOrDefault().MaChuong;
+                        string maGiongHeoCha = DataProvider.Ins.DB.HEOs.Where(x => x.MaHeo == phoigiong.MaHeoDuc).SingleOrDefault().MaGiongHeo;
+
+                        ThemTTHeo themheocon = new ThemTTHeo();
+                        themheocon.DataContext = new ThemTTHeoVM(themheocon, phoigiong.MaHeoDuc, phoigiong.MaHeoCai, maChuongHeoMe, maGiongHeoCha, DateTime.Today, Convert.ToInt16(Soconchon.Text));
+                        themheocon.ShowDialog();
+
+                        if (phoigiong.NgayCaiSua != null)
+                        {
+                            LICHCHUONG lichCaiSua = new LICHCHUONG() { MaChuong = maChuongHeoMe, MaNguoiTao = Account.TaiKhoan.MaNhanVien, TenLich = "Cai sữa heo con", TrangThai = "Chưa làm", NgayLam = phoigiong.NgayCaiSua ?? DateTime.Now, Mota = "Ngày cai sữa heo con" };
+                            DataProvider.Ins.DB.LICHCHUONGs.Add(lichCaiSua);
+                        }
+
+                    }
+
                 }
 
                 DataProvider.Ins.DB.SaveChanges();
@@ -244,10 +271,9 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         private void Datepicker_Ngayphoigiong_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
         {
             THAMSO thamso = DataProvider.Ins.DB.THAMSOes.SingleOrDefault();
-
-            Datepicker_ngayde.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(90);
-            //Ngaycaisua.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(thamso.);
-            //NgayPhoiGiongLai.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(90);
+            Datepicker_ngayde.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(thamso.SoNgayMangThai);
+            //Ngaycaisua.SelectedDate = Ngaycaisua.SelectedDate.Value.AddDays(thamso.);
+            
         }
 
         private void TrangThai_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -292,20 +318,75 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
                 Sochet.IsEnabled = true;
 
                 Ngaydethucte.SelectedDate = DateTime.Today;
+
+                THAMSO thamso = DataProvider.Ins.DB.THAMSOes.SingleOrDefault();
+                Ngaycaisua.SelectedDate = DateTime.Today.AddDays(thamso.SoNgayCaiSua);
+                NgayPhoiGiongLai.SelectedDate = Datepicker_Ngayphoigiong.SelectedDate.Value.AddDays(thamso.RePhoiGiongCai);
             }
         }
 
-        string Lichphoigiongcode_generate()
+        bool BiCanHuyet(string _maHeoDuc, string _maHeoCai, int soLanKiemTra)
         {
-            int count = DataProvider.Ins.DB.LICHPHOIGIONGs.Count() + 1;
-            return "PG" + count;
+            List<string> _ListMaHeoCha = new List<string>();
+
+            List<string> _ListMaHeoCanHuyet_Duc = new List<string>();
+            List<string> _ListMaHeoCanHuyet_Cai = new List<string>();
+
+            for (int i = 0; i < soLanKiemTra; i++)
+            {
+                HEO heo = DataProvider.Ins.DB.HEOs.Where(x => x.MaHeo == _maHeoDuc).SingleOrDefault();
+
+                if(heo != null)
+                {
+                    if (heo.MaHeoCha != null && heo.MaHeoMe != null)
+                    {
+                        _ListMaHeoCha.Add(heo.MaHeoCha);
+
+                        _maHeoDuc = heo.MaHeoCha;
+                    }
+                }
+                
+            }
+
+            foreach (var maHeoDuc in _ListMaHeoCha)
+            {
+                foreach (var heo in DataProvider.Ins.DB.HEOs)
+                {
+                    if (heo.MaHeoCha == _maHeoDuc && heo.MaLoaiHeo == "LH02112022000002") // nếu heo là heo nái và có heo cha thuộc phạm vị cận huyết thì thêm vào danh sách heo cái bị cận huyết 
+                    {
+                        _ListMaHeoCanHuyet_Cai.Add(heo.MaHeo);
+                    }
+                    else if (heo.MaHeoCha == _maHeoDuc && heo.MaLoaiHeo == "LH02112022000001") // nếu heo là heo đực và có heo cha thuộc phạm vị cận huyết thì thêm vào danh sách heo đực bị cận huyết
+                    {
+                        _ListMaHeoCanHuyet_Duc.Add(heo.MaHeo);
+                    }
+                }
+            }
+
+            foreach (var maheoduc in _ListMaHeoCanHuyet_Duc)
+            {
+                if (maheoduc == _maHeoDuc)
+                {
+                    return true;
+                }
+            }
+
+            foreach (var maheocai in _ListMaHeoCanHuyet_Cai)
+            {
+                if (maheocai == _maHeoCai)
+                {
+                    return true;
+                }
+            }
+
+            return false;
         }
     }
 }
 
 
-*/
 
+/*
 using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
@@ -432,3 +513,4 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
         }
     }
 }
+*/

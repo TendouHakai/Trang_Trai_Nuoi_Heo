@@ -18,7 +18,7 @@ namespace QuanLyTraiHeo.ViewModel
 {
     public class LapLichPhoiGiongVM: BaseViewModel
     {
-        /*#region Atributes
+        #region Atributes
 
         SnackbarMessageQueue myCustomMessageQueue;
         Brush messageQueueColor;
@@ -28,6 +28,11 @@ namespace QuanLyTraiHeo.ViewModel
         ObservableCollection<LICHPHOIGIONG> listLich;
         ObservableCollection<string> listHeoDuc;
         ObservableCollection<string> listHeoCai;
+
+        DateTime timKiem_TuNgay;
+        DateTime timKiem_DenNgay;
+        string timKiem_MaHeoDuc;
+        string timKiem_MaCai;
         #endregion
 
         #region Property
@@ -37,6 +42,11 @@ namespace QuanLyTraiHeo.ViewModel
         public int listviewSelectedIndex { get; set; }
         public SnackbarMessageQueue MyCustomMessageQueue { get => myCustomMessageQueue; set { myCustomMessageQueue = value; OnPropertyChanged(); } }
         public Brush MessageQueueColor { get => messageQueueColor; set { messageQueueColor = value; OnPropertyChanged(); } }
+
+        public DateTime TimKiem_TuNgay { get => timKiem_TuNgay; set { timKiem_TuNgay = value; TimKiem();  } }
+        public DateTime TimKiem_DenNgay { get => timKiem_DenNgay; set { timKiem_DenNgay = value; TimKiem(); } }
+        public string TimKiem_MaHeoDuc { get => timKiem_MaHeoDuc; set { timKiem_MaHeoDuc = value; TimKiem(); } }
+        public string TimKiem_MaHeoCai { get => timKiem_MaCai; set { timKiem_MaCai = value; TimKiem(); } }
 
         #endregion
 
@@ -67,7 +77,7 @@ namespace QuanLyTraiHeo.ViewModel
                 ListHeoDuc.Add(item.MaHeo);
             }
 
-            LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, p => { Load(); wd = p as LichPhoiGiongWindow; });
+            LoadedWindowCommand = new RelayCommand<object>((p) => { return true; }, p => { TimKiem(); wd = p as LichPhoiGiongWindow; });
             SelectedItemCommand = new RelayCommand<object>((p) => { return true; }, p => { SelectedItem(p); });
             AddCommand = new RelayCommand<object>((p) => { return true; }, p => { AddNew(); });
             EditCommand = new RelayCommand<System.Windows.Window>((p) => { return true; }, p => { Edit(); });
@@ -83,6 +93,38 @@ namespace QuanLyTraiHeo.ViewModel
         void SelectedItem(object p)
         {
             //SelectedLichPhoi = p as LICHPHOIGIONG;
+        }
+
+        void TimKiem()
+        {
+            if (TimKiem_TuNgay == null || timKiem_DenNgay == null )
+            {
+                return; //|| timKiem_MaHeoDuc.Contains(" ") || timKiem_MaHeoDuc.Contains(" ")
+            }
+
+            if (String.IsNullOrEmpty(timKiem_MaHeoDuc) && String.IsNullOrEmpty(timKiem_MaCai))
+            {
+                listviewSelectedIndex = 0;
+                ListLich = new ObservableCollection<LICHPHOIGIONG>(DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.NgayPhoiGiong > TimKiem_TuNgay && x.NgayPhoiGiong < timKiem_DenNgay));
+            }
+            else if (!String.IsNullOrEmpty(timKiem_MaHeoDuc) && String.IsNullOrEmpty(timKiem_MaCai))
+            {
+                listviewSelectedIndex = 0;
+                ListLich = new ObservableCollection<LICHPHOIGIONG>(DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.NgayPhoiGiong > TimKiem_TuNgay && x.NgayPhoiGiong < timKiem_DenNgay && x.MaHeoDuc.Contains(timKiem_MaHeoDuc)));
+            }
+            else if (String.IsNullOrEmpty(timKiem_MaHeoDuc) && !String.IsNullOrEmpty(timKiem_MaCai))
+            {
+                listviewSelectedIndex = 0;
+                ListLich = new ObservableCollection<LICHPHOIGIONG>(DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.NgayPhoiGiong > TimKiem_TuNgay && x.NgayPhoiGiong < timKiem_DenNgay && x.MaHeoCai.Contains(TimKiem_MaHeoCai)));
+
+            }
+            else if (!String.IsNullOrEmpty(timKiem_MaHeoDuc) && !String.IsNullOrEmpty(timKiem_MaCai))
+            {
+                listviewSelectedIndex = 0;
+                ListLich = new ObservableCollection<LICHPHOIGIONG>(DataProvider.Ins.DB.LICHPHOIGIONGs.Where(x => x.NgayPhoiGiong > TimKiem_TuNgay && x.NgayPhoiGiong < timKiem_DenNgay && x.MaHeoDuc.Contains(timKiem_MaHeoDuc) && x.MaHeoCai.Contains(TimKiem_MaHeoCai)));
+
+            }
+
         }
 
         #region Add
@@ -189,7 +231,7 @@ namespace QuanLyTraiHeo.ViewModel
                     System.Windows.MessageBox.Show("Dữ liệu đã được lưu thành công", "", MessageBoxButton.OK);
                 }
             }
-        }*/
+        }
 
 
     }

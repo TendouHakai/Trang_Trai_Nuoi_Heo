@@ -112,7 +112,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (dongia != null && dongia != "" && selectCTHH != null)
                 {
-                    selectCTHH._donGia = int.Parse(dongia);
+                    selectCTHH.DonGia = int.Parse(dongia);
                 }
                 dongia = null;
                 TinhTongTien();
@@ -129,7 +129,7 @@ namespace QuanLyTraiHeo.ViewModel
                 }
                 if (soluong != null && soluong != "" && selectCTHH != null)
                 {
-                    selectCTHH._soLuong = int.Parse(soluong);
+                    selectCTHH.SoLuong = int.Parse(soluong);
                 }
                 soluong = null;
                 TinhTongTien();
@@ -141,7 +141,7 @@ namespace QuanLyTraiHeo.ViewModel
             {
                 if (soluongKT != null && soluongKT != "" && selectCTKK != null)
                 {
-                    selectCTKK._soLuongKiemTra = int.Parse(soluongKT);
+                    selectCTKK.SoLuongKiemTra = int.Parse(soluongKT);
                 }
                 soluongKT = null;
                 TinhTongTien();
@@ -423,7 +423,7 @@ namespace QuanLyTraiHeo.ViewModel
             TongTien = 0;
             foreach(var item in CTHHs)
             {
-                TongTien += item._donGia * item._soLuong;
+                TongTien += item.DonGia * item.SoLuong;
             }
         }
 
@@ -439,8 +439,8 @@ namespace QuanLyTraiHeo.ViewModel
                 CT_PHIEUHANGHOA ct = new CT_PHIEUHANGHOA();
                 ct.MaHangHoa = item.MaHangHoa;
                 ct.SoPhieu = SoPhieu;
-                ct._soLuong = item._soLuong;
-                ct._donGia = item._donGia;
+                ct.SoLuong = item.SoLuong;
+                ct.DonGia = item.DonGia;
 
                 DataProvider.Ins.DB.CT_PHIEUHANGHOA.Add(ct);
             }
@@ -482,8 +482,8 @@ namespace QuanLyTraiHeo.ViewModel
                 CT_PHIEUHANGHOA ct = new CT_PHIEUHANGHOA();
                 ct.MaHangHoa = item.MaHangHoa;
                 ct.SoPhieu = SoPhieu;
-                ct._soLuong = item._soLuong;
-                ct._donGia = item._donGia;
+                ct.SoLuong = item.SoLuong;
+                ct.DonGia = item.DonGia;
 
                 DataProvider.Ins.DB.CT_PHIEUHANGHOA.Add(ct);
             }
@@ -519,8 +519,8 @@ namespace QuanLyTraiHeo.ViewModel
                 CT_PHIEUHANGHOA ct = new CT_PHIEUHANGHOA();
                 ct.MaHangHoa = item.MaHangHoa;
                 ct.SoPhieu = SoPhieu;
-                ct._soLuong = item._soLuong;
-                ct._donGia = item._donGia;
+                ct.SoLuong = item.SoLuong;
+                ct.DonGia = item.DonGia;
 
                 DataProvider.Ins.DB.CT_PHIEUHANGHOA.Add(ct);
             }
@@ -557,8 +557,8 @@ namespace QuanLyTraiHeo.ViewModel
                 ct.MaHangHoa = item.MaHangHoa;
                 ct.SoPhieu = SoPhieu;
                 ct.SoLuongHienCo = item.SoLuongHienCo;
-                ct._soLuongKiemTra = item._soLuongKiemTra;
-                if(item._soLuongKiemTra==null)
+                ct.SoLuongKiemTra = item.SoLuongKiemTra;
+                if(item.SoLuongKiemTra==null)
                 {
                     MessageBox.Show("Bạn chưa nhập số lượng kiểm tra của hàng hoá có mã: " + ct.MaHangHoa);
                     return false;
