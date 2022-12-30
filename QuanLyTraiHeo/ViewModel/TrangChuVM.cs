@@ -2,10 +2,12 @@
 using LiveCharts.Defaults;
 using LiveCharts.Wpf;
 using MaterialDesignColors;
+using MaterialDesignThemes.Wpf;
 using QuanLyTraiHeo.Model;
 using System;
 using System.CodeDom;
 using System.Collections.Generic;
+using System.Diagnostics;
 //using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -23,6 +25,9 @@ namespace QuanLyTraiHeo.ViewModel
     {
         private Func<ChartPoint, string> pointLabel;
         public Func<ChartPoint, string> PointLabel { get => pointLabel; set { pointLabel = value; OnPropertyChanged(); } }
+        private Func<double, string> _formatFunc;
+        public Func<double, string> formatFunc { get=> _formatFunc; set { _formatFunc = value; OnPropertyChanged(); } }
+
         public SeriesCollection SeriesCollectionDSCPChart { get; set; }
         public string[] LabelsDSCPChart { get; set; }
         public SeriesCollection SeriesCollectionNVChart { get; set; }
@@ -81,11 +86,20 @@ namespace QuanLyTraiHeo.ViewModel
         private List<HoatDong> _lstHoatDong;
         public List<HoatDong> lstHoatDong { get => _lstHoatDong; set { _lstHoatDong = value; OnPropertyChanged(); } }
 
+        private List<string> _lstTBMuaBenh;
+        public List<string> lstTBMuaBenh { get => _lstTBMuaBenh; set { _lstTBMuaBenh = value; OnPropertyChanged(); } }
+
+        SnackbarMessageQueue _messageQueue;
+        public SnackbarMessageQueue messageQueue { get => _messageQueue; set { _messageQueue = value; OnPropertyChanged(); } }
+
         public ICommand changeSelectedNamChartDoanhThu { get; set; }
+        public ICommand LoadedCommand { get; set; }
+
         public TrangChuVM()
         {
             PointLabel = chartPoint =>
                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+            formatFunc = (x) => string.Format("{0:#,#}", x);
 
             SeriesCoCauHeo = new SeriesCollection();
             SeriesCoCauChuong = new SeriesCollection();
@@ -96,6 +110,8 @@ namespace QuanLyTraiHeo.ViewModel
             IsTangDoanhThu = true;
             IsGiamChiPhi = true;
             selectedNamChartDoanhthuChiTieu = DateTime.Today.Year;
+            lstTBMuaBenh = new List<string>();
+            messageQueue = new SnackbarMessageQueue();
 
             #region Khởi tạo list năm cho ColumnChart Doanh thu chi tiêu
             var listNamColumnChartDoanhThuChiTieuTheoPhieuHeo = DataProvider.Ins.DB.PHIEUHEOs.Select(x => x.NgayLap.Value.Year).Distinct().ToList();
@@ -124,6 +140,8 @@ namespace QuanLyTraiHeo.ViewModel
             loadPieChartCoCauChuong();
             loadLineChartDoanhThuChiTieu();
             loadColumnChartNhanVien();
+            LoadThongBaoMuaBenh();
+            
 
             //#region Binding dữ liệu lên biểu đồ doanh thu và chi phí trong ngày
             //SeriesCollectionDSCPChart = new SeriesCollection
@@ -152,12 +170,26 @@ namespace QuanLyTraiHeo.ViewModel
             changeSelectedNamChartDoanhThu = new RelayCommand<Window>((p) => { return true; }, p => {
                 loadLineChartDoanhThuChiTieu();
             });
+
+            LoadedCommand = new RelayCommand<Snackbar>((p) => { return true; }, p => {
+                
+                foreach (var s in lstTBMuaBenh)
+                {
+                    messageQueue.Enqueue(
+                    s,
+                    "Tôi biết rồi",
+                    param => Trace.WriteLine("Actioned: " + param),
+                    s);
+                }
+            });
             #endregion
         }
         public void LoadTrangChu()
         {
             PointLabel = chartPoint =>
                string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+            Func<double, string> formatFunc = (x) => string.Format("{0:0.000}", x);
 
             SeriesCoCauHeo = new SeriesCollection();
             SeriesCoCauChuong = new SeriesCollection();
@@ -195,6 +227,18 @@ namespace QuanLyTraiHeo.ViewModel
             loadPieChartCoCauChuong();
             loadLineChartDoanhThuChiTieu();
             loadColumnChartNhanVien();
+        }
+
+        void LoadThongBaoMuaBenh()
+        {
+            lstTBMuaBenh.Clear();
+            var Muabenhs = DataProvider.Ins.DB.MuaDichBenhs.Where(x => x.NgayBatDau <= DateTime.Now && DateTime.Now <= x.NgayKetThuc).ToList();
+            foreach(var muabenh in Muabenhs)
+            {
+                string tb = "Hiện giờ mùa bệnh " + muabenh.TenDichBenh + " đã tới! Hãy đến xem cách phòng tránh trong quy định mùa bệnh";
+                lstTBMuaBenh.Add(tb);
+            }
+            lstTBMuaBenh.Add("c");
         }
 
         void loadSoLuongHeoTot()

@@ -56,4 +56,7 @@
 
     <viewModel:ThemLichMoiVM x:Key="ThemLichMoiVM"></viewModel:ThemLichMoiVM>
     <viewModel:LapLichPhoiGiongVM x:Key="LapLichPhoiGiongVM"></viewModel:LapLichPhoiGiongVM>
+
+    <viewModel:ThietLapCayMucTieuVM x:Key="ThietLapCayMucTieuVM"></viewModel:ThietLapCayMucTieuVM>
+    <viewModel:DatMucTieuVM x:Key="DatMucTieuVM"></viewModel:DatMucTieuVM>
 </ResourceDictionary>

@@ -249,6 +249,7 @@
     <Compile Include="Model\TinhTrangHangHoaModel.cs" />
     <Compile Include="Model\TrangThaiPhieuKhoModel.cs" />
     <Compile Include="ViewModel\CTPhieuSuaChuaVM.cs" />
+    <Compile Include="ViewModel\DatMucTieuVM.cs" />
     <Compile Include="ViewModel\Lập lịch\LapLichPhoiGiongVM.cs" />
     <Compile Include="ViewModel\Phieu\ChiTietPhieuKhoVM.cs" />
     <Compile Include="ViewModel\ChonHangHoaVM.cs" />
@@ -274,6 +275,7 @@
     <Compile Include="ViewModel\Sơ đồ\SoDoVM.cs" />
     <Compile Include="ViewModel\Sơ đồ\ThemLichMoiVM.cs" />
     <Compile Include="ViewModel\Phieu\TaoPhieuKhoVM.cs" />
+    <Compile Include="ViewModel\ThietLapCayMucTieuVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\listThongBaoTrongNgayVM.cs" />
     <Compile Include="ViewModel\Tạo thông báo\ChiTietThongBaoVM.cs" />
     <Compile Include="ViewModel\QL thông tin cá nhân\DoiMatKhauVM.cs" />

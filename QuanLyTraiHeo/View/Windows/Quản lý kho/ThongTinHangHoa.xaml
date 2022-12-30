@@ -7,9 +7,98 @@
         xmlns:local="clr-namespace:QuanLyTraiHeo"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         mc:Ignorable="d"
-        Title="ThongTinHangHoa" Height="450" Width="800"
+        WindowStartupLocation="CenterScreen"
+        Title="Sửa thông tin hàng hóa" Height="530" Width="500"
         >
-    <Grid Margin="25 10">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,0.5"
+                                 StartPoint="0,0.5">
+                <GradientStop Color="#3ab19b"
+                              Offset="0.05" />
+                <GradientStop Color="#2d708c"
+                              Offset="0.25" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <materialDesign:Card Margin="10">
+            <StackPanel>
+                <TextBox Name="tbMaHH"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Mã hàng hóa"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                         IsReadOnly="True"
+                     Text="{Binding hangHoa.MaHangHoa , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbTenHH"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Tên hàng hóa"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     Text="{Binding hangHoa.TenHangHoa , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbDonGia"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Đơn giá"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                         PreviewTextInput="NumberValidationTextBox"
+                     Text="{Binding hangHoa.DonGia, StringFormat={}{0:N0} , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbSLTK"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Số lượng tồn kho"
+                         PreviewTextInput="NumberValidationTextBox"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     Text="{Binding hangHoa.SoLuongTonKho , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <ComboBox Margin="10"
+                      materialDesign:HintAssist.Hint="Tình trạng"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      SelectedValuePath="Content"
+                      SelectedValue="{Binding hangHoa.TinhTrang, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    <ComboBoxItem Content="Vẫn còn"></ComboBoxItem>
+                    <ComboBoxItem Content="Đã hết hạn"></ComboBoxItem>
+                    <ComboBoxItem Content="Đã hết hàng"></ComboBoxItem>
+                </ComboBox>
+                <ComboBox Margin="10"
+                      materialDesign:HintAssist.Hint="Loại hàng hóa"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      ItemsSource="{Binding listLoaiHangHoa, Mode=OneWay}"
+                      DisplayMemberPath="loaiHangHoa"
+                          Text="{Binding hangHoa.LoaiHangHoa}"
+                      SelectedItem="{Binding hangHoa.LoaiHangHoa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Hoàn tất"
+                        Grid.Column="0"
+                        Margin="10"
+                            Background="#3ab19b"
+                            Width="150"
+                            Height="40"
+                            Command="{Binding SuaCommand }"
+                        CommandParameter="{Binding ElementName=TTHangHoa}" />
+                    <Button Grid.Column="1"
+                            Content="Thoát"
+                            Height="40" 
+                            Width="150"
+                        Margin="10"
+                            BorderBrush="White"
+                            Foreground="#00de1e"
+                            Background="#dcf7e0"
+                            Command="{Binding ExitCommand}"
+                        CommandParameter="{Binding ElementName=TTHangHoa}" />
+
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+    <!--<Grid Margin="25 10">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="251*"/>
             <ColumnDefinition Width="0*"/>
@@ -65,5 +154,5 @@
                 VerticalAlignment="Bottom"
                 Command="{Binding SuaCommand}"
                 CommandParameter="{Binding ElementName=TTHangHoa}" Grid.Column="2" Margin="45.8,0,297,0" Grid.ColumnSpan="2" />
-    </Grid>
+    </Grid>-->
 </Window>

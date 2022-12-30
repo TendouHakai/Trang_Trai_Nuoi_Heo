@@ -207,6 +207,8 @@ namespace QuanLyTraiHeo.ViewModel
 
                     var package = new ExcelPackage(dialog.FileName);
                     ExcelWorksheet worksheet = package.Workbook.Worksheets[0];
+                    if (worksheet.Dimension == null || worksheet.Dimension.End.Row<=1)
+                        throw new Exception();
                     for(int i=worksheet.Dimension.Start.Row+1;i<=worksheet.Dimension.End.Row;i++)
                     {
                         int j = 1;

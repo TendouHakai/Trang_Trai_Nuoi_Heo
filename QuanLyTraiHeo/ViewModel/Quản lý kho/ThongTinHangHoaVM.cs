@@ -1,6 +1,7 @@
 ﻿using QuanLyTraiHeo.Model;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,15 +13,27 @@ namespace QuanLyTraiHeo.ViewModel
     public class ThongTinHangHoaVM : BaseViewModel
     {
         public ICommand SuaCommand { get; set; }
+        public ICommand ExitCommand { get; set; }
         public HANGHOA TTHangHoa { get; set; }
         public HANGHOA hangHoa { get; set; }
+        public ObservableCollection<LoaiHangHoaModel> listLoaiHangHoa { get; set; }
 
         public ThongTinHangHoaVM()
         {
         }
         public ThongTinHangHoaVM(HANGHOA hangHoa)
         {
+            listLoaiHangHoa = new ObservableCollection<LoaiHangHoaModel>();
+            listLoaiHangHoa.Clear();
+            var listloaihanghoa = from c in DataProvider.Ins.DB.HANGHOAs
+                                  select new { c.LoaiHangHoa };
+            var listloaihanghoanodupes = listloaihanghoa.Distinct().ToList();
+            foreach (var items in listloaihanghoanodupes)
+            {
+                listLoaiHangHoa.Add(new LoaiHangHoaModel(true, items.LoaiHangHoa));
+            }
             SuaCommand = new RelayCommand<Window>((p) => { return true; }, p => { Sua(p); });
+            ExitCommand = new RelayCommand<Window>((p) => { return true; }, p => { p.Close(); });
             this.TTHangHoa = hangHoa;
             this.hangHoa = new HANGHOA();
             this.hangHoa.MaHangHoa = TTHangHoa.MaHangHoa;

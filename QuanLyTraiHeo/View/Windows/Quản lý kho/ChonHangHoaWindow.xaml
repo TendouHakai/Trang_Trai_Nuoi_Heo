@@ -151,7 +151,7 @@
                                     Header="Tình trạng">
                             </DataGridTextColumn>
                             <DataGridTextColumn
-                                    Binding="{Binding HangHoa.DonGia,  StringFormat={}{0:#,#}}"
+                                    Binding="{Binding HangHoa.DonGia,  StringFormat={}{0:#,#}, UpdateSourceTrigger=PropertyChanged}"
                                     Header="Đơn giá">
                             </DataGridTextColumn>
                         </DataGrid.Columns>

@@ -67,7 +67,7 @@
                                 <GridViewColumn Header="Giới tính" DisplayMemberBinding="{Binding heo.GioiTinh}"/>
                                 <GridViewColumn Header="Ngày sinh" DisplayMemberBinding="{Binding heo.NgaySinh, StringFormat= {} {0: dd/MM/yyyy}}"/>
                                 <GridViewColumn Header="Trọng lượng" DisplayMemberBinding="{Binding heo.TrongLuong}"/>
-                                <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia}"/>
+                                <GridViewColumn Header="Đơn giá" DisplayMemberBinding="{Binding DonGia, StringFormat={}{0:#,#}}"/>
                                 <GridViewColumn Header="Tình trạng" DisplayMemberBinding="{Binding heo.TinhTrang}"/>
 
                             </GridView>
@@ -79,7 +79,7 @@
                                     <TextBox materialDesign:HintAssist.Hint="Nhập đơn giá mới" Height="30"
                                          VerticalContentAlignment="Bottom"
                                          PreviewTextInput="NumberValidationTextBox"
-                                                 Text="{Binding DonGia}">
+                                                 Text="{Binding DonGia, StringFormat={}{0:N0}, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged }">
                                     </TextBox>
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="SubmenuClosed">
@@ -194,7 +194,7 @@
                     <Grid>
                         <materialDesign:PackIcon Kind="CurrencyUsd" Margin="10 5 0 0 "/>
                         <TextBox materialDesign:HintAssist.Hint="Tổng tiền" Height="30" Margin="30,0,20,11" IsReadOnly="True"
-                                 Text="{Binding TongTien}"/>
+                                 Text="{Binding TongTien, StringFormat={}{0:#,#}}"/>
                     </Grid>
                     <Button Margin="20,20,20,0"
                         Style="{StaticResource MaterialDesignRaisedButton}"

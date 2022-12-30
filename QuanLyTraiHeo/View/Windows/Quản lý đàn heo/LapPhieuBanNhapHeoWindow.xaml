@@ -159,7 +159,7 @@
                                         <GridViewColumn Header="Nhân viên" DisplayMemberBinding="{Binding NHANVIEN.HoTen}"/>
                                         <GridViewColumn Header="Khách hàng" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
                                         <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"/>
-                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien,  StringFormat={}{0:C0}.00}"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:#,#}}"/>
                                     </GridView>
 
                                 </ListView.View>
@@ -183,7 +183,7 @@
                                         <GridViewColumn Header="Nhân viên" DisplayMemberBinding="{Binding NHANVIEN.HoTen}"/>
                                         <GridViewColumn Header="Khách hàng" DisplayMemberBinding="{Binding DOITAC.TenDoiTac}"/>
                                         <GridViewColumn Header="Trạng thái" DisplayMemberBinding="{Binding TrangThai}"/>
-                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien}"/>
+                                        <GridViewColumn Header="Tổng tiền" DisplayMemberBinding="{Binding TongTien, StringFormat={}{0:#,#}}"/>
                                     </GridView>
                                 </ListView.View>
                                 <ListView.ContextMenu>

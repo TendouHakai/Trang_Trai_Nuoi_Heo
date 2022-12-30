@@ -90,7 +90,7 @@
                                 <GridView>
                                     <GridViewColumn Header="Mã chuồng" DisplayMemberBinding="{Binding MaChuong}"></GridViewColumn>
                                     <GridViewColumn Header="Mô tả" DisplayMemberBinding="{Binding MoTa}"></GridViewColumn>
-                                    <GridViewColumn Header="Tiền sửa chữa" DisplayMemberBinding="{Binding TienSuaChua, StringFormat={}{0:#,##0}}"></GridViewColumn>
+                                    <GridViewColumn Header="Tiền sửa chữa" DisplayMemberBinding="{Binding TienSuaChua, StringFormat={}{0:N0}}"></GridViewColumn>
                                 </GridView>
                             </ListView.View>
                             <ListView.ContextMenu>
@@ -245,7 +245,7 @@
                         <TextBox materialDesign:HintAssist.Hint="Tổng tiền"
                                  Height="30"
                                  Margin="30,0,20,11" 
-                                 Text="{Binding TongTien, StringFormat={}{0:#,##0}}" Grid.ColumnSpan="2"/>
+                                 Text="{Binding TongTien, StringFormat={}{0:N0}}" Grid.ColumnSpan="2"/>
                     </Grid>
                     <Button Margin="20,0,20,0"
                             Style="{StaticResource MaterialDesignRaisedButton}"

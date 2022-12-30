@@ -93,11 +93,26 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             Heo = DataProvider.Ins.DB.HEOs.ToList();
             LichPhoiGiong = DataProvider.Ins.DB.LICHPHOIGIONGs.ToList();
             setGiaTriStatic();
+            cloneStatic();
             InitializeComponent();
             Input(yearStart, yearEnd);
             AddEvent();
         }
         //Method
+        void cloneStatic()
+        {
+            Tylede_muctieuClone = Tylede_muctieu;
+            SoHeoConSinhRa_muctieuClone = SoHeoConSinhRa_muctieu;
+            ODeItCon_muctieuClone = ODeItCon_muctieu;
+            SoHeoConSong_MucTieuClone = SoHeoConSong_MucTieu;
+            SoHeoCaiSua_muctieuClone = SoHeoCaiSua_muctieu;
+            SoConChetTruocKhiCaiSua_MucTieuClone = SoConChetTruocKhiCaiSua_MucTieu;
+            ThoiGianMangThai_MucTieuClone = ThoiGianMangThai_MucTieu;
+            SoNgayCaiSua_MucTieuClone = SoNgayCaiSua_MucTieu;
+            SoNgayKhongLamViec_MucTieuClone = SoNgayKhongLamViec_MucTieu;
+            TrungBnhLua_MucTieuClone = TrungBnhLua_MucTieu;
+            SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu;
+    }
 
         void setGiaTriStatic()
         {

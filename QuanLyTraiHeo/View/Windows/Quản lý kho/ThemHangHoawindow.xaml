@@ -8,8 +8,96 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:i="http://schemas.microsoft.com/netfx/2009/xaml/presentation" xmlns:i1="http://schemas.microsoft.com/expression/2010/interactivity"
         DataContext="{ StaticResource ThemHangHoaVM}"
         mc:Ignorable="d"
-        Title="ThemHangHoawindow" Height="450" Width="800">
-    <Grid Margin="25 10">
+        WindowStartupLocation="CenterScreen"
+        Title="Thêm hàng hóa" Height="530" Width="500">
+    <Grid>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="1,0.5"
+                                 StartPoint="0,0.5">
+                <GradientStop Color="#3ab19b"
+                              Offset="0.05" />
+                <GradientStop Color="#2d708c"
+                              Offset="0.25" />
+            </LinearGradientBrush>
+        </Grid.Background>
+        <materialDesign:Card Margin="10">
+            <StackPanel>
+                <TextBox Name="tbMaHH"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Mã hàng hóa"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                         IsReadOnly="True"
+                     Text="{Binding newHangHoa.MaHangHoa , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbTenHH"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Tên hàng hóa"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                     Text="{Binding newHangHoa.TenHangHoa , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbDonGia"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Đơn giá"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                         PreviewTextInput="NumberValidationTextBox"
+                     Text="{Binding newHangHoa.DonGia, StringFormat={}{0:N0} , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <TextBox Name="tbSLTK"
+                     Margin="10"
+                     materialDesign:HintAssist.Hint="Số lượng tồn kho"
+                     Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                     VerticalAlignment="Center"
+                         PreviewTextInput="NumberValidationTextBox"
+                     Text="{Binding newHangHoa.SoLuongTonKho , Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                </TextBox>
+                <ComboBox Margin="10"
+                      materialDesign:HintAssist.Hint="Tình trạng"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      SelectedValuePath="Content"
+                      SelectedValue="{Binding newHangHoa.TinhTrang, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" >
+                    <ComboBoxItem Content="Vẫn còn"></ComboBoxItem>
+                    <ComboBoxItem Content="Đã hết hạn"></ComboBoxItem>
+                    <ComboBoxItem Content="Đã hết hàng"></ComboBoxItem>
+                </ComboBox>
+                <ComboBox Margin="10"
+                      materialDesign:HintAssist.Hint="Loại hàng hóa"
+                      Style="{StaticResource MaterialDesignOutlinedComboBox}"
+                      ItemsSource="{Binding listLoaiHangHoa, Mode=OneWay}"
+                      DisplayMemberPath="loaiHangHoa"
+                      SelectedItem="{Binding loaihanghoa, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" />
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Button Content="Hoàn tất"
+                        Grid.Column="0"
+                        Margin="10"
+                            Background="#3ab19b"
+                            Width="150"
+                            Height="40"
+                            Command="{Binding ThemCommand }"
+                        CommandParameter="{Binding ElementName=ThemTTHangHoa}" />
+                    <Button Grid.Column="1"
+                            Content="Thoát"
+                            Height="40" 
+                            Width="150"
+                        Margin="10"
+                            BorderBrush="White"
+                            Foreground="#00de1e"
+                            Background="#dcf7e0"
+                            Command="{Binding ExitCommand}"
+                        CommandParameter="{Binding ElementName=ThemTTHangHoa}" />
+
+                </Grid>
+            </StackPanel>
+        </materialDesign:Card>
+    </Grid>
+    <!--<Grid Margin="25 10">
 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="251*"/>
@@ -27,8 +115,8 @@
             <RowDefinition></RowDefinition>
         </Grid.RowDefinitions>
 
-        <!--<TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,56.6" Grid.RowSpan="2"> Mã hàng hoá</TextBlock>
-        <TextBlock Margin="99,0,0,56.6" Grid.Row="0" Text="{Binding TTHangHoa.MaHangHoa, Mode=TwoWay}" Grid.ColumnSpan="4" Grid.RowSpan="2"></TextBlock>-->
+        <TextBlock Grid.Row="0" HorizontalAlignment="Left" Margin="0,0,0,56.6" Grid.RowSpan="2"> Mã hàng hoá</TextBlock>
+        <TextBlock Margin="99,0,0,56.6" Grid.Row="0" Text="{Binding TTHangHoa.MaHangHoa, Mode=TwoWay}" Grid.ColumnSpan="4" Grid.RowSpan="2"></TextBlock>
         <TextBox Grid.Row="1"
                  Margin="10,7.2,10,12.6"
                  Text="{Binding newHangHoa.TenHangHoa, Mode=TwoWay}" 
@@ -56,12 +144,12 @@
                  materialDesign:HintAssist.Hint="Tình trạng"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
                                  VerticalAlignment="Center" Grid.ColumnSpan="4" />
-        <!--<TextBox Grid.Row="5"
+        <TextBox Grid.Row="5"
                  Margin="10,7.6,10,12.2"
                  Text="{Binding newHangHoa.LoaiHangHoa, Mode=TwoWay}" 
                  materialDesign:HintAssist.Hint="Loại hàng hoá"
                  Style="{StaticResource MaterialDesignFloatingHintTextBox}"
-                                 VerticalAlignment="Center" Grid.ColumnSpan="4" />-->
+                                 VerticalAlignment="Center" Grid.ColumnSpan="4" />
         <ComboBox Grid.Row="5"
                   Margin="10 5 10 10" Name="CBLoaiHangHoa"
                   materialDesign:HintAssist.Hint="Loại hàng hoá"
@@ -79,5 +167,5 @@
                 VerticalAlignment="Bottom"
                 Command="{Binding ThemCommand}"
                 CommandParameter="{Binding ElementName=ThemTTHangHoa}" Grid.Column="2" Margin="45.8,0,297,0" Grid.ColumnSpan="2" />
-    </Grid>
+    </Grid>-->
 </Window>
