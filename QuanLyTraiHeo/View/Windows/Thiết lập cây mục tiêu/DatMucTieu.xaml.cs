@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -68,7 +69,12 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             //muctieu3.Text = Tylethaydan_au.ToString();
             //muctieu11.Text = DoanhThu_muctieu_au.ToString();
         }
-        
+        Regex regex = new Regex("[^0-9.]+");
+        private void CheckIsNumber(object sender, TextCompositionEventArgs e)
+        {
+            e.Handled = regex.IsMatch(e.Text);
+        }
+
         //public ThamSo ReturnValue(ThamSo TS)
         //{
         //    if (check == 1)

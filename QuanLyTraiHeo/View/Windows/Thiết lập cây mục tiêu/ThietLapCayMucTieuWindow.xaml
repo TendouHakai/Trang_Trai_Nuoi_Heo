@@ -72,7 +72,18 @@
                             </Path>
                             <materialDesign:Card x:Name="the1" Height="87" Margin="313,21,304,0" VerticalAlignment="Top" Width="200" Cursor="Hand">
                                 <Grid Margin="0,0,-0.333,0">
-                                    <TextBlock x:Name="DoanhThuUocTinh" Text="0" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="17" Foreground="#DDF22828"/>
+                                    <TextBlock x:Name="DoanhThuUocTinh" Text="{Binding Doanhthu, StringFormat={}{0:N0}}" HorizontalAlignment="Left" Margin="10,26,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="17">
+                                        <TextBlock.Style>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="Foreground" Value="#DD0CC41B" />
+                                                <Style.Triggers>
+                                                    <DataTrigger Binding="{Binding isDoanhthu}" Value="false">
+                                                        <Setter Property="Foreground" Value="#DDF22828" />
+                                                    </DataTrigger>
+                                                </Style.Triggers>
+                                            </Style>
+                                        </TextBlock.Style>
+                                    </TextBlock>
                                     <Label Content="Mục tiêu: " Margin="10,52,0,0"></Label>
                                     <TextBlock x:Name="DoanhThuUocTinh_uoctinh" Text="{Binding thamso.Doanhthu_muctieu, StringFormat={}{0:N0}}" HorizontalAlignment="Left" Margin="70,58,0,0" VerticalAlignment="Top" FontSize="12"/>
                                     <Label Content="Doanh thu ước tính" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,5,0,0"/>
@@ -82,8 +93,18 @@
                         ToolTip="MaterialDesignActionToggleButton"
                         materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=QuestionMark}" 
                         Background="#DDFFFFFF" Margin="0,0,7,8" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="32" IsChecked="False" Cursor="Hand" >
-                                        <Image x:Name="DoanhThuUocTinh_button_image"
-                            Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png" Stretch="UniformToFill" Height="22" Width="22" />
+                                        <Image x:Name="DoanhThuUocTinh_button_image" Stretch="UniformToFill" Height="22" Width="22" >
+                                            <Image.Style>
+                                                <Style TargetType="Image">
+                                                    <Setter Property="Source" Value="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png" />
+                                                    <Style.Triggers>
+                                                        <DataTrigger Binding="{Binding isDoanhthu}" Value="false">
+                                                            <Setter Property="Source" Value="/QuanLyTraiHeo;component/Image/thumbs-down-solid.png" />
+                                                        </DataTrigger>
+                                                    </Style.Triggers>
+                                                </Style>
+                                            </Image.Style>
+                                        </Image>
                                     </ToggleButton>
                                 </Grid>
                             </materialDesign:Card>

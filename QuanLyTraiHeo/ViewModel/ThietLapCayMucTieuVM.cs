@@ -25,8 +25,10 @@ namespace QuanLyTraiHeo.ViewModel
         private List<int> _lstNamKT;
         public List<int> lstNamKT { get => _lstNamKT; set { _lstNamKT = value; OnPropertyChanged(); } }
 
-        private float _Doanhthu;
-        public float Doanhthu { get => _Doanhthu; set { _Doanhthu = value; OnPropertyChanged(); } }
+        private double _Doanhthu;
+        public double Doanhthu { get => _Doanhthu; set { _Doanhthu = value; OnPropertyChanged(); } }
+        private bool _isDoanhthu;
+        public bool isDoanhthu { get => _isDoanhthu; set { _isDoanhthu = value; OnPropertyChanged(); } }
 
         private double _soheoconCaisuaNam;
         public double soheoconCaisuaNam { get => _soheoconCaisuaNam; set { _soheoconCaisuaNam = value; OnPropertyChanged(); } }
@@ -266,6 +268,7 @@ namespace QuanLyTraiHeo.ViewModel
                 SongayHeoNaiKhongLamViec();
                 Trungbinhlua();
                 SoHeoConTrongNam();
+                TinhDoanhThu();
             }
             catch (Exception)
             {
@@ -412,49 +415,83 @@ namespace QuanLyTraiHeo.ViewModel
                 issoheoconCaisuaNam = true;
             else issoheoconCaisuaNam= false;
         }
+
+        void TinhDoanhThu()
+        {
+            double Doanhthu1 = 0;
+            
+            try
+            {
+                Doanhthu1 = int.Parse(DataProvider.Ins.DB.PHIEUHEOs.Where(x => x.LoaiPhieu == "Phiếu xuất heo" && NamBD <= x.NgayLap.Value.Year && x.NgayLap.Value.Year <= NamKT && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+            }
+            catch (Exception e) { }
+            try
+            {
+                Doanhthu1 += int.Parse(DataProvider.Ins.DB.PHIEUHANGHOAs.Where(x => x.LoaiPhieu == "Phiếu xuất ngoại" && NamBD <= x.NgayLap.Value.Year && x.NgayLap.Value.Year <= NamKT && x.TrangThai == "Đã hoàn thành").Sum(x => x.TongTien).ToString());
+            }
+            catch (Exception e) { }
+            Doanhthu = Doanhthu1;
+            if (Doanhthu >= thamso.Doanhthu_muctieu)
+                isDoanhthu = true;
+            else isDoanhthu = false;
+        }
     }
 
     public class THAMSOCMT: BaseViewModel
     {
         private double _Doanhthu_muctieu;
         public double Doanhthu_muctieu { get=>_Doanhthu_muctieu; set { _Doanhthu_muctieu = value; OnPropertyChanged(); } }
+
         private double _Tylede_muctieu;
         public double Tylede_muctieu { get=> _Tylede_muctieu; set { _Tylede_muctieu = value; OnPropertyChanged(); } }
 
-        public float SoHeoConSinhRa_muctieu { get; set; }
+        private double _SoHeoConSinhRa_muctieu;
+        public double SoHeoConSinhRa_muctieu { get => _SoHeoConSinhRa_muctieu; set { _SoHeoConSinhRa_muctieu = value; OnPropertyChanged(); } }
 
-        public float ODeItCon_muctieu { get; set; }
+        private double _ODeItCon_muctieu;
+        public double ODeItCon_muctieu { get => _ODeItCon_muctieu; set { _ODeItCon_muctieu = value; OnPropertyChanged(); } }
 
-        public float SoHeoConSong_MucTieu { get; set; }
+        private double _SoHeoConSong_MucTieu { get; set; }
+        public double SoHeoConSong_MucTieu { get => _SoHeoConSong_MucTieu; set { _SoHeoConSong_MucTieu = value; OnPropertyChanged(); } }
 
-        public float SoHeoCaiSua_muctieu { get; set; }
+        private double _SoHeoCaiSua_muctieu { get; set; }
+        public double SoHeoCaiSua_muctieu { get => _SoHeoCaiSua_muctieu; set { _SoHeoCaiSua_muctieu = value; OnPropertyChanged(); } }
 
-        public float SoConChetTruocKhiCaiSua_MucTieu { get; set; }
+        private double _SoConChetTruocKhiCaiSua_MucTieu { get; set; }
+        public double SoConChetTruocKhiCaiSua_MucTieu { get => _SoConChetTruocKhiCaiSua_MucTieu; set { _SoConChetTruocKhiCaiSua_MucTieu = value; OnPropertyChanged(); } }
 
-        public float ThoiGianMangThai_MucTieu_Min { get; set; }
+        private double _ThoiGianMangThai_MucTieu_Min { get; set; }
+        public double ThoiGianMangThai_MucTieu_Min { get => _ThoiGianMangThai_MucTieu_Min; set { _ThoiGianMangThai_MucTieu_Min = value; OnPropertyChanged(); } }
 
-        public float ThoiGianMangThai_MucTieu_Max { get; set; }
+        private double _ThoiGianMangThai_MucTieu_Max { get; set; }
+        public double ThoiGianMangThai_MucTieu_Max { get => _ThoiGianMangThai_MucTieu_Max; set { _ThoiGianMangThai_MucTieu_Max = value; OnPropertyChanged(); } }
 
-        public float SoNgayCaiSua_MucTieu_Min { get; set; }
+        private double _SoNgayCaiSua_MucTieu_Min { get; set; }
+        public double SoNgayCaiSua_MucTieu_Min { get => _SoNgayCaiSua_MucTieu_Min; set { _SoNgayCaiSua_MucTieu_Min = value; OnPropertyChanged(); } }
 
-        public float SoNgayCaiSua_MucTieu_Max { get; set; }
+        private double _SoNgayCaiSua_MucTieu_Max { get; set; }
+        public double SoNgayCaiSua_MucTieu_Max { get => _SoNgayCaiSua_MucTieu_Max; set { _SoNgayCaiSua_MucTieu_Max = value; OnPropertyChanged(); } }
 
-        public float SoNgayKhongLamViec_MucTieu_Min { get; set; }
+        private double _SoNgayKhongLamViec_MucTieu_Min { get; set; }
+        public double SoNgayKhongLamViec_MucTieu_Min { get => _SoNgayKhongLamViec_MucTieu_Min; set { _SoNgayKhongLamViec_MucTieu_Min = value; OnPropertyChanged(); } }
 
-        public float SoNgayKhongLamViec_MucTieu_Max { get; set; }
+        private double _SoNgayKhongLamViec_MucTieu_Max { get; set; }
+        public double SoNgayKhongLamViec_MucTieu_Max { get => _SoNgayKhongLamViec_MucTieu_Max; set { _SoNgayKhongLamViec_MucTieu_Max = value; OnPropertyChanged(); } }
 
-        public float TrungBnhLua_MucTieu { get; set; }
+        private double _TrungBnhLua_MucTieu { get; set; }
+        public double TrungBnhLua_MucTieu { get => _TrungBnhLua_MucTieu; set { _TrungBnhLua_MucTieu = value; OnPropertyChanged(); } }
 
-        public float SoHeoTrongNam_MucTieu { get; set; }
+        private double _SoHeoTrongNam_MucTieu { get; set; }
+        public double SoHeoTrongNam_MucTieu { get => _SoHeoTrongNam_MucTieu; set { _SoHeoTrongNam_MucTieu = value; OnPropertyChanged(); } }
 
         public THAMSOCMT()
         {
              Doanhthu_muctieu = 2500000000;
              Tylede_muctieu = 86;
-             SoHeoConSinhRa_muctieu = 12.5f;
+             SoHeoConSinhRa_muctieu = 12.5;
              ODeItCon_muctieu = 12;
              SoHeoConSong_MucTieu = 11;
-             SoHeoCaiSua_muctieu = 9.5f;
+             SoHeoCaiSua_muctieu = 9.5;
              SoConChetTruocKhiCaiSua_MucTieu = 18;
              ThoiGianMangThai_MucTieu_Min = 110;
              ThoiGianMangThai_MucTieu_Max = 117;
@@ -462,7 +499,7 @@ namespace QuanLyTraiHeo.ViewModel
              SoNgayCaiSua_MucTieu_Max = 28;
              SoNgayKhongLamViec_MucTieu_Min = 12;
              SoNgayKhongLamViec_MucTieu_Max = 15;
-             TrungBnhLua_MucTieu = 2.3f;
+             TrungBnhLua_MucTieu = 2.3;
              SoHeoTrongNam_MucTieu = 22;
         }
     }
