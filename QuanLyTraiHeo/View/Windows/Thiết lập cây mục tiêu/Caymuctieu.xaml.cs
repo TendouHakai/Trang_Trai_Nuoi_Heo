@@ -911,40 +911,40 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                     MessageBox.Show("the1");
                     break;
                 case var value when value == the2:
-                    MessageBox.Show("the2");
+                    MessageBox.Show("Biện pháp:\n- Tăng số lần đẻ của nái trong năm (hay còn gọi là tăng số lứa đẻ/năm) để tăng tổng số heo con cai sữa trong năm.\n- Tăng số heo con sơ sinh ra để tăng tổng số heo con cai sữa tỏng năm.\n- Giảm tỷ lệ chết heo con ở trại đẻ để tăng tổng số heo con cai sữa trong năm.");
                     break;
                 case var value when value == the3:
-                    MessageBox.Show("the3");
+                    MessageBox.Show("Biện pháp:\n- Nâng cao sức khỏe của toàn bộ heo con đủ tốt để có thể cai sữa\n- Chọn thời gian cai sữa cho heo hợp lý\n- Chuẩn bị chuồng nuôi hợp lý\n- Lưu ý chuyển heo và chế phẩm hỗ trợ");
                     break;
                 case var value when value == the4:
-                    MessageBox.Show("the4");
+                    MessageBox.Show("Biện pháp:\n- Cho nái ăn đầy đủ dinh dưỡng và chất\n- Đảm bảo chuồng trại phù hợp với mùa trong năm\n- Điều chỉnh ngày nuôi con phù hợp( không quá ngắn hay quá dài");
                     break;
                 case var value when value == the5:
-                    MessageBox.Show("the5");
+                    MessageBox.Show("Biện pháp:\n- Nên theo dõi chặt chẽ heo nái trong thời gian đẻ và ngay sau khi sinh để phát hiện sớm xem chân heo nái có vững không?, nó có bị stress gì không?... nhằm phát hiện sớm nguy cơ heo nái có thể sẽ đè chết heo con hay không.\n- Tăng cường các biện pháp giúp heo nái có 4 chân khỏe mạnh như bổ sung đầy đủ dinh dưỡng, khoáng, Canxi…\n- Giữ cho môi trường luôn yên tĩnh, không làm heo nái căng thẳng là việc vô cùng cần thiết.\n- Để ý quan sát một số heo nái có hành vi bất thường như không muốn heo con bú, đụng vào người (nhất là heo nái đẻ lứa đầu) để đề phòng.\n- Theo dõi hồ sơ ghi chép của từng heo nái xem trong những lứa đẻ trước heo nái đó có đè chết con bao giờ chưa? Nếu có thì xác suất là bao nhêu để có phương án dự phòng thích hợp.\n- Thiết kế ô chuồng heo nái đẻ sao cho kìm hãm heo nái và giúp bảo vệ heo con được tốt nhất.");
                     break;
                 case var value when value == the6:
-                    MessageBox.Show("the6");
+                    MessageBox.Show("Biện pháp:\n- Hiểu rõ tập tính tự nhiên của lợn nái\n- Lựa chọn cho sức đề kháng của cơ thể\n- Lưu ý việc cho lợn con bú\n- Áp dụng phương pháp bồi dưỡng chéo\n- Quản lý nhiệt độ heo con.");
                     break;
                 case var value when value == the7:
-                    MessageBox.Show("the7");
+                    MessageBox.Show("Biện pháp:\n– Heo cai sữa sau 4 tuần phải được chích ngừa.\n– Chỉ chọn heo của những heo nái đẻ từ lứa 2 trở lên và số con đẻ ra trên lứa cao.\n– Với heo nái tơ, chỉ cho phối vào lần lên giống thứ 2. Nên cho phối 2 lần cách nhau 10-12 giờ. Giữa hai lần lên giống, nên cho heo nái ăn nhiều hơn từ 0,5-0,75 kg thức ăn vào ngày thứ 10 sau khi heo lên giống lần trước.\n– Chú ý chọn giống để phối là những heo nọc có tỷ lệ phối đậu phôi cao, đẻ sai và được chích ngừa đầy đủ.\n– Sau khi phối, không cho ăn nhiều. Nếu như heo đòi ăn nhiều thì cho ăn thêm rau xanh. Thời gian này duy trì ít nhất là 3 tuần.");
                     break;
                 case var value when value == the8:
-                    MessageBox.Show("the8");
+                    MessageBox.Show("Biện pháp:\n- Nên theo dõi chặt chẽ heo nái trong thời gian đẻ và ngay sau khi sinh để phát hiện sớm xem chân heo nái có vững không?, nó có bị stress gì không?... nhằm phát hiện sớm nguy cơ heo nái có thể sẽ đè chết heo con hay không.\n- Tăng cường các biện pháp giúp heo nái có 4 chân khỏe mạnh như bổ sung đầy đủ dinh dưỡng, khoáng, Canxi…\n- Giữ cho môi trường luôn yên tĩnh, không làm heo nái căng thẳng là việc vô cùng cần thiết.\n- Để ý quan sát một số heo nái có hành vi bất thường như không muốn heo con bú, đụng vào người (nhất là heo nái đẻ lứa đầu) để đề phòng.\n- Theo dõi hồ sơ ghi chép của từng heo nái xem trong những lứa đẻ trước heo nái đó có đè chết con bao giờ chưa? Nếu có thì xác suất là bao nhêu để có phương án dự phòng thích hợp.\n- Thiết kế ô chuồng heo nái đẻ sao cho kìm hãm heo nái và giúp bảo vệ heo con được tốt nhất.");
                     break;
                 case var value when value == the9:
-                    MessageBox.Show("the9");
+                    MessageBox.Show("Lưu ý cần đẩy heo nái không làm việc cho phối giống, tăng chu kì đẻ và tránh không đẻ heo nhàn rỗi dẫn tới stress");
                     break;
                 case var value when value == the10:
-                    MessageBox.Show("the10");
+                    MessageBox.Show("Thời gian mang thai không đạt yêu cầu chứng tỏ tới việc chất lượng heo nái đang gặp vấn đề, cần xem xét kĩ.");
                     break;
                 case var value when value == the11:
-                    MessageBox.Show("the11");
+                    MessageBox.Show("Thời gian cho bú không đảm bảo, dễ dẫn heo chết nhiều và không lớn nhanh năng suất chất lượng sụt giảm.");
                     break;
                 case var value when value == the12:
-                    MessageBox.Show("the12");
+                    MessageBox.Show("Tỷ lệ đẻ đang bị thấp, phương pháp khắc phục:\n-Phối lúc sáng sớm.\n-Bấm răng.\n-Sử dụng heo đực lai.\n-Duy trì chất lượng thức ăn.\n-Điều chỉnh vệ sinh và ánh sáng.");
                     break;
                 case var value when value == the13:
-                    MessageBox.Show("the13");
+                    MessageBox.Show("Thời gian cho bú không đảm bảo, dễ dẫn heo chết nhiều và không lớn nhanh năng suất chất lượng sụt giảm.");
                     break;
                 default:
                     break;
@@ -958,14 +958,23 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             string saveFilePath = Path.Combine(applicationPath, "1.txt");
             if (File.Exists(saveFilePath))
             {
-                GiaTriMucTieuList = File.ReadAllLines(saveFilePath).ToList();
+                MessageBox.Show(File.ReadLines(saveFilePath).Skip(1).Take(1).First());
                 Tylede_muctieu = double.Parse(File.ReadLines(saveFilePath).First());
+                SoHeoConSinhRa_muctieu = double.Parse(File.ReadLines(saveFilePath).Skip(1).Take(1).First());
+                ODeItCon_muctieu = double.Parse(File.ReadLines(saveFilePath).Skip(2).Take(1).First());
+                SoHeoConSong_MucTieu = double.Parse(File.ReadLines(saveFilePath).Skip(3).Take(1).First());
+                SoHeoCaiSua_muctieu = double.Parse(File.ReadLines(saveFilePath).Skip(4).Take(1).First());
+                SoConChetTruocKhiCaiSua_MucTieu = double.Parse(File.ReadLines(saveFilePath).Skip(5).Take(1).First());
+                ThoiGianMangThai_MucTieu = File.ReadLines(saveFilePath).Skip(6).Take(1).First();
+                SoNgayCaiSua_MucTieu = File.ReadLines(saveFilePath).Skip(7).Take(1).First();
+                SoNgayKhongLamViec_MucTieu = File.ReadLines(saveFilePath).Skip(8).Take(1).First();
+                TrungBnhLua_MucTieu = double.Parse(File.ReadLines(saveFilePath).Skip(9).Take(1).First());
+                SoHeoTrongNam_MucTieu = double.Parse(File.ReadLines(saveFilePath).Skip(10).Take(1).First());
             }
             else
             {                
                 setGiaTriStatic();
             }
-            MessageBox.Show(File.ReadAllLines(saveFilePath).LastOrDefault());
         }
     }
 }
