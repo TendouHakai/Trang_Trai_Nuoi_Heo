@@ -223,16 +223,16 @@
             </materialDesign:Card>
             <materialDesign:Card x:Name="the13" Height="70" Margin="617,596,10,0" VerticalAlignment="Top" Width="166" Cursor="Hand">
                 <Grid Margin="0,0,-0.333,0">
-                    <Label Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
-                    <Label Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
-                    <Label Content="Tỷ lệ thay đàn" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
+                    <Label x:Name="Tylethaydan" Content="0" HorizontalAlignment="Left" Margin="10,16,0,0" VerticalAlignment="Top" FontWeight="Bold" FontSize="14" Foreground="#DDF22828"/>
+                    <Label x:Name="Tylethaydan_muctieu" Content="Mục tiêu: 0" HorizontalAlignment="Left" Margin="10,37,0,0" VerticalAlignment="Top" FontSize="9"/>
+                    <Label x:Name="Tylethaydan_textbox" Content="Tỷ lệ thay đàn" HorizontalAlignment="Left" VerticalAlignment="Top" FontSize="10" Margin="10,0,0,0"/>
                     <ToggleButton
-                        x:Name="temp_button"
+                        x:Name="Tylethaydan_button"
                         Style="{StaticResource MaterialDesignActionToggleButton}"
                         ToolTip="MaterialDesignActionToggleButton"
                         materialDesign:ToggleButtonAssist.OnContent="{materialDesign:PackIcon Kind=QuestionMark}" 
                         Background="#DDFFFFFF" Margin="0,0,5,7" Height="32" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="32" IsChecked="False" Cursor="Hand" >
-                        <Image x:Name="temp_button_image"
+                        <Image x:Name="Tylethaydan_icon"
                             Source="/QuanLyTraiHeo;component/Image/thumbs-up-solid.png" Stretch="UniformToFill" Height="22" Width="22" />
                     </ToggleButton>
                 </Grid>

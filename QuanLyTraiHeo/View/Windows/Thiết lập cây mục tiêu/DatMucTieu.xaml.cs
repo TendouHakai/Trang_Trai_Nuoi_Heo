@@ -27,16 +27,16 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
         public double SoHeoConSong_MucTieu_au = 11;
         public double SoHeoCaiSua_muctieu_au = 9.5;
         public double SoConChetTruocKhiCaiSua_MucTieu_au = 18;
-        public string ThoiGianMangThai_MucTieu_au = "110-117";
-        public string SoNgayCaiSua_MucTieu_au = "20-28";
+        public double ThoiGianMangThai_MucTieu_au = 110;
+        public double SoNgayCaiSua_MucTieu_au = 20;
         public string SoNgayKhongLamViec_MucTieu_au = "12";
         public double TrungBnhLua_MucTieu_au = 2.3;
         public double SoHeoTrongNam_MucTieu_au = 22;
         public double DoanhThu_muctieu_au = 0;
-        public double Tylethaydan_au = 0;
+        public double Tylethaydan_au = 40;
 
         public int check = 0;
-        public DatMucTieu(double Tylede_muctieu, double SoHeoConSinhRa_muctieu, double ODeItCon_muctieu, double SoHeoConSong_MucTieu, double SoHeoCaiSua_muctieu, double SoConChetTruocKhiCaiSua_MucTieu, string ThoiGianMangThai_MucTieu, string SoNgayCaiSua_MucTieu, string SoNgayKhongLamViec_MucTieu, double TrungBnhLua_MucTieu, double SoHeoTrongNam_MucTieu)
+        public DatMucTieu(double Tylede_muctieu, double SoHeoConSinhRa_muctieu, double ODeItCon_muctieu, double SoHeoConSong_MucTieu, double SoHeoCaiSua_muctieu, double SoConChetTruocKhiCaiSua_MucTieu, double ThoiGianMangThai_MucTieu, double SoNgayCaiSua_MucTieu, string SoNgayKhongLamViec_MucTieu, double TrungBnhLua_MucTieu, double SoHeoTrongNam_MucTieu, double TyLeThayDan_MucTieu)
         {
             InitializeComponent();
             /*Tylede_muctieu_au = Tylede_muctieu;
@@ -56,13 +56,13 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             muctieu.Text = SoHeoConSong_MucTieu.ToString();
             muctieu5.Text = SoHeoCaiSua_muctieu.ToString();
             muctieu4.Text = SoConChetTruocKhiCaiSua_MucTieu.ToString();
-            muctieu8.Text = ThoiGianMangThai_MucTieu;
-            muctieu7.Text = SoNgayCaiSua_MucTieu;
+            muctieu8.Text = ThoiGianMangThai_MucTieu.ToString();
+            muctieu7.Text = SoNgayCaiSua_MucTieu.ToString();
             muctieu9.Text = SoNgayKhongLamViec_MucTieu;
             muctieu6.Text = TrungBnhLua_MucTieu.ToString();
             muctieu10.Text = SoHeoTrongNam_MucTieu.ToString();
-            muctieu3.Text = Tylethaydan_au.ToString();
-            muctieu11.Text = DoanhThu_muctieu_au.ToString();
+            muctieu3.Text = TyLeThayDan_MucTieu.ToString();
+            //muctieu11.Text = DoanhThu_muctieu_au.ToString();
         }
         
         public ThamSo ReturnValue(ThamSo TS)
@@ -80,6 +80,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
                 TS.SoNgayKhongLamViec_MucTieuClone = SoNgayKhongLamViec_MucTieu_au;
                 TS.TrungBnhLua_MucTieuClone = TrungBnhLua_MucTieu_au;
                 TS.SoHeoTrongNam_MucTieuClone = SoHeoTrongNam_MucTieu_au;
+                TS.TyLeThayDan_MucTieuClone = Tylethaydan_au;
                 return TS; 
             }
             return null;
@@ -93,11 +94,12 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             SoHeoConSong_MucTieu_au = Convert.ToDouble(muctieu.Text);
             SoHeoCaiSua_muctieu_au = Convert.ToDouble(muctieu5.Text);
             SoConChetTruocKhiCaiSua_MucTieu_au = Convert.ToDouble(muctieu4.Text);
-            ThoiGianMangThai_MucTieu_au = muctieu8.Text;
-            SoNgayCaiSua_MucTieu_au = muctieu7.Text;
+            ThoiGianMangThai_MucTieu_au = Convert.ToDouble(muctieu8.Text);
+            SoNgayCaiSua_MucTieu_au = Convert.ToDouble(muctieu7.Text);
             SoNgayKhongLamViec_MucTieu_au = muctieu9.Text;
             TrungBnhLua_MucTieu_au = Convert.ToDouble(muctieu6.Text);
             SoHeoTrongNam_MucTieu_au = Convert.ToDouble(muctieu10.Text);
+            Tylethaydan_au = Convert.ToDouble(muctieu3.Text);
         }
 
         private void Confirm_button_Click(object sender, RoutedEventArgs e)
@@ -130,6 +132,7 @@ namespace QuanLyTraiHeo.View.Windows.Thiết_lập_cây_mục_tiêu
             w.WriteLine(SoNgayKhongLamViec_MucTieu_au);
             w.WriteLine(TrungBnhLua_MucTieu_au);
             w.WriteLine(SoHeoTrongNam_MucTieu_au);
+            w.WriteLine(Tylethaydan_au);
             w.Close();
         }
     }

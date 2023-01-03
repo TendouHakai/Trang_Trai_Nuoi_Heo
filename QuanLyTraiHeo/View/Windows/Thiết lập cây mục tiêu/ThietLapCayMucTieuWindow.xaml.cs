@@ -63,7 +63,7 @@ namespace QuanLyTraiHeo
         private void Muctieu_button(object sender, RoutedEventArgs e)
         {
             ThamSo thamso = new ThamSo();
-            DatMucTieu datMucTieu = new DatMucTieu(cmt.Tylede_muctieu, cmt.SoHeoConSinhRa_muctieu, cmt.ODeItCon_muctieu, cmt.SoHeoConSong_MucTieu, cmt.SoHeoCaiSua_muctieu, cmt.SoConChetTruocKhiCaiSua_MucTieu, cmt.ThoiGianMangThai_MucTieu, cmt.SoNgayCaiSua_MucTieu, cmt.SoNgayKhongLamViec_MucTieu, cmt.TrungBnhLua_MucTieu, cmt.SoHeoTrongNam_MucTieu);
+            DatMucTieu datMucTieu = new DatMucTieu(cmt.Tylede_muctieu, cmt.SoHeoConSinhRa_muctieu, cmt.ODeItCon_muctieu, cmt.SoHeoConSong_MucTieu, cmt.SoHeoCaiSua_muctieu, cmt.SoConChetTruocKhiCaiSua_MucTieu, cmt.ThoiGianMangThai_MucTieu, cmt.SoNgayCaiSua_MucTieu, cmt.SoNgayKhongLamViec_MucTieu, cmt.TrungBnhLua_MucTieu, cmt.SoHeoTrongNam_MucTieu, cmt.TyLeThayDan_MucTieu);
             datMucTieu.ShowDialog();
             cmt.Window_Loaded();
             changeView();
