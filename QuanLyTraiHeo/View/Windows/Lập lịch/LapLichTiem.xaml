@@ -130,7 +130,7 @@
                                                 Style="{StaticResource MaterialDesignFloatingHintComboBox}"
                                                 materialDesign:TextFieldAssist.HasClearButton="True"
                                                 materialDesign:ColorZoneAssist.Mode="SecondaryLight"
-                                                materialDesign:HintAssist.Hint="Giống heo">
+                                                materialDesign:HintAssist.Hint="Giống heo" SelectionChanged="Find_giongheo_SelectionChanged">
                                         
                                     </ComboBox>
                                     <ComboBox x:Name="FindLoaiThuoc" Grid.Column="3" Margin="5,0,5,0"
