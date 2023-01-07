@@ -300,14 +300,14 @@ namespace QuanLyTraiHeo
                 Thuoc_Tiem.Add(lichTiem_TenThuoc);
             }
             Listtiemheo.ItemsSource = Thuoc_Tiem;*/
-            if (Find_giongheo.Text != null)
+            if (Find_giongheo.SelectedValue != null)
             {
-                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.lichtiem.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text));
+                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.lichtiem.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.SelectedValue.ToString()));
                 Listtiemheo.ItemsSource = Thuoc_Tiem;
             }
-            if (Find_loaiheo.Text != null)
+            if (Find_loaiheo.SelectedValue != null)
             {
-                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.lichtiem.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.Text));
+                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.lichtiem.HEO.LOAIHEO.TenLoaiHeo.Contains(Find_loaiheo.SelectedValue.ToString()));
                 Listtiemheo.ItemsSource = Thuoc_Tiem;
             }
             if (Find_date.SelectedDate != null)
@@ -315,18 +315,11 @@ namespace QuanLyTraiHeo
                 Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.lichtiem.NgayTiem.Equals(Find_date.SelectedDate));
                 Listtiemheo.ItemsSource = Thuoc_Tiem;
             }
-            if (FindLoaiThuoc.Text != null)
+            if (FindLoaiThuoc.SelectedValue != null)
             {
-                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.hanghoa.TenHangHoa.Contains(FindLoaiThuoc.Text));
+                Thuoc_Tiem = Thuoc_Tiem.FindAll(s => s.hanghoa.TenHangHoa.Contains(FindLoaiThuoc.SelectedValue.ToString()));
                 Listtiemheo.ItemsSource = Thuoc_Tiem;
             }
-        }
-
-
-        private void FindButton_Click(object sender, RoutedEventArgs e)
-        {
-            //MessageBox.Show(Find_date.Text + "/" + Find_loaiheo.Text + "/" + Find_giongheo.Text);
-            Timkiem();
         }
 
         private void Output_excel_Click(object sender, RoutedEventArgs e)
@@ -365,13 +358,22 @@ namespace QuanLyTraiHeo
 
         private void Find_giongheo_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            //reloadWithData();
-            /*MessageBox.Show(Find_giongheo.Text);
-            if (Find_giongheo.Text != "")
-            {
-                Lichtiem = Lichtiem.Where(s => s.HEO.GIONGHEO.TenGiongHeo.Contains(Find_giongheo.Text)).ToList();
-                Listtiemheo.ItemsSource = Lichtiem; 
-            }*/
+            Timkiem();
+        }
+
+        private void Find_loaiheo_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Timkiem();
+        }
+
+        private void FindLoaiThuoc_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Timkiem();
+        }
+
+        private void Find_date_SelectedDateChanged(object sender, SelectionChangedEventArgs e)
+        {
+            Timkiem();
         }
     }
 }
