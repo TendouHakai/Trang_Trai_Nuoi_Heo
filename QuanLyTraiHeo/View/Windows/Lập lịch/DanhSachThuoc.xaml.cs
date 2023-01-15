@@ -22,13 +22,12 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
     {
         List<HANGHOA> DanhsachThuoc { get; set; }
         HANGHOA hh { get; set; }
-        string Thuoc = "Thuốc";
         public int check = 0;
         public DanhSachThuoc()
         {
             InitializeComponent();
 
-            DanhsachThuoc = DataProvider.Ins.DB.HANGHOAs.Where(s => s.LoaiHangHoa == Thuoc || s.LoaiHangHoa == "Vacxin").ToList();
+            DanhsachThuoc = DataProvider.Ins.DB.HANGHOAs.Where(s => s.LoaiHangHoa == "Thuốc" || s.LoaiHangHoa == "Vacxin").ToList();
             ListThuoc.ItemsSource = DanhsachThuoc;
         }
 
@@ -55,6 +54,7 @@ namespace QuanLyTraiHeo.View.Windows.Lập_lịch
 
         private void check_click(object sender, RoutedEventArgs e)
         {
+            check = 1;
             this.Close();
         }
 

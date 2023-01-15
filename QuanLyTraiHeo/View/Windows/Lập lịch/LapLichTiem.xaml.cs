@@ -181,12 +181,13 @@ namespace QuanLyTraiHeo
             ShowListThuoc();
         }
 
+        #region Click datacontext
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
             LichTiem_TenThuoc lichtiem = (LichTiem_TenThuoc)Listtiemheo.SelectedItem;
             Delete(lichtiem.lichtiem);
         }
-        
+
         private void btnFix_Click(object sender, RoutedEventArgs e)
         {
             LichTiem_TenThuoc tiemheo = (LichTiem_TenThuoc)Listtiemheo.SelectedItem;
@@ -195,10 +196,15 @@ namespace QuanLyTraiHeo
             if (sua.returnValue() == null)
                 return;
             updating(sua.returnValue());
-        }
+        } 
+        #endregion
 
-        
 
+        /// <summary>
+        /// For click on listviewitems
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ListViewItem_PreviewMouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
         {
             Listtiemheo.SelectedItems.Clear();
@@ -219,6 +225,7 @@ namespace QuanLyTraiHeo
                 //To do somthing later
             }
         }
+        ///
 
         public void updating(LICHTIEMHEO tt)
         {

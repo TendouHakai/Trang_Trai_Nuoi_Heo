@@ -47,6 +47,19 @@
                             IsEnabled="{Binding Path=IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
                                  Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
                     </Grid>
+                    <Grid>
+                        <materialDesign:PackIcon Kind="Warning" Margin="10 5 0 0 "/>
+                        <TextBox x:Name="LichSuTiem_TB1" Margin="30,0,20,11"
+                            Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                            VerticalAlignment="Top"
+                            Height="80"
+                            AcceptsReturn="True"
+                            TextWrapping="Wrap"
+                            VerticalScrollBarVisibility="Auto"
+                            materialDesign:HintAssist.Hint="Loại vacxin còn thiếu"
+                            IsEnabled="{Binding IsChecked, ElementName=MaterialDesignOutlinedTextBoxEnabledComboBox}"
+                            Text="{Binding DiaChi, UpdateSourceTrigger=PropertyChanged}"/>
+                    </Grid>
                 </StackPanel>
             </materialDesign:Card>
             <materialDesign:Card Grid.Row="3" Margin="0,10,10,0">
